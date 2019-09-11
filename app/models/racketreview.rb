@@ -1,0 +1,2 @@
+class Racketreview < ApplicationRecord
+end

@@ -1,0 +1,49 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  headsize: 1
+  length: 1
+  weight: 1
+  balance: 1.5
+  swingweight: 1
+  verticalstringpattern: 1
+  horizontalstringpattern: 1
+  power: 1
+  confort: 1
+  vibration: 1
+  sweetzone: 1
+  swingweight: 1
+  yearoffabrication: 1
+  price: 1
+  brand: MyString
+  model: MyString
+  color: MyString
+  material: MyString
+  female: false
+  male: false
+  kid: false
+  players: MyString
+
+two:
+  headsize: 1
+  length: 1
+  weight: 1
+  balance: 1.5
+  swingweight: 1
+  verticalstringpattern: 1
+  horizontalstringpattern: 1
+  power: 1
+  confort: 1
+  vibration: 1
+  sweetzone: 1
+  swingweight: 1
+  yearoffabrication: 1
+  price: 1
+  brand: MyString
+  model: MyString
+  color: MyString
+  material: MyString
+  female: false
+  male: false
+  kid: false
+  players: MyString
