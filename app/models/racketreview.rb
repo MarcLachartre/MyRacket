@@ -1,2 +1,0 @@
-class Racketreview < ApplicationRecord
-end

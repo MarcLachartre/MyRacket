@@ -10,17 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_11_142621) do
+ActiveRecord::Schema.define(version: 2019_09_16_091202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "racketreviews", force: :cascade do |t|
-    t.integer "rating"
-    t.string "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "rackets", force: :cascade do |t|
     t.integer "headsize"
@@ -48,6 +41,15 @@ ActiveRecord::Schema.define(version: 2019_09_11_142621) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "userrackets", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "racket_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["racket_id"], name: "index_userrackets_on_racket_id"
+    t.index ["user_id"], name: "index_userrackets_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "lastname"
@@ -60,4 +62,6 @@ ActiveRecord::Schema.define(version: 2019_09_11_142621) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "userrackets", "rackets"
+  add_foreign_key "userrackets", "users"
 end
