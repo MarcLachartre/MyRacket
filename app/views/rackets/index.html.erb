@@ -5,4 +5,13 @@
   <%= racket.brand %>
   <%= racket.model %>
   <%= racket.headsize %>
+  <%= racket.id %>
 <% end %>
+
+<%= form_tag rackets_path, method: :get do %>
+
+            <% select_tag "brand"%>
+            <%= text_field_tag :brand, params[:brand], placeholder: 'Search for racket brand'%>
+           <%= submit_tag "Search" %>
+
+<%end%>
