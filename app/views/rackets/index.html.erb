@@ -1,17 +1,34 @@
 <h1>Rackets#index</h1>
 <p>Find me in app/views/rackets/index.html.erb</p>
 
-<% @rackets.each do |racket| %>
-  <%= racket.brand %>
-  <%= racket.model %>
-  <%= racket.headsize %>
-  <%= racket.id %>
-<% end %>
+
+<%# each_racket_brand = [] %>
+<%# @rackets.each do |racket| %>
+  <%# each_racket_brand << racket.brand %>
+  <%# end %>
+
+<%#= array_of_brands = each_racket_brand + each_racket_brand %>
+
+<%# brands_available = array_of_brands.sort.each_slice(2).uniq %>
+
+
 
 <%= form_tag rackets_path, method: :get do %>
+<%= select_tag("brand", options_for_select(@brands_available, @brand)) %>
+<%= submit_tag "Search" %>
+<% end %>
 
-            <% select_tag "brand"%>
-            <%= text_field_tag :brand, params[:brand], placeholder: 'Search for racket brand'%>
-           <%= submit_tag "Search" %>
 
-<%end%>
+<ul>
+<% @rackets.each do |racket| %>
+  <li> brand: <%= racket.brand %> </li>
+  <li> model: <%= racket.model %></li>
+  <li> headsize: <%= racket.headsize %> cm2</li>
+  <li> weight: <%= racket.weight %> grams </li>
+  <li> length: <%= racket.length %> cm </li>
+  <li> price: <%= racket.price %> </li>
+  <li> <%= link_to "racket details", racket_path(racket.id) %> </li>
+  <p> --------------- </p>
+<% end %>
+</ul>
+
