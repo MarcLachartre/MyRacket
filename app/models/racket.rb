@@ -1,20 +1,11 @@
 class Racket < ApplicationRecord
-  has_many :userrackets, dependent: :destroy
+  has_many :userrackets, dependent: :destroy, foreign_key: :racket_id, class_name: 'Userracket', dependent: :destroy
   has_many :users, through: :userrackets
 
-  has_many :racketreviews
+  has_many :racketreviews, foreign_key: :racket_id, class_name: 'Racketreview', dependent: :destroy
   has_many :users, through: :racketreviews
 
 end
 
-#each_racket_brand = []
-# @rackets.each do |racket|
-#   each_racket_brand << racket.brand
-#   end
 
-#array_of_brands = each_racket_brand + each_racket_brand
-
-# brands_available = array_of_brands.sort.each_slice(2).uniq
-# brands_available
-#
 

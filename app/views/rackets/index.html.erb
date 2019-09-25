@@ -1,15 +1,12 @@
 <h1>Rackets#index</h1>
 <p>Find me in app/views/rackets/index.html.erb</p>
 
-
-<%# each_racket_brand = [] %>
-<%# @rackets.each do |racket| %>
-  <%# each_racket_brand << racket.brand %>
-  <%# end %>
-
-<%#= array_of_brands = each_racket_brand + each_racket_brand %>
-
-<%# brands_available = array_of_brands.sort.each_slice(2).uniq %>
+<% if user_signed_in? %>
+        Signed in as <%= current_user.email %>. This cannot be cheese? <%= current_user.id %>
+        <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+    <% else %>
+        <%= link_to 'Register', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %>
+    <% end %>
 
 
 
