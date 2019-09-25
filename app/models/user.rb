@@ -1,7 +1,16 @@
 class User < ApplicationRecord
-  has_many :racketreviews
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
+
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
+
+  has_many :racketreviews, foreign_key: :user_id, class_name: 'Racketreview', dependent: :destroy
   has_many :rackets, through: :racketreviews
 
-  has_many :userrackets, dependent: :destroy
+  has_many :userrackets, foreign_key: :user_id, class_name: 'Userracket', dependent: :destroy
   has_many :rackets, through: :userrackets
 end
+
+

@@ -1,2 +1,10 @@
 <h1>Racketreviews#new</h1>
 <p>Find me in app/views/racketreviews/new.html.erb</p>
+<div>
+<%= form_with model: @racketreview, class: "nifty_form" do |f| %>
+  <%= f.text_field :comment %>
+  <%#= f.hidden_field :id %>
+
+  <%= f.submit "Create" %>
+<% end %>
+</div>

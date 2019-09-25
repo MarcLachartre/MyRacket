@@ -1,9 +1,11 @@
 class RacketsController < ApplicationController
   def index
+
     @rackets = Racket.all
     @brand = params[:brand]
 
     each_racket_brand = []
+
     @rackets.each do |racket|
       each_racket_brand << racket.brand
     end
@@ -18,6 +20,7 @@ class RacketsController < ApplicationController
   end
 
   def show
+    @racketreview = Racketreview.new
     @racket = Racket.find(params[:id])
   end
 
@@ -44,4 +47,6 @@ def racket_params
   params.require(:racket).permit(:brand)
 end
 
-
+def racketreview_params
+  params.require(:racketreview).permit(:comment, :racket_id)
+end

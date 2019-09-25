@@ -1,3 +1,25 @@
 <h1>Rackets#show</h1>
 <p>Find me in app/views/rackets/show.html.erb</p>
+<div>
+
 <%= @racket.brand %>
+<%= "---------------" %>
+<% @racket.racketreviews.each do |racketreview| %>
+<%= racketreview.comment %>
+<%= racketreview.user_id %>
+<% end %>
+</div>
+
+<div>
+<%= form_with model: @racketreview, url: racket_racketreviews_path(@racket.id), class: "nifty_form" do |f| %>
+  <%= f.text_field :comment %>
+  <%= f.hidden_field :racket_id %>
+  <%= f.submit "Create" %>
+<% end %>
+</div>
+
+
+
+
+
+
