@@ -1,2 +1,14 @@
 <h1>Racketreviews#show</h1>
 <p>Find me in app/views/racketreviews/show.html.erb</p>
+
+<div>
+
+<%= form_with url: racketreviews_path, model: @racketreview, class: "nifty_form" do |f| %>
+  <%= f.label "please leave a comment" %>
+  <div>
+  <%= f.text_field :comment %>
+  </div>
+  <%= f.submit "Create" %>
+
+  <% end %>
+</div>

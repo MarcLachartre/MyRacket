@@ -1,18 +1,21 @@
 Rails.application.routes.draw do
 
+  get 'pages/home'
+  get 'pages/about'
 
+  get 'users/dashboard'
   devise_for :users
-  root :to => "rackets#index"
+  root :to => "pages#home"
 # get "rackets", to: "rackets#index"
 
   resources :rackets, only: [:index, :show] do
-    resources :racketreviews, only: [:new, :create]
+    resources :racketreviews, only: [:new, :create, :destroy, :edit, :update]
   end
 
-  resources :racketreviews, only: [:index, :new, :create]
+  resources :racketreviews
 
-  resources :users, only: [:show, :new, :create] do
-    resources :racketreviews, only: [:new, :create]
+  resources :users, only: [:show, :index, :destroy] do
+    resources :racketreviews, only: [:new, :create, :edit, :update, :destroy]
   end
 end
 

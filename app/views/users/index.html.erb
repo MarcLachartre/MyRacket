@@ -1,2 +1,11 @@
 <h1>Users#index</h1>
 <p>Find me in app/views/users/index.html.erb</p>
+<ul>
+<% @users.each do |user| %>
+<li><%= user.name %></li>
+<li><%= user.id %></li>
+<li> <%= link_to "user dashboard", user_path(user.id) %></li>
+<li> <%= button_to "Delete user", { action: "destroy", :controller=>"users", id: user.id }, method: :delete, data: { confirm: "t'es certain Roger?"}, class: "delete_review" %>
+</li>
+<% end %>
+</ul>

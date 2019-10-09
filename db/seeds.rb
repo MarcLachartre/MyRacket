@@ -12,10 +12,10 @@ racket3 = Racket.create!(brand:'Dunlop', model:'CX 200 Tour', weight: 315,
 racket4 = Racket.create!(brand:'Wilson', model:'Juice', weight: 304,
   headsize: 645, length: 68, price: 190)
 
-user1 = User.create!(name:'marc', rank:'pgm de la raquette', email: 'marc@gmail.com', password: 111111)
-user2 = User.create!(name:'maxime', rank:'a deja sniffé de la terre battue', email: 'maxime@gmail.com', password: 111111)
-user3 = User.create!(name:'yoann', rank:'joue avec un planche (avaleur de sucette)', email: 'yoann@gmail.com', password: 111111)
-user4 = User.create!(name:'benjamin', rank:'amis des parebrises', email: 'benjamin@gmail.com', password: 111111)
+user1 = User.create!(name:'marc', rank:'pgm de la raquette', email: 'marc@gmail.com', password: 111111, admin: 1)
+user2 = User.create!(name:'maxime', rank:'a deja sniffé de la terre battue', email: 'maxime@gmail.com', password: 111111, admin: 0)
+user3 = User.create!(name:'yoann', rank:'joue avec un planche (avaleur de sucette)', email: 'yoann@gmail.com', password: 111111, admin: 0)
+user4 = User.create!(name:'benjamin', rank:'amis des parebrises', email: 'benjamin@gmail.com', password: 111111, admin: 0)
 
 userracket1 = Userracket.create!(racket: racket1, user: user1)
 userracket2 = Userracket.create!(racket: racket2, user: user2)

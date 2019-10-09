@@ -21,6 +21,7 @@ class RacketsController < ApplicationController
 
   def show
     @racketreview = Racketreview.new
+    @user = current_user
     @racket = Racket.find(params[:id])
   end
 
