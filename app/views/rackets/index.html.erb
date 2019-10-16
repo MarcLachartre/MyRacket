@@ -2,8 +2,9 @@
 <p>Find me in app/views/rackets/index.html.erb</p>
 
 <% if user_signed_in? %>
-        Signed in as <%= current_user.email %>. This cannot be cheese? <%= current_user.id %>
+        Hello <%= current_user.name %>!
         <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+        <%= link_to 'My dashboard', users_dashboard_path %>
     <% else %>
         <%= link_to 'Register', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %>
     <% end %>
@@ -13,7 +14,53 @@
 <%= form_tag rackets_path, method: :get do %>
 <%= select_tag("brand", options_for_select(@brands_available, @brand)) %>
 <%= submit_tag "Search" %>
+<%= link_to 'Remove filter', rackets_path %>
 <% end %>
+
+
+<ul>
+  <% if @racket_to_compare == nil %>
+  <%= "please select a racket below" %>
+  <% else %>
+  <li> brand: <%= @racket_to_compare.brand %> </li>
+  <li> model: <%= @racket_to_compare.model %></li>
+  <li> headsize: <%= @racket_to_compare.headsize %> cm2</li>
+  <li> weight: <%= @racket_to_compare.weight %> grams </li>
+  <li> length: <%= @racket_to_compare.length %> cm </li>
+  <li> price: <%= @racket_to_compare.price %> euros </li>
+  <li> <%=  button_to "remove racket", {action: "index"}, method: "get",
+  params:
+  {id1: "remove",
+  id2: :"#{if @second_racket_to_compare != nil
+    @second_racket_to_compare.id
+  else
+    "remove"
+  end}"}%></li>
+  <% end %>
+</ul>
+
+<ul>
+  <% if @second_racket_to_compare == nil %>
+  <%= "please select a racket below" %>
+  <% else %>
+  <li> brand: <%= @second_racket_to_compare.brand %> </li>
+  <li> model: <%= @second_racket_to_compare.model %></li>
+  <li> headsize: <%= @second_racket_to_compare.headsize %> cm2</li>
+  <li> weight: <%= @second_racket_to_compare.weight %> grams </li>
+  <li> length: <%= @second_racket_to_compare.length %> cm </li>
+  <li> price: <%= @second_racket_to_compare.price %> euros </li>
+  <%=  button_to "remove racket", {action: "index"}, method: "get",
+  params:
+  {id1: "remove",
+  id2: :"#{if @racket_to_compare != nil
+    @racket_to_compare.id
+  else
+    "remove"
+  end}"}%></li>
+  <p> --------------- </p>
+  <% end %>
+</ul>
+
 
 
 <ul>
@@ -23,9 +70,25 @@
   <li> headsize: <%= racket.headsize %> cm2</li>
   <li> weight: <%= racket.weight %> grams </li>
   <li> length: <%= racket.length %> cm </li>
-  <li> price: <%= racket.price %> </li>
+  <li> price: <%= racket.price %> euros </li>
+  <%= button_to "compare", {action: "index"}, method: "get",
+  params:
+  {id1: :"#{
+  if @racket_to_compare != nil
+    @racket_to_compare.id
+  else
+    racket.id
+  end
+  }",
+  id2: :"#{
+  if @second_racket_to_compare != nil
+    @second_racket_to_compare.id
+  else
+    racket.id
+  end}" }%>
   <li> <%= link_to "racket details", racket_path(racket.id) %> </li>
   <p> --------------- </p>
 <% end %>
 </ul>
+
 

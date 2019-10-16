@@ -1,2 +1,10 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+user show
+<ul>
+ <li><%= @user.name %></li>
+ <% @user.racketreviews.each do |racketreview| %>
+ <li><%= racketreview.comment %> </li>
+ <%= button_to "delete review", { action: "destroy", :controller=>"racketreviews", id:racketreview.id}, method: :delete %>
+<% end %>
+</ul>
+
+<%#= button_to "Delete Review", { action: "destroy", :controller=>"racketreviews", id: racketreview.id }, method: :delete, data: { confirm: "t'es certain Roger?", remote: true}, class: "delete_review" %>

@@ -1,0 +1,22 @@
+<h1><%= @user.name%>'s dashboard</h1>
+<% #@user.racketreviews.each do |userracketreviews| %>
+<%#= userracketreviews.comment %>
+<%# end %>
+Your last reviews:
+<ul>
+<% @userracketreviews.each do |racketreview| %>
+<li><%= racketreview.racket.brand %></li>
+<li><%= racketreview.racket.model %></li>
+<li><%= racketreview.comment %></li>
+<li><%= link_to "see racket details", racket_path(racketreview.racket.id) %></li>
+<li><%= "-----------" %></li>
+<% end %>
+
+</ul>
+ <% if @user.admin == 1 %>
+Manage <%= link_to "users", users_path %>
+Add a new <%= link_to "racket", controller: "rackets", action: "new" %>
+<% end %>
+
+
+

@@ -1,2 +1,27 @@
 <h1>Rackets#new</h1>
 <p>Find me in app/views/rackets/new.html.erb</p>
+
+<%= form_with model: @racket, class: "nifty_form" do |f| %>
+
+  <%= label_tag("Brand:") %>
+  <%= f.text_field :brand %>
+
+  <%= label_tag("Model:") %>
+  <%= f.text_field :model %>
+
+  <%= label_tag("Headsize") %>
+  <%= f.text_field :headsize %>
+
+  <%= label_tag("Weight") %>
+  <%= f.text_field :weight %>
+
+  <%= label_tag("Length") %>
+  <%= f.text_field :length %>
+
+  <%= label_tag("Price") %>
+  <%= f.text_field :price %>
+
+  <%= f.submit "Create" %>
+<% end %>
+
+
