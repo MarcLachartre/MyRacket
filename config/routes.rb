@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root :to => "pages#home"
 # get "rackets", to: "rackets#index"
 
-  resources :rackets, only: [:index, :show] do
+  resources :rackets, only: [:index, :show, :create, :new] do
     resources :racketreviews, only: [:new, :create, :destroy, :edit, :update]
   end
 

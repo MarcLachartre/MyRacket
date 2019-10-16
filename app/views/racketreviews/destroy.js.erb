@@ -1,4 +1,2 @@
-jQuery('delete_review').bind('ajax:success', function() {
-  jQuery(this).closest('li').fadeout();
-
-});
+document.querySelector("[data-racketreview-id='<%= @racketreview.id %>']")
+  .remove();

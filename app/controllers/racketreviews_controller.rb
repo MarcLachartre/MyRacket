@@ -32,12 +32,7 @@ class RacketreviewsController < ApplicationController
   def destroy
     @racketreview = Racketreview.find(params[:id])
     @racketreview.destroy
-    #respond_to do |format|
-      #format.js
-      #format.html {redirect_to("/rackets/#{@racketreview.racket_id}")}
-      #format.json {head :no_content}
-    #end
-    #redirect_to("/rackets/#{@racketreview.racket_id}")
+    redirect_to("/rackets/#{@racketreview.racket_id}")
   end
 
 

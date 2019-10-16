@@ -1,6 +1,7 @@
 <h1>Rackets#show</h1>
 <p>Find me in app/views/rackets/show.html.erb</p>
 
+
 <ul>
   <li> brand: <%= @racket.brand %> </li>
   <li> model: <%= @racket.model %></li>
@@ -31,18 +32,24 @@
 
 
 <div>
+
 <% @racket.racketreviews.each do |racketreview| %>
-L'avis de <%= racketreview.user.name %>:
-<%= racketreview.comment %>
-  <div>
+<ul>
+  <li data-racketreview-id= <% racketreview.id %>>
+<li>L'avis de <%= racketreview.user.name %>:</li>
+<li><%= racketreview.comment %></li>
+  </ul>
+
     <% if user_signed_in? && racketreview.user.id == @user.id%>
-    <%= button_to "Delete Review", { action: "destroy", :controller=>"racketreviews", id: racketreview.id }, method: :delete, data: { confirm: "t'es certain Roger?", remote: true}, class: "delete_review" %>
-  </div>
+    <%= button_to "Delete Review", { action: "destroy", :controller=>"racketreviews", id: racketreview.id }, method: :delete, data: { confirm: "t'es certain Roger?", remote: true}, remote: true, class: "delete_review" %>
+
   <div id="edit-review">
   <%= link_to 'Edit Review', edit_racketreview_path(racketreview), remote: true %>
   </div>
   <% end %>
+
 <% end %>
+
 </div>
 
 

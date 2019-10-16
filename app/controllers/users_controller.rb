@@ -41,12 +41,8 @@ class UsersController < ApplicationController
   def user
     @user = current_user
   end
-
-  def user_is_admin?
+    def user_is_admin?
     user_signed_in? && @user.admin == 1
   end
-  #def user_params
-  #  params.require(:user).permit(:id)
- # end
 end
 
