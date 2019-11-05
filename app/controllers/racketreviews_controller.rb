@@ -35,7 +35,6 @@ class RacketreviewsController < ApplicationController
     redirect_to("/rackets/#{@racketreview.racket_id}")
   end
 
-
 private
 
   def racketreview_params

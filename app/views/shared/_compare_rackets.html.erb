@@ -1,0 +1,68 @@
+<% if @first_racket_to_compare == nil %>
+<%= "please select a racket" %>
+<% else %>
+<ul>
+  <li> brand: <%= @first_racket_to_compare.brand %> </li>
+  <li> model: <%= @first_racket_to_compare.model %></li>
+  <li> headsize: <%= @first_racket_to_compare.headsize %> cm2</li>
+  <li> weight: <%= @first_racket_to_compare.weight %> grams </li>
+  <li> length: <%= @first_racket_to_compare.length %> cm </li>
+  <li> price: <%= @first_racket_to_compare.price %> euros </li>
+<%= button_to "delete", {action: "index"}, method: "get",
+  params: {remove: :"#{@first_racket_to_compare.id}"}, remote: :true%>
+
+</ul>
+<% end %>
+
+<% if @second_racket_to_compare == nil %>
+<%= "please select a racket" %>
+<% else %>
+<ul>
+  <li> brand: <%= @second_racket_to_compare.brand %> </li>
+  <li> model: <%= @second_racket_to_compare.model %></li>
+  <li> headsize: <%= @second_racket_to_compare.headsize %> cm2</li>
+  <li> weight: <%= @second_racket_to_compare.weight %> grams </li>
+  <li> length: <%= @second_racket_to_compare.length %> cm </li>
+  <li> price: <%= @second_racket_to_compare.price %> euros </li>
+  <%= button_to "delete", {action: "index"}, method: "get",
+  params: {remove: :"#{@second_racket_to_compare.id}"}, remote: :true%>
+</ul>
+<% end %>
+
+<% if @third_racket_to_compare == nil %>
+<%= "please select a racket" %>
+<% else %>
+<ul>
+  <li> brand: <%= @third_racket_to_compare.brand %> </li>
+  <li> model: <%= @third_racket_to_compare.model %></li>
+  <li> headsize: <%= @third_racket_to_compare.headsize %> cm2</li>
+  <li> weight: <%= @third_racket_to_compare.weight %> grams </li>
+  <li> length: <%= @third_racket_to_compare.length %> cm </li>
+  <li> price: <%= @third_racket_to_compare.price %> euros </li>
+</ul>
+<%= button_to "delete", {action: "index"}, method: "get",
+  params: {remove: :"#{@third_racket_to_compare.id}"}, remote: :true%>
+<% end %>
+
+
+<p> --------------- </p>
+<p> --------------- </p>
+
+<ul>
+<% @rackets.each do |racket| %>
+  <li> brand: <%= racket.brand %> </li>
+  <li> model: <%= racket.model %></li>
+  <li> headsize: <%= racket.headsize %> cm2</li>
+  <li> weight: <%= racket.weight %> grams </li>
+  <li> length: <%= racket.length %> cm </li>
+  <li> price: <%= racket.price %> euros </li>
+
+<%= button_to "compare", {action: "index"}, method: "get",
+  params: {id: :"#{racket.id}"}, remote: :true%>
+
+  <li> <%= link_to "racket details", racket_path(racket.id) %> </li>
+  <p> --------------- </p>
+<% end %>
+</ul>
+
+

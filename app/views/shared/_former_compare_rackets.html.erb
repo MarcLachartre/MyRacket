@@ -1,0 +1,85 @@
+
+
+<div id="comparator_tool">
+<ul>
+  <% if @racket_to_compare == nil %>
+  <%= "please select a racket below" %>
+  <% else %>
+  <li> brand: <%= @racket_to_compare.brand %> </li>
+  <li> model: <%= @racket_to_compare.model %></li>
+  <li> headsize: <%= @racket_to_compare.headsize %> cm2</li>
+  <li> weight: <%= @racket_to_compare.weight %> grams </li>
+  <li> length: <%= @racket_to_compare.length %> cm </li>
+  <li> price: <%= @racket_to_compare.price %> euros </li>
+  <li> <%= link_to "racket details", racket_path(@racket_to_compare.id) %> </li>
+  <li> <%=  button_to "remove racket", {action: "index"}, method: "get",
+  params:
+  {id1: "remove",
+  id2: :"#{if @second_racket_to_compare != nil
+    @second_racket_to_compare.id
+  else
+    "remove"
+  end}"}%></li>
+  <% end %>
+</ul>
+
+<ul>
+  <% if @second_racket_to_compare == nil %>
+  <%= "please select a racket below" %>
+  <% else %>
+  <li> brand: <%= @second_racket_to_compare.brand %> </li>
+  <li> model: <%= @second_racket_to_compare.model %></li>
+  <li> headsize: <%= @second_racket_to_compare.headsize %> cm2</li>
+  <li> weight: <%= @second_racket_to_compare.weight %> grams </li>
+  <li> length: <%= @second_racket_to_compare.length %> cm </li>
+  <li> price: <%= @second_racket_to_compare.price %> euros </li>
+  <li> <%= link_to "racket details", racket_path(@second_racket_to_compare.id) %> </li>
+  <%=  button_to "remove racket", {action: "index"}, method: "get",
+  params:
+  {id1: :"#{if @racket_to_compare != nil
+    @racket_to_compare.id
+  else
+    "remove"
+  end}",
+  id2: "remove"}%></li>
+  <p> --------------- </p>
+  <% end %>
+</ul>
+</div>
+
+<ul>
+<% @rackets.each do |racket| %>
+  <li> brand: <%= racket.brand %> </li>
+  <li> model: <%= racket.model %></li>
+  <li> headsize: <%= racket.headsize %> cm2</li>
+  <li> weight: <%= racket.weight %> grams </li>
+  <li> length: <%= racket.length %> cm </li>
+  <li> price: <%= racket.price %> euros </li>
+  <%= button_to "compare", {action: "index"}, method: "get",
+  params:
+  {id1: :"#{
+  if @racket_to_compare != nil
+    @racket_to_compare.id
+  else
+    racket.id
+  end
+  }",
+  id2: :"#{
+  if @second_racket_to_compare != nil
+    @second_racket_to_compare.id
+  else
+    racket.id
+  end}" }, remote: true, class: "compare_button"%>
+
+
+
+
+<%= button_to "secondcomparebutton", {action: "index"}, method: "get",
+  params: {id3: :"#{racket.id}"}%>
+
+  <li> <%= link_to "racket details", racket_path(racket.id) %> </li>
+  <p> --------------- </p>
+<% end %>
+</ul>
+
+
