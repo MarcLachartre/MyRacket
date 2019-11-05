@@ -32,20 +32,21 @@
 
 
 <div>
-
+<% delete_confirmation_message = ["Rafa y aurait réfléchis à deux fois","Avant de supprimer votre message, demandons d'abord l'avis du guru de djoko, non?", "t'es certain Roger?", "John Mc Enroe a été envoyé à votre adresse, vous pouvez toujours changer d'avis"].shuffle.first %>
 <% @racket.racketreviews.each do |racketreview| %>
 <ul>
-  <li data-racketreview-id= <% racketreview.id %>>
+
 <li>L'avis de <%= racketreview.user.name %>:</li>
 <li><%= racketreview.comment %></li>
   </ul>
-
+<div id="edit-review">
     <% if user_signed_in? && racketreview.user.id == @user.id%>
-    <%= button_to "Delete Review", { action: "destroy", :controller=>"racketreviews", id: racketreview.id }, method: :delete, data: { confirm: "t'es certain Roger?", remote: true}, remote: true, class: "delete_review" %>
+    <%= button_to "Delete Review", { action: "destroy", :controller=>"racketreviews", id: racketreview.id }, method: :delete, data: { confirm: ["Rafa y aurait réfléchis à deux fois!","Avant de supprimer votre message, demandons d'abord l'avis du guru de djoko, non?", "t'es certain Roger?", "John Mc Enroe a été envoyé à votre adresse, vous pouvez toujours changer d'avis (faites vite)."].shuffle.first , remote: true}, remote: true, class: "delete_review" %>
 
-  <div id="edit-review">
+
   <%= link_to 'Edit Review', edit_racketreview_path(racketreview), remote: true %>
-  </div>
+</div>
+
   <% end %>
 
 <% end %>
