@@ -1,25 +1,15 @@
-<h1>Rackets#index</h1>
-<p>Find me in app/views/rackets/index.html.erb</p>
 
-<% if user_signed_in? %>
-        Hello <%= current_user.name %>!
-        <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
-        <%= link_to 'My dashboard', users_dashboard_path %>
-    <% else %>
-        <%= link_to 'Register', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %>
-    <% end %>
-
-
-<%= form_tag rackets_path, method: :get do %>
-<%= select_tag("brand", options_for_select(@brands_available, @brand)) %>
-<%= submit_tag "Search" %>
-<%= link_to 'Remove filter', rackets_path %>
-<% end %>
-
-
-<%= @indextab %>
-<div id="response_comparator">
-<%= render "shared/compare_rackets" %>
+<%= render partial: "shared/navbar" %>
+<div class ="response-comparator">
+<%= render partial: "shared/racket_index/racket_comparator" %>
+</div>
+<div class= 'search-bar-and-racket-cards'>
+  <div class = 'search-bar'>
+    <%= render partial: "shared/racket_index/racket_searchbar" %>
+  </div>
+  <div class = 'racket-container'>
+  <%= render partial: "shared/racket_index/racket_list" %>
+  </div>
 </div>
 
 

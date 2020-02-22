@@ -7,8 +7,7 @@ Rails.application.routes.draw do
   devise_for :users
   root :to => "pages#home"
   get "rackets", to: "rackets#index"
-#get 'rackets/*id', :controller => 'rackets', :action => ''
-#map.getrackets '/getRacket/*id', :controller => 'rackets', :action => 'index'
+
   resources :rackets, only: [:show, :create, :new] do
     resources :racketreviews, only: [:new, :create, :destroy, :edit, :update]
   end

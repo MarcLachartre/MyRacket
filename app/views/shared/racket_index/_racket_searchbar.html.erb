@@ -1,0 +1,120 @@
+<%= form_with url: "/rackets", method: "get", class: 'search-form', remote: :true  do %>
+<%= hidden_field_tag "form_input", 1 %>
+  <div>
+  <%= "Brands" %>
+  <% brand_array = [] %>
+  <% Racket.all.each {|racket| %>
+  <% unless brand_array.include?(racket.brand) %>
+  <% brand_array << racket.brand %>
+
+  <%= label_tag dom_id(racket), brand_array.last %>
+
+  <%= check_box_tag "brand[]", brand_array.last,
+  if @brand != nil
+    brand_values = @brand
+    brand_values.include?(racket.brand)
+  end,
+  id: dom_id(racket),
+  class: 'searchbar-checkbox'%>
+  <% end %>
+  <% } %>
+  </div>
+
+  <div>
+      -------------
+  </div>
+  <div>
+    <%= "Gender" %>
+  </div>
+  <div>
+    <%= label_tag "man" %>
+    <%= check_box_tag "male", true,
+    if @male.present?
+      @male
+    else
+      false
+    end %>
+
+  </div>
+  <div>
+    <%= label_tag "woman" %>
+    <%= check_box_tag "female", true, @female %>
+  </div>
+  <div>
+    <%= label_tag "kid" %>
+    <%= check_box_tag "kid", true, @kid %>
+  </div>
+
+  <div>
+    -------------
+  </div>
+  <div>
+    <%= "String pattern" %>
+  </div>
+
+  <% racket_string_pattern = [] %>
+  <% Racket.all.each {|racket| %>
+  <% unless racket_string_pattern.include?([racket.verticalstringpattern, racket.horizontalstringpattern]) %>
+  <% racket_string_pattern << [racket.verticalstringpattern, racket.horizontalstringpattern] %>
+
+  <%= label_tag "#{racket_string_pattern.last[0]}x#{racket_string_pattern.last[1]}"  %>
+  <%= check_box_tag "string_pattern[]", racket_string_pattern.last,
+  if @string_pattern != nil
+    @patterns.include?(racket_string_pattern.last)
+  end
+  %>
+
+  <% end %>
+  <% } %>
+
+  <div>
+      -------------
+  </div>
+  <div>
+    <%= "Weight" %>
+  </div>
+
+  <div>
+    <% weight_list = [225, 240, 255, 270, 285, 300, 315, 330, 345] %>
+    <% weight_list.each {|weight| %>
+    <%= label_tag
+    if weight != 345
+      "#{weight}g - #{weight + 14}g"
+    else
+      ">#{weight}g"
+      end %>
+    <%= check_box_tag "weight[]", weight,
+      if @weight != nil
+        @weight.include?(weight.to_s)
+      end
+    %>
+    <% } %>
+  </div>
+
+  <div>
+      -------------
+  </div>
+  <div>
+    <%= "Headsize" %>
+  </div>
+  <div>
+    <% headsize_list = [599, [600, 619], [620, 640], 645, [650, 679], 680] %>
+    <% headsize_list.each {|headsize| %>
+    <%= label_tag "#{headsize}cm2" %>
+    <%= check_box_tag "headsize[]", headsize,
+      if @headsize != nil
+        @headsize
+        hsarray = []
+        @headsize.each {|hs|
+        hsarray << hs
+        }
+        @headsize.include?(headsize.to_s)
+      end
+    %>
+    <% } %>
+  </div>
+
+  <div>
+    <%= link_to 'Remove filter', rackets_path, remote: true %>
+  </div>
+<% end %>

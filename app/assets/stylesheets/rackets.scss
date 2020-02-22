@@ -1,3 +1,58 @@
 // Place all the styles related to the rackets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+#response-comparator {
+      box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+}
+
+.racket-comparator-container{
+  display: flex;
+  justify-content: center;
+  height: 300px;
+
+
+}
+
+.racket-comparator-specs{
+display: flex;
+align-items: center;
+}
+.racket-comparator{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+
+}
+
+.search-bar-and-racket-cards{
+  display:flex;
+}
+
+.search-bar {
+  display: flex;
+  border-right: 1px solid #dadada;
+  margin-left: 30px;
+  width: 164px;
+  padding-top: 24px;
+  flex-shrink: 0;
+  z-index: 1000;
+  position: relative;
+
+}
+
+.racket-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-grow: 1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-right: 15px;
+  margin-left: 15px
+}
+
+

@@ -1,0 +1,65 @@
+.racket-card {
+  box-sizing: content-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #dadada;
+  margin: 10px;
+  flex-wrap: wrap;
+  text-align: center;
+  width: 210px;
+  height: 400px;
+  transition: 0.35s;
+}
+
+.card-image{
+  max-width: 100%;
+
+
+}
+
+.card-image img {
+  width: 100%;
+  transition: width 0.35s;
+
+}
+
+
+.racket-card:hover {
+  box-shadow: 1px 1px 10px #dadada;
+  box-sizing: content-box;
+  max-width:100%;
+  border-bottom: 1px solid #dadada;
+}
+
+.card-image img:hover {
+  width: 100%
+
+}
+
+.card-item-description {
+  position: relative;
+  justify-items: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+}
+
+.card-item-description-details {
+  position: relative;
+
+}
+
+.card-item-description:hover {
+  cursor: pointer;
+  border: none
+}
+
+.compare {
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+  align-items:center;
+  flex-direction: column;
+
+}

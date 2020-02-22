@@ -1,0 +1,41 @@
+
+<%= form_with url: "/rackets", method: "get", class: 'select-racket', remote: :true  do %>
+  <% a = [] %>
+  <% @rackets.each do |racket| %>
+  <div class= "racket-card">
+    <div class="card-item-description">
+      <div class= 'card-image'>
+        <img src="/assets/racket-sample.jpg">
+      </div>
+      <div class= "card-item-description-details">
+        <div>
+          <h3> <%= racket.brand %> <%= racket.model %> </h3>
+        </div>
+        <div> <%= racket.weight %> grams </div>
+        <div> <%= racket.verticalstringpattern %> x <%= racket.horizontalstringpattern %></div>
+        <div> <%= racket.price %> euros </div>
+        <div> <%= racket.male %></div>
+        <div> <%= racket.female %></div>
+        <div> <%= racket.kid %></div>
+      </div>
+      <div class= "racket-link">
+        <%= link_to "racket details", racket_path(racket.id), id: dom_id(racket) %>
+      </div>
+    </div>
+    <div>
+      <%= hidden_field_tag "select_racket_input", 1 %>
+      <%= label_tag "select to compare" %>
+      <%= check_box_tag "selected_racket_id[]", racket.id,
+      if @selected_racket[:racket_id] != nil
+        @selected_racket[:racket_id].include?(racket.id.to_s)
+      end,
+      class: 'racket-checkbox'
+        %>
+    </div>
+  </div>
+  <% end %>
+  <div class = 'sb'>
+      <%= submit_tag "Search", class: "search-button", remote: true %>
+  </div>
+
+<% end %>
