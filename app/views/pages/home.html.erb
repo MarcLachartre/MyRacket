@@ -1,6 +1,21 @@
-<%= render "shared/navbar" %>
 
-<%= link_to "Racket", rackets_path %>
+  <%= render "shared/navbar" %>
 
-<div class="homepage-banner">
-</div>
+
+<div class="homepage-banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.6)), url(<%= asset_path('homepage-background-picture')%>">
+
+
+
+  <div class="container">
+    <div class="intro">
+    <h1>
+    <%= "Because it's about feeling and technique" %>
+    </h1>
+
+    <h2>
+    <%= "Search, compare and find the exact racket you need to bring your game to the next level!" %>
+    </h2>
+      <%= button_to "Racket", rackets_path, method: :get, class: 'btn btn-primary' %>
+    </div>
+  </div>
+<div>

@@ -3,6 +3,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.3'
 
+gem 'lorem_ipsum_amet'
+gem 'jquery-rails'
+gem 'bootstrap', '~> 4.3.1'
+
 gem 'devise'
 
 gem 'sassc-rails'
@@ -10,6 +14,8 @@ gem 'sassc-rails'
 gem 'rails', '~> 5.2.2'
 # Use sqlite3 as the database for Active Record
 gem 'cloudinary'
+
+gem 'rubocop'
 
 gem 'pg'
 # Use Puma as the app server
@@ -34,8 +40,6 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
-gem 'jquery-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
