@@ -1,17 +1,18 @@
 
 <%= render partial: "shared/navbar" %>
-<div class ="response-comparator">
-<%= render partial: "shared/racket_index/racket_comparator" %>
-</div>
-<div class= 'search-bar-and-racket-cards'>
-  <div class = 'search-bar'>
+<div class = 'racket-page-container'>
+  <div class ="response-comparator">
+  <%= render partial: "shared/racket_index/racket_comparator" %>
+  </div>
+  <div class= 'search-bar-and-racket-cards'>
+    <div class = 'search-bar'>
     <%= render partial: "shared/racket_index/racket_searchbar" %>
-  </div>
-  <div class = 'racket-container'>
-  <%= render partial: "shared/racket_index/racket_list" %>
+    </div>
+    <div class = 'racket-container'>
+    <%= render partial: "shared/racket_index/racket_list" %>
+    </div>
   </div>
 </div>
-
 
 
 

@@ -1,46 +1,49 @@
 .racket-card {
+  background-color: white;
   box-sizing: content-box;
   position: relative;
+  justify-content: center;
   display: flex;
-  flex-direction: column;
   border-bottom: 1px solid #dadada;
   margin: 10px;
   flex-wrap: wrap;
   text-align: center;
-  width: 210px;
-  height: 400px;
-  transition: 0.35s;
-}
-
-.card-image{
-  max-width: 100%;
-
-
+  width: 220px;
+  height: 420px;
+  transition: all 0.40s ease-in-out;
 }
 
 .card-image img {
-  width: 100%;
-  transition: width 0.35s;
-
+  width: 220px;
+  transition: all 0.40s ease-in-out;
 }
 
 
 .racket-card:hover {
   box-shadow: 1px 1px 10px #dadada;
-  box-sizing: content-box;
-  max-width:100%;
   border-bottom: 1px solid #dadada;
+  width: 250px;
+    .see-more-link{
+    color: #dadada;
+  }
+    .racket-compare-button {
+    border-top: 1px solid #dadada;
+
+  }
 }
 
-.card-image img:hover {
-  width: 100%
 
+.see-more-link {
+  color: white;
+  transition: all 0.7s ease-in-out;
 }
+
 
 .card-item-description {
   position: relative;
   justify-items: center;
   display: flex;
+  align-items: flex-end;
   flex-direction: column;
   max-width: 100%;
 }
@@ -50,16 +53,20 @@
 
 }
 
-.card-item-description:hover {
+.card-clickable:hover {
   cursor: pointer;
   border: none
 }
 
-.compare {
-  position: absolute;
-  bottom: 0px;
-  display: flex;
-  align-items:center;
-  flex-direction: column;
+.racket-compare-button{
+  position: relative;
+  display:flex;
+  justify-content: flex-end;
+  height:15px;
+  border-top: 1px solid white;
+  transition: all 0.7s ease-in-out;
+}
+
+.racket-checbox {
 
 }

@@ -1,82 +1,140 @@
 <%= render "shared/navbar" %>
-<div class= 'racket-container-show'>
-  <div class= 'racket-image-description'>
-    <img src="/assets/racket-sample.jpg">
+<div class= 'product-page-container'>
+  <div class= 'product-page'>
+    <div class= 'product-image-and-spec'>
+      <div class= 'product-image'>
+        <img src="/assets/racket-sample.jpg">
+      </div>
 
+      <div class= 'product-spec-container'>
+        <div class= 'product-spec'>
+          <div class = 'spec-title'>
+            <h1> <%= @racket.brand %> </h1><h2><%= @racket.model %></h2>
+          </div>
+          <div class= 'spec'>
+            <div>
+              headsize
+            </div>
+            <div>
+              <%= @racket.headsize %> sq cm
+            </div>
+          </div>
+          <div class= 'spec'>
+            <div>
+              weight:
+            </div>
+            <div>
+              <%= @racket.weight %> grams
+            </div>
+          </div>
+          <div class= 'spec'>
+            <div>
+              length:
+            </div>
+            <div>
+              <%= @racket.length %> cm
+            </div>
+          </div>
+          <div class= 'spec'>
+            <div>
+              balance:
+            </div>
+            <div>
+              <%= @racket.balance %> cm
+            </div>
+          </div>
+          <div class= 'spec'>
+            <div>
+              string pattern:
+            </div>
+            <div>
+              <%= @racket.horizontalstringpattern %>x<%= @racket.verticalstringpattern %>
+            </div>
+          </div>
+          <div class= 'spec'>
+            <div>
+              material:
+            </div>
+            <div>
+              <%= @racket.material %>
+            </div>
+          </div>
+          <div class= 'spec'>
+            <div>
+              stiffness:
+            </div>
+            <div>
+              <%= @racket.stiffness %>RA
+            </div>
+          </div>
+          <div class= 'spec'>
+            <div>
+              swingweight:
+            </div>
+            <div>
+              <%= @racket.swingweight%>
+            </div>
+          </div>
+          <div class= 'back-to-search'>
+            <%= link_to "back", rackets_path, class: 'back-link' %>
+          </div>
+        </div>
+      </div>
 
-    <ul>
-      <h1> <%= @racket.brand%> <%= @racket.model%> </h1>
-
-      <h3> Description </h3>
-      <%= lorem_ipsum(200) %>
-      <h3> Details </h3>
-      <div>
-      headsize: <%= @racket.headsize %> cm2
-      </div>
-      <div>
-      weight: <%= @racket.weight %> grams
-      </div>
-      <div>
-      length: <%= @racket.length %> cm
-      </div>
-      <div>
-      balance: <%= @racket.balance %> cm
-      </div>
-      <div>
-      string pattern: <%= @racket.horizontalstringpattern %>x<%= @racket.verticalstringpattern %>
-      </div>
-      <div>
-      material: <%= @racket.material %>
-      </div>
-      <div>
-      color: <%= @racket.color %>
-      </div>
-      <div>
-      <%= link_to "back to the search", rackets_path %>
-      <div></div>
-    </ul>
-  </div>
-  <div>
-    <% if user_signed_in? %>
-    <%= form_with url: racket_racketreviews_path(@racket.id), model: @racketreview, class: "nifty_form" do |f| %>
-    <%= f.label "please leave a comment" %>
-    <div>
-      <%= f.text_field :comment %>
     </div>
-    <%= f.submit "Create" %>
-    <% end %>
-    <% else %>
-    <%= "please" %>
-    <%=  link_to 'log in', new_user_session_path %>
-    <%= "to leave/edit/delete a review" %>
-    <% end %>
-  </div>
-  <%= "---------------" %>
+    <div class= 'product-description'></div>
+    <h3> Description </h3>
+      <div>
+        <%= lorem_ipsum(500) %>
+      </div>
+      <div>
+        <%= " " %>
+      </div>
+      <div>
+        <%= lorem_ipsum(700) %>
+      </div>
+    </div>
+    <div class= 'product-reviews'>
+
+    <h3> Review(s) </h3>
 
 
-  <div>
+      <% if user_signed_in? %>
+      <%= form_with url: racket_racketreviews_path(@racket.id), model: @racketreview, class: "nifty_form" do |f| %>
+      <%= f.label "please leave a comment" %>
+      <div>
+        <%= f.text_field :comment %>
+      </div>
+      <%= f.submit "Create" %>
+      <% end %>
+      <% else %>
+      <%=  button_to "Leave a review", new_user_session_path, data: { confirm: "please log in/sign up to leave a review" }%>
+      <% end %>
+
+
     <% delete_confirmation_message = ["Rafa y aurait réfléchis à deux fois","Avant de supprimer votre message, demandons d'abord l'avis du guru de djoko, non?", "t'es certain Roger?", "John Mc Enroe a été envoyé à votre adresse, vous pouvez toujours changer d'avis"].shuffle.first %>
-    <% @racket.racketreviews.each do |racketreview| %>
-    <ul>
+    <div class= 'reviews-list'>
+      <% @racket.racketreviews.each do |racketreview| %>
+      <div class= review-card>
+        <div class="edit-review">
+          L'avis de <%= racketreview.user.name %>
 
-      <li>L'avis de <%= racketreview.user.name %>:</li>
-      <li><%= racketreview.comment %></li>
-    </ul>
-    <div id="edit-review">
-      <% if user_signed_in? && racketreview.user.id == @user.id%>
-      <%= button_to "Delete Review", { action: "destroy", :controller=>"racketreviews", id: racketreview.id }, method: :delete, data: { confirm: ["Rafa y aurait réfléchis à deux fois!","Avant de supprimer votre message, demandons d'abord l'avis du guru de djoko, non?", "t'es certain Roger?", "John Mc Enroe a été envoyé à votre adresse, vous pouvez toujours changer d'avis (faites vite)."].shuffle.first , remote: true}, remote: true, class: "delete_review" %>
+          <% if user_signed_in? && racketreview.user.id == @user.id%>
+          <%= button_to "Delete Review", { action: "destroy", :controller=>"racketreviews", id: racketreview.id }, method: :delete, data: { confirm: ["Rafa y aurait réfléchis à deux fois!","Avant de supprimer votre message, demandons d'abord l'avis du guru de djoko, non?", "t'es certain Roger?", "John Mc Enroe a été envoyé à votre adresse, vous pouvez toujours changer d'avis (faites vite)."].shuffle.first , remote: true}, remote: true, class: "delete_review" %>
+        <% end %>
 
-
-      <%= link_to 'Edit Review', edit_racketreview_path(racketreview), remote: true %>
+          <%= link_to 'Edit Review', edit_racketreview_path(racketreview), remote: true %>
+        </div>
+        <div class= review-text>
+          <%= racketreview.comment %>
+        </div>
+      </div>
+      <% end %>
     </div>
-
-    <% end %>
-
-    <% end %>
-
+    </div>
   </div>
-
 </div>
+
 
 
 
