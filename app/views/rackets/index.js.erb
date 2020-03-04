@@ -1,9 +1,28 @@
+//$(document).ready(function(){
+//$('.card-clickable').on('click', function() {
+  //window.location = $(this).find('a').attr('href');
+  //});
+//});
+$( function() {
+  //$('.search-bar').html('<%= j render ("shared/racket_index/racket_searchbar")%>');
 
 
+//if ('<%= @search_bar_input.present? %>' === 'true') {
+$('.racket-container').html( '<%= j render partial: ("shared/racket_index/racket_list") %>').fadeIn(300)
 
-$('.response-comparator').html('<%= j render ("shared/racket_index/racket_comparator")%>');
-$('.racket-container').html( '<%= j render ("shared/racket_index/racket_list") %>').fadeIn(150);
-$('.search-bar').html('<%= j render ("shared/racket_index/racket_searchbar") %>');
+$('.search-bar').html('<%= j render partial: ("shared/racket_index/racket_searchbar") %>');
+
+$('.response-comparator').html('<%= j render partial: ("shared/racket_index/racket_comparator")%>');
+
+//}
+
+//if ('<%= @select_racket_input.present? %>' === 'true') {
+
+  //$('.racket-container').html( '<%= j render ("shared/racket_index/racket_list") %>')
+//} else if ('<%= @remove_racket_param.present? %>' === 'true') {
+  //$('.response-comparator').html('<%= j render ("shared/racket_index/racket_comparator")%>');
+  //$('.racket-container').html( '<%= j render ("shared/racket_index/racket_list") %>')
+//}
 //$('.searchbar').html('<%= j render ("shared/racket_index/racket_searchbar")%>')
 //if ($('.searchbar-checkbox').is(':checked') && $('.racket-checkbox').is(':checked')) {
 
@@ -11,11 +30,10 @@ $('.search-bar').html('<%= j render ("shared/racket_index/racket_searchbar") %>'
 //if ('<%= @search_params.present? %>' === 'true') {
   //$('.racket-container').html( '<%= j render ("shared/racket_index/racket_list") %>').fadeIn(150);
 
-  //$('.search-bar').html('<%= j render ("shared/racket_index/racket_searchbar")%>');
 //}
 
-//$('.search-button').remove();
-//})
+$('.search-button').hide();
+})
 
 
 //if ($('.searchbar-checkbox').is(':checked') && $('.racket-checkbox').not(':checked')) {

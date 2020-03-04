@@ -1,41 +1,53 @@
 
-  <div class= 'container'>
-    <div class= 'racket-comparator-container'>
-      <div class= 'racket-comparator-specs'>
-        <% if @rackets_to_display.present? %>
-        <% else %>
-        <ul>
-          <div>brand: </div>
-          <div>model: </div>
-          <div>headsize: </div>
-          <div>weight: </div>
-          <div>length: </div>
-          <div>price: </div>
-        </ul>
+<div class= 'racket-comparator-container'>
+  <div class= 'racket-comparator-specs'>
+    <% if @rackets_to_display.present? %>
+    <div class = 'spec-list'>
+      <div>brand: </div>
+      <div>model: </div>
+      <div>headsize: </div>
+      <div>weight: </div>
+      <div>length: </div>
+      <div>price: </div>
+      <div>power potential: </div>
+      <div>comfort rate:</div>
+    </div>
+    <% end %>
+  </div>
+   <div class= 'racket-comparator'>
+  <% @rackets_to_display.each {|racket| %>
+
+    <% if @rackets_to_display != [] %>
+    <ul>
+      <div> <%= racket.brand %> </div>
+      <div> <%= racket.model %></div>
+      <div> <%= racket.weight %>g </div>
+      <div> <%= racket.headsize %> cm2</div>
+      <div> <%= racket.length %> cm </div>
+      <div> <%= racket.price %> euros </div>
+      <div> <%= (racket.headsize*racket.stiffness*(1+(racket.length/2.54)-(racket.length/2.54))*racket.swingweight)/1000 %></div>
+      <div>
+        <% if racket.stiffness <  62 %>
+        <%= 5 %>
+        <% elsif (62..65).include?(racket.stiffness) %>
+        <%= 4 %>
+        <% elsif (66..70).include?(racket.stiffness) %>
+        <%= 3 %>
+        <% elsif (71..74).include?(racket.stiffness) %>
+        <%= 2 %>
+        <% elsif racket.stiffness > 75 %>
+        <%= 1 %>
         <% end %>
       </div>
+      <%= button_to "delete", {action: "index"}, method: "get",
+      params: {remove: :"#{racket.id}"}, class: "remove-button", remote: :true%>
 
-      <% @rackets_to_display.each {|racket| %>
-      <div class= 'racket-comparator'>
-        <div>
-          <% if racket == nil %>
-          <%= "please select a racket below and start comparing!" %>
-          <% else %>
-          <ul>
-            <div> <%= racket.brand %> </div>
-            <div> <%= racket.model %></div>
-            <div> <%= racket.headsize %> cm2</div>
-            <div> <%= racket.weight %> grams </div>
-            <div> <%= racket.length %> cm </div>
-            <div> <%= racket.price %> euros </div>
-            <%#= button_to "delete", {action: "index"}, method: "get",
-            params: {remove: :"#{@first_racket_to_compare.id}"}, remote: :true%>
-
-          </ul>
-          <% end %>
-          <%  }  %>
-        </div>
-      </div>
-    </div>
+    </ul>
+    <% else %>
+    <%= "please select a racket below and start comparing!" %>
+    <% end %>
+    <%  }  %>
   </div>
+</div>
+
 

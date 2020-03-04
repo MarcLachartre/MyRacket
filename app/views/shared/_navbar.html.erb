@@ -1,11 +1,12 @@
-<div class="myracket-navbar">
-<% if user_signed_in? %>
-        Hello <%= current_user.name %>!
-        <%= link_to 'home', pages_home_path, :method => :get %>
-        <%= link_to 'My dashboard', users_dashboard_path %>
-        <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+<div class='myracket-navbar'>
+  <div class= 'user-navbar'>
+    <%= link_to 'home', pages_home_path %>
+    <% if user_signed_in? %>
+      <%= link_to 'My dashboard', users_dashboard_path %>
+    <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
     <% else %>
-        <%= link_to 'home', pages_home_path %>
-        <%= link_to 'Register', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %>
+    <%= link_to 'Register', new_user_registration_path %> <%= link_to 'Sign in', new_user_session_path %>
+
     <% end %>
+  </div>
 </div>

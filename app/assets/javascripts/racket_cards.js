@@ -1,4 +1,20 @@
 
+$( document ).on('turbolinks:load', function() {
+//-----------card clickable and redirecting to racket/:id-----------------------
+  $(document).ready(function(){
+    $('.racket-container').on('click', '.card-clickable', function() {
+      window.location = $(this).find('.see-more-link').attr('href');
+    });
+  });
+//------------------------------------------------------------------------------
+
+//----------------------compare button and update-------------------------------
+
+//------------------------------------------------------------------------------
+});
+
+
+
 
 //$(function () {
   //$('.select-racket-form input[type=submit]').remove();

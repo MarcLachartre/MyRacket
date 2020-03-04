@@ -1,16 +1,14 @@
 .homepage-banner {
   background-size: cover !important;
   background-repeat: no-repeat;
-  background-position: relative;
+  background-position: absolute;
   text-align: center;
   display: flex;
   height: 100vh;
-  margin-top: -50px;
+
 }
 
-.container {
-  position: relative
-}
+
 
 .intro {
   display: flex;
@@ -22,12 +20,12 @@
   margin-left: 54%;
   margin-right: -25%;
   max-width: 500px;
-  }
-
-h1 {
+  h1 {
   color: white
+  }
+  h2 {
+  color:white
+  }
 }
 
-h2 {
-  color:white
-}
+

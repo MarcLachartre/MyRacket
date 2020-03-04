@@ -6,38 +6,54 @@
   //});
 //});
 
+$( document ).on('turbolinks:load', function() {
+
+
 //function searchform() {
 $(document).ready(function(e){
+  $('.search-button').remove();
+  $('.search-bar').on('click','.search-form input[type=checkbox]',function(){
+    $('.search-form').submit();
+    $('.racket-container').fadeOut(100);
     $('.search-button').remove();
-    $('.search-bar').on('click','.search-form input[type=checkbox]',function(){
-      //if ($('.search-form input[type=checkbox]').is(':checked')) {
-
-        $('.search-form').submit();
-
-        $('.racket-container').fadeOut(300);
-        $('.search-button').remove();
-
-      //}
-      //else if ($(this).not(':checked')) {
-        //$('.search-form input[type=checkbox]').parents('.search-form').submit();
-        console.log('search js checkbox unchecked');
-      //};
-    });
   });
+});
 
 $(document).ready(function(a){
   $('.racket-container').on('change','.racket-checkbox', function(){
-//      if ($(this).is(':checked')) {
-        $('.select-racket').submit();
-
-//      }
-      //else if ($(this).not(':checked')) {
-       // $(this).parents('.search-form').submit();
-        //console.log('search js checkbox NOT checked');
-      //};
-    });
-
+    $('.select-racket').submit();
+    $('.search-button').remove();
+  });
 })
+
+$(document).ready(function(c){
+  $('.racket-comparator').on('click','.remove-button', function(){
+    $('.select-racket').submit();
+    $('.search-button').remove();
+  });
+});
+})
+
+
+//$(document).ready(function(){
+  //$('.racket-card').click(function(k){
+    //$('<%= dom_id(racket) %>').prop('checked', true);
+    //$('.dom_id(racket)').prop('checked', true);
+    //$('.select-racket').submit();
+    //$('.search-button').remove();
+  //});
+//});
+
+
+//$(document).ready(function(){
+//  $( '.see-more-link' )
+//    .on('mouseover', function() {
+//      $('.see-more-link')
+//        .toggleClass( ".active")
+
+          //alert($('.racket-card').find('.racket-link').children())
+//    });
+//  })
   //$(document).ready(function(){
 //$('racket-checkbox').click(function(){
   //    if ($(this).is(':checked')) {

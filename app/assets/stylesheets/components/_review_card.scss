@@ -1,0 +1,36 @@
+.product-reviews{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.reviews-list{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  width: 80%
+}
+
+.review-card {
+  display: flex;
+  border: 1px solid #dadada;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left:10px;
+  padding-right: 10px;
+  border-bottom:  100px;
+
+}
+
+.edit-review {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #dadada;
+}
+
+.review-text {
+  display: flex;
+  word-break: break-all;
+  width: auto
+}
