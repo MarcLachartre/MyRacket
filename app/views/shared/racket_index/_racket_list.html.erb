@@ -1,8 +1,5 @@
 
 <%= form_with url: "/rackets", method: "get", class: 'select-racket', remote: :true  do %>
-<% if @selected_racket[:racket_id] != nil %>
-
-<% end %>
   <%= hidden_field_tag "select_racket_input", 1 %>
   <% a = [] %>
   <% @rackets.each do |racket| %>

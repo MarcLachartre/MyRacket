@@ -115,17 +115,13 @@
     </h5>
 
     <div class= 'filters'>
-      <% headsize_list = [599, [600, 619], [620, 640], 645, [650, 679], 680] %>
+      <% headsize_list = [(0..619), (620..644), (645..679), (680..2000)] %>
       <% headsize_list.each {|headsize| %>
       <div>
         <%= check_box_tag "headsize[]", headsize,
+
         if @headsize != nil
-          @headsize
-          hsarray = []
-          @headsize.each {|hs|
-            hsarray << hs
-          }
-          @headsize.include?(headsize.to_s)
+         p @headsize_range.include?(headsize)
         end
       %>
       <%= label_tag "#{headsize}cm2" %>

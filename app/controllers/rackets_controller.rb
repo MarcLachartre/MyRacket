@@ -26,13 +26,12 @@ class RacketsController < ApplicationController
 
     #-----------quick-search-bar----------
     #allows user to type-in brand and/or model of the racket and have a result
-    if @model.present?
+    if @selected_search[:model].present?
       all_brands = @all_rackets.distinct.pluck(:brand)
-
-      @model = @model.split.map(&:capitalize)
+      @models = @selected_search[:model].split.map(&:capitalize)
       model = []
       brand = []
-      @model.each{|m|
+      @models.each{|m|
       if all_brands.include?(m)
         brand << m
       else
@@ -97,14 +96,13 @@ class RacketsController < ApplicationController
 
     if @headsize.present?
       r = []
-      @selected_search[:headsize].each { |headsize|
+      @selected_search[:headsize].each { |headsize_param|
         @rackets.each { |racket|
-          p @hs = headsize.split
-          if @hs[0].to_i <= racket.headsize && racket.headsize <= @hs[1].to_i
-            r << racket
-          elsif @hs[0].to_i == racket.headsize && @hs[1].present? == false
-            r << racket
-          end
+          headsize_param = headsize_param.split('..').flatten.map(&:to_i)
+          @headsize_range = (headsize_param[0]..headsize_param[1])
+        if @headsize_range.include?(racket.headsize)
+          r << racket
+        end
         }
       }
       @rackets = r
@@ -114,6 +112,8 @@ class RacketsController < ApplicationController
 
     #-------------------------------------
     selected_rackets_to_compare #(Selected rackets comparision pesistancy between sessions and filtering actions)
+    #-------------------------------------
+
     #-------------------------------------
     respond_to do |format|
       format.html
@@ -224,9 +224,9 @@ private
   end
 
   def racket_search
-    @search_params = {brand: @brand, male: @male, female: @female, kid: @kid, string_pattern: @string_pattern, weight: @weight, headsize: @headsize, search_bar_input: @search_bar_input}
+    @search_params = {model: @model, brand: @brand, male: @male, female: @female, kid: @kid, string_pattern: @string_pattern, weight: @weight, headsize: @headsize, search_bar_input: @search_bar_input}
     @selected_search = @search_params
-    if @search_params != {brand: nil, male: nil, female: nil, kid: nil, string_pattern: nil, weight: nil, headsize: nil, search_bar_input: nil}
+    if @search_params != {model: @model, brand: nil, male: nil, female: nil, kid: nil, string_pattern: nil, weight: nil, headsize: nil, search_bar_input: nil}
       p 1
       cookies[:search_params] = @search_params.to_json
       @selected_search = @search_params

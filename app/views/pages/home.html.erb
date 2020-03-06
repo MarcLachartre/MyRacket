@@ -1,14 +1,27 @@
-<%= render "shared/navbar" %>
 
-<div class="homepage-banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.6)), url(<%= asset_path('homepage-background-picture')%>">
-    <div class="intro">
-    <h1>
-    <%= "Because it's about feeling and technique" %>
-    </h1>
 
+
+<div class="homepage-banner" style="background-image: linear-gradient(rgba(0,0,0,0.01),rgba(0,0,0,0.08)), url(<%= asset_path('female-tennis-player-at-tennis')%>">
+  <div class= 'homepage-container' >
+  <%= render "shared/navbar" %>
+  <div class="intro-container">
+    <div class='intro'>
+      <div class= 'intro-card'>
+        <div class= 'homepage-title'>
     <h2>
-    <%= "Search, compare and find the exact racket you need to bring your game to the next level!" %>
+    <%= "Because it's about feeling and technique" %>
     </h2>
-      <%= button_to "Racket", rackets_path, method: :get, class: 'btn btn-primary' %>
+    </div>
+    <div class= 'homepage-description'>
+    <h3>
+    <%= "Search, compare and find the exact racket you need to bring your game to the next level!" %>
+    </h3>
+    </div>
+    <div>
+
+      <%= button_to "Racket", rackets_path, method: :get %>
+    </div>
+    </div>
     </div>
   </div>
+</div>

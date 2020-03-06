@@ -3,10 +3,12 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .racket-page-container{
+  position: relative;
   display:flex;
   flex-direction: column;
   padding-right: 15px;
   padding-left: 15px;
+  height: 100%;
 }
 
 #response-comparator {
@@ -36,12 +38,14 @@
 
 .search-bar-and-racket-cards{
   display:flex;
+  height: 100%
 }
 
 .racket-container{
   display: flex;
   list-style: none;
   width: 100%;
+  height: auto;
   justify-content: center;
   position: relative;
 }
@@ -50,7 +54,6 @@
   padding-left:15px;
   display: flex;
   flex-wrap: wrap;
-  position: absolute;
   justify-content: center;
   width: 100%
 }
