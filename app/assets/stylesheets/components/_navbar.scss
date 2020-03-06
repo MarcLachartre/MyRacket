@@ -1,14 +1,30 @@
 .myracket-navbar {
-  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  opacity: 1;
-  padding: 0px 30px;
+  position: -webkit-sticky;
+  position: sticky;
+  background-color: transparent;
+  z-index: 1;
+  height: 65px;
+  width: 95%;
   display: flex;
-  align-items: center;
   justify-content: flex-end;
+  align-items: center;
 }
 
-.user-navbar{
+.user-navbar {
   display:flex;
   justify-content: space-between;
+  width: 25%;
+  font-weight: 100;
 
+  a{
+    display:flex;
+    justify-content: space-between;
+    color: black;
+    text-decoration: none;
+  }
+  a:hover{
+    color: black;
+    text-decoration: none;
+    border-bottom: 1px solid black;
+  }
 }
