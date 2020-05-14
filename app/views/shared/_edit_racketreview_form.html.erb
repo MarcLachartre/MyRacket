@@ -1,6 +1,6 @@
-<div>
+<div class = 'leave-review-container'>
 
-<%= form_with model: @racketreview, method: "patch", class: "nifty_form" do |f| %>
+<%= form_with model: @racketreview, method: "patch", class: "review_form" do |f| %>
   <%= f.label "please modify your comment" %>
   <div>
   <%= f.text_field :comment %>

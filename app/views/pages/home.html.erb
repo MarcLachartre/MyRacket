@@ -1,27 +1,54 @@
 
-
-
-<div class="homepage-banner" style="background-image: linear-gradient(rgba(0,0,0,0.01),rgba(0,0,0,0.08)), url(<%= asset_path('female-tennis-player-at-tennis')%>">
-  <div class= 'homepage-container' >
-  <%= render "shared/navbar" %>
-  <div class="intro-container">
-    <div class='intro'>
-      <div class= 'intro-card'>
-        <div class= 'homepage-title'>
-    <h2>
-    <%= "Because it's about feeling and technique" %>
-    </h2>
-    </div>
-    <div class= 'homepage-description'>
-    <h3>
-    <%= "Search, compare and find the exact racket you need to bring your game to the next level!" %>
-    </h3>
-    </div>
-    <div>
-
-      <%= button_to "Racket", rackets_path, method: :get %>
-    </div>
-    </div>
+<div class= "homepage-container">
+  <%= render partial: "shared/navbar" %>
+  <div class= 'tennis-court-container'>
+    <div class= 'tennis-court'>
+      <div class= "left-tennis-court">
+        <div class='top-half-court'>
+          <div class='left-top-half-left'></div>
+          <div class='left-top-half-right'>
+            <div class= 'top-left-mid-line'></div>
+          </div>
+        </div>
+        <div class='bottom-half-court'>
+          <div class='left-bottom-half-left'></div>
+          <div class='left-bottom-half-right'>
+            <div class= 'bottom-left-mid-line'></div>
+          </div>
+        </div>
+      </div>
+      <div class = "right-tennis-court">
+        <div class='top-half-court'>
+          <div class='right-top-half-left'>
+            <div class= 'top-right-mid-line'></div>
+          </div>
+          <div class='right-top-half-right'></div>
+        </div>
+        <div class='bottom-half-court'>
+          <div class='right-bottom-half-left'>
+            <div class= 'bottom-right-mid-line'></div>
+          </div>
+          <div class='right-bottom-half-right'></div>
+        </div>
+      </div>
     </div>
   </div>
+  <%= form_with url: "/rackets", method: "get", class: "home-form" do%>
+  <div class= 'quick-search-box-and-home-link'>
+    <h2>
+      <%= "Start comparing now!" %>
+    </h2>
+    <div class= "text-input-and-link">
+      <%= text_field_tag :model, @model, placeholder: "Enter racket", class: 'type-search' %>
+
+      <%= link_to rackets_path, class: "home-link" do %>
+      <%= submit_tag "", class: "home-submit-button" %>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+
+  <div class= "footer"> </div>
 </div>
+
+

@@ -1,22 +1,26 @@
-<div class='myracket-navbar'>
-  <div class= 'user-navbar'>
-    <div>
-    <%= link_to 'home', pages_home_path %>
+
+  <div class='myracket-navbar'>
+    <div class= 'user-navbar'>
+      <div class = 'navbar-link'>
+
+        <%= link_to 'home', pages_home_path %>
+
+      </div>
+      <% if user_signed_in? %>
+      <div class = 'navbar-link'>
+        <%= link_to 'My dashboard', users_dashboard_path %>
+      </div>
+      <div class = 'navbar-link'>
+        <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+      </div>
+      <% else %>
+      <div class = 'navbar-link'>
+        <%= link_to 'Register', new_user_registration_path %>
+      </div>
+      <div class = 'navbar-link'>
+        <%= link_to 'Sign in', new_user_session_path %>
+      </div>
+      <% end %>
     </div>
-    <% if user_signed_in? %>
-    <div>
-      <%= link_to 'My dashboard', users_dashboard_path %>
-    </div>
-    <div>
-    <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
-    </div>
-    <% else %>
-    <div>
-    <%= link_to 'Register', new_user_registration_path %>
-    </div>
-    <div>
-    <%= link_to 'Sign in', new_user_session_path %>
-    </div>
-    <% end %>
   </div>
-</div>
+

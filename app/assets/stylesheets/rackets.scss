@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+html {
+  scroll-behavior: smooth;
+}
+
 .racket-page-container{
   position: relative;
   display:flex;
@@ -9,54 +13,66 @@
   padding-right: 15px;
   padding-left: 15px;
   height: 100%;
+  width:100%;
+  background-color: #f5f9fc;
+  .myracket-navbar {
+  margin-right: -15px;
+  margin-left: -15px;
+  background-color: #1D3461 !important;
+  }
 }
 
-#response-comparator {
-  display: flex;
-}
-
-.racket-comparator-container{
-  display: flex;
-  justify-content: flex-start;
-  height: 500px;
-  box-shadow: 0 0px 5px -5px rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-}
-
-.racket-comparator-specs{
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  width: 250px;
-}
-
-.racket-comparator{
+.quick-search-container{
   display:flex;
-  align-items: center;
-  height: auto;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  padding-top: 12vh;
+}
+
+
+
+.quick-search-container{
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+
+  margin-right: -15px;
+  margin-left: -15px;
+  color: white;
+  transition: all 0.4s ease-in-out;
 }
 
 .search-bar-and-racket-cards{
+  position: relative;
+  margin-top:17vh;
   display:flex;
   height: 100%
 }
 
+.search-form{
+  width: 230px;
+
+}
+
 .racket-container{
-  display: flex;
-  list-style: none;
-  width: 100%;
-  height: auto;
-  justify-content: center;
   position: relative;
+  width: 100%;
+  display:flex;
+  justify-content: center;
 }
 
 .select-racket{
+  position: relative;
   padding-left:15px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 100%
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  row-gap: 25px;
+  width: 100%;
+  transition: 3s cubic-bezier(.18,1,.21,1);
 }
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////

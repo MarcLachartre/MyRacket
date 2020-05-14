@@ -1,0 +1,114 @@
+.tennis-court {
+  position: relative;
+  display: flex;
+  align-self: center;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.left-tennis-court {
+display: flex;
+flex-direction: vertical;
+width: 0%;
+height:100%;
+flex-wrap: wrap;
+border-top: solid 6px white;
+border-bottom: solid 6px white;
+}
+
+.right-tennis-court {
+  display: flex;
+  flex-direction: vertical;
+  width: 0%;
+  height: 100%;
+  flex-wrap: wrap;
+  border-top: solid 6px white;
+  border-bottom: solid 6px white;
+}
+
+
+.top-half-court {
+  display: flex;
+  height: 50%;
+  width: 100%;
+}
+
+.bottom-half-court{
+  display: flex;
+  height: 50%;
+  width: 100%;
+}
+
+
+.left-top-half-left{
+  height: 0%;
+  width: 100%;
+}
+
+.left-top-half-right {
+  display:flex;
+  width: 100%;
+  height:0%;
+}
+
+
+.left-bottom-half-left{
+  height: 0%;
+  width: 100%;
+  align-self: flex-end;
+}
+
+.left-bottom-half-right {
+  display:flex;
+  height: 0%;
+  width: 100%;
+  align-self: flex-end;
+}
+
+.right-top-half-left{
+  display:flex;
+  height: 0%;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.right-top-half-right {
+  height: 100%;
+  width: 100%;
+}
+
+.right-bottom-half-left{
+  display:flex;
+  height: 0%;
+  width: 100%;
+  justify-content: flex-end;
+  align-self: flex-end;
+}
+
+.right-bottom-half-right {
+  height: 100%;
+  width: 100%;
+  align-self: flex-end;
+}
+
+.top-left-mid-line {
+  width:0%;
+  height: 0%;
+  align-self: flex-end;
+}
+
+.bottom-left-mid-line {
+  width:0%;
+  height: 0%;
+}
+
+.top-right-mid-line {
+  width:0%;
+  height: 0%;
+  align-self: flex-end;
+}
+
+.bottom-right-mid-line {
+  width:0%;
+  height: 0%;
+}

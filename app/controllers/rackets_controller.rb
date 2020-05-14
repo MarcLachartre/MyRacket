@@ -1,4 +1,5 @@
 class RacketsController < ApplicationController
+
   def index
     @rackets = Racket.all
     @all_rackets = Racket.all
@@ -11,8 +12,7 @@ class RacketsController < ApplicationController
     #------------search_params------------
     @model = params[:model]
     @brand = params[:brand]
-    @male = params[:male]
-    @female = params[:female]
+    @adult = params[:adult]
     @kid = params[:kid]
     @string_pattern = params[:string_pattern]
     @weight = params[:weight]
@@ -21,7 +21,7 @@ class RacketsController < ApplicationController
     #-------------------------------------
 
     #------------racket-search------------
-    racket_search #(Search function pesistancy between sessions) this is where the @selected_search hash is created and saved in cookies. This hash has a major importance in terms of persistance between sessions for the racket search filter/function as you can see below.
+    racket_search #(Search function pesistancy between sessions, see private methods) this is where the @selected_search hash is created and saved in cookies. This hash has a major importance in terms of persistance between sessions for the racket search filter/function as you can see below.
     #-------------------------------------
 
     #-----------quick-search-bar----------
@@ -52,34 +52,22 @@ class RacketsController < ApplicationController
       @rackets
     end
 
-    if @male.present? || @female.present? || @kid.present?
-      @male = @selected_search[:male]
-      @female = @selected_search[:female]
+    if @selected_search[:adult].present? || @selected_search[:kid].present?
+      @adult = @selected_search[:adult]
       @kid = @selected_search[:kid]
-      @rackets = @rackets.where('male = ? OR female = ? OR kid = ?', @male, @female, @kid)
+      @rackets = @rackets.where('adult = ? OR kid = ?', @adult, @kid)
     else
       @rackets
     end
 
-    if @string_pattern.present?
-      r = []
-      @patterns = []
-      @selected_search[:string_pattern].each {|x|
-        vertical_string_pattern = x.split[0].to_i
-        horizontal_string_pattern = x.split[1].to_i
-        @patterns << [vertical_string_pattern, horizontal_string_pattern]
-        @rackets.each {|racket|
-          if racket.verticalstringpattern == vertical_string_pattern && racket.horizontalstringpattern == horizontal_string_pattern
-            r << racket
-          end
-        }
-      }
-      @rackets = r
+    if @selected_search[:string_pattern].present?
+      @string_pattern = @selected_search[:string_pattern]
+      @rackets = @rackets.where(stringpattern: @string_pattern)
     else
       @rackets
     end
 
-    if @weight.present?
+    if @selected_search[:weight].present?
       r = []
       @selected_search[:weight].each {|weight|
         max_weight = weight.to_i + 14
@@ -94,7 +82,7 @@ class RacketsController < ApplicationController
       @rackets
     end
 
-    if @headsize.present?
+    if @selected_search[:headsize].present?
       r = []
       @selected_search[:headsize].each { |headsize_param|
         @rackets.each { |racket|
@@ -110,14 +98,19 @@ class RacketsController < ApplicationController
       @rackets
     end
 
+    @rackets = @rackets.order(:brand, :model)
     #-------------------------------------
-    selected_rackets_to_compare #(Selected rackets comparision pesistancy between sessions and filtering actions)
+    selected_rackets_to_compare #(Selected rackets for comparision pesistancy between sessions and filtering actions)
     #-------------------------------------
 
     #-------------------------------------
     respond_to do |format|
+
+      if @search_params.present?
       format.html
       format.js
+      end
+
       return
     end
     #-------------------------------------
@@ -127,6 +120,12 @@ class RacketsController < ApplicationController
     @racketreview = Racketreview.new
     @user = current_user
     @racket = Racket.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.js
+      return
+    end
   end
 
   def new
@@ -158,63 +157,13 @@ private
   params.require(:racket).permit(:brand, :model, :headsize, :weight, :length, :price)
   end
 
-  def selected_rackets_to_compare #1st fully functional solution, needs to be reworked, simplified and refactored.
+  def selected_rackets_to_compare
   @selected_racket_params = {racket_id: @racket_id_param, select_racket_input: @select_racket_input}
   @selected_racket = @selected_racket_params
 
-    if @selected_racket[:racket_id] != nil && @selected_racket[:select_racket_input] == "1" && cookies[:selected_racket].present? == false
-      p 1
-      @selected_racket = @selected_racket_params
-      cookies[:selected_racket] = @selected_racket_params.to_json
-
-    elsif @selected_racket[:racket_id] != nil && @selected_racket[:select_racket_input] == "1" && cookies[:selected_racket].present?
+    if cookies[:selected_racket].present?
+      #on page load, if cookies are present with the racket ids compared in the past, make sure that the rackets are loaded in the comparator
       p 2
-      filtered_racket_ids = Array.new
-      @selected_racket_json = JSON.parse(cookies[:selected_racket])
-      @selected_racket = @selected_racket_json.transform_keys {|key|
-        key = key.to_sym
-      }
-      @selected_racket[:racket_id] << @selected_racket_params[:racket_id]
-      @rackets.each {|racket|
-      filtered_racket_ids << racket.id.to_s
-        }
-      @selected_racket[:racket_id].delete_if {|id| filtered_racket_ids.include?(id) && @selected_racket_params[:racket_id].include?(id) == false }
-      @selected_racket[:racket_id] = @selected_racket[:racket_id].flatten.uniq
-      cookies[:selected_racket] = @selected_racket.to_json
-
-    elsif cookies[:selected_racket].present? && @selected_racket[:racket_id] == nil && @selected_racket[:select_racket_input] == "1"
-      p 3
-      filtered_racket_ids = Array.new
-      @rackets.each {|racket|
-        filtered_racket_ids << racket.id.to_s
-      }
-      @selected_racket_json = JSON.parse(cookies[:selected_racket])
-      @selected_racket = @selected_racket_json.transform_keys {|key|
-        key = key.to_sym
-      }
-      @selected_racket[:racket_id].delete_if {|id| filtered_racket_ids.include?(id) }
-      cookies[:selected_racket] = @selected_racket.to_json
-
-      elsif @remove_racket_param.present?
-      p 4
-      @selected_racket_json = JSON.parse(cookies[:selected_racket])
-      @selected_racket = @selected_racket_json.transform_keys {|key|
-        key = key.to_sym
-      }
-
-      @selected_racket.each_value {|value|
-      if value.include?(@remove_racket_param)
-        value.delete(@remove_racket_param)
-      end
-      }
-      cookies[:selected_racket] = @selected_racket.to_json
-      @selected_racket_json = JSON.parse(cookies[:selected_racket])
-      @selected_racket = @selected_racket_json.transform_keys {|key|
-        key = key.to_sym
-      }
-
-    elsif cookies[:selected_racket].present?
-      p 5
       @selected_racket_json = JSON.parse(cookies[:selected_racket])
       @selected_racket = @selected_racket_json.transform_keys {|key|
         key = key.to_sym
@@ -224,9 +173,9 @@ private
   end
 
   def racket_search
-    @search_params = {model: @model, brand: @brand, male: @male, female: @female, kid: @kid, string_pattern: @string_pattern, weight: @weight, headsize: @headsize, search_bar_input: @search_bar_input}
+    @search_params = {model: @model, brand: @brand, adult: @adult, kid: @kid, string_pattern: @string_pattern, weight: @weight, headsize: @headsize, search_bar_input: @search_bar_input}
     @selected_search = @search_params
-    if @search_params != {model: @model, brand: nil, male: nil, female: nil, kid: nil, string_pattern: nil, weight: nil, headsize: nil, search_bar_input: nil}
+    if @search_params != {model: nil, brand: nil, adult: nil, kid: nil, string_pattern: nil, weight: nil, headsize: nil, search_bar_input: nil}
       p 1
       cookies[:search_params] = @search_params.to_json
       @selected_search = @search_params
@@ -240,6 +189,90 @@ private
     end
   end
 end
+
+#--------------------------------former-work------------------------------------
+
+
+    # if cookies[:selected_racket].present? && @selected_racket[:racket_id] == nil && @selected_racket[:select_racket_input] == "1"
+    #   #use case: user makes a search, selects a racket to compare(and updates selected_racket cookie with javascript, see cookie.js file), makes another search that doesnt contain the last selected racket and then refreshes the page.
+      # p 1
+      # filtered_racket_ids = Array.new
+      # @rackets.each {|racket|
+      #   filtered_racket_ids << racket.id.to_s #we retrieve the rackets the user searched in the 2nd search
+      # }
+      # @selected_racket_json = JSON.parse(cookies[:selected_racket]) #we retrieve the selected-racket cookie and turn it into a hash
+      # @selected_racket = @selected_racket_json.transform_keys {|key|
+      #   key = key.to_sym
+      # }
+      # @selected_racket[:racket_id].delete_if {|id| filtered_racket_ids.include?(id) }
+      # cookies[:selected_racket] = @selected_racket.to_json
+
+
+
+# def selected_rackets_to_compare #1st fully functional solution, needs to be commented, reworked, simplified and refactored.
+#   @selected_racket_params = {racket_id: @racket_id_param, select_racket_input: @select_racket_input}
+#   @selected_racket = @selected_racket_params
+
+#     #if @selected_racket[:racket_id] != nil && @selected_racket[:select_racket_input] == "1" && cookies[:selected_racket].present? == false
+#       #p 1
+#       #@selected_racket = @selected_racket_params
+#       #cookies[:selected_racket] = @selected_racket_params.to_json
+
+#     #if @selected_racket[:racket_id] != nil && @selected_racket[:select_racket_input] == "1" && cookies[:selected_racket].present?
+#       #p 2
+#       #filtered_racket_ids = Array.new
+#       #@selected_racket_json = JSON.parse(cookies[:selected_racket])
+#       #@selected_racket = @selected_racket_json.transform_keys {|key|
+#         #key = key.to_sym
+#       #}
+#       #@selected_racket[:racket_id] << @selected_racket_params[:racket_id]
+#       #@rackets.each {|racket|
+#       #filtered_racket_ids << racket.id.to_s
+#         #}
+#       #@selected_racket[:racket_id].delete_if {|id| filtered_racket_ids.include?(id) && @selected_racket_params[:racket_id].include?(id) == false }
+#       #@selected_racket[:racket_id] = @selected_racket[:racket_id].flatten.uniq
+#       #cookies[:selected_racket] = @selected_racket.to_json
+
+#     if cookies[:selected_racket].present? && @selected_racket[:racket_id] == nil && @selected_racket[:select_racket_input] == "1"
+#       p 3
+#       filtered_racket_ids = Array.new
+#       @rackets.each {|racket|
+#         filtered_racket_ids << racket.id.to_s
+#       }
+#       @selected_racket_json = JSON.parse(cookies[:selected_racket])
+#       @selected_racket = @selected_racket_json.transform_keys {|key|
+#         key = key.to_sym
+#       }
+#       @selected_racket[:racket_id].delete_if {|id| filtered_racket_ids.include?(id) }
+#       cookies[:selected_racket] = @selected_racket.to_json
+
+#     #elsif @remove_racket_param.present?
+#       #p 4
+#       #@selected_racket_json = JSON.parse(cookies[:selected_racket])
+#       #@selected_racket = @selected_racket_json.transform_keys {|key|
+#       #  key = key.to_sym
+#       #}
+
+#       #@selected_racket.each_value {|value|
+#       #if value.include?(@remove_racket_param)
+#       #  value.delete(@remove_racket_param)
+#       #end
+#       #}
+#       #cookies[:selected_racket] = @selected_racket.to_json
+#       #@selected_racket_json = JSON.parse(cookies[:selected_racket])
+#       #@selected_racket = @selected_racket_json.transform_keys {|key|
+#       #  key = key.to_sym
+#       #}
+
+#     elsif cookies[:selected_racket].present?
+#       p 5
+#       @selected_racket_json = JSON.parse(cookies[:selected_racket])
+#       @selected_racket = @selected_racket_json.transform_keys {|key|
+#         key = key.to_sym
+#       }
+#     end
+#     @rackets_to_display = Racket.all.where(id: @selected_racket[:racket_id])
+#   end
 
 
   #def selected_rackets

@@ -1,0 +1,10 @@
+
+<%= form_with url: racket_racketreviews_path(@racket.id), model: @racketreview, class: "create_review_form" do |f| %>
+<div class= 'create_review_fields'>
+  <%= f.label "Let us know how you felt about this racket!" %>
+  <div>
+    <%= f.text_field :comment %>
+  </div>
+    <%= f.submit "Create" %>
+  <% end %>
+</div>
