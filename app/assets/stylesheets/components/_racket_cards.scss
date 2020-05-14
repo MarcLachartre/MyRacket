@@ -1,72 +1,159 @@
+
+
 .racket-card {
   background-color: white;
   box-sizing: content-box;
   position: relative;
-  justify-content: center;
   display: flex;
-  border-bottom: 1px solid #dadada;
-  margin: 10px;
-  flex-wrap: wrap;
-  text-align: center;
-  width: 220px;
-  height: 420px;
-  transition: all 0.40s ease-in-out;
-}
-
-.card-image img {
-  width: 220px;
-  transition: all 0.40s ease-in-out;
-}
-
-
-.racket-card:hover {
-  box-shadow: 1px 1px 10px #dadada;
-  border-bottom: 1px solid #dadada;
+  justify-content: center;
+  border: 1px solid #6287d0;
+  justify-self: center;
   width: 250px;
-    .see-more-link{
-    color: #dadada;
-  }
-    .racket-compare-button {
-    border-top: 1px solid #dadada;
-
-  }
+  height: 100;
+  transition: all 0.30s ease-in-out;
 }
-
-
-.see-more-link {
-  color: white;
-  transition: all 0.7s ease-in-out;
-}
-
 
 .card-item-description {
   position: relative;
-  justify-items: center;
   display: flex;
-  align-items: flex-end;
+  justify-content: center;
   flex-direction: column;
-  max-width: 100%;
+  height: 100%;
+}
+
+.card-clickable {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
 }
 
 .card-item-description-details {
   position: relative;
-
+  align-self: center;
+  display: grid;
+  width: 80%;
+  height: 100%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 25% 25% 24% 13% 13%;
 }
 
-.card-clickable:hover {
+.card-clickable img:hover {
   cursor: pointer;
   border: none
+}
+
+.card-brand {
+  grid-column-start: 1;
+  grid-column-end: two;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  justify-self: start;
+}
+.card-model {
+  grid-column-start: 1;
+  grid-column-end: two;
+  grid-row-start: 2;
+  grid-row-end: span 2;
+  justify-self: start;
+}
+
+.card-weight {
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 4;
+  grid-row-end: 4;
+  display:flex;
+  justify-content: flex-start;
+  align-self: center;
+  border-bottom: 1px solid #dadada;
+}
+.card-string-pattern {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 4;
+  grid-row-end: 4;
+  display:flex;
+  align-self: center;
+  justify-content: flex-end;
+  border-bottom: 1px solid #dadada;
+}
+
+.card-balance{
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 5;
+  grid-row-end: 5;
+  display:flex;
+  align-self: center;
+  justify-content: flex-start;
+}
+
+.card-headsize{
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 5;
+  grid-row-end: 5;
+  display:flex;
+  align-self: center;
+  justify-content: flex-end;
+}
+
+.card-image img {
+  width: 99%;
+  transition: all 0.4s ease-in-out;
+}
+.see-more-link {
+  color: white;
+  align-items: flex-end;
+  margin-bottom: 5px;
+  transition: all 0.7s ease-in-out;
 }
 
 .racket-compare-button{
   position: relative;
   display:flex;
-  justify-content: flex-end;
-  height:15px;
+  justify-content: center;
+  align-items: flex-end;
+  height:55px;
   border-top: 1px solid white;
-  transition: all 0.7s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
-.racket-checbox {
-
+.racket-checkbox-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  color: white;
+  transition: all 0.4s ease-in-out;
 }
+
+.racket-card:hover {
+  box-shadow: 1px 1px 10px #d0d3cf !important;
+  border: 1px solid #1D3461;
+
+    .see-more-link{
+    color: #92bbeb;
+  }
+    .racket-compare-button {
+    border-top: 1px solid #dadada;
+    background-color: #92bbeb;
+  }
+    .racket-checkbox-label {
+    cursor: pointer;
+  }
+}
+
+.racket-compare-button:hover {
+  background-color: #2674ce !important;
+}
+
+.see-more-link:hover{
+    color: #6ea0cc !important;
+  }
+
+

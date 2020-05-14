@@ -1,15 +1,18 @@
 
-<%= render partial: "shared/navbar" %>
 <div class = 'racket-page-container'>
-  <div class ="response-comparator">
-  <%= render partial: "shared/racket_index/racket_comparator" %>
-  </div>
+  <%= render partial: "shared/navbar" %>
+  <%= render partial: "rackets/rackets_index/comparator" %>
+
   <div class= 'search-bar-and-racket-cards'>
+    <%= form_with url: "/rackets", method: "get", class: 'search-form', remote: :true  do %>
+
     <div class = 'search-bar'>
-    <%= render partial: "shared/racket_index/racket_searchbar" %>
+      <%= render partial: "rackets/rackets_index/searchbar" %>
     </div>
+    <% end %>
+
     <div class = 'racket-container'>
-    <%= render partial: "shared/racket_index/racket_list" %>
+      <%= render partial: "rackets/rackets_index/racket"%>
     </div>
   </div>
 </div>

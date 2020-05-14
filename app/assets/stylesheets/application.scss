@@ -14,5 +14,55 @@
  *= require_self
  */
 
-@import "bootstrap"
+@import "bootstrap";
+* {
 
+ font-family: "BentonSansCond",Arial,Helvetica,sans-serif;
+}
+
+    h1 {
+  color: black;
+  font-family: "BentonSansCond",Arial,Helvetica,sans-serif;
+  font-weight: 400;
+  font-size: 100%;
+  }
+
+    h2 {
+  color: black;
+  font-family: "BentonSansCond",Arial,Helvetica,sans-serif;
+  font-weight: 400;
+  }
+    h3 {
+  color: black;
+  font-family: "BentonSansCond",Arial,Helvetica,sans-serif;
+  font-weight: 375;
+  }
+
+    h4 {
+  color: #1D3461;
+  font-family: "BentonSansCond",Arial,Helvetica,sans-serif;
+  font-weight: 800;
+  }
+    h5 {
+  color: #1D3461;
+  font-family: "BentonSansCond",Arial,Helvetica,sans-serif;
+  font-weight: 150;
+  }
+
+  a {
+    color: black;
+    font-family: "BentonSansCond",Arial,Helvetica,sans-serif;
+    font-weight: 200;
+  }
+
+  a:hover {
+    color: black;
+    font-family: "BentonSansCond",Arial,Helvetica,sans-serif;
+    font-weight: 200;
+  }
+
+  p {
+    color: black;
+    font-family: "BentonSansCond",Arial,Helvetica,sans-serif;
+    font-weight: 200;
+  }

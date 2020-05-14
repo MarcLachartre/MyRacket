@@ -1,0 +1,57 @@
+
+<%= form_with url: "/rackets", method: "get", class: 'select-racket', remote: :true  do %>
+<%= hidden_field_tag "select_racket_input", 1 %>
+<% a = [] %>
+<% @rackets.each do |racket| %>
+<div class= 'racket-card'>
+  <div class= 'card-item-description'>
+
+    <div class= 'card-clickable'>
+      <div class= 'card-image'>
+        <img src="/assets/racket-sample.jpg">
+      </div>
+      <div class= 'card-item-description-details'>
+        <div class= 'card-brand'>
+          <h4> <%= racket.brand %> </h4>
+        </div>
+        <div class= 'card-model'>
+          <h5> <%= racket.model %> </h5>
+        </div>
+        <div class= 'card-weight'>
+          <%= "#{racket.weight} gr"%>
+        </div>
+        <div class= 'card-string-pattern'>
+          <% pattern_array = racket.stringpattern.to_s.split('')%>
+          <%= pattern_array[0] + pattern_array[1] %>x<%= pattern_array[2] + pattern_array[3] %>
+        </div>
+        <div class= 'card-balance'>
+          <%= "#{racket.balance}cm" %>
+        </div>
+        <div class= 'card-headsize'>
+          <%= "#{racket.headsize} cm2"  %>
+        </div>
+
+      </div>
+      <%= link_to "See more", racket_path(racket.id), id: dom_id(racket), class: 'see-more-link' %>
+
+    </div>
+    <div class = 'racket-compare-button'>
+      <%= label_tag nil, class: 'racket-checkbox-label' do %>
+      <%= check_box_tag "selected_racket_id[]", racket.id,
+      if @selected_racket[:racket_id] != nil
+        @selected_racket[:racket_id].include?(racket.id.to_s)
+      end,  data: {id: racket.id, brand: racket.brand, model: racket.model, headsize: racket.headsize, weight: racket.weight, length: racket.length, swingweight: racket.swingweight, stringpattern: racket.stringpattern, stiffness: racket.stiffness, powerpotential: "powerpotential", manoeuvrability: "manoeuvrability", confort: "confort", control: "control"},
+      id: racket.id,
+      class: 'racket-checkbox'
+        %>
+        <div class = 'label-name'><%= "Compare" %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <div class = 'sb'>
+    <%= submit_tag "Search", class: "search-button", remote: true %>
+  </div>
+<% end %>
+

@@ -4,9 +4,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.3'
 
 gem 'lorem_ipsum_amet'
-gem 'jquery-rails'
-gem 'bootstrap', '~> 4.3.1'
 
+gem 'bootstrap', '~> 4.3.1'
+gem 'rails-ujs'
 gem 'devise'
 
 gem 'sassc-rails'
@@ -14,7 +14,7 @@ gem 'sassc-rails'
 gem 'rails', '~> 5.2.2'
 # Use sqlite3 as the database for Active Record
 gem 'cloudinary'
-
+gem 'webpacker', '~> 4.0'
 gem 'rubocop'
 
 gem 'pg'

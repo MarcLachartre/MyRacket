@@ -4,55 +4,55 @@ User.destroy_all
 Racketreview.destroy_all
 
 racket1 = Racket.create!(brand:'Wilson', model:'Ultra 100', weight: 300,
-  headsize: 645, length: 68, price: 220, balance: 32, color: 'blue', material: 'graphite', horizontalstringpattern: 19, verticalstringpattern: 16, male: true, stiffness: 69, swingweight: 316)
+  headsize: 645, length: 68, price: 220, balance: 32, color: 'blue', material: 'graphite', stringpattern: 1619, adult: true, stiffness: 69, swingweight: 316)
 
 racket2 = Racket.create!(brand:'Babolat', model:'Pure Aero', weight: 300,
-  headsize: 645, length: 68, price: 210, color: 'yellow', material: 'graphite', horizontalstringpattern: 20, verticalstringpattern: 17, male: true, stiffness: 69, swingweight:327)
+  headsize: 645, length: 68, price: 210, color: 'yellow', material: 'graphite', stringpattern: 1720, adult: true, stiffness: 69, swingweight:327)
 
 racket3 = Racket.create!(brand:'Dunlop', model:'CX 200 Tour', weight: 315,
-  headsize: 613, length: 68, price: 180, color: 'red', material: 'graphite', horizontalstringpattern: 19, verticalstringpattern: 16, balance: 32, female: true, stiffness: 64, swingweight:317)
+  headsize: 613, length: 68, price: 180, color: 'red', material: 'graphite', stringpattern: 1619, balance: 32, stiffness: 64, swingweight:317)
 
 racket4 = Racket.create!(brand:'Wilson', model:'Juice', weight: 304,
-  headsize: 645, length: 68, price: 190, color: 'blue, yellow', material: 'graphite', horizontalstringpattern: 20, verticalstringpattern: 16, balance: 32, kid: true, stiffness:68, swingweight: 310)
+  headsize: 645, length: 68, price: 190, color: 'blue, yellow', material: 'graphite', stringpattern: 2016, balance: 32, kid: true, stiffness:68, swingweight: 310)
 
 racket5 = Racket.create!(brand:'Wilson', model:'Pro Staff RF 97 Autograf Laver Cup Edition', weight: 340,
-  headsize: 626, length: 68, price: 289, color: 'blue', material: 'Graphite', horizontalstringpattern: 19, verticalstringpattern: 16, balance: 30.5, kid: false, male: true, female: false, stiffness: 68, swingweight:335)
+  headsize: 626, length: 68, price: 289, color: 'blue', material: 'Graphite', stringpattern: 1619, balance: 30.5, kid: false, adult: true, stiffness: 68, swingweight:335)
 
 racket6 = Racket.create!(brand:'Wilson', model:'Ultra Tour 97', weight: 305,
-  headsize: 626, length: 68, price: 189, color: 'blue, dark blue', material: 'graphite', horizontalstringpattern: 20, verticalstringpattern: 18, balance: 31.5, kid: false, male: true, female: true, stiffness: 64, swingweight:314)
+  headsize: 626, length: 68, price: 189, color: 'blue, dark blue', material: 'graphite', stringpattern: 1820, balance: 31.5, kid: false, adult: true, stiffness: 64, swingweight:314)
 
 racket7 = Racket.create!(brand:'Wilson', model:'Clash 98', weight: 310,
-  headsize: 630, length: 68, price: 199, color: 'grey, red', material: 'graphite', horizontalstringpattern: 19, verticalstringpattern: 16, balance: 30.6, kid: false, male: true, female: true, stiffness: 55, swingweight:326)
+  headsize: 630, length: 68, price: 199, color: 'grey, red', material: 'graphite', stringpattern: 1619, balance: 30.6, kid: false, adult: true, stiffness: 55, swingweight:326)
 
 racket8 = Racket.create!(brand:'Wilson', model:'Ultra 100L', weight: 277,
-  headsize: 645, length: 68, price: 143, color: 'blue, dark blue', material: 'graphite', horizontalstringpattern: 19, verticalstringpattern: 16, balance: 32.5, kid: false, male: true, female: true, stiffness: 68, swingweight:305)
+  headsize: 645, length: 68, price: 143, color: 'blue, dark blue', material: 'graphite', stringpattern: 1619, balance: 32.5, kid: false, adult: true, stiffness: 68, swingweight:305)
 
 racket9 = Racket.create!(brand:'Wilson', model:'Blade 98', weight: 305,
-  headsize: 630, length: 68, price: 209, color: 'black, green', material: 'graphite', horizontalstringpattern: 19, verticalstringpattern: 16, balance: 32, kid: false, male: true, female: true, stiffness: 62, swingweight:328)
+  headsize: 630, length: 68, price: 209, color: 'black, green', material: 'graphite', stringpattern: 1619, balance: 32, kid: false, adult: true, stiffness: 62, swingweight:328)
 
 racket10 = Racket.create!(brand:'Head', model:'Graphene 360+ Prestige Mid', weight: 320,
-  headsize: 600, length: 68, price: 31, color: 'red', material: 'graphite', horizontalstringpattern: 19, verticalstringpattern: 16, balance: 31, kid: false, male: true, female: true, stiffness: 64, swingweight:328)
+  headsize: 600, length: 68, price: 31, color: 'red', material: 'graphite', stringpattern: 1619, balance: 31, kid: false, adult: true, stiffness: 64, swingweight:328)
 
 racket11 = Racket.create!(brand:'Head', model:'Graphene 360 Radical Pro', weight: 310,
-  headsize: 630, length: 68, price: 199, color: 'grey, red', material: 'graphite', horizontalstringpattern: 19, verticalstringpattern: 16, balance: 31.5, kid: false, male: true, female: true, stiffness: 68, swingweight:326)
+  headsize: 630, length: 68, price: 199, color: 'grey, red', material: 'graphite', stringpattern: 1619, balance: 31.5, kid: false, adult: true, stiffness: 68, swingweight:326)
 
 racket12 = Racket.create!(brand:'Dunlop', model:'Srixon SX 300 Tour', weight: 310,
-  headsize: 645, length: 68, price: 197, color: 'black, yellow', material: 'graphite', horizontalstringpattern: 19, verticalstringpattern: 16, balance: 31.5, kid: false, male: true, female: true, stiffness: 64, swingweight:326)
+  headsize: 645, length: 68, price: 197, color: 'black, yellow', material: 'graphite', stringpattern: 1619, balance: 31.5, kid: false, adult: true, stiffness: 64, swingweight:326)
 
 racket13 = Racket.create!(brand:'Dunlop', model:'Srixon CX 200 Tour', weight: 315,
-  headsize: 613, length: 68, price: 207, color: 'red, black', material: 'graphite', horizontalstringpattern: 20, verticalstringpattern: 18, balance: 32.6, kid: false, male:true, female: true, stiffness: 65, swingweight:319)
+  headsize: 613, length: 68, price: 207, color: 'red, black', material: 'graphite', stringpattern: 1820, balance: 32.6, kid: false, adult: true, stiffness: 65, swingweight:319)
 
 racket14 = Racket.create!(brand:'Dunlop', model:'Srixon SX 300 LS', weight: 285,
-  headsize: 645, length: 68, price: 179, color: 'black, yellow', material: 'graphite', horizontalstringpattern: 19, verticalstringpattern: 16, balance: 32.5, kid: false, male: true, female: true, stiffness: 68, swingweight:318)
+  headsize: 645, length: 68, price: 179, color: 'black, yellow', material: 'graphite', stringpattern: 1619, balance: 32.5, kid: false, adult: true, stiffness: 68, swingweight:318)
 
 racket15 = Racket.create!(brand:'Yonex', model:'V Core 100 Galaxy', weight: 300,
-  headsize: 645, length: 69, price: 184, color: 'black', material: 'graphite', horizontalstringpattern: 19, verticalstringpattern: 16, balance: 32, kid: false, male:true, female: true, stiffness: 68, swingweight:341)
+  headsize: 645, length: 69, price: 184, color: 'black', material: 'graphite', stringpattern: 1619, balance: 32, kid: false, adult: true, stiffness: 68, swingweight:341)
 
 racket16 = Racket.create!(brand:'Yonex', model:'V Core Game Flame', weight: 270,
-  headsize: 645, length: 68, price: 129, color: 'red', material: 'graphite', horizontalstringpattern: 19, verticalstringpattern: 16, balance: 33, kid: false, male: true, female: true, stiffness: 65, swingweight:305)
+  headsize: 645, length: 68, price: 129, color: 'red', material: 'graphite', stringpattern: 1619, balance: 33, kid: false, adult: true, stiffness: 65, swingweight:305)
 
 racket17 = Racket.create!(brand:'Yonex', model:'Vcore Pro 97 Teal', weight: 330,
-  headsize: 626, length: 68, price: 209, color: 'black', material: 'graphite', horizontalstringpattern: 19, verticalstringpattern: 16, balance: 31, kid: false, male: true, female: true, stiffness: 65, swingweight:330)
+  headsize: 626, length: 68, price: 209, color: 'black', material: 'graphite', stringpattern: 1619, balance: 31, kid: false, adult: true, stiffness: 65, swingweight:330)
 
 
 user1 = User.create!(name:'marc', rank:'pgm de la raquette', email: 'marc@gmail.com', password: 111111, admin: 1)

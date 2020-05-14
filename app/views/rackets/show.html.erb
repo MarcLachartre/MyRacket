@@ -48,7 +48,8 @@
               string pattern:
             </div>
             <div>
-              <%= @racket.horizontalstringpattern %>x<%= @racket.verticalstringpattern %>
+              <% pattern_array = @racket.stringpattern.to_s.split('')%>
+              <%= pattern_array[0] + pattern_array[1] %> x <%= pattern_array[2] + pattern_array[3] %>
             </div>
           </div>
           <div class= 'spec'>
@@ -95,18 +96,12 @@
       </div>
     </div>
     <div class= 'product-reviews'>
-
+    <div class= 'create_review_container'>
     <h3> Review(s) </h3>
 
-
       <% if user_signed_in? %>
-      <%= form_with url: racket_racketreviews_path(@racket.id), model: @racketreview, class: "nifty_form" do |f| %>
-      <%= f.label "please leave a comment" %>
-      <div>
-        <%= f.text_field :comment %>
-      </div>
-      <%= f.submit "Create" %>
-      <% end %>
+        <%= render partial: "shared/create_review" %>
+    </div>
       <% else %>
       <%=  button_to "Leave a review", new_user_session_path, data: { confirm: "please log in/sign up to leave a review" }%>
       <% end %>
