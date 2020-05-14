@@ -1,7 +1,6 @@
 const homepageFadein = () => {
-   fadeIn(document.querySelector('.quick-search-box-and-home-link'));
+   fadeIn(document.querySelector('.home-link-container'));
 };
-
 
 const tennisCourt = () => {
   const leftTennisCourt = document.querySelector('.left-tennis-court');

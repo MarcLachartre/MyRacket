@@ -8,11 +8,10 @@ const onAjaxAndTurbolinksEvents = () => { //functions to be loaded on both turbo
 
 const onTurbolinksLoad = () => {
   if (window.location.href.match('pages/home') != null) {
-  tennisCourt(); //tennis_court.js
+  tennisCourt(); //homepage.js
   homepageFadein(); //homepage.js
   } else if (window.location.href.match('rackets') != null) {
   onTurbolinksLoadComparator()
-  //comparatorDisplay(); //comparator.js
   displaySpecList(); //comparator.js
   searchbarFilterDropdown() //search.js;
   formSubmit(); //search.js

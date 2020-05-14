@@ -1,5 +1,4 @@
 class RacketsController < ApplicationController
-
   def index
     @rackets = Racket.all
     @all_rackets = Racket.all
@@ -163,7 +162,7 @@ private
 
     if cookies[:selected_racket].present?
       #on page load, if cookies are present with the racket ids compared in the past, make sure that the rackets are loaded in the comparator
-      p 2
+      p "selected_rackets_to_compare_1"
       @selected_racket_json = JSON.parse(cookies[:selected_racket])
       @selected_racket = @selected_racket_json.transform_keys {|key|
         key = key.to_sym
@@ -176,12 +175,12 @@ private
     @search_params = {model: @model, brand: @brand, adult: @adult, kid: @kid, string_pattern: @string_pattern, weight: @weight, headsize: @headsize, search_bar_input: @search_bar_input}
     @selected_search = @search_params
     if @search_params != {model: nil, brand: nil, adult: nil, kid: nil, string_pattern: nil, weight: nil, headsize: nil, search_bar_input: nil}
-      p 1
+      p "racket_search_1"
       cookies[:search_params] = @search_params.to_json
       @selected_search = @search_params
 
     elsif cookies[:search_params].present?
-      p 2
+      p "racket_search_2"
       @selected_search_json = JSON.parse(cookies[:search_params])
       @selected_search = @selected_search_json.transform_keys {|key|
         key = key.to_sym

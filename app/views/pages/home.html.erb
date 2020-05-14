@@ -33,22 +33,16 @@
       </div>
     </div>
   </div>
-  <%= form_with url: "/rackets", method: "get", class: "home-form" do%>
-  <div class= 'quick-search-box-and-home-link'>
+  <div class= 'home-link-container'>
     <h2>
       <%= "Start comparing now!" %>
     </h2>
-    <div class= "text-input-and-link">
-      <%= text_field_tag :model, @model, placeholder: "Enter racket", class: 'type-search' %>
-
-      <%= link_to rackets_path, class: "home-link" do %>
-      <%= submit_tag "", class: "home-submit-button" %>
-      <% end %>
+    <div class= "home-link">
+      <%= link_to "GO!", rackets_path, class: "go-button" %>
     </div>
   </div>
-  <% end %>
-
   <div class= "footer"> </div>
 </div>
 
-
+<!-- { action: "delete", id: @image.id },
+                                method: :delete -->
