@@ -4,7 +4,7 @@ const onAjaxAndTurbolinksEvents = () => { //functions to be loaded on both turbo
     onLoadCardStyle(); //racket_card.js
     racketCard(); //racket_card.js
     clickableCard(); //racket_card.js
-    Window.onload = selectedRacketCookie(); //cookies.js
+    Window.onload = selectedRacketCookie(); //selected_racket_cookies.js
   };
 };
 

@@ -1,5 +1,3 @@
-
-
 const cookieExists = (cname) => {
   const decodedCookies = decodeURIComponent(document.cookie);// We get all the cookies and decode it into a string.
   if (decodedCookies.includes(cname) === false) {

@@ -5,7 +5,7 @@ const comparator = () => { //This functions role is to display rackets in the co
     racket.addEventListener("change", (event) => {
       allRacketsInComparator.forEach(checkbox => {
         if (checkbox.id == event.target.id) {
-          checkbox.parentElement.remove()
+          checkbox.parentElement.parentElement.remove()
         };
       });
     });
@@ -22,10 +22,10 @@ const comparator = () => { //This functions role is to display rackets in the co
       });
 
       if (comparedRackets.includes(parseInt(racket.dataset.id)) === false) { // If it is not allready in the comparator, the change event on the racket checkbox has to add it to the comparator.
-        console.log('- addRacketToComparator');
+        //console.log('- addRacketToComparator');
         addRacketCardToComparator(racket);// As the racket checkbox has been clicked, now we want to display the racket in the racket comparator div, with the correct display.
       } else { // If it is already in the comparator the change event on the racket checkbox has to remove it from the comparator.
-        console.log('- removeRacketFromComparator');
+        //console.log('- removeRacketFromComparator');
         removeRacketCardFromComparator(racket, comparedRacketIds, comparedRackets);
       };
     });
@@ -34,11 +34,12 @@ const comparator = () => { //This functions role is to display rackets in the co
 
 const removeRacketCardFromComparator = (racket, comparedRacketIds, comparedRackets) => {
   let racketIndex = comparedRackets.indexOf(parseInt(racket.dataset.id));
+  console.log("cul")
   if (racketIndex > -1) {
     comparedRackets.splice(racketIndex, 1);
     comparedRacketIds.forEach((racketToRemove) => {
       if (racket.dataset.id == racketToRemove.id) {
-        racketToRemove.parentElement.remove(); //racket removal thanks to the id
+        racketToRemove.parentElement.parentElement.remove(); //racket removal thanks to the id
       };
     });
   };
@@ -68,12 +69,9 @@ const addRacketCardToComparator = (racket) => {
   const deleteLabel = document.createElement("label");
   const deleteCross = document.createElement('i')
 
-
-
   deleteLabel.classList.toggle("compared-racket-checkbox-label");
   deleteCross.classList.toggle("fas");
   deleteCross.classList.toggle("fa-times");
-
 
   hiddenId.type = "hidden";
   for (let [key, value] of Object.entries(racketObj)) {
@@ -95,10 +93,9 @@ const addRacketCardToComparator = (racket) => {
   racketCheckboxArray.forEach((comparedRacketCheckbox) => {
       console.log(comparedRacketCheckbox)
     comparedRacketCheckbox.addEventListener("change", (event)=> { // we add an event listener to the new created card so that on click it removes it from the comparator and it changes the racket card style to unselected
-        console.log("bite")
       racketCheckboxArray.forEach(checkbox => {
         if (checkbox.id == event.target.id) {
-          checkbox.parentElement.remove();
+          checkbox.parentElement.parentElement.remove();
         };
       });
 
@@ -109,7 +106,6 @@ const addRacketCardToComparator = (racket) => {
         };
       });
     updateSelectedRacketCookie(event.target.id, event.target.checked)
-    console.log("bite")
     displaySpecList();
     });
   });
@@ -169,14 +165,12 @@ const shortComparator = (racketObj, checkbox1, hiddenId, label, remove) => {
     specData.classList.toggle("spec-data");
     specData.id = i;
     shortBrandModelContainer.appendChild(specData);
-    // shortRacketCard.appendChild(checkbox1);
     shortRacketCard.appendChild(hiddenId);
   };
 
   allSpecData = shortBrandModelContainer.querySelectorAll(".spec-data");
   allSpecData[0].innerHTML = racketObj.brand;
   allSpecData[1].innerHTML = racketObj.model;
-
 
   shortRacketCard.style.opacity = "0";
 
@@ -185,11 +179,6 @@ const shortComparator = (racketObj, checkbox1, hiddenId, label, remove) => {
   label.appendChild(checkbox1)
   shortRacketCard.appendChild(label);
   shortDisplayedRackets.appendChild(shortRacketCard);
-
-  // close.addEventListener("click", () => {
-  //   close.parentElement.querySelector(".compared-racket-checkbox").checked = false
-  //   close.parentElement.remove()
-  // })
 
   fadeIn(shortRacketCard);
 };
@@ -234,18 +223,18 @@ const largeComparatorDisplay = (racketObj, checkbox2, hiddenId) => {
 
 const displaySpecList = () => { //this function's role is to display the racket speclist in the comparator
 // console.log('- displaySpecList')
-let comparedRacketContainer = document.querySelectorAll(".racket-comparator");
-if (comparedRacketContainer[0].children.length === 0) {
-  // console.log('-- false');
-  document.querySelectorAll('.spec').forEach((currentValue) => {
-    currentValue.style.display = "none";
-  });
-} else {
-  // console.log('-- true');
-  document.querySelectorAll('.spec').forEach((currentValue) => {
-    currentValue.style.display = "flex";
-  });
-};
+// let comparedRacketContainer = document.querySelectorAll(".racket-comparator");
+// if (comparedRacketContainer[0].children.length === 0) {
+//   // console.log('-- false');
+//   document.querySelectorAll('.spec').forEach((currentValue) => {
+//     currentValue.style.display = "none";
+//   });
+// } else {
+//   // console.log('-- true');
+//   document.querySelectorAll('.spec').forEach((currentValue) => {
+//     currentValue.style.display = "flex";
+//   });
+// };
 };
 
   //   let racketOb = {
