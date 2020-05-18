@@ -159,14 +159,28 @@ private
   def selected_rackets_to_compare
   @selected_racket_params = {racket_id: @racket_id_param, select_racket_input: @select_racket_input}
   @selected_racket = @selected_racket_params
-
-    if cookies[:selected_racket].present?
-      #on page load, if cookies are present with the racket ids compared in the past, make sure that the rackets are loaded in the comparator
+      if cookies[:selected_racket].present? && @selected_racket[:racket_id] == nil && @selected_racket[:select_racket_input] == "1"
+      #use case: user makes a search, selects a racket to compare(and updates selected_racket cookie with javascript, see cookie.js file), makes another search that doesnt contain the last selected racket and then refreshes the page.
       p "selected_rackets_to_compare_1"
+      filtered_racket_ids = Array.new
+      @rackets.each {|racket|
+        filtered_racket_ids << racket.id.to_s #we retrieve the rackets the user searched in the 2nd search
+      }
+      @selected_racket_json = JSON.parse(cookies[:selected_racket]) #we retrieve the selected-racket cookie and turn it into a hash
+      @selected_racket = @selected_racket_json.transform_keys {|key|
+        key = key.to_sym
+      }
+      @selected_racket[:racket_id].delete_if {|id| filtered_racket_ids.include?(id) }
+      cookies[:selected_racket] = @selected_racket.to_json
+
+    elsif cookies[:selected_racket].present?
+      #on page load, if cookies are present with the racket ids compared in the past, make sure that the rackets are loaded in the comparator
+      p "selected_rackets_to_compare_2"
       @selected_racket_json = JSON.parse(cookies[:selected_racket])
       @selected_racket = @selected_racket_json.transform_keys {|key|
         key = key.to_sym
       }
+      p JSON.parse(cookies[:selected_racket])
     end
     @rackets_to_display = Racket.all.where(id: @selected_racket[:racket_id])
   end

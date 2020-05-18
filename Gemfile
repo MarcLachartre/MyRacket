@@ -10,6 +10,7 @@ gem 'rails-ujs'
 gem 'devise'
 
 gem 'sassc-rails'
+gem 'font-awesome-sass', '~> 5.12.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
 # Use sqlite3 as the database for Active Record

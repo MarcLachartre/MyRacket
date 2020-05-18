@@ -22,9 +22,9 @@ const clickableCard = () => {
 const racketCard = () => {
   let allRacketCheckbox = document.querySelectorAll('input.racket-checkbox, input.compared-racket-checkbox')
   let allRacketCardCheckbox = document.querySelectorAll('input.racket-checkbox');
-  allRacketCardCheckbox.forEach(checkbox => {
-    checkbox.style.display = "none"
-  })
+  //allRacketCardCheckbox.forEach(checkbox => {
+    //checkbox.style.display = "none"
+  //})
 
   allRacketCheckbox.forEach(checkbox => { //add event listener on the checkbox of racket cards and compared racket cards
     checkbox.addEventListener("click", event => {

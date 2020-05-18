@@ -1,42 +1,80 @@
-
+@import "index";
 
 .racket-card {
   background-color: white;
   box-sizing: content-box;
   position: relative;
   display: flex;
+  overflow: hidden;
   justify-content: center;
-  border: 1px solid #6287d0;
+  border: 1px solid $light-blue;
   justify-self: center;
-  width: 250px;
-  height: 100;
+  width: 14rem;
+  height: 25rem;
+  border-radius: 15px;
   transition: all 0.30s ease-in-out;
 }
 
 .card-item-description {
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: column;
-  height: 100%;
 }
 
-.card-clickable {
+.card-top{
+  position: relative;
   display: flex;
-  position: relative;
   flex-direction: column;
-  align-items: center;
-  cursor: pointer;
+  justify-content: flex-start;
+  height: auto;
+  width: 100%;
 }
 
-.card-item-description-details {
+.card-bottom {
   position: relative;
-  align-self: center;
-  display: grid;
-  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: auto;
+  width: 100%;
+}
+
+
+// .card-item-description-details {
+//   position: relative;
+//   align-self: center;
+//   display: grid;
+//   width: 80%;
+//   height: 100%;
+//   grid-template-columns: 1fr 1fr;
+//   grid-template-rows: 25% 25% 24% 13% 13%;
+// }
+
+.card-image {
+  position: relative;
+  display:flex;
+  justify-content: center;
+  width: auto;
+  height: auto;
+}
+
+.card-image img {
+  position: relative;
+  width: 90%;
   height: 100%;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 25% 25% 24% 13% 13%;
+  transition: all 0.4s ease-in-out;
+}
+
+.card-brand-model {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  height:100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .card-clickable img:hover {
@@ -44,116 +82,136 @@
   border: none
 }
 
-.card-brand {
-  grid-column-start: 1;
-  grid-column-end: two;
-  grid-row-start: 1;
-  grid-row-end: 1;
-  justify-self: start;
-}
+
+
 .card-model {
-  grid-column-start: 1;
-  grid-column-end: two;
-  grid-row-start: 2;
-  grid-row-end: span 2;
   justify-self: start;
+  h5 {
+  font-size: 1.1rem !important;
+  font-weight: 300 !important
+  }
+}
+
+.card-spec {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height:4rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .card-weight {
-  grid-column-start: 1;
-  grid-column-end: 1;
-  grid-row-start: 4;
-  grid-row-end: 4;
+  position: relative;
   display:flex;
   justify-content: flex-start;
   align-self: center;
-  border-bottom: 1px solid #dadada;
 }
-.card-string-pattern {
-  grid-column-start: 2;
-  grid-column-end: 2;
-  grid-row-start: 4;
-  grid-row-end: 4;
-  display:flex;
-  align-self: center;
-  justify-content: flex-end;
+
+.card-weight-stringpattern{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  height: 50%;
   border-bottom: 1px solid #dadada;
 }
 
+.card-balance-headsize{
+  position: relative;
+  display: flex;
+  height:50%;
+  justify-content: space-between;
+}
+
+.card-string-pattern {
+  position: relative;
+  display:flex;
+  align-self: center;
+  justify-content: flex-end;
+
+}
+
 .card-balance{
-  grid-column-start: 1;
-  grid-column-end: 1;
-  grid-row-start: 5;
-  grid-row-end: 5;
+
   display:flex;
   align-self: center;
   justify-content: flex-start;
 }
 
 .card-headsize{
-  grid-column-start: 2;
-  grid-column-end: 2;
-  grid-row-start: 5;
-  grid-row-end: 5;
+
   display:flex;
   align-self: center;
   justify-content: flex-end;
 }
 
-.card-image img {
-  width: 99%;
-  transition: all 0.4s ease-in-out;
+.button-and-link{
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  height: 3rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
 }
+
 .see-more-link {
-  color: white;
-  align-items: flex-end;
-  margin-bottom: 5px;
-  transition: all 0.7s ease-in-out;
+  // color: white;
+  // height:0;
+  // align-items: flex-end;
+  // transition: all 0.7s ease-in-out;
 }
 
 .racket-compare-button{
-  position: relative;
-  display:flex;
-  justify-content: center;
-  align-items: flex-end;
-  height:55px;
-  border-top: 1px solid white;
-  transition: all 0.5s ease-in-out;
+  // position: relative;
+  // display:flex;
+  // justify-content: center;
+  // align-items: flex-end;
+  // height:1rem;
+  // border-top: 1px solid white;
+  // transition: all 0.5s ease-in-out;
 }
 
 .racket-checkbox-label {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
   width: 100%;
   height: 100%;
-  margin: 0;
-  color: white;
-  transition: all 0.4s ease-in-out;
+   margin: 0;
+   margin-left: 3px;
+   margin-right: 3px;
+    color: $dark-blue;
+  // transition: all 0.4s ease-in-out;
 }
 
 .racket-card:hover {
   box-shadow: 1px 1px 10px #d0d3cf !important;
-  border: 1px solid #1D3461;
+  border: 1px solid $light-blue;
 
     .see-more-link{
-    color: #92bbeb;
+    // color: #92bbeb;
   }
     .racket-compare-button {
-    border-top: 1px solid #dadada;
-    background-color: #92bbeb;
+    // border-top: 1px solid #dadada;
+    // background-color: #92bbeb;
   }
     .racket-checkbox-label {
-    cursor: pointer;
+    // cursor: pointer;
   }
+}
+
+.racket-checkbox{
+  display: none;
 }
 
 .racket-compare-button:hover {
-  background-color: #2674ce !important;
+  // background-color: #2674ce !important;
 }
 
 .see-more-link:hover{
-    color: #6ea0cc !important;
+    // color: #6ea0cc !important;
   }
 
 

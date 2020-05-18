@@ -1,10 +1,14 @@
 const onAjaxAndTurbolinksEvents = () => { //functions to be loaded on both turbolinks and ajax events
-  comparator(); //comparator.js
-  onLoadCardStyle(); //racket_card.js
-  racketCard(); //racket_card.js
-  clickableCard(); //racket_card.js
-  selectedRacketCookie(); //cookies.js
+  if (window.location.href.match('rackets') != null) {
+    comparator(); //comparator.js
+    onLoadCardStyle(); //racket_card.js
+    racketCard(); //racket_card.js
+    clickableCard(); //racket_card.js
+    Window.onload = selectedRacketCookie(); //cookies.js
+  };
 };
+
+//Window.onload = selectedRacketCookie()
 
 const onTurbolinksLoad = () => {
   if (window.location.href.match('pages/home') != null) {
