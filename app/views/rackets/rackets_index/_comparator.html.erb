@@ -15,19 +15,22 @@
             <%= racket.model %>
           </div>
         </div>
-        <span class="close">&times;</span>
-
-        <%= check_box_tag "selected_racket_id[]", racket.id,
-        if @selected_racket[:racket_id] != nil
-        @selected_racket[:racket_id].include?(racket.id.to_s)
-        end,
-        id: racket.id,
-        class: 'compared-racket-checkbox'
-        %>
-
+        <%= label_tag nil, class: 'compared-racket-checkbox-label' do %>
+          <%= check_box_tag "selected_racket_id[]", racket.id,
+          if @selected_racket[:racket_id] != nil
+          @selected_racket[:racket_id].include?(racket.id.to_s)
+          end,
+          id: racket.id,
+          class: 'compared-racket-checkbox'
+          %>
+          <i class="fas fa-times"></i>
+          <% end %>
         <% end %>
       </div>
       <%  }  %>
+    </div>
+    <div class= "open-comparator-arrow">
+      <i class="arrow-down"></i>
     </div>
   </div>
 
@@ -35,6 +38,11 @@
     <div class = 'top-background'>
     </div>
     <div class = 'bottom-background'>
+    </div>
+    <div class = 'close-comparator-container'>
+      <div class= "close-comparator-arrow">
+        <i class="arrow-up"></i>
+      </div>
     </div>
     <div class= "comparator-container">
       <div class= 'racket-comparator-specs'>
@@ -79,11 +87,9 @@
         <%= hidden_field_tag "racket[#{racket.id}]", nil, data: {id: racket.id, brand: racket.brand, model: racket.model, headsize: racket.headsize, stringpattern: racket.stringpattern, weight: racket.weight, length: racket.length, swingweight: racket.swingweight, stiffness: racket.stiffness, powerpotential: "powerpotential", manoeuvrability: "manoeuvrability", confort: "confort", control: "control"}, class: 'compared-racket', id: racket.id %>
         </div>
         <% } %>
+
       </div>
     </div>
-  </div>
-  <div class= "open-comparator-arrow">
-    <i class="arrow-down"></i>
   </div>
 </div>
 

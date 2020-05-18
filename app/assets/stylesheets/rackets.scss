@@ -36,7 +36,6 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   margin-right: -15px;
   margin-left: -15px;
   color: white;
@@ -45,7 +44,7 @@ html {
 
 .search-bar-and-racket-cards{
   position: relative;
-  margin-top:17vh;
+  margin-top:16vh;
   display:flex;
   height: 100%
 }
@@ -67,7 +66,7 @@ html {
   padding-left:15px;
   margin-top: 15px;
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: 20vw 20vw 20vw 20vw;
   row-gap: 25px;
   width: 100%;
   transition: 3s cubic-bezier(.18,1,.21,1);
