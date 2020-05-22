@@ -1,73 +1,75 @@
-//-----------------------------clickable card-----------------------------------
-const clickableCard = () => {
-  document.querySelectorAll('.card-clickable').forEach((card) => {
-    card.addEventListener('click', () => {
-    location.href = card.getElementsByClassName("see-more-link")[0].href; //redirects to the racket show page
-  });
-  });
-};
-//------------------------------------------------------------------------------
+class RacketCardDesign{
+  constructor(racketCards){
+    this.racketCards = racketCards
+  }
 
-
-
-//-------------------------select compare button--------------------------------
-
-//on turbolinks load
-//  when the racket card is clicked it needs to:
-// -remove or add the style from the racket card
-//  when the the compared racket checkbox is checked it needs to:
-// -uncheck the racket card checkbox
-// -remove the style from the racket card
-
-const racketCard = () => {
-  let allRacketCheckbox = document.querySelectorAll('input.racket-checkbox, input.compared-racket-checkbox')
-  let allRacketCardCheckbox = document.querySelectorAll('input.racket-checkbox');
-  //allRacketCardCheckbox.forEach(checkbox => {
-    //checkbox.style.display = "none"
-  //})
-
-  allRacketCheckbox.forEach(checkbox => { //add event listener on the checkbox of racket cards and compared racket cards
-    checkbox.addEventListener("click", event => {
-      if (event.target.checked === true) {
-        addRacketCardStyle(event.target);
+  init(){
+    this.clickableCard();
+    this.racketCards.forEach((checkbox) => {
+      if (checkbox.checked === true) {
+        this.selectedCardStyle(checkbox);
       } else {
-        let racketCardCheckbox = document.querySelectorAll('.racket-checkbox');
-        racketCardCheckbox.forEach(checkbox => {
-          if (event.target.id == checkbox.id) {
-            removeRacketCardStyle(checkbox);
-          };
+        this.initialCardStyle(checkbox);
+      };
+    });
+  }
+
+  displayStyleOnClick() {
+    this.racketCards.forEach(checkbox => { //add event listener on the checkbox of racket cards to remove their display
+      checkbox.addEventListener("click", event => {
+        if (event.target.checked === true) {
+          const comparedRackets = document.querySelectorAll('input.compared-racket-checkbox');
+          this.selectedCardStyle(event.target);
+          this.addRemoveRacketCardStyleListener(event.target, comparedRackets);
+        } else {
+          this.initialCardStyle(event.target);
+        };
+      });
+    });
+  }
+
+  addRemoveRacketCardStyleListener(racketCheckbox, racketsNodelist) { //add event listener on the checkbox of compared racket cards to remove the display of racket cards. First parameter corresponds to the racket card checkbox, second one corresponds to another nodelist containing its matching checkbox (for example, compared racket checkbox)
+    racketsNodelist.forEach(racketNode => {
+      if (racketNode.id === racketCheckbox.id) {
+        racketNode.addEventListener('change', () => {
+          this.initialCardStyle(racketCheckbox);
         });
       };
     });
-  });
-};
+  }
 
-const addRacketCardStyle = (checkbox) => {
-  checkbox.checked = true;
-  checkbox.parentElement.style.backgroundColor = "#205CA5";
-  checkbox.parentElement.parentElement.parentElement.parentElement.style.boxShadow = "1px 1px 10px #bfbfbf";
-  checkbox.parentElement.parentElement.parentElement.parentElement.style.border = "1px solid #205CA5";
-  checkbox.nextElementSibling.innerText = "Added!";
-};
+  selectedCardStyle(checkbox){
+    checkbox.checked = true;
+    checkbox.parentElement.parentElement.parentElement.parentElement.style.boxShadow = "1px 1px 10px #bfbfbf";
+    checkbox.parentElement.parentElement.parentElement.parentElement.style.border = "1px solid #205CA5";
+    checkbox.nextElementSibling.innerText = "Remove";
+    checkbox.nextElementSibling.style.border = "1px solid red";
+  }
 
-const removeRacketCardStyle = (checkbox) => {
-  checkbox.checked = false;
-  checkbox.parentElement.style = "none";
-  checkbox.parentElement.parentElement.parentElement.parentElement.style = "none";
-  checkbox.nextSibling.style = "none";
-  checkbox.nextElementSibling.innerText = "Compare"
+  initialCardStyle(checkbox){
+    checkbox.checked = false;
+    checkbox.parentElement.style = "none";
+    checkbox.parentElement.parentElement.parentElement.parentElement.style = "none";
+    checkbox.nextSibling.style = "none";
+    checkbox.nextElementSibling.innerText = "Compare";
+  }
+
+  clickableCard() {
+    document.querySelectorAll('.card-item-description').forEach((card) => {
+      const clickableCard = card.querySelector(".card-top");
+      clickableCard.addEventListener('click', () => {
+        location.href = card.getElementsByClassName("see-more-link")[0].href; //redirects to the racket show page
+      });
+    });
+  }
 }
 
-const onLoadCardStyle = () => {
-  let racketCheckbox = document.querySelectorAll('.racket-checkbox');
-  racketCheckbox.forEach((checkbox) => {
-    if (checkbox.checked === true) {
-      addRacketCardStyle(checkbox)
-    } else {
-      removeRacketCardStyle(checkbox)
-    };
-  });
-};
+document.addEventListener('turbolinks:load', () => {
+  const racketCards = document.querySelectorAll('.racket-checkbox');
+  const cardsStyle = new RacketCardDesign(racketCards);
+  cardsStyle.init()
+  cardsStyle.displayStyleOnClick()
+})
 
 //-----------------------------former work done---------------------------------
 
