@@ -43,14 +43,14 @@
       </div>
 
       <div class = "button-and-link">
-        <%= link_to "See more", racket_path(racket.id), id: dom_id(racket), class: 'see-more-link' %>
+          <%= link_to "See more", racket_path(racket.id), id: dom_id(racket), class: 'see-more-link' %>
         <div class = 'racket-compare-button'>
           <div class = 'button-up'>
           <%= label_tag nil, class: 'racket-checkbox-label' do %>
           <%= check_box_tag "selected_racket_id[]", racket.id,
           if @selected_racket[:racket_id] != nil
             @selected_racket[:racket_id].include?(racket.id.to_s)
-          end,  data: {id: racket.id, brand: racket.brand, model: racket.model, headsize: racket.headsize, weight: racket.weight, length: racket.length, swingweight: racket.swingweight, stringpattern: racket.stringpattern, stiffness: racket.stiffness, powerpotential: "powerpotential", manoeuvrability: "manoeuvrability", confort: "confort", control: "control"},
+          end,  data: {id: racket.id.to_i, brand: racket.brand, model: racket.model, headsize: racket.headsize, weight: racket.weight, length: racket.length, swingweight: racket.swingweight, stringpattern: racket.stringpattern, stiffness: racket.stiffness, powerpotential: "powerpotential", manoeuvrability: "manoeuvrability", confort: "confort", control: "control"},
           id: racket.id,
           class: 'racket-checkbox'
             %>
