@@ -1,8 +1,8 @@
-class Comparator {
+class Comparator { //this class in only responsible of initializing the style of the comparator element and to add listeners to its inner element such as "remove racket from comparator on click"
   constructor(shortComparator, largeComparator, comparatorContainer){
-    this.shortComparator = shortComparator
-    this.largeComparator = largeComparator
-    this.comparatorContainer = document.querySelector('.racket-comparator-container')
+    this.shortComparator = document.querySelector('.short-comparator-container');
+    this.largeComparator = document.querySelector('.large-comparator-container');
+    this.comparatorContainer = document.querySelector('.racket-comparator-container');
   };
 
   initDisplay() { //this function loads comparator on page load and adds a click event to the arrow in order to display the large comparator or the short one
@@ -23,7 +23,7 @@ class Comparator {
     this.addRemoveCardListener()
     }
 
-  addRemoveCardListener() {
+  addRemoveCardListener() { // this function adds an event listen on the rackets already present in the comparator to remove them from there
     const comparedCards = document.querySelectorAll('.compared-racket-checkbox');
     comparedCards.forEach(checkbox => {
       checkbox.addEventListener('change', () => {
