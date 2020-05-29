@@ -13,7 +13,15 @@ class ComparedRacket {
     this.comfort = comfort;
     this.control = control;
     this.id = id;
-  };
+  }
+
+  initComparision() {
+    if (this.isAlreadyInComparator()) {
+      this.removeRacketFromComparator();
+    } else {
+      this.addRacketToComparator();
+    };
+  }
 
   isAlreadyInComparator() {
     const racketsInComparator = document.querySelector('.racket-comparator-container').querySelectorAll('input.compared-racket-checkbox');
@@ -45,8 +53,11 @@ class ComparedRacket {
     checkbox.value = this.id;
     checkbox.checked = "checked";
     checkbox.style.display = "none";
-    checkbox.addEventListener("change", (event)=> { // we add an event listener to the new created card so that on click it removes it from the comparator.
-      updateSelectedRacketCookie(event.target.id, event.target.checked); // selected_racket_cookie.js: remove racket from selected racket cookie.
+    checkbox.addEventListener("change", (event)=> { // we add an event listener to the new created card so that on click it removes it from the comparator and the cookies.
+      const selectedRacket = "selected_racket" + "="
+      const selectedRacketCookie = new ComparedRacketCookie(selectedRacket) //selected_racket.js
+      selectedRacketCookie.update(event.target.id, event.target.checked);
+
       this.removeRacketFromComparator();
     });
 

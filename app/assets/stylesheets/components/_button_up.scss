@@ -14,20 +14,11 @@
   transition: all 0.4s;
   color: $dark-blue;
   cursor: pointer;
-  // .arrow-up {
-  //   position: relative;
-  //   align-self: center;
-  //   border: solid #2e76ff;
-  //   border-width: 0 4px 4px 0;
-  //   border-radius: 4px;
-  //   display: inline-block;
-  //   padding: 4px;
   transition: all 0.4s;
-  // }
 }
 
 .button-up:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   color: white;
   border: solid 1px $dark-blue;
   box-shadow: 0px 0.5rem $dark-blue;

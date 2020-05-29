@@ -107,8 +107,12 @@
   background-color: white;
   align-items: center;
   margin-left: 10px;
-  border: solid 2px $dark-blue;
+  border: solid 2px $mid-blue;
   border-radius: 50px;
+  .compared-racket-checkbox-label{
+    position: relative;
+    height: 100%;
+  }
 }
 
 .short-brand-model-container {
@@ -123,13 +127,13 @@
 }
 
 .compared-racket-checkbox-label{
-  position: relative;
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   margin:0;
   width: 45px;
-  height:100%;
+  height:auto;
   background-color: white;
   cursor: pointer;
 }
@@ -170,21 +174,22 @@
 .top-background{
   position: relative;
   width: 100%;
-  height: 23%;
+  height: 25%;
   background-color: #1D3461;
 }
 
 .bottom-background{
   position: relative;
-  background-color: #f5f9fc;
+  background-color: #f5f5f5;
   width: 100%;
-  height: 73%;
+  height: 75%;
 }
 
 .close-comparator-container{
   position: relative;
   display: flex;
   justify-content: center;
+  background-color: #f5f5f5;
   align-items: center;
   width: 100%;
   height: 7%;
@@ -260,16 +265,26 @@
   position: relative;
   display:flex;
   align-items: center;
-  height: 90%;
+  height: 100%;
   width: 100%;
   justify-content: flex-start;
 }
 .compared-racket-cards-container{
   position: relative;
   display: flex;
+  overflow: hidden;
   flex-direction: column;
-  width: 25%;
-  height: 100%;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+  border-radius: 25px;
+  border-left: solid 1px $light-blue;
+  border-right: solid 1px $light-blue;
+  width: 18%;
+  height: 80%;
+  justify-content: flex-end;
+  .compared-racket-checkbox-label{
+    align-self: center;
+  }
 }
 
 
@@ -278,16 +293,22 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 25%;
+  width: 100%;
   height: 100%;
+  background-color: white;
 }
 
 .model-brand-container {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: $light-blue;
   width: 100%;
-  height: 20vh;
+  height: 25%;
   h4 {
-    color: white
+    color: white;
+    text-align: center;
   }
 }
 
@@ -297,18 +318,17 @@
   align-items: center;
   flex-direction: column;
   justify-content: space-evenly;
-  height: 58vh;
+  height: 65%;
   width: 100%;
 }
 
 .spec{
+  display: flex;
   margin:0;
   position: relative;
   height: auto;
-  width: 100%;
-  p {
-    color: white
-  }
+  width: auto;
+  align-self: center;
 }
 
 

@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+@import "index";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "bootstrap";
@@ -40,12 +41,12 @@
   }
 
     h4 {
-  color: #1D3461;
+  color: $dark-blue;
   font-family: "BentonSansCond",Arial,Helvetica,sans-serif;
   font-weight: 800;
   }
     h5 {
-  color: #1D3461;
+  color: $dark-blue;
   font-family: "BentonSansCond",Arial,Helvetica,sans-serif;
   font-weight: 150;
   }

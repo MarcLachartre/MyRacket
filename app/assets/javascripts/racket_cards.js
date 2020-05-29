@@ -1,34 +1,34 @@
 class RacketCardDesign{
   constructor(racketCards){
-    this.racketCards = racketCards
+    this.racketCards = document.querySelectorAll('.racket-checkbox');
   }
 
-  init(){
+  initStyleOnLoad(){
     this.clickableCard();
     this.racketCards.forEach((checkbox) => {
-      if (checkbox.checked === true) {
-        this.selectedCardStyle(checkbox);
-      } else {
-        this.initialCardStyle(checkbox);
-      };
+      this.cardStyleSelector(checkbox)
     });
   }
 
-  displayStyleOnClick() {
+  addStyleOnClick() {
     this.racketCards.forEach(checkbox => { //add event listener on the checkbox of racket cards to remove their display
       checkbox.addEventListener("click", event => {
-        if (event.target.checked === true) {
-          const comparedRackets = document.querySelectorAll('input.compared-racket-checkbox');
-          this.selectedCardStyle(event.target);
-          this.addRemoveRacketCardStyleListener(event.target, comparedRackets);
-        } else {
-          this.initialCardStyle(event.target);
-        };
+        this.cardStyleSelector(event.target)
       });
     });
   }
 
-  addRemoveRacketCardStyleListener(racketCheckbox, racketsNodelist) { //add event listener on the checkbox of compared racket cards to remove the display of racket cards. First parameter corresponds to the racket card checkbox, second one corresponds to another nodelist containing its matching checkbox (for example, compared racket checkbox)
+  cardStyleSelector(checkbox) {
+    if (checkbox.checked === true) {
+        const comparedRackets = document.querySelectorAll('input.compared-racket-checkbox');
+        this.selectedCardStyle(checkbox);
+        this.addCardStyleRemovalListener(checkbox, comparedRackets);
+      } else {
+        this.initialCardStyle(checkbox);
+    };
+  }
+
+  addCardStyleRemovalListener(racketCheckbox, racketsNodelist) { //add event listener on the checkbox of compared racket cards to remove the display of racket cards. First parameter corresponds to the racket card checkbox, second one corresponds to another nodelist containing its matching checkbox (for example, compared racket checkbox)
     racketsNodelist.forEach(racketNode => {
       if (racketNode.id === racketCheckbox.id) {
         racketNode.addEventListener('change', () => {
@@ -40,18 +40,15 @@ class RacketCardDesign{
 
   selectedCardStyle(checkbox){
     checkbox.checked = true;
-    checkbox.parentElement.parentElement.parentElement.parentElement.style.boxShadow = "1px 1px 10px #bfbfbf";
-    checkbox.parentElement.parentElement.parentElement.parentElement.style.border = "1px solid #205CA5";
-    checkbox.nextElementSibling.innerText = "Remove";
-    checkbox.nextElementSibling.style.border = "1px solid red";
+    const card = checkbox.closest(".racket-card");
+    card.classList.toggle("selected-racket");
+
   }
 
   initialCardStyle(checkbox){
     checkbox.checked = false;
-    checkbox.parentElement.style = "none";
-    checkbox.parentElement.parentElement.parentElement.parentElement.style = "none";
-    checkbox.nextSibling.style = "none";
-    checkbox.nextElementSibling.innerText = "Compare";
+    const card = checkbox.closest(".racket-card");
+    card.classList.remove("selected-racket");
   }
 
   clickableCard() {
@@ -64,12 +61,7 @@ class RacketCardDesign{
   }
 }
 
-document.addEventListener('turbolinks:load', () => {
-  const racketCards = document.querySelectorAll('.racket-checkbox');
-  const cardsStyle = new RacketCardDesign(racketCards);
-  cardsStyle.init()
-  cardsStyle.displayStyleOnClick()
-})
+
 
 //-----------------------------former work done---------------------------------
 
