@@ -31,7 +31,7 @@ filterTypes.forEach((filterType) => {
 
 const searchbarFilters = () => { //this function's role is to set the design of the searchbar filters on click
 const filters = document.querySelectorAll('.label-design');
-console.log(filters);
+// console.log(filters);
 filters.forEach((filter) => {
   filter.addEventListener('click', () => {
       // console.log(filter)

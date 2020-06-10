@@ -14,8 +14,25 @@
 
 //= require jquery
 //= require rails-ujs
+//= require "./draft"
+//= require "./main"
 
-//= require_tree "."
+//= require "./ajax_search"
+//= require "./comparator"
+//= require "./comparator_display"
+
+//= require "./cookies"
+//= require "./compared_racket_cookie"
+
+//= require "./compared_racket"
+//= require "./effects"
+//= require "./homepage"
+//= require "./navbar"
+//= require "./racket_cards"
+//= require "./searchbar_design"
+
+
+
 
 // stub "comparator"
 //= require popper

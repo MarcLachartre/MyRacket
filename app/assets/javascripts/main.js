@@ -2,14 +2,12 @@ class App {
   constructor() {
 
   }
-
   init() {
     if (window.location.href.match('pages/home') != null || window.location.href === "http://localhost:3000/") {
       this.initHomepageTennisCourt();
     } else if (window.location.href.match('rackets') != null) {
-      this.initComparatorDisplay();
-      this.initRacketComparision();
-      this.initAjaxSearch();
+      this.initComparision();
+      // this.initAjaxSearch();
       this.initCookies();
       this.initRacketCardStyle();
       searchbarFilterDropdown()
@@ -17,18 +15,9 @@ class App {
     }
   }
 
-  initComparatorDisplay() {
+  initComparision(searchEvent) {
     const comparator = new Comparator();
-    comparator.initDisplay();
-  }
-
-  initRacketComparision() {
-    document.querySelectorAll('.racket-checkbox').forEach(racket => {
-      racket.addEventListener('click', () => {
-        const racketToCompare = new ComparedRacket(racket.dataset.brand, racket.dataset.model, racket.dataset.headsize, racket.dataset.stringpattern, racket.dataset.weight, racket.dataset.length, racket.dataset.swingweight, racket.dataset.stiffness, racket.dataset.power, racket.dataset.manoeuvrability, racket.dataset.comfort, racket.dataset.control, racket.dataset.id);
-        racketToCompare.initComparision();
-      });
-    });
+    comparator.init(searchEvent);
   }
 
   initAjaxSearch() {
@@ -47,7 +36,7 @@ class App {
     const formerRacketContainerParent = document.querySelector('.search-bar-and-racket-cards');
     const newRacketContainerSelector = '.racket-container'
     const searchRackets = new AjaxSearch(allSearchbarCheckbox, searchForm, formerRacketContainerParent, newRacketContainerSelector)
-    searchRackets.updateContainer(searchEvent)
+    searchRackets.updateContainer(searchEvent);
   }
 
   initHomepageTennisCourt() {
@@ -56,28 +45,28 @@ class App {
   }
 
   initCookies() {
-    const selectedRacket = "selected_racket" + "="
-    const comparedRacketsPersistancy = new ComparedRacketCookie(selectedRacket)
-    Window.onload = comparedRacketsPersistancy.init();
+    const selectedRacket = "selected_racket" + "=";
+    const comparedRacketsPersistancy = new ComparedRacketCookie(selectedRacket);
+    comparedRacketsPersistancy.init();
   }
 
   initRacketCardStyle() {
-    const cardsStyle = new RacketCardDesign();
+    const cardsStyle = new RacketCard();
     cardsStyle.initStyleOnLoad();
     cardsStyle.addStyleOnClick();
   }
 }
 
 const app = new App();
-document.addEventListener("turbolinks:load", (event) => {
-  app.init()
-})
+document.addEventListener("turbolinks:load", () => {
+  app.init();
+});
 
 
-document.addEventListener("ajax:success", (searchEvent) => {
-  app.initAjaxAnswer(searchEvent);
+document.addEventListener("ajax:success", (ajaxSearch) => {
+  // app.initAjaxAnswer(ajaxSearch);
+  // app.initComparision(ajaxSearch);
   app.initRacketCardStyle();
-  app.initRacketComparision();
   app.initCookies();
 });
 

@@ -7,12 +7,12 @@
   display: flex;
   overflow: hidden;
   justify-content: center;
-  border: 1px solid #c2dfff;
+  border: 1px solid $very-light-blue;
   color: $dark-blue;
   justify-self: center;
-  width: 15rem;
-  height: 26rem;
-  border-radius: 10px;
+  width: 85%;
+  height: 95%;
+  border-radius: 0.6rem;
   transition: all 0.30s ease-in-out;
   .fa-times{
     display: none;
@@ -25,18 +25,104 @@
   }
 }
 
+.racket-card:hover {
+  transform: translateY(-0.2rem);
+  border: solid 1px $light-blue;
+
+  .racket-checkbox-label{
+    width: 6rem;
+  }
+
+  .button-up {
+    border: solid 1px $light-blue;
+    color: $light-blue;
+  }
+
+  .button-up:hover {
+    color: white;
+  }
+}
+
+.racket-card-disabled {
+
+  .button-up-disabled{
+    border: solid 1px $dark-grey;
+    color: $dark-grey;
+    cursor: auto;
+  }
+
+  .card-bottom:hover{
+    .card-spec{
+      opacity: 0
+    }
+    .button-and-link{
+      opacity: 0
+    }
+    .warning-container{
+      opacity:1;
+    }
+  }
+
+  .button-up-disabled:hover{
+    transform: translateY(0vh);
+  }
+
+  .racket-checkbox-label-disabled{
+    width:3rem;
+    cursor: auto;
+  }
+}
+
+.racket-card-disabled:hover {
+  border-color: $light-blue;
+  .button-up-disabled{
+    border: solid 1px $dark-grey;
+    color: $dark-grey;
+    cursor: auto;
+  }
+  .button-up-disabled:hover{
+    background-color: white;
+    color: $dark-grey;
+    transform: translateY(0vh);
+  }
+  .racket-checkbox-label-disabled{
+    width:3rem;
+    cursor: auto;
+  }
+}
+
+.warning-container{
+  position: absolute;
+  display: flex;
+  opacity: 0;
+  flex-direction: column;
+  align-self: flex-start;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  transition: all 0.30s ease-in-out;
+  .fa-exclamation-triangle {
+    font-size: 2.5rem;
+    color: $dark-orange;
+  }
+  h6{
+    text-align: center;
+  }
+}
+
 .card-item-description {
   position: relative;
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .card-top{
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   height: auto;
   width: 100%;
   cursor: pointer;
@@ -46,9 +132,10 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
   height: auto;
   width: 100%;
+  transition: all 0.30s ease-in-out;
 }
 
 .card-image {
@@ -75,6 +162,17 @@
   height:100%;
   padding-left: 1rem;
   padding-right: 1rem;
+
+  h4 {
+    font-weight: 500;
+    margin-bottom: 0.2em;
+  }
+
+  h5 {
+    font-size: 1.1em;
+    font-weight: 300;
+    margin-bottom: 0.2em;
+  }
 }
 
 .card-clickable img:hover {
@@ -86,10 +184,6 @@
 
 .card-model {
   justify-self: start;
-  h5 {
-    font-size: 1.1rem !important;
-    font-weight: 300 !important
-  }
 }
 
 .card-spec {
@@ -98,8 +192,11 @@
   justify-content: space-between;
   flex-direction: column;
   height:4rem;
+  opacity: 1;
   margin-left: 1rem;
   margin-right: 1rem;
+  transition: all 0.30s ease-in-out;
+
 }
 
 .card-weight {
@@ -149,9 +246,9 @@
   position: relative;
   justify-content: center;
   align-items: center;
-  height: 3rem;
-  margin-right: 1rem;
-  margin-left: 1rem;
+  height: auto;
+  margin: 1vh;
+  transition: all 0.30s ease-in-out;
 }
 
 .see-more-link {
@@ -168,34 +265,6 @@
   transition: width 0.30s ease-in-out;
 }
 
-.compare-text {
-  opacity: 0;
-  width: 0;
-
-}
-
-.racket-card:hover {
-  transform: translateY(-0.3rem);
-  border: solid 1px $light-blue;
-
-  .racket-checkbox-label{
-    width: 6rem;
-  }
-
-  .button-up {
-    border: solid 1px $light-blue;
-    color: $light-blue;
-  }
-
-  .button-up:hover {
-    color: white !important;
-    border: solid 1px $dark-blue;
-  }
-
-  .compare-text {
-    opacity: 1;
-  }
-}
 
 .racket-checkbox{
   display: none;
@@ -251,8 +320,7 @@
   }
 
   .button-up:hover {
-    background-color: $light-red;
-    box-shadow: 0px 0.5rem $dark-red;
+  background-color: $light-red;
 
   .fa-times{
     display: flex;

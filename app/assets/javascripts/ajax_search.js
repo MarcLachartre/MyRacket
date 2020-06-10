@@ -9,17 +9,16 @@ class AjaxSearch {
   initSearchForm() { //submition of form on input event through an AJAX request
     this.searchInputs.forEach((input) => {
       input.addEventListener('click', () => {
-        Rails.fire(this.form, 'submit');
+        //Rails.fire(this.form, 'submit');
       });
     });
   }
 
   updateContainer(searchEvent) { //updating the racket container with XML response on Ajax success
-    //document.addEventListener("ajax:success", (searchEvent) => {
-      const newSearchDocumentBody = searchEvent.detail[0].body;
-      const newContainer = newSearchDocumentBody.querySelector(this.newContainerSelector);
-      this.parentContainer.replaceChild( newContainer, this.parentContainer.children[1]);
-    //});
+    const newSearchDocumentBody = searchEvent.detail[0].body;
+    const newContainer = newSearchDocumentBody.querySelector(this.newContainerSelector);
+    this.parentContainer.replaceChild( newContainer, this.parentContainer.children[1]);
+
   }
 }
 

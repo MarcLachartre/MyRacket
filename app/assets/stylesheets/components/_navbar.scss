@@ -1,8 +1,11 @@
+@import "index";
+@import "bootstrap";
+
 
 .myracket-navbar {
   position: -webkit-sticky;
   position: fixed;
-  background-color: #1D3461;
+  background-color: $dark-blue;
   z-index: 1;
   height: 8vh;
   width: 100%;

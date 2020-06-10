@@ -18,9 +18,8 @@
 }
 
 .button-up:hover {
-  transform: translateY(-3px);
+  transform: translateY(-0.2vh);
   color: white;
   border: solid 1px $dark-blue;
-  box-shadow: 0px 0.5rem $dark-blue;
   background-color: $light-blue;
 }

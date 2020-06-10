@@ -6,7 +6,7 @@
   <%= render partial: "rackets/rackets_index/comparator" %>
 
   <div class= 'search-bar-and-racket-cards'>
-    <%= form_with url: "/rackets", method: "get", class: 'search-form', remote: :true  do %>
+    <%= form_with url: "/rackets", method: "get", class: 'search-form', format: 'json', remote: :true  do %>
 
     <div class = 'search-bar'>
       <%= render partial: "rackets/rackets_index/searchbar" %>

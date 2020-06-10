@@ -1,4 +1,6 @@
 class RacketsController < ApplicationController
+
+  respond_to :json, only: [:index]
   def index
     @rackets = Racket.all
     @all_rackets = Racket.all
@@ -103,14 +105,15 @@ class RacketsController < ApplicationController
     #-------------------------------------
 
     #-------------------------------------
-    respond_to do |format|
-
-      if @search_params.present?
+    if @search_params.present?
+      respond_to do |format|
       format.html
-      format.js
-      end
+      format.json {render json: @rackets}
+      #format.html
+      #render json: @rackets
+    end
 
-      return
+
     end
     #-------------------------------------
   end
@@ -180,7 +183,7 @@ private
       @selected_racket = @selected_racket_json.transform_keys {|key|
         key = key.to_sym
       }
-      p JSON.parse(cookies[:selected_racket])
+      JSON.parse(cookies[:selected_racket])
     end
     @rackets_to_display = Racket.all.where(id: @selected_racket[:racket_id])
   end

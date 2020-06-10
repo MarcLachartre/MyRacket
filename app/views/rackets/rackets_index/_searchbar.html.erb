@@ -7,11 +7,9 @@
   <h4>
     <%= "Quick Search" %>
   </h4>
-  <%= text_field_tag :model, @model, placeholder: "Enter racket", class: 'type-search' %>
-
+  <%= text_field_tag :model, @model, placeholder: "Enter racket", class: 'type-search', remote: true %>
 
   <div class= 'filter-type' >
-
     <h5>
       <%= "Brands" %>
     </h5>
