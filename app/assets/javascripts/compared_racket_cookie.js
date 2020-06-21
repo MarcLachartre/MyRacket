@@ -1,21 +1,23 @@
 class ComparedRacketCookie extends CookieManager {
   constructor(cname, cvalue, ckey, allRackets) { // When a racket checkbox is checked we first retrieve all the cookies and search for the cookie that contains the ids of the rackets displayed in the comparator if it exists.
     super(cname, cvalue, ckey);
-    this.allRackets = document.querySelectorAll('input.racket-checkbox, input.compared-racket-checkbox');
   }
 
-  init() {
-    this.allRackets.forEach((racket) => {
-        racket.addEventListener('change', (thisRacketCheckbox) => {
-        if (super.cookieExists() === false) { //If the selected_racket cookie doesnt exist, we have to create it
-          this.ckey = "racket_id";
-          this.cvalue = thisRacketCheckbox.target.value;
+  init(rackets) {
+    rackets.forEach((racket) => {
+      this.racketCookieEvent(racket)
+    });
+  }
 
-          super.createCookie();
-        } else if (super.cookieExists() === true) { //If the selected_racket cookie already exists, we get its value, update its value, save it in a newly created selected_racket cookie
-          this.update(thisRacketCheckbox.target.value, thisRacketCheckbox.target.checked);
-        };
-      });
+  racketCookieEvent(racket) {
+    racket.addEventListener('change', (thisRacketCheckbox) => {
+      if (super.cookieExists() === false) { //If the selected_racket cookie doesnt exist, we have to create it
+        this.ckey = "racket_id";
+        this.cvalue = thisRacketCheckbox.target.value;
+        super.createCookie();
+      } else if (super.cookieExists() === true) { //If the selected_racket cookie already exists, we get its value, update its value, save it in a newly created selected_racket cookie
+        this.update(thisRacketCheckbox.target.value, thisRacketCheckbox.target.checked);
+      };
     });
   }
 

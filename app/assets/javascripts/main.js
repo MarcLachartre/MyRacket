@@ -1,7 +1,5 @@
 class App {
-  constructor() {
 
-  }
   init() {
     if (window.location.href.match('pages/home') != null || window.location.href === "http://localhost:3000/") {
       this.initHomepageTennisCourt();
@@ -15,9 +13,9 @@ class App {
     }
   }
 
-  initComparision(searchEvent) {
+  initComparision() {
     const comparator = new Comparator();
-    comparator.init(searchEvent);
+    comparator.initOnLoad();
   }
 
   initAjaxSearch() {
@@ -30,15 +28,6 @@ class App {
     searchRackets.initSearchForm();
   }
 
-  initAjaxAnswer(searchEvent) {
-    const allSearchbarCheckbox = document.querySelectorAll('.searchbar-checkbox');
-    const searchForm = document.querySelector('.search-form');
-    const formerRacketContainerParent = document.querySelector('.search-bar-and-racket-cards');
-    const newRacketContainerSelector = '.racket-container'
-    const searchRackets = new AjaxSearch(allSearchbarCheckbox, searchForm, formerRacketContainerParent, newRacketContainerSelector)
-    searchRackets.updateContainer(searchEvent);
-  }
-
   initHomepageTennisCourt() {
     const tennisCourt = new HomepageTennisCourt();
     tennisCourt.init()
@@ -47,13 +36,12 @@ class App {
   initCookies() {
     const selectedRacket = "selected_racket" + "=";
     const comparedRacketsPersistancy = new ComparedRacketCookie(selectedRacket);
-    comparedRacketsPersistancy.init();
+    comparedRacketsPersistancy.init(document.querySelectorAll('input.racket-checkbox, input.compared-racket-checkbox'));
   }
 
   initRacketCardStyle() {
-    const cardsStyle = new RacketCard();
+    const cardsStyle = new RacketCardStyleSelector();
     cardsStyle.initStyleOnLoad();
-    cardsStyle.addStyleOnClick();
   }
 }
 
@@ -63,11 +51,11 @@ document.addEventListener("turbolinks:load", () => {
 });
 
 
-document.addEventListener("ajax:success", (ajaxSearch) => {
-  // app.initAjaxAnswer(ajaxSearch);
-  // app.initComparision(ajaxSearch);
-  app.initRacketCardStyle();
-  app.initCookies();
-});
+// document.addEventListener("ajax:success", (ajaxSearch) => {
+//   // app.initAjaxAnswer(ajaxSearch);
+//   // app.initComparision(ajaxSearch);
+//   // app.initRacketCardStyle();
+//   // app.initCookies();
+// });
 
 

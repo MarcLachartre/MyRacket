@@ -16,20 +16,6 @@ class RacketComparision extends Comparator{
     this.id = id
   }
 
-  init() {
-    this.isEnabled();
-  }
-
-  isEnabled() {
-    if (super.reachedMaxCapacity()) {
-      this.disableComparision();
-      return false
-    } else {
-      this.enableComparision();
-      return true
-    }
-  }
-
   addRacketToComparator() {
     // console.log("add racket to comparator")
     const shortComparator = document.querySelector('.short-displayed-rackets');
@@ -53,11 +39,13 @@ class RacketComparision extends Comparator{
     checkbox.value = this.id;
     checkbox.checked = "checked";
     checkbox.style.display = "none";
-    super.addRemoveCardListener(checkbox)
+    super.addRemoveCardListener(checkbox);
     checkbox.addEventListener("change", (event)=> { // we add an event listener to the new created card so that on click it removes it from the comparator and the cookies.
-      const selectedRacket = "selected_racket" + "="
-      const selectedRacketCookie = new ComparedRacketCookie(selectedRacket) //selected_racket.js
+      const selectedRacket = "selected_racket" + "=";
+      const selectedRacketCookie = new ComparedRacketCookie(selectedRacket); //selected_racket.js
       selectedRacketCookie.update(event.target.id, event.target.checked);
+      const comparator = new Comparator();
+      comparator.isEnabled(document.querySelectorAll('.racket-checkbox'));
     });
 
     deleteLabel.appendChild(checkbox);
@@ -124,28 +112,5 @@ class RacketComparision extends Comparator{
     card.appendChild(removeLabel);
 
     return card
-  }
-    disableComparision() {
-    const allRackets = document.querySelectorAll(".racket-checkbox");
-    // console.log("disableComparision")
-    allRackets.forEach(racket => {
-      if (super.racketsCompared().includes(racket.id) === false) {
-        racket.disabled = true;
-        racket.closest(".racket-card").classList.add("racket-card-disabled");
-        racket.closest(".racket-checkbox-label").classList.add("racket-checkbox-label-disabled");
-        racket.closest(".button-up").classList.add("button-up-disabled");
-      };
-    });
-  }
-
-  enableComparision() {
-    const allRackets = document.querySelectorAll(".racket-checkbox");
-    // console.log("enableComparision")
-    allRackets.forEach(racket => {
-      racket.disabled = false;
-      racket.closest(".racket-card").classList.remove("racket-card-disabled");
-      racket.closest(".racket-checkbox-label").classList.remove("racket-checkbox-label-disabled");
-      racket.closest(".button-up").classList.remove("button-up-disabled");
-    });
   }
 }

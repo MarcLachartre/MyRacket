@@ -1,33 +1,28 @@
-class RacketCard{
-  constructor(racketCards){
-    this.racketCards = document.querySelectorAll('.racket-checkbox');
+class RacketCardStyleSelector extends Comparator{
+  constructor() {
+    super()
   }
 
-  initStyleOnLoad(){
-    console.log("init style on load")
+  initStyleOnLoad(){ // on page load, if checkbox is checked or not, it sets its style. It adds an event listener on the checkboxes to each racket card to modify their style on change event.
+    //console.log("init style on load")
     this.clickableCard();
-    this.racketCards.forEach((checkbox) => {
-      this.cardStyleSelector(checkbox)
+    document.querySelectorAll('.racket-checkbox').forEach((checkbox) => {
+      this.cardStyleSelector(checkbox);
+      this.addStyleOnClick(checkbox);
     });
   }
 
-  addStyleOnClick() {
-    console.log("add style on click")
-    this.racketCards.forEach(checkbox => { //add event listener on the checkbox of racket cards to add or remove their display
-      checkbox.addEventListener("change", event => {
-        if (event.target.parentElement.className.match("disabled") == null) { // classname matches "disabled" when comparator reached max capacity, you cannot addstyle to rackets you are not aload to add to the comparator
-          this.cardStyleSelector(event.target);
-        };
-      });
+  addStyleOnClick(checkbox) { //add event listener on the checkbox of racket cards to add or remove their display
+    // console.log("add style on click")
+    checkbox.addEventListener("change", event => {
+      if (event.target.parentElement.className.match("disabled") == null) { // classname matches "disabled" when comparator reaches max capacity, you cannot add style to rackets you are not allowed to add to the comparator
+        this.cardStyleSelector(event.target);
+      };
     });
-  }
-
-  createCard() {
-
   }
 
   cardStyleSelector(checkbox) { //decides what style to apply to the racket, selected or initial (not selected).
-    //console.log("card style selector")
+    // console.log("card style selector")
     if (checkbox.checked === true) {
         const comparedRackets = document.querySelectorAll('input.compared-racket-checkbox');
         this.selectedCardStyle(checkbox);
@@ -71,4 +66,3 @@ class RacketCard{
     });
   }
 }
-

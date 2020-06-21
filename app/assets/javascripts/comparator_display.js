@@ -1,4 +1,4 @@
-class ComparatorDisplay extends Comparator{ //this class in only responsible of initializing the style of the comparator element and to add listeners to its inner element such as "remove racket from comparator on click"
+class ComparatorDisplay extends Comparator{ //this class in only responsible of initializing the style of the comparator element.
   constructor(shortComparator, largeComparator, comparatorContainer){
     super();
     this.shortComparator = document.querySelector('.short-comparator-container');
