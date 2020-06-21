@@ -24,11 +24,20 @@
 //= require "./cookies"
 //= require "./compared_racket_cookie"
 
-//= require "./compared_racket"
+//= require "./fetch_database"
+
+//= require "./racket_card_style_selector"
+//= require "./racket"
+//= require "./racket_comparision"
+//= require "./racket_search"
+//= require "./racket_search_display"
+
+
+
+
 //= require "./effects"
 //= require "./homepage"
 //= require "./navbar"
-//= require "./racket_cards"
 //= require "./searchbar_design"
 
 
