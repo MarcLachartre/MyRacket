@@ -1,4 +1,13 @@
 class Racket < ApplicationRecord
+  validates :brand, presence: true
+  # validates :model
+  # validates :headsize
+  # validates :length
+  # validates :weight
+  # validates :balance
+  # validates :swingweight
+  # validates :kid
+
   has_many :userrackets, foreign_key: :racket_id, class_name: 'Userracket', dependent: :destroy
   has_many :users, through: :userrackets
 

@@ -1,7 +1,6 @@
 class Comparator{
   constructor(racketsInComparator) {
     this.racketsInComparator = document.querySelector('.racket-comparator-container').querySelectorAll('input.compared-racket-checkbox');
-    this.rackets = document.querySelectorAll('.racket-checkbox');
   }
 
   initOnLoad() {
@@ -10,16 +9,16 @@ class Comparator{
     this.racketsInComparator.forEach(checkbox => {
       this.addRemoveCardListener(checkbox); //add listener to cards in comparator (to remove them)
     });
-    this.rackets.forEach(racket => {
+    document.querySelectorAll('.racket-checkbox').forEach(racket => {
       this.addComparisionListener(racket);
     });
-    this.isEnabled(this.rackets);
+    this.isEnabled(document.querySelectorAll('.racket-checkbox'));
   }
 
   addComparisionListener(racket) { // this function initializes comparisions. it takes as an argument each racket in the rackets container and the ones added by the search. Then on comparision button click it adds a racket to the comparator or removes it
     racket.addEventListener("change", (event) => { //adds event listener to each rackets so that on click it does the following (see comments)
       const racketComparision = new RacketComparision(racket.dataset.brand, racket.dataset.model, racket.dataset.headsize, racket.dataset.stringpattern, racket.dataset.weight, racket.dataset.length, racket.dataset.swingweight, racket.dataset.stiffness, racket.dataset.power, racket.dataset.manoeuvrability, racket.dataset.comfort, racket.dataset.control, racket.dataset.id);
-
+      console.log(racketComparision)
       if (this.reachedMaxCapacity() === false && this.isAlreadyInComparator(racket) === false) {  // if comparator didnt reach max capacity and racket is not already in comparator, create a racket comparision with the racket dataset, add it to comparator
         racketComparision.addRacketToComparator();
 
@@ -35,9 +34,7 @@ class Comparator{
   }
 
   racketsCompared() { //returns the rackets that are in the comparator
-    // console.log("rackets compared");
     const updatedRacketsInComparator = document.querySelectorAll('input.compared-racket-checkbox');
-    // console.log(updatedRacketsInComparator.length)
     const racketIdsInComparator = [];
     for (let racket of updatedRacketsInComparator.values()) {
       if (racketIdsInComparator.includes(racket.id) === false) {
@@ -48,7 +45,7 @@ class Comparator{
   }
 
   addRemoveCardListener(checkbox) {  // this function adds an event listen on the rackets already present in or added to the comparator to remove them
-   console.log("add remove card listener");
+  console.log("add remove card listener");
     checkbox.addEventListener('change', (event) => {
       this.removeComparedRacket(event);
     });
@@ -74,11 +71,11 @@ class Comparator{
     rackets.forEach(racket => {
       if (this.reachedMaxCapacity()) {
         this.disableComparision(racket);
-            console.log(`is enabled false`)
+        // console.log(`is enabled false`)
         return false
       } else {
         this.enableComparision(racket);
-        console.log(`is enabled true`)
+        // console.log(`is enabled true`)
         return true
       };
     });

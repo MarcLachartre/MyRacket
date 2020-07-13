@@ -10,6 +10,9 @@ class RacketCardStyleSelector extends Comparator{
       this.cardStyleSelector(checkbox);
       this.addStyleOnClick(checkbox);
     });
+    if (document.querySelectorAll(".compared-racket-checkbox") !== null ) {
+      this.initCardStyleRemovalListener(document.querySelectorAll(".compared-racket-checkbox"));
+    }
   }
 
   addStyleOnClick(checkbox) { //add event listener on the checkbox of racket cards to add or remove their display
@@ -24,22 +27,26 @@ class RacketCardStyleSelector extends Comparator{
   cardStyleSelector(checkbox) { //decides what style to apply to the racket, selected or initial (not selected).
     // console.log("card style selector")
     if (checkbox.checked === true) {
-        const comparedRackets = document.querySelectorAll('input.compared-racket-checkbox');
         this.selectedCardStyle(checkbox);
-        this.addCardStyleRemovalListener(checkbox, comparedRackets);
       } else {
         this.initialCardStyle(checkbox);
     };
   }
 
-  addCardStyleRemovalListener(racketCheckbox, racketsNodelist) { //add event listener on the checkbox of compared racket cards to remove the display of racket cards. First parameter corresponds to the racket card checkbox, second one corresponds to another nodelist containing its matching checkbox (for example, compared racket checkbox)
-    //console.log("add card style removal listener")
-    racketsNodelist.forEach(racketNode => {
-      if (racketNode.id === racketCheckbox.id) {
-        racketNode.addEventListener('change', () => {
-          this.initialCardStyle(racketCheckbox);
-        });
-      };
+  initCardStyleRemovalListener(comparedRackets) { //add event listener on the checkbox of compared racket cards to remove the display of racket cards in the rackets container. First parameter corresponds to the racket card checkbox, second one corresponds to another nodelist containing its matching checkbox (for example, compared racket checkbox)
+    // console.log("add card style removal listener")
+    comparedRackets.forEach(comparedRacket => {
+      this.addCardStyleRemovalListener(comparedRacket)
+    });
+  }
+
+  addCardStyleRemovalListener(comparedItem) {
+    comparedItem.addEventListener('change', () => {
+      document.querySelectorAll('.racket-checkbox').forEach(racket => {
+        if (comparedItem.id === racket.id) {
+          this.initialCardStyle(racket);
+        };
+      });
     });
   }
 
@@ -51,7 +58,7 @@ class RacketCardStyleSelector extends Comparator{
   }
 
   initialCardStyle(checkbox){
-    //console.log("initial card style")
+    // console.log("initial card style")
     checkbox.checked = false;
     const card = checkbox.closest(".racket-card");
     card.classList.remove("selected-racket");

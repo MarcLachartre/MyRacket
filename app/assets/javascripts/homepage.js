@@ -1,6 +1,6 @@
 class HomepageTennisCourt{
   constructor(welcomeMessage) {
-    this.welcomeMessage = fadeIn(document.querySelector('.home-link-container'));
+    this.welcomeMessage = fadeIn(document.querySelector('.home-link-container'), 15, 0.01);
   }
 
   init() {

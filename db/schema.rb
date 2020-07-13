@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_28_101831) do
+ActiveRecord::Schema.define(version: 2020_07_13_081845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 2020_04_28_101831) do
     t.integer "headsize"
     t.integer "length"
     t.integer "weight"
-    t.float "balance"
     t.integer "swingweight"
     t.integer "power"
     t.integer "confort"
@@ -53,8 +52,9 @@ ActiveRecord::Schema.define(version: 2020_04_28_101831) do
     t.integer "control"
     t.integer "precision"
     t.integer "stiffness"
-    t.integer "stringpattern"
     t.boolean "adult"
+    t.integer "balance"
+    t.string "string_pattern"
   end
 
   create_table "userrackets", force: :cascade do |t|

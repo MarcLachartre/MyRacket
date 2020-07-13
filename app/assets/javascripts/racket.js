@@ -1,5 +1,5 @@
 class Racket extends RacketCardStyleSelector {
-  constructor(id, brand, model, weight, stringPattern, balance, headsize){
+  constructor(id, brand, model, weight, stringPattern, balance, headsize, length, swingweight, stiffness, power, manoeuvrability, comfort, control){
     super();
     this.id = id;
     this.brand = brand;
@@ -8,16 +8,21 @@ class Racket extends RacketCardStyleSelector {
     this.stringPattern = stringPattern;
     this.balance = balance;
     this.headsize = headsize;
+    this.length = length;
+    this.swingweight = swingweight;
+    this.stiffness = stiffness;
+    this.power = power;
+    this.manoeuvrability = manoeuvrability;
+    this.comfort = comfort;
+    this.control = control;
   }
 
   createCard() { //creates the card and then create the card top/bottom/button to appends to it. It also adds the event listeners to the card
-    const container = document.querySelector(".select-racket");
     const card = document.createElement("div");
     const cardItemDescription = document.createElement("div");
 
     card.classList.toggle("racket-card");
     cardItemDescription.classList.toggle("card-item-description");
-    container.appendChild(card);
     card.appendChild(cardItemDescription);
 
     const topCard = this.createCardTop();
@@ -165,6 +170,6 @@ class Racket extends RacketCardStyleSelector {
     checkbox.dataset.length = this.length;
     checkbox.dataset.swingweight = this.swingweight;
     checkbox.dataset.stringpattern = this.stringPattern;
-    checkbox.dataset.stiffness = this.stifness;
+    checkbox.dataset.stiffness = this.stiffness;
   }
 }

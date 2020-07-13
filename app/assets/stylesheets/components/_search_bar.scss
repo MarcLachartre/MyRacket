@@ -1,7 +1,8 @@
+@import "index";
+
 .search-form{
   position: relative;
-width: 20vw;
-
+  width: 17vw;
 }
 
 .search-bar {
@@ -36,14 +37,6 @@ width: 20vw;
   }
 }
 
-.filter-type:hover {
-  cursor: pointer;
-  .arrow-down {
-  transform: rotate(-225deg);
-  -webkit-transform: rotate(-225deg);
-  }
-}
-
 .search-button {
   display: none
 }
@@ -53,7 +46,6 @@ width: 20vw;
   flex-direction: column;
   margin-top: 2vh;
   margin-bottom: 2vh;
-
 }
 
 .show-filters {
@@ -81,35 +73,33 @@ width: 20vw;
 .label-design {
   display: flex;
   justify-content: center;
-  height:40px;
-  border-left: solid;
-  border-left-color: #dadada;
+  height:2.5rem;
   transition: all 0.15s ease-in-out;
   cursor: pointer;
+
+
 }
 
-.label-design:hover{
-  border-left: solid;
-  border-left-width: 8px;
-  border-left-color: #92bbeb;
+.label-design:hover {
+  display: flex;
+  transition: all 0.15s ease-in-out;
   cursor: pointer;
-  //transform: translateX(2px);
+  background-color: $very-light-blue
 }
 
-.label-design-selected {
-  border-left-color: blue;
-}
+.searchbar-checkbox {
+  display: flex;
+  align-self: center;
+  }
 
 .label {
   display: flex;
   width: 100%;
-  align-items: center;
   justify-content: left;
   cursor: pointer;
-  margin-left: 5px;
+  font-size:1rem;
+  line-height: 2.5rem;
+  margin-left: 5%;
   margin-bottom: 0;
-  label {
-    align-items: center;
-  }
 }
 

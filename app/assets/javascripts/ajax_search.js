@@ -1,26 +1,26 @@
-class AjaxSearch {
-  constructor(searchInputs, form, parentContainer, newContainerSelector) {
-    this.searchInputs = searchInputs;
-    this.form = form;
-    this.parentContainer = parentContainer;
-    this.newContainerSelector = newContainerSelector;
-  }
+// class AjaxSearch {
+//   constructor(searchInputs, form, parentContainer, newContainerSelector) {
+//     this.searchInputs = searchInputs;
+//     this.form = form;
+//     this.parentContainer = parentContainer;
+//     this.newContainerSelector = newContainerSelector;
+//   }
 
-  initSearchForm() { //submition of form on input event through an AJAX request
-    this.searchInputs.forEach((input) => {
-      input.addEventListener('click', () => {
-        //Rails.fire(this.form, 'submit');
-      });
-    });
-  }
+//   initSearchForm() { //submition of form on input event through an AJAX request
+//     this.searchInputs.forEach((input) => {
+//       input.addEventListener('click', () => {
+//         //Rails.fire(this.form, 'submit');
+//       });
+//     });
+//   }
 
-  updateContainer(searchEvent) { //updating the racket container with XML response on Ajax success
-    const newSearchDocumentBody = searchEvent.detail[0].body;
-    const newContainer = newSearchDocumentBody.querySelector(this.newContainerSelector);
-    this.parentContainer.replaceChild( newContainer, this.parentContainer.children[1]);
+//   updateContainer(searchEvent) { //updating the racket container with XML response on Ajax success
+//     const newSearchDocumentBody = searchEvent.detail[0].body;
+//     const newContainer = newSearchDocumentBody.querySelector(this.newContainerSelector);
+//     this.parentContainer.replaceChild( newContainer, this.parentContainer.children[1]);
 
-  }
-}
+//   }
+// }
 
 
 
