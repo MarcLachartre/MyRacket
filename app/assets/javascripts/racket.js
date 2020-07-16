@@ -33,6 +33,7 @@ class Racket extends RacketCardStyleSelector {
     super.addStyleOnClick(bottomCard.querySelector(".racket-checkbox"));
     const racketCookie = new ComparedRacketCookie("selected_racket=")
     racketCookie.racketCookieEvent(card.querySelector('.racket-checkbox'));
+
     return card
   }
 

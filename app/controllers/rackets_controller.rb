@@ -1,5 +1,4 @@
 class RacketsController < ApplicationController
-
   respond_to :json, only: [:index]
   def index
     @rackets = Racket.all
@@ -23,9 +22,10 @@ class RacketsController < ApplicationController
     #-------------------------------------
 
     #------------pagination_param---------
-    @page = params[:page] || [5,5]
+    @page = params[:page] || "[0, 40]"
+    @page = @page.tr('[]','').split(",").map(&:to_i)
     #-------------------------------------
-    p @page
+
     #------------racket-search------------
     racket_search # (Search function pesistancy between sessions, see private methods) this is where the @selected_search hash is created and saved in cookies. This hash has a major importance in terms of persistance between sessions for the racket search filter/function as you can see below.
     #-------------------------------------
@@ -59,15 +59,19 @@ class RacketsController < ApplicationController
       end
     }
     query_string = query_string.delete_suffix(' AND ')
-    p @page.class
+
     if searched_filters.empty? == false
+      p @rackets.where(query_string, searched_filters).count
       @rackets = @rackets.where(query_string, searched_filters).limit(@page[1].to_i).offset(@page[0].to_i)
       @brand = @selected_search[:brand]
+      # @weight = @selected_search[:weight]
+      # @headsize = @selected_search[:headsize]
     else
       @rackets.offset(@page[0]).limit(@page[1])
     end
-    p @rackets
+
     @rackets = @rackets.order(:brand, :model)
+
     #-------------------------------------
     selected_rackets_to_compare #(Selected rackets for comparision pesistancy between sessions and filtering actions)
     #-------------------------------------
@@ -77,7 +81,6 @@ class RacketsController < ApplicationController
       format.html
       format.json {render json: @rackets}
     end
-
     #-------------------------------------
   end
 
@@ -127,7 +130,7 @@ private
   @selected_racket = @selected_racket_params
       if cookies[:selected_racket].present? && @selected_racket[:racket_id] == nil && @selected_racket[:select_racket_input] == "1"
       #user makes a search, selects a racket to compare(and updates selected_racket cookie with javascript, see cookie.js file), makes another search that doesnt contain the last selected racket and then refreshes the page.
-      p "selected_rackets_to_compare_1"
+      # p "selected_rackets_to_compare_1"
       filtered_racket_ids = Array.new
       @rackets.each {|racket|
         filtered_racket_ids << racket.id.to_s #we retrieve the rackets the user searched in the 2nd search
@@ -141,7 +144,7 @@ private
 
     elsif cookies[:selected_racket].present?
       #on page load, if cookies are present with the racket ids compared in the past, make sure that the rackets are loaded in the comparator
-      p "selected_rackets_to_compare_2"
+      # p "selected_rackets_to_compare_2"
       @selected_racket_json = JSON.parse(cookies[:selected_racket])
       @selected_racket = @selected_racket_json.transform_keys {|key|
         key = key.to_sym
@@ -155,12 +158,12 @@ private
     @search_params = {model: @model, brand: @brand, adult: @adult, kid: @kid, string_pattern: @string_pattern, weight: @weight, balance: @balance, headsize: @headsize, search_bar_input: @search_bar_input}
     @selected_search = @search_params
     if @search_params != {model: nil, brand: nil, adult: nil, kid: nil, string_pattern: nil, weight: nil, balance: nil, headsize: nil, search_bar_input: nil}
-      p "racket_search_1"
+      # p "racket_search_1"
       cookies[:search_params] = @search_params.to_json
       @selected_search = @search_params
 
     elsif cookies[:search_params].present?
-      p "racket_search_2"
+      # p "racket_search_2"
       @selected_search_json = JSON.parse(cookies[:search_params])
       @selected_search = @selected_search_json.transform_keys {|key|
         key = key.to_sym

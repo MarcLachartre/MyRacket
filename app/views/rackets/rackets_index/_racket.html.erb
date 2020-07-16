@@ -75,7 +75,7 @@
 
   <% end %>
 </div>
- <%= link_to "1", rackets_path(page: [0,5]), remote: true %>
- <%= link_to "2", rackets_path(page: [5,5]), remote: true %>
+  <%= link_to "1", rackets_path(page: [0,40]), data: {page: [0,40]}, class: 'pagination'%>
+  <%= link_to "2", rackets_path(page: [40,40]), data: {page: [40,40]}, class: 'pagination' %>
 
 

@@ -2,6 +2,7 @@ class FetchDatabase {
   constructor(){}
 
   searchQuery(queryObject) { //accepts an object containing ONLY the values which will create the query string for the get request
+
     let queryString = [];
     for (let key in queryObject) {
 
@@ -23,7 +24,7 @@ class FetchDatabase {
 
   async queryAnswer(queryObject) { //digest the query object, does a fetch request by transforming the queryobject in a query string, and sends back a json response.
     const queryString = this.searchQuery(queryObject)
-    console.log(queryString)
+    // console.log(queryString)
     const url = new URL(`${window.location.origin}` + `${window.location.pathname}`);
     url.search = new URLSearchParams(queryString);
     let myInit =  {
