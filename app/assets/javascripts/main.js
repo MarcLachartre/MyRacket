@@ -2,14 +2,12 @@ class App {
 
   init() {
     if (window.location.href.match('pages/home') != null || window.location.href === "http://localhost:3000/") {
-      this.initHomepageTennisCourt();
+      this.initHomepage();
     } else if (window.location.href.match('rackets') != null) {
       this.initComparision();
-      // this.initAjaxSearch();
       this.initCookies();
       this.initRacketCardStyle();
-      searchbarFilterDropdown()
-      searchBarDesign();
+      this.initSearch();
     }
   }
 
@@ -18,17 +16,7 @@ class App {
     comparator.initOnLoad();
   }
 
-  initAjaxSearch() {
-    const allSearchbarCheckbox = document.querySelectorAll('.searchbar-checkbox');
-    const searchForm = document.querySelector('.search-form');
-    const formerRacketContainerParent = document.querySelector('.search-bar-and-racket-cards');
-    const racketSearchButton = document.querySelector('.search-button');
-    const newRacketContainerSelector = '.racket-container';
-    const searchRackets = new AjaxSearch(allSearchbarCheckbox, searchForm, formerRacketContainerParent, newRacketContainerSelector);
-    searchRackets.initSearchForm();
-  }
-
-  initHomepageTennisCourt() {
+  initHomepage() {
     const tennisCourt = new HomepageTennisCourt();
     tennisCourt.init()
   }
@@ -37,6 +25,11 @@ class App {
     const selectedRacket = "selected_racket" + "=";
     const comparedRacketsPersistancy = new ComparedRacketCookie(selectedRacket);
     comparedRacketsPersistancy.init(document.querySelectorAll('input.racket-checkbox, input.compared-racket-checkbox'));
+  }
+
+  initSearch() {
+    const searchbar = new Searchbar();
+    searchbar.init();
   }
 
   initRacketCardStyle() {

@@ -39,7 +39,10 @@ class RacketComparision extends Comparator{
     checkbox.value = this.id;
     checkbox.checked = "checked";
     checkbox.style.display = "none";
+
     super.addRemoveCardListener(checkbox);
+    const cardStyle = new RacketCardStyleSelector();
+    cardStyle.addCardStyleRemovalListener(checkbox); // when a racket is removed from the comparator, this removes the style from the racket card in the container (racket_card_style_selector.js)
     checkbox.addEventListener("change", (event)=> { // we add an event listener to the new created card so that on click it removes it from the comparator and the cookies.
       const selectedRacket = "selected_racket" + "=";
       const selectedRacketCookie = new ComparedRacketCookie(selectedRacket); //selected_racket.js
@@ -55,7 +58,7 @@ class RacketComparision extends Comparator{
   };
 
   createShortCard() {
-    console.log("create short card")
+    // console.log("create short card")
     const removeLabel = this.createRemoveLabel();
     const card = document.createElement("div");
     const brandModelContainer = document.createElement("div");

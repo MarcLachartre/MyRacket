@@ -1,22 +1,4 @@
-document.addEventListener('turbolinks:load', () => {
-  const searchbarCheckboxes = document.querySelectorAll('.searchbar-checkbox');
-  const searchField = document.querySelector(".type-search");
-  searchField.addEventListener('keypress', (event) => {
-    if (event.key === 'Enter') {
-      const search = new RacketSearch(searchbarCheckboxes, searchField);
-      const searchResult = search.racketFetch();
-      event.preventDefault();
-    };
-  });
 
-  searchbarCheckboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', () => {
-      const racketsInContainer = document.querySelectorAll('.racket-checkbox');
-      const search = new RacketSearchDisplay(searchbarCheckboxes, searchField, racketsInContainer);
-      const displaySearchResult = search.racketsToUpdate();
-    });
-  });
-});
 
 
 

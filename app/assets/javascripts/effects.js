@@ -40,16 +40,16 @@ class ExpandSquare {
 
 
 
-const fadeIn = (obj) => {
+const fadeIn = (obj, interval, increment) => {
   let opacity = 0.00;
-  const id5 = setInterval(opacityFrame, 15);
+  const id5 = setInterval(opacityFrame, interval);
   function opacityFrame() {
 
     if (opacity >= 1.01) {
       clearInterval(id5);
 
     } else {
-      opacity += 0.01
+      opacity += increment
       opacity.toFixed(1)
       obj.style.opacity = opacity;
     };

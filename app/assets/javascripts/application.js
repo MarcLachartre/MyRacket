@@ -17,7 +17,6 @@
 //= require "./draft"
 //= require "./main"
 
-//= require "./ajax_search"
 //= require "./comparator"
 //= require "./comparator_display"
 
@@ -32,16 +31,10 @@
 //= require "./racket_search"
 //= require "./racket_search_display"
 
-
-
-
 //= require "./effects"
 //= require "./homepage"
 //= require "./navbar"
-//= require "./searchbar_design"
-
-
-
+//= require "./searchbar"
 
 // stub "comparator"
 //= require popper

@@ -34,7 +34,7 @@
             <%= "#{racket.weight} gr"%>
           </div>
           <div class= 'card-string-pattern'>
-            <% pattern_array = racket.stringpattern.to_s.split('')%>
+            <% pattern_array = racket.string_pattern.to_s.split('')%>
             <%= pattern_array[0] + pattern_array[1] %>x<%= pattern_array[2] + pattern_array[3] %>
           </div>
         </div>
@@ -57,7 +57,7 @@
           <%= check_box_tag "selected_racket_id[]", racket.id,
           if @selected_racket[:racket_id] != nil
             @selected_racket[:racket_id].include?(racket.id.to_s)
-          end,  data: {id: racket.id.to_i, brand: racket.brand, model: racket.model, headsize: racket.headsize, weight: racket.weight, length: racket.length, swingweight: racket.swingweight, stringpattern: racket.stringpattern, stiffness: racket.stiffness, powerpotential: "powerpotential", manoeuvrability: "manoeuvrability", confort: "confort", control: "control"},
+          end,  data: {id: racket.id.to_i, brand: racket.brand, model: racket.model, headsize: racket.headsize, weight: racket.weight, length: racket.length, swingweight: racket.swingweight, stringpattern: racket.string_pattern, stiffness: racket.stiffness, powerpotential: "powerpotential", manoeuvrability: "manoeuvrability", confort: "confort", control: "control"},
           id: racket.id,
           class: 'racket-checkbox'
             %>
@@ -72,8 +72,10 @@
     </div>
   </div>
   <% end %>
-  <div class = 'sb'>
-    <%= submit_tag "Search", class: "search-button", remote: true %>
-  </div>
+
   <% end %>
+</div>
+  <%= link_to "1", rackets_path(page: [0,40]), data: {page: [0,40]}, class: 'pagination'%>
+  <%= link_to "2", rackets_path(page: [40,40]), data: {page: [40,40]}, class: 'pagination' %>
+
 
