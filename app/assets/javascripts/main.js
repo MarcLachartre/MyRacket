@@ -3,6 +3,8 @@ class App {
   init() {
     if (window.location.href.match('pages/home') != null || window.location.href === "http://localhost:3000/") {
       this.initHomepage();
+    } else if (window.location.href.match('rackets/') != null) {
+      this.initRacketReviews()
     } else if (window.location.href.match('rackets') != null) {
       this.initComparision();
       this.initCookies();
@@ -36,6 +38,12 @@ class App {
     const cardsStyle = new RacketCardStyleSelector();
     cardsStyle.initStyleOnLoad();
   }
+
+  initRacketReviews() {
+    const racketReviews = new RacketReviews();
+    racketReviews.init();
+  }
+
 }
 
 const app = new App();
@@ -44,11 +52,5 @@ document.addEventListener("turbolinks:load", () => {
 });
 
 
-// document.addEventListener("ajax:success", (ajaxSearch) => {
-//   // app.initAjaxAnswer(ajaxSearch);
-//   // app.initComparision(ajaxSearch);
-//   // app.initRacketCardStyle();
-//   // app.initCookies();
-// });
 
 

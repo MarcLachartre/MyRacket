@@ -14,6 +14,9 @@ class Racket < ApplicationRecord
   has_many :racketreviews, foreign_key: :racket_id, class_name: 'Racketreview', dependent: :destroy
   has_many :users, through: :racketreviews
 
+  scope :brand_or_model, -> (brand, model) do
+    where('model LIKE ? AND brand LIKE ?','%' + model.join(' ') + '%', '%' + brand.join(' ') + '%')
+  end
 end
 
 

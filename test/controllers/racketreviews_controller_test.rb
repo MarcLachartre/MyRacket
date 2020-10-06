@@ -1,10 +1,10 @@
 require 'test_helper'
 
 class RacketreviewsControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
-    get racketreviews_index_url
-    assert_response :success
-  end
+  # test "should get index" do
+  #   get racketreviews_index_url
+  #   assert_response :success
+  # end
 
   test "should get show" do
     get racketreviews_show_url

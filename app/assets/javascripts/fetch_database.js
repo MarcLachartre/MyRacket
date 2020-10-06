@@ -1,11 +1,11 @@
+
+
 class FetchDatabase {
   constructor(){}
 
   searchQuery(queryObject) { //accepts an object containing ONLY the values which will create the query string for the get request
-
     let queryString = [];
     for (let key in queryObject) {
-
       if (typeof queryObject[key] === "object" && queryObject[key] !== undefined) {
         queryObject[key].map(x => {
           x = encodeURIComponent(key + "[]") + "=" + x;
@@ -24,7 +24,7 @@ class FetchDatabase {
 
   async queryAnswer(queryObject) { //digest the query object, does a fetch request by transforming the queryobject in a query string, and sends back a json response.
     const queryString = this.searchQuery(queryObject)
-    // console.log(queryString)
+
     const url = new URL(`${window.location.origin}` + `${window.location.pathname}`);
     url.search = new URLSearchParams(queryString);
     let myInit =  {
@@ -36,8 +36,65 @@ class FetchDatabase {
     };
 
     const myRequest = new Request(url, myInit);
-    const response = await fetch(myRequest, myInit);
-    const data = await response.json();
-    return data
+    const fetchResponse = await fetch(myRequest, myInit).then(function(res) {
+      return res
+    });
+
+    const response = fetchResponse.clone()
+    return response.json()
+  }
+
+  destroy(url) {
+    const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
+    let deleteInit =  {
+      method: 'DELETE',
+      headers: {
+        "Content-Type": 'application/json',
+        "Accept": 'application/json',
+        'X-CSRF-Token': csrf
+      }
+    };
+
+    const deleteRequest = new Request(url, deleteInit);
+
+    const response = fetch(deleteRequest).then(function(response) {
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+    }).then(function(response) {
+      console.log("ok");
+      return response;
+    }).catch(function(error) {
+        console.log(error);
+    });
+  }
+
+  create(url, body){
+    const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
+
+    const createInit = {
+      method: "POST",
+      headers: {
+        "Content-Type": 'application/json',
+        "Accept": 'application/json',
+        'X-CSRF-Token': csrf
+      },
+      body: body
+    };
+
+    const createRequest = new Request(url, createInit);
+
+    const response = fetch(createRequest).then(response => {
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+      return response
+    }).then(response => {
+      console.log("ok");
+      return response.json()
+    }).then((data) => {
+      return data.racketreview.comment
+    });
+    return response
   }
 }

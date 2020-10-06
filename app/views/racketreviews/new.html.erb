@@ -1,8 +1,9 @@
-<h1>Racketreviews#new</h1>
-<p>Find me in app/views/racketreviews/new.html.erb</p>
-<div>
-<%= form_with model: @racketreview, class: "nifty_form" do |f| %>
-  <%= f.text_field :comment %>
-  <%= f.submit "Create" %>
+
+<%= form_with url: racket_racketreviews_path(@racket.id), model: @racketreview, class: "create_review_form" do |f| %>
+  <div class= 'create-review-fields'>
+
+    <%= f.text_area :comment, cols: 40, rows: 4, maxlength: 700, placeholder: "I played for 6months with this racket and it serioulsy improved my game...", class: "create_review_label"  %>
+    <%= f.submit "Create", class: "button-up submit_review" %>
+  </div>
 <% end %>
-</div>
+

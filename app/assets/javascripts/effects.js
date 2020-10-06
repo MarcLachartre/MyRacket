@@ -8,16 +8,20 @@ class ExpandSquare {
     this.frameInterval = frameInterval;
   }
 
-  expand() {
-    this.expandWidth();
-    this.expandHeight();
+  expand(resolve, growingSide) {
+    this.expandWidth(resolve, growingSide);
+    this.expandHeight(resolve, growingSide);
+    return "done"
   }
 
-  expandWidth() {
+  expandWidth(resolve, growingSide) {
     const widthId = setInterval(grow.bind(this), this.frameInterval);
       function grow() {
       if (this.initialWidth === this.finalWidth) {
         clearInterval(widthId);
+          if (this.initialWidth !== 0 && growingSide === "width") {
+          resolve()
+        }
       } else {
         this.initialWidth++;
         this.element.style.width = this.initialWidth + "%";
@@ -25,11 +29,15 @@ class ExpandSquare {
     };
   }
 
-  expandHeight() {
+  expandHeight(resolve, growingSide) {
     const heightId = setInterval(grow.bind(this), this.frameInterval);
       function grow() {
       if (this.initialHeight === this.finalHeight) {
         clearInterval(heightId);
+        // console.log("resolve height")
+        if (this.initialHeight !== 0 && growingSide === "height") {
+          resolve()
+        }
       } else {
         this.initialHeight++;
         this.element.style.height = this.initialHeight + "%";
@@ -47,7 +55,7 @@ const fadeIn = (obj, interval, increment) => {
 
     if (opacity >= 1.01) {
       clearInterval(id5);
-
+      return "widthDone"
     } else {
       opacity += increment
       opacity.toFixed(1)

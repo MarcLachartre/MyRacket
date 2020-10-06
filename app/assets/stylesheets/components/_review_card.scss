@@ -1,52 +1,106 @@
-.create-review-container {
-  display:flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.create_review_form{
-  display: flex;
-  justify-content: center;
-}
-
-.create_review_fields{
-  display: flex;
-  flex-direction: column
-}
-
-.product-reviews{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+@import "index";
 
 .reviews-list{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-self: center;
-  width: 80%
+  // align-items: center;
+  width: 80vw;
+  min-width: 80vw;
 }
 
 .review-card {
   display: flex;
   border: 1px solid #dadada;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left:10px;
-  padding-right: 10px;
-  border-bottom:  100px;
-
+  min-height: 8rem;
 }
 
-.edit-review {
+
+#racketreview_comment {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 5rem
+}
+
+.review-user-detail {
+  position: relative;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid #dadada;
+  justify-content: center;
+  width: 150px;
+  min-width: 150px;
+  height: 150px;
+  min-height: 150px;
+}
+
+.review-user-detail i {
+  position: relative;
+  font-size: 80px;
+  color: $grey;
+  align-self: center;
+}
+
+.user-name-review {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.user-edit-review {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.review-text-and-delete {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-right: 1.5vw;
 }
 
 .review-text {
+  position: relative;
   display: flex;
-  word-break: break-all;
-  width: auto
+  flex-direction: column;
+  justify-content: flex-start;
+  word-break: normal;
+  text-align: justify;
+  border-left: solid 1px $grey;
+  padding-top: 1vw;
+  padding-left: 1.5vw;
+  padding-right: 1.5vw;
+  padding-bottom: 1vw;
+}
+
+.review-card{
+  .button-up {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  min-width: 40px;
+  height: 40px;
+  min-height: 40px;
+  border-radius: 50px;
+  border-color: $light-red;
+  color: $light-red;
+  transition: all 0.4s;
+  }
+
+  .button-up:hover {
+    background-color: $light-red;
+    color: white;
+    height: max;
+    border-color: $light-red
+  }
+}
+
+.delete_review {
+  display: flex;
+  align-item: top
 }

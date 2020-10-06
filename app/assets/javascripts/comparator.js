@@ -1,4 +1,4 @@
-class Comparator{
+class Comparator {
   constructor(racketsInComparator) {
     this.racketsInComparator = document.querySelector('.racket-comparator-container').querySelectorAll('input.compared-racket-checkbox');
   }

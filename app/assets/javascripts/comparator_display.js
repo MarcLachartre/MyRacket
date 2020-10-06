@@ -14,22 +14,24 @@ class ComparatorDisplay extends Comparator{ //this class in only responsible of 
 
     upArrow.addEventListener('click', () => {
       this.closeLargeComparator();
-      scrollUp(comparator, 1, 8, 85, "vh") //effects.js
+      // scrollUp(comparator, 1, 8, 85, "vh") //effects.js
     })
 
     downArrow.addEventListener('click', () => {
       this.openLargeComparator();
-      scrollDown(comparator, 1, 8, 85, "vh"); //effects.js
+      // scrollDown(comparator, 1, 8, 85, "vh"); //effects.js
     });
   }
 
   openLargeComparator() {
     this.shortComparator.style.display = "none";
     this.largeComparator.style.display = "flex";
+    this.largeComparator.style.height = "85vh";
   }
 
   closeLargeComparator() {
     this.largeComparator.style.display = "none";
     this.shortComparator.style.display = "flex";
+    this.shortComparator.style.height = "8vh";
   }
 }

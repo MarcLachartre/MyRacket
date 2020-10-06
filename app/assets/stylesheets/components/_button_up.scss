@@ -5,20 +5,18 @@
   display: flex;
   justify-content: center;
   width: auto;
-  height: 33px;
+  height: 2.5rem;
   border-radius:50px;
   overflow: hidden;
   border: solid 1px $dark-blue;
   align-self: center;
   cursor: pointer;
-  transition: all 0.4s;
   color: $dark-blue;
   cursor: pointer;
   transition: all 0.4s;
 }
 
 .button-up:hover {
-  transform: translateY(-0.2vh);
   color: white;
   border: solid 1px $dark-blue;
   background-color: $light-blue;

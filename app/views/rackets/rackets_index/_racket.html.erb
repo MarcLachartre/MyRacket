@@ -72,10 +72,50 @@
     </div>
   </div>
   <% end %>
+<% end %>
 
-  <% end %>
+
+
+  <div class = "previous-next-buttons">
+  <%= link_to "Previous", rackets_path(page: @previous_page), data: {page: "[40,40]"}, class: "button-up previous" %>
+  <%= link_to "Next", rackets_path(page: @next_page), data: {page: "[40,40]"}, class: "button-up next" %>
+  </div>
+  <div class= "page-list-container">
+    <div class= "pages">
+    <% if @pages <= 9 %>
+
+      <% for i in (1..@pages) do %>
+        <% if i == 1 %>
+          <%= link_to "#{i}", rackets_path(page: [((i-1)*40),40]), data: {page: [((i-1)*40),40]}, class: 'pagination selected-page'%>
+          <% else %>
+          <%= link_to "#{i}", rackets_path(page: [((i-1)*40),40]), data: {page: [((i-1)*40),40]}, class: 'pagination'%>
+          <% end %>
+      <% i+1 %>
+      <% end %>
+
+    <% else %>
+      <% for i in (1..@pages) do %>
+        <% if i == 1 %>
+          <%= link_to "#{i}", rackets_path(page: [((i-1)*40),40]), data: {page: [((i-1)*40),40]}, class: 'pagination selected-page'%>
+        <% elsif i <= 2 %>
+          <%= link_to "#{i}", rackets_path(page: [((i-1)*40),40]), data: {page: [((i-1)*40),40]}, class: 'pagination'%>
+          <% i+1 %>
+
+        <% elsif i == 3 %>
+          <div class = 'pagination-dots' > <%= " ... " %> </div>
+          <% i+1 %>
+
+        <% elsif 3 < i && i <= (@pages - 2) %>
+          <% i+1 %>
+
+        <% else %>
+          <%= link_to "#{i}", rackets_path(page: [((i-1)*40),40]), data: {page: [((i-1)*40),40]}, class: 'pagination'%>
+          <% i+1 %>
+        <% end %>
+      <% end %>
+    <% end %>
+    </div>
+  </div>
 </div>
-  <%= link_to "1", rackets_path(page: [0,40]), data: {page: [0,40]}, class: 'pagination'%>
-  <%= link_to "2", rackets_path(page: [40,40]), data: {page: [40,40]}, class: 'pagination' %>
 
-
+</div>

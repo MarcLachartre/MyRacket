@@ -1,5 +1,6 @@
 class RacketsController < ApplicationController
-  respond_to :json, only: [:index]
+  respond_to :json, only: [:index, :show]
+
   def index
     @rackets = Racket.all
     @all_rackets = Racket.all
@@ -10,30 +11,25 @@ class RacketsController < ApplicationController
     #-------------------------------------
 
     #------------search_params------------
-    @model = params[:model]
-    @brand = params[:brand]
-    @adult = params[:adult]
-    @kid = params[:kid]
-    @string_pattern = params[:string_pattern]
-    @weight = params[:weight]
-    @headsize = params[:headsize]
-    @balance = params[:balance]
-    @search_bar_input = params[:form_input]
+    @search_params = {model: params[:model], brand: params[:brand], string_pattern: params[:string_pattern], weight: params[:weight], balance: params[:balance], headsize: params[:headsize], search_bar_input: params[:search_bar_input]}
     #-------------------------------------
 
     #------------pagination_param---------
-    @page = params[:page] || "[0, 40]"
-    @page = @page.tr('[]','').split(",").map(&:to_i)
+    @current_page = params[:page] || "[0,40]"
+    @current_page = @current_page.to_s.tr('[]','').split(",").map(&:to_i)
+    @next_page = [@current_page[0]+40,40]
+
+    @previous_page = [@current_page[0]-40,40]
     #-------------------------------------
 
     #------------racket-search------------
-    racket_search # (Search function pesistancy between sessions, see private methods) this is where the @selected_search hash is created and saved in cookies. This hash has a major importance in terms of persistance between sessions for the racket search filter/function as you can see below.
+    racket_search # (Search function pesistancy between sessions)
     #-------------------------------------
 
     #-----------quick-search-bar----------
-    if @selected_search[:model].present?
+    if @search_params[:model] != nil
       all_brands = @all_rackets.distinct.pluck(:brand)
-      @models = @selected_search[:model].split.map(&:capitalize)
+      @models = @search_params[:model].split.map(&:capitalize)
       model = []
       brand = []
       @models.each { |m|
@@ -43,34 +39,34 @@ class RacketsController < ApplicationController
           model << m
         end
       }
-      @rackets = @rackets.where('model LIKE ? AND brand LIKE ?','%' + model.join(' ') + '%', '%' + brand.join(' ') + '%')
+      @rackets = @rackets.brand_or_model(brand, model).offset(@current_page[0]).limit(@current_page[1])
     else
-      @rackets
+      @rackets.offset(@current_page[0]).limit(@current_page[1]).order(:brand, :model)
     end
     #-------------------------------------
 
     #------------search-filters-----------
-    searched_filters = @selected_search.delete_if { |key, value| value == nil}
+    @search_params = @search_params.delete_if { |key, value| value == nil || key == :search_bar_input || key == :model} #removes params which values are nil
 
-    query_string = String.new
-    @selected_search.each {|key, value|
-      if value != nil && value != "1"
-        query_string = query_string + "#{key} IN (:#{key}) AND "
+    @search_params.each {|key, parameters|
+      if key != :search_bar_input && (key == :weight || key == :balance || key == :headsize)
+        @search_params[key] = parameters.map{|value|
+          value = value.split("..")[0].to_i..value.split("..")[1].to_i
+        }
       end
     }
-    query_string = query_string.delete_suffix(' AND ')
 
-    if searched_filters.empty? == false
-      p @rackets.where(query_string, searched_filters).count
-      @rackets = @rackets.where(query_string, searched_filters).limit(@page[1].to_i).offset(@page[0].to_i)
-      @brand = @selected_search[:brand]
-      # @weight = @selected_search[:weight]
-      # @headsize = @selected_search[:headsize]
+    if @search_params.empty? == false
+      rackets_count = @rackets.where(@search_params).count
+      @rackets = @rackets.where(@search_params).limit(@current_page[1].to_i).offset(@current_page[0].to_i).order(:brand, :model, :id)
     else
-      @rackets.offset(@page[0]).limit(@page[1])
+      rackets_count = @rackets.count
+      @rackets.limit(@current_page[1]).offset(@current_page[0]).order(:brand, :model, :id)
     end
 
-    @rackets = @rackets.order(:brand, :model)
+    @pages = (rackets_count/40.0).ceil
+
+    @rackets = @rackets.limit(@current_page[1]).offset(@current_page[0]).order(:brand, :model, :id)
 
     #-------------------------------------
     selected_rackets_to_compare #(Selected rackets for comparision pesistancy between sessions and filtering actions)
@@ -79,7 +75,7 @@ class RacketsController < ApplicationController
     #-------------------------------------
     respond_to do |format|
       format.html
-      format.json {render json: @rackets}
+      format.json {render json: {rackets: @rackets, pages: @pages, current_page: @current_page}}
     end
     #-------------------------------------
   end
@@ -155,70 +151,15 @@ private
   end
 
   def racket_search
-    @search_params = {model: @model, brand: @brand, adult: @adult, kid: @kid, string_pattern: @string_pattern, weight: @weight, balance: @balance, headsize: @headsize, search_bar_input: @search_bar_input}
-    @selected_search = @search_params
-    if @search_params != {model: nil, brand: nil, adult: nil, kid: nil, string_pattern: nil, weight: nil, balance: nil, headsize: nil, search_bar_input: nil}
-      # p "racket_search_1"
+    if @search_params != {model: nil, brand: nil, string_pattern: nil, weight: nil, balance: nil, headsize: nil, search_bar_input: nil}
+        p "racket_search_1"
       cookies[:search_params] = @search_params.to_json
-      @selected_search = @search_params
-
     elsif cookies[:search_params].present?
-      # p "racket_search_2"
+        p "racket_search_2"
       @selected_search_json = JSON.parse(cookies[:search_params])
-      @selected_search = @selected_search_json.transform_keys {|key|
-        key = key.to_sym
+      @search_params = @selected_search_json.transform_keys {|key|
+        key.to_sym
       }
     end
   end
 end
-
-
-    # if @selected_search[:brand].present?
-    #   @brand = @selected_search[:brand]
-    #   @string_pattern = @selected_search[:string_pattern]
-    #   @rackets = @rackets.where('brand IN (:brand) AND stringpattern IN (:stringpattern)', {brand: @brand, stringpattern: @string_pattern})
-    # else
-    #   @rackets
-    # end
-
-    # if @selected_search[:brand].present?
-    #   @brand = @selected_search[:brand]
-    #   @rackets = @rackets.where(brand: @brand)
-    # else
-    #   @rackets
-    # end
-
-    # if @selected_search[:string_pattern].present?
-    #   @string_pattern = @selected_search[:string_pattern]
-    #   @rackets = @rackets.where(stringpattern: @string_pattern)
-    # else
-    #   @rackets
-    # end
-
-    # if @selected_search[:weight].present?
-    #   @weight = @selected_search[:weight]
-    #   weight_ranges = @selected_search[:weight].map{|value| Range.new(Integer(value), Integer(value) + 14) }
-    #   @rackets = @rackets.where(weight: weight_ranges)
-    # else
-    #   @rackets
-    # end
-
-    # if @selected_search[:headsize].present?
-    #   @headsize = @selected_search[:headsize]
-    #   headsize_ranges = @selected_search[:headsize].map{|headsize_range|
-    #     headsize_range.split("..")[0].to_i..headsize_range.split("..")[1].to_i
-    #   }
-    #   @rackets = @rackets.where(headsize: headsize_ranges)
-    # else
-    #   @rackets
-    # end
-
-    # if @selected_search[:balance].present?
-    #   @balance = @selected_search[:balance]
-    #   balance_ranges = @selected_search[:balance].map{|balance_range|
-    #     balance_range.split("..")[0].to_i..balance_range.split("..")[1].to_i
-    #   }
-    #   @rackets = @rackets.where(balance: balance_ranges)
-    # else
-    #   @rackets
-    # end

@@ -56,7 +56,7 @@ html {
   position: relative;
   width: 100%;
   display:flex;
-  justify-content: center;
+  flex-direction: column;
 }
 
 .select-racket{
@@ -65,7 +65,7 @@ html {
   margin-top: 15px;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
-  grid-auto-rows: 27rem;
+  grid-auto-rows: 28rem;
   width: 100%;
   transition: 3s cubic-bezier(.18,1,.21,1);
 }
@@ -86,57 +86,76 @@ html {
     grid-template-columns: 50% 50%;
     grid-auto-rows: 25rem;
   }
-
-  .search-bar {
-
-  }
-
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////RACKET SHOW////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
 
+.show-page {
+  display: flex;
+  flex-direction: column;
+}
 
 .product-page-container{
+  position: relative;
   display: flex;
   flex-direction: column;
   list-style: none;
-  margin-left: 40px;
-  margin-right: 40px
+  margin-left: 15px;
+  margin-right: 15px
 }
 
 .product-image-and-spec {
   display:flex;
   margin-top: 8vh;
   position: relative;
-  flex: wrap
+  width: 100%;
+  height: 40rem;
+  min-height: 40rem;
+  border-bottom: solid 1px $grey
+}
+
+.product-image{
+  position: relative;
+  width: 38rem;
+  min-width: 38rem
 }
 
 .product-image img {
-  width:650px;
-  height: 650px;
+  position: relative;
+  width: 100%;
+  height: 100%
 }
 
 .product-description {
   display: flex;
   position: relative;
-  position: absolute
+  width: 55%;
+  height: 100%;
+}
+
+.show-page h3{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3vh;
 }
 
 .product-spec-container {
   display: flex;
   position: relative;
-  width: 100%;
+  width: 50%;
   justify-content: flex-start;
 }
 
 .product-spec {
   display: flex;
+  position: relative;
   flex-direction: column;
-  margin-top: 20px;
-  margin-right: 20%;
-  margin-left: 10%;
+  margin-top: 5vh;
+  margin-right: 5%;
+  margin-left: 5%;
+  margin-bottom: 5vh;
   width: 100%;
 }
 
@@ -144,31 +163,119 @@ html {
 .spec-title {
   display: flex;
   flex-direction: column;
-  align-self: center;
+  height: 10vh;
   h1 {
     text-align: center}
   h2 {
     text-align: center}
 }
 
-.spec{
-display:flex;
-justify-content: space-between;
+.show-spec{
+  display:flex;
+  justify-content: space-between;
+  border-bottom: solid 1px $very-light-blue;
+  height: 7vh;
+  align-items: center
+}
 
+.show-spec-details{
+  display: flex;
+    line-height: 100%;
+}
+
+.show-product-description {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: solid 1px $grey;
+  padding-top: 5vh;
+  padding-bottom: 5vh
+}
+
+.product-reviews-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+}
+
+.review-section-subtitle{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.review-section-titles{
+  position: relative;
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 14vh;
+  min-height: 14vh;
+}
+
+.leave-review-btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 14rem;
+  margin-bottom: 3vh
+}
+
+
+.create-review-form {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.create-review-fields {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 60rem;
+  height: 13rem;
+  padding-bottom: 2vh;
+}
+
+.create-review-fields .button-up {
+  width: 10vw;
+  background-color: white;
+}
+
+.create-review-fields .button-up:hover {
+  width: 15vw;
+  background-color: $light-blue;
+  border: $light-blue
+}
+
+.create-review-fields textarea {
+  padding: 5px
+}
+
+.create_review_label {
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .back-to-search {
   align-self: flex-start;
   position: relative
 }
+
 .back-link{
   position: absolute;
   display: block;
   width:100%;
   height:100%;
-}
-
-.product-description {
-  margin-top: 30px
 }
 
