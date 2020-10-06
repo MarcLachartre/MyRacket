@@ -14,7 +14,7 @@
 
 //= require jquery
 //= require rails-ujs
-//= require "./draft"
+
 //= require "./main"
 
 //= require "./comparator"
@@ -35,6 +35,9 @@
 //= require "./homepage"
 //= require "./navbar"
 //= require "./searchbar"
+
+//= require "./racket_reviews"
+//= require "./create_review_display"
 
 // stub "comparator"
 //= require popper

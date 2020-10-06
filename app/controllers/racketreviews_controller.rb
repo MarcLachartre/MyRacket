@@ -1,4 +1,5 @@
 class RacketreviewsController < ApplicationController
+  respond_to :json, only: [:destroy, :new, :create]
   def index
     @racketreviews = Racketreview.all
   end
@@ -15,7 +16,11 @@ class RacketreviewsController < ApplicationController
     @racketreview.user_id = current_user.id
     @racketreview.racket_id = params[:racket_id]
     @racketreview.save
-    redirect_to("/rackets/#{params[:racket_id]}")
+    respond_to do |format|
+      format.html
+      format.json {render json: {racketreview: @racketreview}}
+    end
+    # redirect_to("/rackets/#{params[:racket_id]}")
   end
 
   def edit
@@ -26,13 +31,17 @@ class RacketreviewsController < ApplicationController
     @racketreview = Racketreview.find(params[:id])
     @racketreview.update(racketreview_params)
     @racketreview.save
-    redirect_to("/rackets/#{@racketreview.racket_id}")
+    # redirect_to("/rackets/#{@racketreview.racket_id}")
   end
 
   def destroy
+    p params[request_forgery_protection_token]
     @racketreview = Racketreview.find(params[:id])
     @racketreview.destroy
-    redirect_to("/rackets/#{@racketreview.racket_id}")
+    respond_to do |format|
+      format.html
+      format.json {render json: {racketreview: @racketreview}}
+    end
   end
 
 private

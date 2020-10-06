@@ -1,0 +1,72 @@
+@import "index.scss";
+
+.rackets-and-pagination {
+  position: relative;
+}
+
+.page-list-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left:15px;
+  width: 100%;
+  height: 12vh;
+
+}
+.pages {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 8vh;
+}
+
+.previous-next-buttons {
+  position: relative;
+  width: 100%;
+  padding-left:15px;
+  display: flex;
+  justify-content: center;
+}
+
+.previous {
+  width: 20%;
+  align-items: center;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  background-color: white;
+}
+
+.next {
+  width: 20%;
+  align-items: center;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  background-color: white;
+}
+
+.pagination {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  height: 100%;
+}
+
+.pagination-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+}
+
+.selected-page {
+  border: 1px solid black;
+  border-radius: 50px;
+  width: 3.2rem;
+}
+
+

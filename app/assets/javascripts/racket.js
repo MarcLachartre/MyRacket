@@ -18,6 +18,7 @@ class Racket extends RacketCardStyleSelector {
   }
 
   createCard() { //creates the card and then create the card top/bottom/button to appends to it. It also adds the event listeners to the card
+
     const card = document.createElement("div");
     const cardItemDescription = document.createElement("div");
 
@@ -40,6 +41,7 @@ class Racket extends RacketCardStyleSelector {
   createCardTop(){
     const topCard = document.createElement("div");
     const cardImage = document.createElement("div");
+    const image = document.createElement("img");
     const cardBrandModel = document.createElement("div");
     const cardBrand = document.createElement("div");
     const cardModel = document.createElement("div");
@@ -47,6 +49,8 @@ class Racket extends RacketCardStyleSelector {
     const model = document.createElement("h5");
     brand.innerHTML = this.brand;
     model.innerHTML = this.model;
+
+    image.src = "assets/racket-sample.jpg";
 
     topCard.classList.toggle("card-top");
     cardImage.classList.toggle("card-image");
@@ -57,9 +61,14 @@ class Racket extends RacketCardStyleSelector {
     cardBrandModel.appendChild(cardBrand);
     cardBrandModel.appendChild(cardModel);
     topCard.appendChild(cardImage);
+    cardImage.appendChild(image);
     topCard.appendChild(cardBrandModel);
     cardBrand.appendChild(brand);
-    cardModel.appendChild(model)
+    cardModel.appendChild(model);
+
+    topCard.addEventListener("click", () => {
+      location.href = `rackets/${this.id}`;
+    })
 
     return topCard
   }

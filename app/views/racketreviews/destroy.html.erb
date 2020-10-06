@@ -1,2 +1,5 @@
-<h1>Racketreviews#destroy</h1>
-<p>Find me in app/views/racketreviews/destroy.html.erb</p>
+<i class= "fas fa-times delete_review button-up" >
+  <%= hidden_field_tag 'delete', '', data: {racketreview: racketreview.id} %>
+</i>
+
+<!--  confirm: ["Rafa y aurait réfléchis à deux fois!","Avant de supprimer votre message, demandons d'abord l'avis du guru de djoko, non?", "t'es certain Roger?", "John Mc Enroe a été envoyé à votre adresse, vous pouvez toujours changer d'avis (faites vite)."].shuffle.first -->

@@ -9,7 +9,7 @@ class RacketSearch extends FetchDatabase{ //this class creates an object contain
     this.weight = [];
     this.headsize = [];
     this.balance = [];
-    this.form_input = 1;
+    this.search_bar_input = 1;
     this.model = model;
   }
 

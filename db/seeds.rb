@@ -54,11 +54,35 @@ racket16 = Racket.create!(brand:'Yonex', model:'V Core Game Flame', weight: 270,
 racket17 = Racket.create!(brand:'Yonex', model:'Vcore Pro 97 Teal', weight: 330,
   headsize: 626, length: 68, price: 209, color: 'black', material: 'graphite', string_pattern: 1619, balance: 310, kid: false, adult: true, stiffness: 65, swingweight:330)
 
-for a in 1..40 do
+for a in 1..51 do
   Racket.create!(brand:'Yonex', model:'Vcore Pro 97 Teal', weight: 330,
   headsize: 626, length: 68, price: 209, color: 'black', material: 'graphite', string_pattern: 1619, balance: 310, kid: false, adult: true, stiffness: 65, swingweight:330)
 end
 
+for a in 1..71 do
+  Racket.create!(brand:'Dunlop', model:'Srixon SX 300 LS', weight: 285,
+  headsize: 645, length: 68, price: 179, color: 'black, yellow', material: 'graphite', string_pattern: 1619, balance: 325, kid: false, adult: true, stiffness: 68, swingweight:318)
+end
+
+for a in 1..81 do
+  Racket.create!(brand:'Head', model:'Graphene 360 Radical Pro', weight: 310,
+  headsize: 630, length: 68, price: 199, color: 'grey, red', material: 'graphite', string_pattern: 1619, balance: 315, kid: false, adult: true, stiffness: 68, swingweight:326)
+end
+
+for a in 1..81 do
+  Racket.create!(brand:'Wilson', model:'Pro Staff RF 97 Autograf Laver Cup Edition', weight: 340,
+  headsize: 626, length: 68, price: 289, color: 'blue', material: 'Graphite', string_pattern: 1619, balance: 305, kid: false, adult: true, stiffness: 68, swingweight:335)
+end
+
+for a in 1..201 do
+  Racket.create!(brand:'Wilson', model:'Clash 98', weight: 310,
+  headsize: 630, length: 68, price: 199, color: 'grey, red', material: 'graphite', string_pattern: 1619, balance: 306, kid: false, adult: true, stiffness: 55, swingweight:326)
+end
+
+# for a in 1..81 do
+#   Racket.create!(brand:a , model:'Pure Aero', weight: 300,
+#   headsize: 64, length: 68, price: 210, balance: 335, color: 'yellow', material: 'graphite', string_pattern: 1720, adult: true, stiffness: 69, swingweight:327)
+# end
 
 
 user1 = User.create!(name:'marc', rank:'pgm de la raquette', email: 'marc@gmail.com', password: 111111, admin: 1)

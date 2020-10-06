@@ -1,6 +1,6 @@
 class HomepageTennisCourt{
   constructor(welcomeMessage) {
-    this.welcomeMessage = fadeIn(document.querySelector('.home-link-container'), 15, 0.01);
+    this.welcomeMessage = fadeIn(document.querySelector('.home-link-container'), 10, 0.01);
   }
 
   init() {
@@ -9,10 +9,10 @@ class HomepageTennisCourt{
   }
 
   initCourtSquares() {
-    const leftExteriorLines = new ExpandSquare(document.querySelector('.left-tennis-court'), 0, 50, 0, 0, 15);
-    const rightExteriorLines = new ExpandSquare(document.querySelector('.right-tennis-court'), 0, 50, 0, 0, 15);
-    const topLeftBaseline = new ExpandSquare(document.querySelector('.left-top-half-left'), 0, 0, 0, 100, 6);
-    const bottomLeftBaseline = new ExpandSquare(document.querySelector('.left-bottom-half-left'), 0, 0, 0, 100, 6);
+    const leftExteriorLines = new ExpandSquare(document.querySelector('.left-tennis-court'), 0, 50, 0, 0, 15); //15
+    const rightExteriorLines = new ExpandSquare(document.querySelector('.right-tennis-court'), 0, 50, 0, 0, 15); //15
+    const topLeftBaseline = new ExpandSquare(document.querySelector('.left-top-half-left'), 0, 0, 0, 100, 6); //6
+    const bottomLeftBaseline = new ExpandSquare(document.querySelector('.left-bottom-half-left'), 0, 0, 0, 100,6);
     const topRightBaseline = new ExpandSquare(document.querySelector('.right-top-half-right'), 0, 0, 0, 100, 6);
     const bottomRightBaseline = new ExpandSquare(document.querySelector('.right-bottom-half-right'), 0, 0, 0, 100, 6);
 
@@ -35,20 +35,33 @@ class HomepageTennisCourt{
   }
 
   expandCourt(elements) {
-    for (let i = 0; i < elements.length; i++) {
-      if (i == 0) {
-        elements[i].forEach(element => {
-          element.expand();
+    const exteriorLinesPromise = new Promise((resolve) => {
+      elements[0].forEach(element => {
+        element.expand(resolve, "width");
         });
+      })
 
-      } else if (i == 1) {
-        setTimeout(function(){elements[i].forEach(element => {element.expand()})}, 900);
+    const midLinesPromise = new Promise((resolve) => {
+      exteriorLinesPromise.then(() => {
+        elements[1].forEach(element => {
+          element.expand(resolve, "height");
+        });
+      });
+    });
 
-      } else {
-        setTimeout(function(){elements[i].forEach(element => {element.expandWidth()})}, 1400);
-        setTimeout(function(){elements[i].forEach(element => {element.expandHeight()})}, 1900);
-      }
-    }
+    const netLinesPromise = new Promise((resolve) => {
+    midLinesPromise.then(() => {
+      elements[2].forEach(element => {
+          element.expandWidth(resolve, "width");
+        });
+      });
+    });
+
+    netLinesPromise.then(() => {
+      elements[2].forEach(element => {
+        element.expandHeight();
+      });
+    });
   }
 }
 
