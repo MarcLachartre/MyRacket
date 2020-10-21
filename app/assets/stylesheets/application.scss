@@ -19,52 +19,57 @@
 @import "bootstrap";
 * {
 
- font-family: "BentonSansCond",Arial,Helvetica,sans-serif;
+ font-family: Arial,Helvetica,sans-serif;
 }
 
-    h1 {
-  color: black;
-  font-family: "BentonSansCond",Arial,Helvetica,sans-serif;
-  font-weight: 400;
-  font-size: 100%;
+  h1 {
+    color: $dark-blue;
+    font-family: Arial,Helvetica,sans-serif;
+    font-weight: 600;
+    font-size: 45px;
   }
 
-    h2 {
-  color: black;
-  font-family: "BentonSansCond",Arial,Helvetica,sans-serif;
-  font-weight: 400;
-  }
-    h3 {
-  color: black;
-  font-family: "BentonSansCond",Arial,Helvetica,sans-serif;
-  font-weight: 375;
+  h2 {
+    color: $dark-blue;
+    font-family: Arial,Helvetica,sans-serif;
+    font-weight: 200;
+    font-size: 38px;
   }
 
-    h4 {
-  color: $dark-blue;
-  font-family: "BentonSansCond",Arial,Helvetica,sans-serif;
-  font-weight: 800;
+  h3 {
+    color: $dark-blue;
+    font-family: Arial,Helvetica,sans-serif;
+    font-weight: 375;
+    font-size: 35px;
   }
-    h5 {
-  color: $dark-blue;
-  font-family: "BentonSansCond",Arial,Helvetica,sans-serif;
-  font-weight: 150;
+
+  h4 {
+    color: $dark-blue;
+    font-family: Arial,Helvetica,sans-serif;
+    font-weight: 300;
+    font-size: 30px;
+  }
+
+  h5 {
+    color: $dark-blue;
+    font-family: Arial,Helvetica,sans-serif;
+    font-weight: 250;
   }
 
   a {
     color: black;
-    font-family: "BentonSansCond",Arial,Helvetica,sans-serif;
+    font-family: Arial,Helvetica,sans-serif;
     font-weight: 200;
   }
 
   a:hover {
     color: black;
-    font-family: "BentonSansCond",Arial,Helvetica,sans-serif;
+    font-family: Arial,Helvetica,sans-serif;
     font-weight: 200;
   }
 
   p {
     color: black;
-    font-family: "BentonSansCond",Arial,Helvetica,sans-serif;
+    font-family: Arial,Helvetica,sans-serif;
     font-weight: 200;
   }

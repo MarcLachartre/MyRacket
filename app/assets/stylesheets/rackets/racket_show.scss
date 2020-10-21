@@ -1,0 +1,159 @@
+@import "index";
+
+
+.product-page-container{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
+
+.product-image-and-spec {
+  display:flex;
+  justify-content: space-between;
+  margin-top: 70px;
+  position: relative;
+  height: 650px;
+  min-height: 650px;
+  border-bottom: solid 1px $grey;
+  margin-left: 15px;
+  margin-right: 15px
+}
+
+
+.product-image{
+  position: relative;
+  width: 38rem;
+  min-width: 38rem
+}
+
+.product-image img {
+  position: relative;
+  width: 100%;
+  height: 100%
+}
+
+.product-page-container h3{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3vh;
+}
+
+.product-spec-container {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+  min-height: 100%;
+  justify-content: flex-start;
+}
+
+.product-spec {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  margin-top: 5vh;
+  margin-right: 5%;
+  margin-left: 5%;
+  margin-bottom: 5vh;
+  width: 80%;
+  min-width: 310px;
+}
+
+
+.spec-title {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  margin-bottom: 30px;
+  h1 {
+    text-align: center}
+  h2 {
+    text-align: center}
+}
+
+.show-spec{
+  display:flex;
+  justify-content: space-between;
+  border-bottom: solid 1px $very-light-blue;
+  height: 10%;
+  align-items: center;
+  h5 {
+    margin: 0
+  }
+}
+
+.show-spec-details{
+  display: flex;
+  line-height: 100%;
+}
+
+.show-product-description {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  justify-content: center;
+  border-bottom: solid 1px $grey;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  margin-left: 15px;
+  margin-right: 15px
+}
+
+.show-desc {
+  font-size: 17px;
+  word-break: normal;
+  text-align: justify;
+  padding-right: 20px;
+  padding-left: 20px
+}
+
+.product-reviews-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+}
+
+.back-to-search {
+  align-self: flex-start;
+  position: relative
+}
+
+.back-link{
+  position: absolute;
+  display: block;
+  width:100%;
+  height:100%;
+}
+
+
+@media (max-width: 1024px) {
+  .product-image-and-spec {
+    display:flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+  }
+
+  .show-spec{
+    height: 40px;
+  }
+
+  .product-spec-container {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+  }
+
+  .show-product-description {
+    font-size: 20px
+  }
+
+}

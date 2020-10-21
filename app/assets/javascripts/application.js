@@ -17,6 +17,7 @@
 
 //= require "./main"
 
+
 //= require "./comparator"
 //= require "./comparator_display"
 
@@ -36,8 +37,10 @@
 //= require "./navbar"
 //= require "./searchbar"
 
+//= require "./pop_up_box"
 //= require "./racket_reviews"
 //= require "./create_review_display"
+//= require "./edit_review_form_display"
 
 // stub "comparator"
 //= require popper

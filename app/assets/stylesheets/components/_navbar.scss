@@ -3,11 +3,11 @@
 
 
 .myracket-navbar {
-  position: -webkit-sticky;
   position: fixed;
   background-color: $dark-blue;
   z-index: 1;
-  height: 8vh;
+  height: 70px;
+  min-height: 70px;
   width: 100%;
   display: flex;
   justify-content: flex-end;

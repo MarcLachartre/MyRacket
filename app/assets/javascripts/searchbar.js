@@ -9,13 +9,18 @@ class Searchbar {
     this.initPagination();
   }
 
-  displaySearch(searchbarCheckboxes, searchField, page) {
+ async displaySearch(searchbarCheckboxes, searchField, page) {
     // const searchbarCheckboxes = document.querySelectorAll('.searchbar-checkbox')
     const racketsInContainer = document.querySelectorAll('.racket-checkbox');
-    const search = new RacketSearchDisplay(searchbarCheckboxes, searchField, page, racketsInContainer);
-    search.racketsUpdate();
+    const c = new Date()
+    const a = c.getTime()
+    const search = await new RacketSearchDisplay(searchbarCheckboxes, searchField, page, racketsInContainer);
+    await search.racketsUpdate();
+    const d = new Date()
+    const b = d.getTime()
     const pagination = new PaginationStyle()
     pagination.initOnLoad()
+    await console.log(b-a)
   }
 
   initSearchbar() { //this inits the search function of the app. It creates a RacketSearchDisplay objects which will display the rackets the user is searching for. The racket search is async (fetch db).

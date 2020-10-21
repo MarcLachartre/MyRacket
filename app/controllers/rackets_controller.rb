@@ -84,10 +84,11 @@ class RacketsController < ApplicationController
     @racketreview = Racketreview.new
     @user = current_user
     @racket = Racket.find(params[:id])
+    @reviews = @racket.racketreviews.order(created_at: :desc)
 
     respond_to do |format|
       format.html
-      format.js
+      format.json
       return
     end
   end
@@ -126,7 +127,8 @@ private
   @selected_racket = @selected_racket_params
       if cookies[:selected_racket].present? && @selected_racket[:racket_id] == nil && @selected_racket[:select_racket_input] == "1"
       #user makes a search, selects a racket to compare(and updates selected_racket cookie with javascript, see cookie.js file), makes another search that doesnt contain the last selected racket and then refreshes the page.
-      # p "selected_rackets_to_compare_1"
+       # p "selected_rackets_to_compare_1"
+       # p cookies[:selected_racket]
       filtered_racket_ids = Array.new
       @rackets.each {|racket|
         filtered_racket_ids << racket.id.to_s #we retrieve the rackets the user searched in the 2nd search
@@ -140,7 +142,8 @@ private
 
     elsif cookies[:selected_racket].present?
       #on page load, if cookies are present with the racket ids compared in the past, make sure that the rackets are loaded in the comparator
-      # p "selected_rackets_to_compare_2"
+       # p "selected_rackets_to_compare_2"
+       # p cookies[:selected_racket]
       @selected_racket_json = JSON.parse(cookies[:selected_racket])
       @selected_racket = @selected_racket_json.transform_keys {|key|
         key = key.to_sym

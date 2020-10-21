@@ -12,7 +12,8 @@ Rails.application.routes.draw do
     resources :racketreviews, only: [:new, :create, :destroy, :edit, :update]
   end
 
-  resources :racketreviews
+  patch "rackets/:racket_id/racketreviews/:racketreview_id/edit", to: "racketreviews#update"
+  # resources :racketreviews
 
   resources :users, only: [:show, :index, :destroy]
 end

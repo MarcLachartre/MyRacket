@@ -1,0 +1,67 @@
+@import "index";
+
+.review-section-subtitle{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.review-section-titles{
+  position: relative;
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: auto;
+  min-height: auto;
+}
+
+.leave-review-btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 14rem;
+  margin-bottom: 3vh
+}
+
+.create_review_form {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width:100%;
+  height: 200px;
+  min-height: 200px;
+}
+
+.create-review-fields {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 70%;
+  padding-bottom: 2vh;
+}
+
+.create-review-fields .submit_review {
+  width: 100px;
+  min-width: 100px;
+  background-color: white;
+}
+
+.create-review-fields .button-up:hover {
+  width: 160px;
+  background-color: $light-blue;
+  border: $light-blue
+}
+
+.create-review-fields textarea {
+  padding: 5px
+}
+
+.create_review_label {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
