@@ -32,6 +32,6 @@ class ComparatorDisplay extends Comparator{ //this class in only responsible of 
   closeLargeComparator() {
     this.largeComparator.style.display = "none";
     this.shortComparator.style.display = "flex";
-    this.shortComparator.style.height = "8vh";
+    this.shortComparator.style.height = "70px";
   }
 }

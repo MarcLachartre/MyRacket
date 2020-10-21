@@ -1,0 +1,73 @@
+// Place all the styles related to the rackets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+@import "index";
+@import "bootstrap";
+
+html {
+  scroll-behavior: smooth;
+}
+
+.racket-page-container{
+  position: relative;
+  display:flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: $light-grey;
+  .myracket-navbar {
+  background-color: #1D3461 !important;
+  }
+}
+
+
+.search-bar-and-racket-cards{
+  display: flex;
+  position: relative;
+  height: 100%;
+}
+
+.quick-search-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  transition: all 0.4s ease-in-out;
+}
+
+.racket-container{
+  position: relative;
+  width: 83vw;
+  display:flex;
+  flex-direction: column;
+  border-top: solid 1px $grey
+}
+
+.select-racket{
+  position: relative;
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-auto-rows: 28rem;
+  width: 100%;
+  transition: 3s cubic-bezier(.18,1,.21,1);
+}
+
+@media screen and (max-width:1080px) {
+  .select-racket {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-auto-rows: 27rem;
+  }
+}
+
+@media screen and (max-width:800px) {
+  .select-racket {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-auto-rows: 25rem;
+  }
+}
+
+
+

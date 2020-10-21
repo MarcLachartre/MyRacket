@@ -1,5 +1,4 @@
 class App {
-
   init() {
     if (window.location.href.match('pages/home') != null || window.location.href === "http://localhost:3000/") {
       this.initHomepage();

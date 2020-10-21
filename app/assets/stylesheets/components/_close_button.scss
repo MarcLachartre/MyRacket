@@ -1,0 +1,22 @@
+@import "index";
+
+.close-button {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  width: 40px;
+  height:40px;
+  border: 1px solid $light-red;
+  border-radius: 50px;
+  color: $light-red !important;
+  background-color: white;
+}
+
+.close-button:hover {
+  background-color: $light-red;
+  border: 1px solid $light-red;
+  border-radius: 50px;
+  color: white !important;
+  cursor: pointer;
+}

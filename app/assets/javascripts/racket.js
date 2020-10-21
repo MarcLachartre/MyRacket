@@ -18,7 +18,6 @@ class Racket extends RacketCardStyleSelector {
   }
 
   createCard() { //creates the card and then create the card top/bottom/button to appends to it. It also adds the event listeners to the card
-
     const card = document.createElement("div");
     const cardItemDescription = document.createElement("div");
 

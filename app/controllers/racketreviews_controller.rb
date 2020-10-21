@@ -18,34 +18,51 @@ class RacketreviewsController < ApplicationController
     @racketreview.save
     respond_to do |format|
       format.html
-      format.json {render json: {racketreview: @racketreview}}
+      format.json {render json: {racketreview: @racketreview, current_user: current_user}}
     end
     # redirect_to("/rackets/#{params[:racket_id]}")
   end
 
   def edit
     @racketreview = Racketreview.find(params[:id])
+    if user_signed_in? == true && current_user.id == @racketreview.user_id
+      respond_to do |format|
+        format.html
+        format.json {render json: {racketreview: @racketreview}}
+      end
+    else
+      redirect_to "/rackets/#{@racketreview.racket_id}"
+    end
   end
 
   def update
-    @racketreview = Racketreview.find(params[:id])
-    @racketreview.update(racketreview_params)
-    @racketreview.save
-    # redirect_to("/rackets/#{@racketreview.racket_id}")
+    @racketreview = Racketreview.find(params[:racketreview_id])
+    if user_signed_in? == true && current_user.id == @racketreview.user_id
+      @racketreview.update(racketreview_params)
+      respond_to do |format|
+        format.html
+        format.json {render json: {racketreview: @racketreview}}
+      end
+    else
+      redirect_to "/rackets/#{@racketreview.racket_id}"
+    end
   end
 
   def destroy
-    p params[request_forgery_protection_token]
     @racketreview = Racketreview.find(params[:id])
-    @racketreview.destroy
-    respond_to do |format|
-      format.html
-      format.json {render json: {racketreview: @racketreview}}
+
+    if user_signed_in? == true && current_user.id == @racketreview.user_id
+      @racketreview.destroy
+      respond_to do |format|
+        format.html
+        format.json {render json: {racketreview: @racketreview}}
+      end
+    else
+      redirect_to "/rackets/#{@racketreview.racket_id}"
     end
   end
 
 private
-
   def racketreview_params
     params.require(:racketreview).permit(:comment)
   end

@@ -1,3 +1,16 @@
-<h1>Racketreviews#edit</h1>
-<p>Find me in app/views/racketreviews/edit.html.erb</p>
-
+<div>
+<%= render "shared/navbar" %>
+</div>
+<div class= "pop-up-page-container">
+  <div class= "pop-up-box">
+    <%= form_with url_for: ([@racket, @racketreview]), method: :patch, params: { racketreview: {comment: true}}, class: "edit-review-form" do %>
+      <h2>
+      <%= label_tag "Modify your comment below", nil, class: "edit-review-label" %>
+      </h2>
+      <div class= "edit-text-and-submit-btn">
+        <%= text_area_tag 'racketreview[comment]', nil, options ={cols: 40, rows: 4, maxlength: 700, id: "edit-review-textbox", class: "edit-review-text-field"} %>
+        <%= submit_tag "Edit your comment", class: "button-up submit-pop-up-form" %>
+      </div>
+    <% end %>
+  </div>
+</div>

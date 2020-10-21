@@ -68,16 +68,15 @@ class RacketComparision extends Comparator{
 
     card.appendChild(brandModelContainer);
 
-    for (let i = 0; i < 2; i++) {
+
       let specData = document.createElement("div");
       specData.classList.toggle("spec-data");
-      specData.id = i;
+
       brandModelContainer.appendChild(specData);
-    };
+
 
     const allSpecData = brandModelContainer.querySelectorAll(".spec-data");
-    allSpecData[0].innerHTML = this.brand;
-    allSpecData[1].innerHTML = this.model;
+    allSpecData[0].innerHTML = `${this.brand} ${this.model}`;
     card.appendChild(removeLabel);
 
     return card

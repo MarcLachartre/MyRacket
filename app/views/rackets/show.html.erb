@@ -1,151 +1,133 @@
+<%#= javascript_pack_tag 'hello_react' %>
+
 <%= render "shared/navbar" %>
-<div class= "show-page">
-  <div class= 'product-page-container'>
-    <div class= 'product-page'>
-      <div class= 'product-image-and-spec'>
-        <div class= 'product-image'>
-          <img src="/assets/racket-sample.jpg">
-        </div>
 
-        <div class= 'product-spec-container'>
-          <div class= 'product-spec'>
-            <div class = 'spec-title'>
-              <h1> <%= @racket.brand %> </h1><h2><%= @racket.model %></h2>
-            </div>
-            <div class= 'show-spec'>
-              <div class= "show-spec-details">
-                headsize
-              </div>
-              <div class= "show-spec-details">
-                <%= @racket.headsize %> sq cm
-              </div>
-            </div>
-            <div class= 'show-spec'>
-              <div class= "show-spec-details">
-                weight
-              </div>
-              <div class= "show-spec-details">
-                <%= @racket.weight %> grams
-              </div>
-            </div>
-            <div class= 'show-spec'>
-              <div class= "show-spec-details">
-                length
-              </div>
-              <div class= "show-spec-details">
-                <%= @racket.length %> cm
-              </div>
-            </div>
-            <div class= 'show-spec'>
-              <div class= "show-spec-details">
-                balance
-              </div>
-              <div class= "show-spec-details">
-                <%= @racket.balance %> cm
-              </div>
-            </div>
-            <div class= 'show-spec'>
-              <div class= "show-spec-details">
-                string pattern
-              </div>
-              <div class= "show-spec-details">
-                <% pattern_array = @racket.string_pattern.to_s.split('')%>
-                <%= pattern_array[0] + pattern_array[1] %> x <%= pattern_array[2] + pattern_array[3] %>
-              </div>
-            </div>
-            <div class= 'show-spec'>
-              <div class= "show-spec-details">
-                material
-              </div>
-              <div class= "show-spec-details">
-                <%= @racket.material %>
-              </div>
-            </div>
-            <div class= 'show-spec'>
-              <div class= "show-spec-details">
-                stiffness
-              </div>
-              <div class= "show-spec-details">
-                <%= @racket.stiffness %>RA
-              </div>
-            </div>
-            <div class= 'show-spec'>
-              <div class= "show-spec-details">
-                swingweight
-              </div>
-              <div class= "show-spec-details">
-                <%= @racket.swingweight%>
-              </div>
-            </div>
-          </div>
-        </div>
+<div class= 'product-page-container'>
 
-      </div>
-      <div class= 'show-product-description'>
-        <h3> Description </h3>
-
-        <div>
-          <%= lorem_ipsum(500) %>
+  <div class= 'product-image-and-spec'>
+    <img src="/assets/racket-sample.jpg" class= 'product-image'>
+    <div class= 'product-spec-container'>
+      <div class= 'product-spec'>
+        <div class = 'spec-title'>
+          <h1> <%= @racket.brand.capitalize %> </h1><h2><%= @racket.model.capitalize %></h2>
         </div>
-        <div>
-          <%= " " %>
+        <div class= 'show-spec'>
+          <h5 class= "show-spec-details">
+            Headsize:
+          </h5>
+          <h5 class= "show-spec-details">
+            <%= @racket.headsize %> cm²
+          </h5>
         </div>
-        <div>
-          <%= lorem_ipsum(700) %>
+        <div class= 'show-spec'>
+          <h5 class= "show-spec-details">
+            Weight:
+          </h5>
+          <h5 class= "show-spec-details">
+            <%= @racket.weight %> grams
+          </h5>
+        </div>
+        <div class= 'show-spec'>
+          <h5 class= "show-spec-details">
+            Length:
+          </h5>
+          <h5 class= "show-spec-details">
+            <%= @racket.length %> cm
+          </h5>
+        </div>
+        <div class= 'show-spec'>
+          <h5 class= "show-spec-details">
+            Balance:
+          </h5>
+          <h5 class= "show-spec-details">
+            <%= @racket.balance %> cm
+          </h5>
+        </div>
+        <div class= 'show-spec'>
+          <h5 class= "show-spec-details">
+            String pattern:
+          </h5>
+          <h5 class= "show-spec-details">
+            <% pattern_array = @racket.string_pattern.to_s.split('')%>
+            <%= pattern_array[0] + pattern_array[1] %> x <%= pattern_array[2] + pattern_array[3] %>
+          </h5>
+        </div>
+        <div class= 'show-spec'>
+          <h5 class= "show-spec-details">
+            Composition:
+          </h5>
+          <h5 class= "show-spec-details">
+            <%= @racket.material.capitalize %>
+          </h5>
+        </div>
+        <div class= 'show-spec'>
+          <h5 class= "show-spec-details">
+            Stiffness:
+          </h5>
+          <h5 class= "show-spec-details">
+            <%= @racket.stiffness %> RA
+          </h5>
+        </div>
+        <div class= 'show-spec'>
+          <h5 class= "show-spec-details">
+            Swingweight:
+          </h5>
+          <h5 class= "show-spec-details">
+            <%= @racket.swingweight%>
+          </h5>
         </div>
       </div>
+    </div>
+  </div>
 
+  <div class= 'show-product-description'>
+    <h3> Description </h3>
+    <div class= "show-desc">
+      <%= lorem_ipsum(1200) %>
+    </div>
+  </div>
 
-      <div class= 'product-reviews-section'>
-        <div class= 'review-section-titles'>
-          <h3> Review(s) </h3>
-            <% if @racket.racketreviews.present? == true %>
-            <div class= 'review-section-subtitle'> Let everyone know how you feel about this racket! </div>
-            <%  else  %>
-            <div class= 'review-section-subtitle'> Be the first one to share your opinion on this model! </div>
-            <% end %>
+  <div class= 'product-reviews-section'>
+    <div class= 'review-section-titles'>
+      <h3> Review(s) </h3>
+      <h5 class= 'review-section-subtitle'> Let everyone know how you feel about this racket! </h5>
+    </div>
+
+    <% if user_signed_in? %>
+    <%= render template: "racketreviews/new" %>
+
+    <% else %>
+    <%=  button_to "Leave a review", new_user_session_path, data: { confirm: "please log in/sign up to leave a review"}, class: "leave-review-btn button-up"%>
+    <% end %>
+
+    <div class= 'reviews-list'>
+      <% if @reviews.present? == true %>
+      <% @reviews.each do |racketreview| %>
+      <div class= review-card>
+        <div class="review-user-detail">
+          <i class="fas fa-grin-alt"></i>
+          <h5 class= "user-name-review">
+            <%= racketreview.user.name.capitalize %>
+          </h5>
+
+          <% if user_signed_in? && racketreview.user.id == @user.id%>
+          <%= link_to 'Edit Review', edit_racket_racketreview_path(racket_id: @racket.id, id: racketreview.id), remote: true, class: "user-edit-review" %>
+          <% end %>
+          <h7 class= "review-date">
+            <%= racketreview.created_at.strftime("%Y/%m/%d") %>
+          </h7>
+        </div>
+        <div class= "review-text-and-delete">
+          <div class= review-text>
+            <%= racketreview.comment %>
           </div>
-
-          <% if user_signed_in? %>
-          <%= render template: "racketreviews/new" %>
-
-        <% else %>
-        <%=  button_to "Leave a review", new_user_session_path, data: { confirm: "please log in/sign up to leave a review"}, class: "leave-review-btn button-up"%>
-        <% end %>
-
-        <div class= 'reviews-list'>
-          <% if @racket.racketreviews.present? == true %>
-            <% @racket.racketreviews.each do |racketreview| %>
-            <div class= review-card>
-              <div class="review-user-detail">
-                <i class="fas fa-grin-alt"></i>
-                <h5 class= "user-name-review">
-                  <%= racketreview.user.name.capitalize %>
-                </h5>
-
-
-                <% if user_signed_in? && racketreview.user.id == @user.id%>
-                  <%= link_to 'Edit Review', edit_racketreview_path(racketreview), remote: true, class: "user-edit-review" %>
-                <% end %>
-              </div>
-              <div class= "review-text-and-delete">
-                <div class= review-text>
-                  <%= racketreview.comment %>
-                </div>
-                <% if user_signed_in? && racketreview.user.id == @user.id%>
-                <%= render template: "racketreviews/destroy", locals: {racketreview: racketreview} %>
-                <% end %>
-              </div>
-            </div>
-
-            <% end %>
-            <% else %>
-            <div>
-              No reviews yet
-            </div>
+          <% if user_signed_in? && racketreview.user.id == @user.id%>
+          <%= render template: "racketreviews/destroy", locals: {racketreview: racketreview} %>
           <% end %>
         </div>
       </div>
+      <% end %>
+      <% end %>
     </div>
   </div>
   <%= render "shared/footer" %>
