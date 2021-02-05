@@ -6,8 +6,17 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application','data-turbolinks-track': 'reload' %>
-    <%#= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%#= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'homepage', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'racket_card_style', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'search_function', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'comparator_tool', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'reviews', 'data-turbolinks-track': 'reload' %>
+
+    <%= javascript_pack_tag 'cookies', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'visual_effects_manager', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>

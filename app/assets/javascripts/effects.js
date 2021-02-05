@@ -1,110 +1,109 @@
-class ExpandSquare {
-  constructor(element, initialWidth, finalWidth, initialHeight, finalHeight, frameInterval) {
-    this.element = element;
-    this.initialWidth = 0;
-    this.finalWidth = finalWidth;
-    this.initialHeight = 0;
-    this.finalHeight = finalHeight;
-    this.frameInterval = frameInterval;
-  }
+// class ExpandSquare {
+//   constructor(element, initialWidth, finalWidth, initialHeight, finalHeight, frameInterval) {
+//     this.element = element;
+//     this.initialWidth = 0;
+//     this.finalWidth = finalWidth;
+//     this.initialHeight = 0;
+//     this.finalHeight = finalHeight;
+//     this.frameInterval = frameInterval;
+//   }
 
-  expand(resolve, growingSide) {
-    this.expandWidth(resolve, growingSide);
-    this.expandHeight(resolve, growingSide);
-    return "done"
-  }
+//   expand(resolve, growingSide) {
+//     this.expandWidth(resolve, growingSide);
+//     this.expandHeight(resolve, growingSide);
+//     return "done"
+//   }
 
-  expandWidth(resolve, growingSide) {
-    const widthId = setInterval(grow.bind(this), this.frameInterval);
-      function grow() {
-      if (this.initialWidth === this.finalWidth) {
-        clearInterval(widthId);
-          if (this.initialWidth !== 0 && growingSide === "width") {
-          resolve()
-        }
-      } else {
-        this.initialWidth++;
-        this.element.style.width = this.initialWidth + "%";
-      };
-    };
-  }
+//   expandWidth(resolve, growingSide) {
+//     const widthId = setInterval(grow.bind(this), this.frameInterval);
+//       function grow() {
+//       if (this.initialWidth === this.finalWidth) {
+//         clearInterval(widthId);
+//           if (this.initialWidth !== 0 && growingSide === "width") {
+//           resolve()
+//         }
+//       } else {
+//         this.initialWidth++;
+//         this.element.style.width = this.initialWidth + "%";
+//       };
+//     };
+//   }
 
-  expandHeight(resolve, growingSide) {
-    const heightId = setInterval(grow.bind(this), this.frameInterval);
-      function grow() {
-      if (this.initialHeight === this.finalHeight) {
-        clearInterval(heightId);
-        // console.log("resolve height")
-        if (this.initialHeight !== 0 && growingSide === "height") {
-          resolve()
-        }
-      } else {
-        this.initialHeight++;
-        this.element.style.height = this.initialHeight + "%";
-      };
-    };
-  }
-}
-
+//   expandHeight(resolve, growingSide) {
+//     const heightId = setInterval(grow.bind(this), this.frameInterval);
+//       function grow() {
+//       if (this.initialHeight === this.finalHeight) {
+//         clearInterval(heightId);
+//         if (this.initialHeight !== 0 && growingSide === "height") {
+//           resolve()
+//         }
+//       } else {
+//         this.initialHeight++;
+//         this.element.style.height = this.initialHeight + "%";
+//       };
+//     };
+//   }
+// }
 
 
-const fadeIn = (obj, interval, increment) => {
-  let opacity = 0.00;
-  const id5 = setInterval(opacityFrame, interval);
-  function opacityFrame() {
 
-    if (opacity >= 1.01) {
-      clearInterval(id5);
-      return "widthDone"
-    } else {
-      opacity += increment
-      opacity.toFixed(1)
-      obj.style.opacity = opacity;
-    };
-  };
-};
+// const fadeIn = (obj, interval, increment) => {
+//   let opacity = 0.00;
+//   const id5 = setInterval(opacityFrame, interval);
+//   function opacityFrame() {
 
-const fadeOut = (obj) => {
-  let opacity = 1.00;
-  const id5 = setInterval(opacityFrame, 11);
-  function opacityFrame() {
+//     if (opacity >= 1.01) {
+//       clearInterval(id5);
+//       return "widthDone"
+//     } else {
+//       opacity += increment
+//       opacity.toFixed(1)
+//       obj.style.opacity = opacity;
+//     };
+//   };
+// };
 
-    if (opacity <= 0.00) {
-      clearInterval(id5);
+// const fadeOut = (obj) => {
+//   let opacity = 1.00;
+//   const id5 = setInterval(opacityFrame, 11);
+//   function opacityFrame() {
 
-    } else {
-      opacity -= 0.01
-      opacity.toFixed(1)
-      obj.style.opacity = opacity;
-    };
-  };
-};
+//     if (opacity <= 0.00) {
+//       clearInterval(id5);
 
-const scrollDown = (obj, celerity, initialHeight, finalHeight, unit) => {
-  let height = initialHeight;
-  const id6 = setInterval(scrollDownFrame, celerity);
-  function scrollDownFrame() {
-    if (height >= finalHeight) {
-      clearInterval(id6);
+//     } else {
+//       opacity -= 0.01
+//       opacity.toFixed(1)
+//       obj.style.opacity = opacity;
+//     };
+//   };
+// };
 
-    } else {
-      height++
-      obj.style.height = height + unit;
-    };
-  };
-};
+// const scrollDown = (obj, celerity, initialHeight, finalHeight, unit) => {
+//   let height = initialHeight;
+//   const id6 = setInterval(scrollDownFrame, celerity);
+//   function scrollDownFrame() {
+//     if (height >= finalHeight) {
+//       clearInterval(id6);
 
-const scrollUp = (obj, celerity, initialHeight, finalHeight, unit) => {
-  let height = finalHeight;
-  const id7 = setInterval(scrollUpFrame, celerity);
-  function scrollUpFrame() {
+//     } else {
+//       height++
+//       obj.style.height = height + unit;
+//     };
+//   };
+// };
 
-    if (height <= initialHeight) {
-      clearInterval(id7);
+// const scrollUp = (obj, celerity, initialHeight, finalHeight, unit) => {
+//   let height = finalHeight;
+//   const id7 = setInterval(scrollUpFrame, celerity);
+//   function scrollUpFrame() {
 
-    } else {
-      height --
-      obj.style.height = height + unit;
-    };
-  };
-};
+//     if (height <= initialHeight) {
+//       clearInterval(id7);
+
+//     } else {
+//       height --
+//       obj.style.height = height + unit;
+//     };
+//   };
+// };
