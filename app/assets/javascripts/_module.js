@@ -1,1 +1,0 @@
-import ScrollReveal from 'scrollreveal'

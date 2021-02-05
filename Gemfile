@@ -8,14 +8,18 @@ gem 'lorem_ipsum_amet'
 gem 'bootstrap', '~> 4.3.1'
 gem 'rails-ujs'
 gem 'devise'
-
+gem 'sprockets-rails', '~> 3.2.2'
 gem 'sassc-rails'
+# gem 'sass-rails', '~> 5.0'
 gem 'font-awesome-sass', '~> 5.12.0'
+
+gem 'webpacker'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
 # Use sqlite3 as the database for Active Record
 gem 'cloudinary'
-gem 'webpacker', '~> 4.0'
+
 gem 'rubocop'
 
 gem 'pg'

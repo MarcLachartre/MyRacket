@@ -1,4 +1,3 @@
-<%#= javascript_pack_tag 'hello_react' %>
 
 <%= render "shared/navbar" %>
 
@@ -103,7 +102,7 @@
     <div class= 'reviews-list'>
       <% if @reviews.present? == true %>
       <% @reviews.each do |racketreview| %>
-      <div class= review-card>
+      <div class= review-card id = <%=racketreview.id%>>
         <div class="review-user-detail">
           <i class="fas fa-grin-alt"></i>
           <h5 class= "user-name-review">

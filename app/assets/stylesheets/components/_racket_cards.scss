@@ -13,7 +13,7 @@
   width: 85%;
   height: 95%;
   border-radius: 0.6rem;
-  transition: all 0.30s ease-in-out;
+  transition: border 0.30s ease-in-out, box-shadow 0.30s ease-in-out;
   .fa-times{
     display: none;
   }
@@ -27,7 +27,6 @@
 
 .racket-card:hover {
   border: solid 1px $light-blue;
-
   .racket-checkbox-label{
     width: 6rem;
   }
