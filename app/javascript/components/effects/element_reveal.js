@@ -46,6 +46,7 @@ export class ElementReveal {
 
     for (let i = 0; i <= elementsArray.length - 1; i++) { // I want to know if element is on the screen, if yes apply style to it.
       // elementsArray[i].style.opacity = "1"
+
       const elementHeight = elementsArray[i].offsetHeight;
       const elementPositionInWindow = elementsArray[i].getBoundingClientRect().y;
       const elementPositionInContainer = elementsArray[i].getBoundingClientRect().y - document.querySelector('.myracket-navbar').offsetHeight;
