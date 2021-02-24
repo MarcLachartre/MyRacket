@@ -40,8 +40,6 @@ export class Racket extends RacketCardStyleSelector {
     const racketCookie = new ComparedRacketCookie("selected_racket=")
     racketCookie.racketCookieEvent(card.querySelector('.racket-checkbox'));
 
-    // this.positionning(card)
-
     return card
   }
 

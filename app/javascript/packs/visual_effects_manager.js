@@ -21,8 +21,8 @@ document.addEventListener('turbolinks:load', () => {
 
   } else if (window.location.href.match('rackets') != null && document.querySelector('.racket-container') !== null) {
 
-    // const revealEffect = {distance: '150px', duration: 400, easing: 'cubic-bezier(.55,0,.5,.99)', origin: 'bottom'};
-    // elementReveal.listReveal(document.querySelectorAll('.racket-card'), revealEffect, 50);
+  //   const revealEffect = {distance: '150px', duration: 400, easing: 'cubic-bezier(.55,0,.5,.99)', origin: 'bottom'};
+  //   elementReveal.listReveal(document.querySelectorAll('.racket-card'), revealEffect, 50);
   };
 });
 
