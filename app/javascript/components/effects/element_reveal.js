@@ -95,6 +95,6 @@ export class ElementReveal {
 
       }
     };
-  console.log(visibleElements)
+  return visibleElements
   }
 }
