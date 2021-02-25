@@ -1,5 +1,3 @@
-// console.log("expandSquare")
-import TennisCourt from '../homepage/tennis_court';
 
 export default class ExpandSquare {
   constructor(element, initialWidth, finalWidth, initialHeight, finalHeight, frameInterval) {
