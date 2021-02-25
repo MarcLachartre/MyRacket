@@ -9,37 +9,30 @@ export class RacketSearchDisplay extends RacketSearch {
   }
 
   async racketsUpdate() { //The idea here is to update the container only with the cards that need to be added or removed and not to remove every card from the container and add them all again so that we can apply some effects. Therefore, it compares the rackets present in container with the racket fetched and then add or remove rackets to the container with the correct style.
-     console.log("racketsUpdate")
-
+    // console.log("racketsUpdate")
     const racketIndexFetch = await super.racketFetch(); // First, we fetch the searched rackets in the database.
     const racketFetched = racketIndexFetch.rackets;
     const pagesNumber = racketIndexFetch.pages;
-    
-    // const elementReveal = new ElementReveal();
-    const initialRacketsArray = Array.prototype.slice.call(document.querySelectorAll('.racket-card'))
-    initialRacketsArray.forEach((racket, index) => {
-      const cul = new AnimateThatSearch()
-      const position = cul.positionning(index);
-      racket.style.gridColumnStart = position.column;
-      racket.style.gridRowStart = position.row;
-    });
+
+    // this.rackets.forEach((racket, index) => {
+    //   const ats = new AnimateThatSearch();
+    //   const position = ats.positionning(index);
+    //   racket.closest('.racket-card').style.gridColumnStart = position.column;
+    //   racket.closest('.racket-card').style.gridRowStart = position.row;
+    //   racket.closest('.racket-card').style.transform = null;
+    //   racket.closest('.racket-card').style.transition = null;
+    // });
     // Then we look for the rackets to remove and the ones to add to the container.
     const racketsToRemove = this.racketsToRemove(racketFetched);  // rackets to remove = displayed rackets in the container that are not in the fetched rackets
     const racketsToAdd = this.racketsToAdd(racketFetched); // rackets to add = fetched rackets that are not in the displayed rackets in the container
 
     await this.removeRackets(racketsToRemove); // We know what racket to remove, so let's remove them from the container before adding new ones.
 
-    // elementReveal.isOnScreen(racketsAfterRemove);
-
     const racketCardsToAdd = await this.createRacketCardsToInsert(racketsToAdd);
 
     // cool we have the cards, lets add them
-
     const cardsAdded = this.insertRacketCards(racketCardsToAdd);
 
-
-    // const revealEffect = {distance: '150px', duration: 300, easing: 'cubic-bezier(.55,0,.5,.99)', origin: 'bottom', opacity: '0'};
-    // elementReveal.listReveal(cardsAdded, revealEffect, 50);
     const gridContainer = document.querySelector('.select-racket')
     const animateThatSearch = new AnimateThatSearch(this.rackets, racketFetched, gridContainer);
     animateThatSearch.applyTranslation();
@@ -66,10 +59,9 @@ export class RacketSearchDisplay extends RacketSearch {
 
   createRacketCardsToInsert(racketsToAdd) { //This method creates a Racket object and therefore the cards that are the result of the search. First it creates a racket object, then we create the card with the right style (racket is in comparator or not). We also add the event listener to each card for it to be properly working (cookie event listener)
     const racketCardsToInsert = [];
-    racketsToAdd.forEach(racketObj => {
+    racketsToAdd.forEach((racketObj, i) => {
       const racket = new Racket(racketObj.id, racketObj.brand, racketObj.model, racketObj.weight, racketObj.string_pattern, racketObj.balance, racketObj.headsize, racketObj.length, racketObj.swingweight, racketObj.stiffness, racketObj.power, racketObj.manoeuvrability, racketObj.comfort, racketObj.control, racketObj.index);
       const card = racket.createCard(); //this creates the card and adds the listeners to the button (add comparision event listener)
-      
       const comparator = new Comparator();
 
       if (comparator.isAlreadyInComparator(card.querySelector('.racket-checkbox'))) {
@@ -80,6 +72,7 @@ export class RacketSearchDisplay extends RacketSearch {
         comparator.disableComparision(card.querySelector('.racket-checkbox'));
       };
       racketCardsToInsert.push([card, racketObj.index]);
+      
     });
     return racketCardsToInsert
   }
@@ -89,11 +82,14 @@ export class RacketSearchDisplay extends RacketSearch {
     const cardsAdded = [];
 
     cards.forEach(card => {
-      // card[0].style.visibility = "hidden";
       const position = new AnimateThatSearch();
       const cardPosition = position.positionning(card[1]);
       card[0].style.gridColumnStart = cardPosition.column;
       card[0].style.gridRowStart = cardPosition.row;
+      const cardFinalIndex = (Number(cardPosition.row)-1) * 4 +  Number(cardPosition.column) - 1;
+
+      card[0].style.animation = `${cardFinalIndex/30}s linear 0s stayWhite, 0.25s ease-in-out ${cardFinalIndex/30}s slideIn`
+
       container.insertBefore(card[0], container.children[card[1] + 2]);
       cardsAdded.push(card[0])
     });
@@ -127,41 +123,38 @@ export class RacketSearchDisplay extends RacketSearch {
 class AnimateThatSearch {
   constructor(initialItemsArray, finalItemsArray, gridContainer) {
     this.initialItemsArray = initialItemsArray; // has to be a nodelist containing an id
-    this.finalItemsArray = finalItemsArray; //has to be an array made of the future items list details containing an id
-    this.gridContainer = gridContainer;
+    this.finalItemsArray = finalItemsArray; // has to be an array made of the future items list details containing an id
+    this.gridContainer = gridContainer; // is the grid containing the items to animate
   }
 
-  applyTranslation() {
-    console.log('apptranslation started')
-    const itemsArrayToTranslate = this.itemsArrayToTranslate()
-    const gridCellSize = this.gridCellSize();
-    this.containerResizing(gridCellSize.height);
+  applyTranslation() { // This function applies the style (translation) to the items that are left in the grid container (items that are not removed and not added, the remaining items) 
+    console.log('app translation started')
+    
+    
+    this.initItemsPosition(); // First, it takes the initial items in the container (before filtering/searching), and it makes sure they have their grid position (row start and column start) and no transform/translate effect
+    const itemsArrayToTranslate = this.itemsArrayToTranslate(); // Then, we select the items left in the container and creates the remainingItemsArray containing, the item card, both initial and final grid positions, and the index of the item
+    const gridCellSize = this.gridCellSize(); // We calculate the grid cell size, combined with the future grid position of the items to translate, we can calculate the translation vector
+    this.containerResizing(gridCellSize.height); // This is necessary to make sure the container always has the right size and that the items below are not overlaping the grid
     
     itemsArrayToTranslate.forEach((i, index) => {
-      const translationVector = this.translationVector(i.initialCardPosition, i.finalCardPosition, gridCellSize);
-      i.card.style.transitionDelay = String((index)) + "s"
-      i.card.style.transition = `transform 0.25s ease-in-out ${index/30}s` ;
+      const translationVector = this.translationVector(i.initialCardPosition, i.finalCardPosition, gridCellSize); // Now let's get the translation vector for each item to translate and lets apply it below with the desired style
+      i.card.style.transitionDelay = String((index)) + "s";
+      i.card.style.transition = `transform 0.25s ease-in-out ${index/25}s`;
       i.card.style.transform = "translate(" + String(translationVector.vectorX) + "px," + String(translationVector.vectorY) + "px)";
-
-      i.card.addEventListener("transitioncancel", (el) => {
-        el.target.style.gridColumnStart = String(i.finalCardPosition.column);
-        el.target.style.gridRowStart = String(i.finalCardPosition.row);
-        el.target.style.transform = null;
-        el.target.style.transition = null;
-        i.card.removeEventListener("transitioncancel", () => {})
-      });
-
-      i.card.addEventListener("transitionend", (el) => {
-        el.target.style.gridColumnStart = String(i.finalCardPosition.column);
-        el.target.style.gridRowStart = String(i.finalCardPosition.row);
-        el.target.style.transform = null;
-        el.target.style.transition = null;
-        i.card.removeEventListener("transitionend", () => {})
-      });
-    })
+    });
   }
 
-  itemsArrayToTranslate() { // This function selects the items left in the container and create the remainingItemsArray containing, the item card, both initial and final grid positions, and the index of the item
+  initItemsPosition() {
+    this.initialItemsArray.forEach((racket, index) => {
+      const position = this.positionning(index);
+      racket.closest('.racket-card').style.gridColumnStart = position.column;
+      racket.closest('.racket-card').style.gridRowStart = position.row;
+      racket.closest('.racket-card').style.transform = null;
+      racket.closest('.racket-card').style.transition = null;
+    });
+  }
+
+  itemsArrayToTranslate() { // This function selects the items left in the container and creates the remainingItemsArray containing, the item card, both initial and final grid positions, and the index of the item
     const initialItemsArray = Array.prototype.slice.call(this.initialItemsArray).map((item, index) => [item, index]);
     const finalItemsArray = this.finalItemsArray.map((item, index) => [item, index]);
     const remainingItemsArray = [];
@@ -202,7 +195,7 @@ class AnimateThatSearch {
     return gridCellSize
   }
 
-  translationVector(initialCardPosition, finalCardPosition, gridCellSize) {
+  translationVector(initialCardPosition, finalCardPosition, gridCellSize) { // combined with the grid cell size and the inittial and final grid position, this function calculates the translante vector to animate the items in the grid
     let coeffX = 0;
     let coeffY = 0;
 
@@ -231,7 +224,7 @@ class AnimateThatSearch {
     return vector
   }
 
-  positionning(index) {
+  positionning(index) { // this function retrieves the grid position of the item according to its position in its array
     let cardPosition = index;
     let rowPosition = Math.floor((cardPosition/4)+1);
     
@@ -255,8 +248,9 @@ class AnimateThatSearch {
 
   containerResizing(gridCellHeight) { // Defines the final size of the container when necessary
     if (this.initialItemsArray.length < this.finalItemsArray.length) {
-      const containerHeight = String(gridCellHeight * Math.ceil(this.finalItemsArray.length/4));
-      this.gridContainer.style.height = containerHeight + "px";
+      const containerHeight = Number(gridCellHeight * Math.round(this.finalItemsArray.length/4));
+      const containerPadding = Number(window.getComputedStyle(this.gridContainer, null).getPropertyValue("padding").slice(0, -2));
+      this.gridContainer.style.height = String(containerHeight + containerPadding * 2) + "px";
     }
   }
 }

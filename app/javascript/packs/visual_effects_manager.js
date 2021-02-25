@@ -20,14 +20,14 @@ document.addEventListener('turbolinks:load', () => {
     });
 
   } else if (window.location.href.match('rackets') != null && document.querySelector('.racket-container') !== null) {
-
-  //   const revealEffect = {distance: '150px', duration: 400, easing: 'cubic-bezier(.55,0,.5,.99)', origin: 'bottom'};
-  //   elementReveal.listReveal(document.querySelectorAll('.racket-card'), revealEffect, 50);
+    document.querySelectorAll('.racket-card').forEach((racket, i) => {
+      racket.style.animation = `${i/30}s linear 0s stayWhite, 0.20s ease-in-out ${i/30}s slideIn`;
+    });
   };
 });
 
 
-
+// animation: slideIn 1s 0.6s;
 
 
 // document.addEventListener('turbolinks:load', () => {

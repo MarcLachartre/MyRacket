@@ -12,6 +12,7 @@
   justify-self: center;
   margin: 10px 16px;
   border-radius: 0.6rem;
+  // opacity: 0;
   transition: border 0.30s ease-in-out, box-shadow 0.30s ease-in-out;
   .fa-times{
     display: none;
@@ -29,25 +30,25 @@
   .racket-checkbox-label{
     width: 6rem;
   }
-
+  
   .button-up {
     border: solid 1px $light-blue;
     color: $light-blue;
   }
-
+  
   .button-up:hover {
     color: white;
   }
 }
 
 .racket-card-disabled {
-
+  
   .button-up-disabled{
     border: solid 1px $dark-grey;
     color: $dark-grey;
     cursor: auto;
   }
-
+  
   .card-bottom:hover{
     .card-spec{
       opacity: 0
@@ -59,11 +60,11 @@
       opacity:1;
     }
   }
-
+  
   .button-up-disabled:hover{
     transform: translateY(0vh);
   }
-
+  
   .racket-checkbox-label-disabled{
     width:3rem;
     cursor: auto;
@@ -160,12 +161,12 @@
   height:100%;
   padding-left: 1rem;
   padding-right: 1rem;
-
+  
   h4 {
     font-weight: 500;
     margin-bottom: 0.2em;
   }
-
+  
   h5 {
     font-size: 1.1em;
     font-weight: 300;
@@ -194,7 +195,7 @@
   margin-left: 1rem;
   margin-right: 1rem;
   transition: all 0.30s ease-in-out;
-
+  
 }
 
 .card-weight {
@@ -224,7 +225,7 @@
   display:flex;
   align-self: center;
   justify-content: flex-end;
-
+  
 }
 
 .card-balance{
@@ -277,13 +278,13 @@
   h5 {
     color: $mid-blue
   }
-
+  
   .button-up{
     border: solid 1px $light-blue;
     color: white;
     background-color: $light-blue;
   }
-
+  
   .fas{
     color:white;
   }
@@ -305,7 +306,7 @@
     color: $light-red;
     background-color: white;
   }
-
+  
   .fa-times{
     display: flex;
     color: $light-red;
@@ -316,21 +317,43 @@
   .fa-plus{
     display: none;
   }
-
+  
   .button-up:hover {
-  background-color: $light-red;
+    background-color: $light-red;
+    
+    .fa-times{
+      display: flex;
+      color: white;
+    }
+    .fa-check{
+      display: none;
+    }
+    .fa-plus{
+      display: none;
+    }
+  }
+}
 
-  .fa-times{
-    display: flex;
-    color: white;
-  }
-  .fa-check{
-    display: none;
-  }
-  .fa-plus{
-    display: none;
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(80px);
+    
   }
 
+  to {
+    transform: translateY(0px);
+    opacity: 1
+  }
+}
+
+@keyframes stayWhite {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
   }
 }
 
