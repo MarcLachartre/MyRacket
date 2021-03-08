@@ -1,22 +1,59 @@
 @import "index";
 
-.search-form{
-  position: relative;
-  width: 17vw;
-  margin: 0;
-}
-
 .search-bar {
   position: relative;
   display: flex;
   padding-left: 15px;
   padding-right: 15px;
   border-right: 1px solid #dadada;
-  height: 100%;
+  height: auto;
+  width: 19%;
   flex-shrink: 0;
   background-color: white;
+    h4 {
+      margin-bottom: 0;
+    }
+}
+
+.search-category{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  cursor: pointer;
   h4 {
+    transition: all 0.25s ease-in-out
+  }
+  .arrow-down{
+    transition: all 0.25s ease-in-out
+  }
+}
+
+.search-category:hover{
+  h4 {
+    color: $light-blue
+  }
+  .arrow-down{
+    position: relative;
     align-self: center;
+    border: solid 2px $light-blue;
+    border-width: 0 4px 4px 0;
+    border-radius: 4px;
+    display: inline-block;
+    padding: 4px;
+    transition: all 0.4s;
+    
+  }
+  .arrow-up {
+    position: relative;
+    align-self: center;
+    border: solid 2px $light-blue;
+    border-width: 0 4px 4px 0;
+    border-radius: 4px;
+    display: inline-block;
+    padding: 4px;
+    transition: all 0.4s;
+    
   }
 }
 
@@ -28,12 +65,70 @@
   width: 100%;
 }
 
+.quick-search-container {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+  height: 45px;
+  border: 3px solid $mid-blue;
+  border-radius: 50px;
+  overflow: hidden;
+  transition: all 0.30s ease-in-out;
+  .fa-search {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+    color: $mid-blue;
+    transition: all 0.30s ease-in-out;
+  }
+  .fa-search:hover {
+    cursor: pointer;
+    color: $mid-blue
+  }
+}
+
+.quick-search-container:hover {
+  border: 3px solid $light-blue;
+  .fa-search {
+    color: $light-blue;
+  }
+}
+
+.quick-search-container-active {
+  border: 3px solid $light-blue;
+  .fa-search {
+    color: $light-blue;
+  }
+}
+
+.type-search{
+  border: none;
+  margin-left: 5px;
+}
+
+.type-search:focus{
+  outline: none;
+}
+
+.filters-container {
+  position: relative;
+  display:flex;
+  flex-direction: column;
+  height: 100%
+}
+
 .filter-type {
   display: flex;
   justify-content: space-between;
   padding-top: 8px;
   padding-bottom: 8px;
+  margin-bottom: 4px;
   border-bottom: 1px solid #dadada;
+  transition: opacity 1000ms linear;
   h5, p {
     margin-bottom: 0px;
   }
@@ -46,29 +141,22 @@
 .filters {
   display: flex;
   flex-direction: column;
-  margin-top: 2vh;
-  margin-bottom: 2vh;
 }
 
 .show-filters {
   display: flex;
 }
 
-
 .label-design {
   display: flex;
   justify-content: center;
-  height:2.5rem;
+  height:100%;
+
   transition: all 0.15s ease-in-out;
   cursor: pointer;
 }
 
-.label-design:hover {
-  display: flex;
-  transition: all 0.15s ease-in-out;
-  cursor: pointer;
-  background-color: $very-light-blue
-}
+
 
 .searchbar-checkbox {
   display: flex;
@@ -81,8 +169,72 @@
   justify-content: left;
   cursor: pointer;
   font-size:1rem;
-  line-height: 2.5rem;
-  margin-left: 5%;
+  line-height: 2.2rem;
+  padding-left: 5%;
+  margin-left: 2%;
   margin-bottom: 0;
+  transition: all 0.25s ease-in-out;
 }
 
+.label:hover {
+  display: flex;
+  border-radius: 50px;
+  padding-left: 7%;
+  cursor: pointer;
+  background-color: $very-light-blue
+}
+
+.clear-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-top: 10px;
+  border: 2px solid $light-red;
+  color: $light-red;
+}
+
+.clear-search:hover {
+  padding-right: 30px;
+  padding-left: 30px;
+  border: 2px solid $light-red;
+  color: white;
+  background-color: $light-red;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  20%{
+    opacity: 0;
+  }
+
+
+  100% {
+    opacity: 1;
+  }
+}
+
+// @keyframes fadeOut {
+//   0% {
+//     opacity: 1
+//   }
+  
+//   100% {
+//    opacity: 0;
+//    display: none;
+//   }
+// }
+
+// @keyframes fadeIn {
+//   0% {
+//     opacity: 0
+//   }
+  
+//   100% {
+//    opacity: 1
+//   }
+// }

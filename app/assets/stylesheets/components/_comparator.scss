@@ -10,20 +10,17 @@
   flex-direction: column;
   height:auto;
   box-shadow: 0px 0px 0px 0px none;
-  transition: all 0.4s;
-
+  // transition: all 0.4s;
 }
 
 .open-comparator-arrow {
   position: relative;
   display:flex;
   background-color: white;
-  width:120px;
-  min-width: 120px;
-  height: 60px;
+  width:7%;
+  min-width: 5%;
+  height: 80%;
   border-radius:40px;
-  margin-left: 10px;
-  margin-right: 10px;
   border: solid 1px $dark-blue;
   justify-content: space-around;
   align-items: center;
@@ -47,7 +44,6 @@
   }
   .open-comparator-arrow{
     display: flex;
-    width: 135px;
     border: solid 1px $light-blue;
     color: $light-blue;
   }
@@ -77,25 +73,30 @@
 }
 
 .short-displayed-rackets {
-  display: flex;
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-auto-rows: 70px;
   position: relative;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   height: 70px;
-  width: 85%;
+  width: 100%;
 }
 
 .short-comparator-racket-card {
   position: relative;
   display: flex;
-  justify-content: space-evenly;
+  justify-self: center;
   height: 80%;
+  width: 95%;
   overflow: hidden;
   background-color: white;
   align-items: center;
-  margin-left: 10px;
   border: solid 1px $mid-blue;
   border-radius: 50px;
+  opacity: 0;
+  animation: 1s ease-out translateIn;
+  animation-fill-mode: forwards;
   .compared-racket-checkbox-label{
     position: relative;
     height: 100%;
@@ -109,7 +110,9 @@
   padding-left: 10px;
   padding-right: 10px;
   border-right: solid 1px $dark-blue;
-  color: $dark-blue
+  color: $dark-blue;
+  width: 80%;
+  min-width: 80%;
 }
 
 .compared-racket-checkbox-label{
@@ -117,8 +120,7 @@
   justify-content: center;
   align-items: center;
   margin:0;
-  width: 45px;
-  min-width:45px;
+  min-width:20%;
   background-color: white;
   cursor: pointer;
 }
@@ -203,19 +205,19 @@
   cursor: pointer;
   transform: translateY(2vh);
   transition: all 0.4s;
-  .arrow-up {
-    position: relative;
-    align-self: center;
-    border: solid 2px $light-blue;
-    border-width: 0 4px 4px 0;
-    border-radius: 4px;
-    display: inline-block;
-    padding: 4px;
-    transition: all 0.4s;
-  }
-  i {
-        color: $light-blue;
-  }
+  // .arrow-up {
+  //   position: relative;
+  //   align-self: center;
+  //   border: solid 2px $light-blue;
+  //   border-width: 0 4px 4px 0;
+  //   border-radius: 4px;
+  //   display: inline-block;
+  //   padding: 4px;
+  //   transition: all 0.4s;
+  // }
+  // i {
+  //       color: $light-blue;
+  // }
 }
 
 .close-comparator-arrow:hover{
@@ -373,4 +375,18 @@
   align-self: center;
 }
 
+@keyframes translateIn {
+  0%{
+    transform: translateX(700px);
+    opacity: 0;
+  }
 
+  25%{
+    opacity: 0;
+  }
+
+  100%{
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}

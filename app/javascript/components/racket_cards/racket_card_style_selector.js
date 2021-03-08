@@ -3,6 +3,7 @@ export class RacketCardStyleSelector {
 
   initStyleOnLoad(){ // on page load, if checkbox is checked or not, it sets its style. It adds an event listener on the checkboxes to each racket card to modify their style on change event.
     //console.log("init style on load")
+
     this.clickableCard();
     document.querySelectorAll('.racket-checkbox').forEach((checkbox) => {
       this.cardStyleSelector(checkbox);

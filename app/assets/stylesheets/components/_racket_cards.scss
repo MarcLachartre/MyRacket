@@ -42,7 +42,7 @@
 }
 
 .racket-card-disabled {
-  
+ 
   .button-up-disabled{
     border: solid 1px $dark-grey;
     color: $dark-grey;
@@ -183,6 +183,16 @@
 
 .card-model {
   justify-self: start;
+  height: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: normal;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  h6 {
+    margin: none;
+  }
 }
 
 .card-spec {

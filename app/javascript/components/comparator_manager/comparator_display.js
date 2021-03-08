@@ -1,6 +1,8 @@
+import {Comparator} from './comparator_file_manager';
 // console.log('Comparator Display')
-export class ComparatorDisplay { //this class in only responsible of initializing the style of the comparator element.
-  constructor(shortComparator, largeComparator, comparatorContainer){
+export class ComparatorDisplay extends Comparator { //this class in only responsible of initializing the style of the comparator element.
+  constructor(){
+    super()
     this.shortComparator = document.querySelector('.short-comparator-container');
     this.largeComparator = document.querySelector('.large-comparator-container');
     this.comparatorContainer = document.querySelector('.racket-comparator-container');
@@ -19,6 +21,7 @@ export class ComparatorDisplay { //this class in only responsible of initializin
 
     downArrow.addEventListener('click', () => {
       this.openLargeComparator();
+      super.cardTranslateIn();
       // scrollDown(comparator, 1, 8, 85, "vh"); //effects.js
     });
   }

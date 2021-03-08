@@ -15,7 +15,7 @@ class Racket < ApplicationRecord
   has_many :users, through: :racketreviews
 
   scope :brand_or_model, -> (brand, model) do
-    where('model LIKE ? AND brand LIKE ?','%' + model.join(' ') + '%', '%' + brand.join(' ') + '%')
+    where('brand LIKE ? OR model LIKE ?','%' + model.join(' ') + '%', '%' + brand.join(' ') + '%')
   end
 end
 

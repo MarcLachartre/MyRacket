@@ -12,6 +12,7 @@ export class RacketSearchDisplay extends RacketSearch {
     // console.log("racketsUpdate")
     const racketIndexFetch = await super.racketFetch(); // First, we fetch the searched rackets and the pagination in the database (json object).
     const racketFetched = racketIndexFetch.rackets;
+    console.log(racketFetched)
     const pagesNumber = racketIndexFetch.pages;
 
     // Then we look for the rackets to remove and the ones to add to the container.
@@ -24,10 +25,10 @@ export class RacketSearchDisplay extends RacketSearch {
     this.insertRacketCards(racketCardsToAdd);
 
     const gridContainer = document.querySelector('.select-racket');
-    const animateThatSearch = new AnimateThatSearch(this.rackets, racketFetched, gridContainer); // Now lets apply style to the cards that remained in the container and that were not removed nor added.
+    const animateThatSearch = new AnimateThatSearch(this.rackets, racketFetched, gridContainer, ".racket-card", "racket-checkbox", 4); // Now lets apply style to the cards that remained in the container and that were not removed nor added.
     animateThatSearch.applyTranslation();
 
-    const pagination = new Pagination(this.page, pagesNumber); // Finally let's not forget the pagination that has to take place each time we filter through the rackets
+    const pagination = new Pagination(this.page, pagesNumber); // Finally let's not forget the pagination that has to take place each time we filter through the rackets.
     pagination.initPagination();
 
     return
@@ -73,6 +74,7 @@ export class RacketSearchDisplay extends RacketSearch {
 
     cards.forEach(card => {
       const position = new AnimateThatSearch();
+      position.columnsAmount = 4;
       const cardPosition = position.positionning(card[1]);
       card[0].style.gridColumnStart = cardPosition.column;
       card[0].style.gridRowStart = cardPosition.row;
