@@ -11,6 +11,7 @@ gem 'devise'
 gem 'sprockets-rails', '~> 3.2.2'
 gem 'sassc-rails'
 # gem 'sass-rails', '~> 5.0'
+
 gem 'font-awesome-sass', '~> 5.12.0'
 
 gem 'webpacker'

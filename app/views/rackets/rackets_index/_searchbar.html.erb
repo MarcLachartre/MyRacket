@@ -1,152 +1,168 @@
 
 <div id= 'search-bar-items' >
   <%= hidden_field_tag "search_bar_input", 1 %>
-  <h4>
-    <%= "Quick Search" %>
-  </h4>
-  <%= text_field_tag :model, @model, placeholder: "Enter racket", class: 'type-search', remote: true %>
-
-
-  <div class= 'filter-type' >
-    <h5>
-      <%= "Brands" %>
-    </h5>
-
-  </div>
-  <div class= 'filters'>
-    <% brand_array = [] %>
-    <% @all_rackets.each {|racket| %>
-    <% unless brand_array.include?(racket.brand) %>
-    <% brand_array << racket.brand %>
-    <div class= 'label-design'>
-      <%= check_box_tag "brand[]", brand_array.last,
-      if @search_params[:brand] != nil
-        @search_params[:brand].include?(racket.brand)
-      end, data: {brand: racket.brand},
-      id: brand_array.last,
-      class: 'searchbar-checkbox'%>
-      <%= label_tag brand_array.last, nil, class: 'label' %>
+  <div class= quick-search>  
+    <div class= "search-category">
+      <h4>
+        <%= "Quick Search" %>
+      </h4>
+      <div class= "arrow">
+        <i class= "arrow-up"></i>
+      </div>
     </div>
-    <% end %>
-    <% } %>
-  </div>
-
-  <div class= 'filter-type'>
-    <h5>
-      <%= "String pattern" %>
-    </h5>
-
-  </div>
-  <div class = filters>
-    <% string_patterns = [] %>
-    <% @all_rackets.each{|racket| string_patterns << racket.string_pattern }%>
-    <% string_patterns.uniq.each{|pattern| %>
-    <div class= 'label-design'>
-      <%= check_box_tag "string_pattern[]", pattern,
-      if @search_params[:string_pattern] != nil
-       @search_params[:string_pattern].include?(pattern.to_s)
-     end,
-     id: pattern,
-     class: 'searchbar-checkbox' %>
-     <% pattern_label = pattern.to_s.split('') %>
-     <%= label_tag pattern, "#{pattern_label[0] + pattern_label[1]}/#{pattern_label[2] + pattern_label[3]}", class: 'label'  %>
-   </div>
-   <% } %>
- </div>
-
-
- <div class= 'filter-type'>
-   <h5>
-    <%= "Weight" %>
-  </h5>
-</div>
-
-  <div class= 'filters'>
-  <% weight_list = [0..239, 240..254, 255..269, 270..284, 285..299, 300..314, 315..329, 330..344, 345..500] %>
-  <% weight_list.each {|weight| %>
-  <div class= 'label-design'>
-    <%= check_box_tag "weight[]", weight,
-    if @search_params[:weight] != nil
-      @search_params[:weight].include?(weight)
-    end,
-    id: weight,
-    class: 'searchbar-checkbox' %>
-    <%= label_tag weight,
-    if weight.first == 0
-        "< #{weight.last} gr"
-      elsif weight.first == 680
-        " > #{weight.first} gr"
-      else
-        "#{weight.first} - #{weight.last} gr"
-      end,
-      class: 'label'  %>
+    <div class= 'quick-search-container'>
+      <%= text_field_tag :quick_search, @quick_search, placeholder: "Wilson Juice", class: 'type-search' %>
+      <i class="fa fa-search"></i> 
     </div>
-    <% } %>
   </div>
+    <div class= "filtering">
+    <div class= "search-category">
 
-  <div class= 'filter-type'>
-    <h5>
-      <%= "Headsize" %>
-    </h5>
-
-  </div>
-  <div class= 'filters'>
-    <% headsize_list = [(0..619), (620..644), (645..679), (680..2000)] %>
-    <% headsize_list.each {|headsize| %>
-    <div class= 'label-design'>
-      <%= check_box_tag "headsize[]", headsize,
-      if @search_params[:headsize] != nil
-        @search_params[:headsize].include?(headsize)
-      end,
-      id: headsize,
-      class: 'searchbar-checkbox' %>
-      <%= label_tag headsize,
-      if headsize.first == 0
-        "< #{headsize.last} cm²"
-      elsif headsize.first == 680
-        " > #{headsize.first} cm²"
-      else
-        "#{headsize.first} - #{headsize.last} cm²"
-      end,
-
-      class: 'label'  %>
+      <h4>
+        <%= "Filters" %>
+      </h4>
+      <div class= "arrow">
+        <i class= "arrow-up"></i>
+      </div>
     </div>
-    <% } %>
-  </div>
+    <!-- <div class= "filters-container"> -->
+      <div class= 'filter-type' >
+        <h5>
+          <%= "Brands" %>
+        </h5>
+      </div>
 
-<div>
+      <div class= 'filters'>
+        <% brand_array = [] %>
+        <% @all_rackets.each {|racket| %>
+        <% unless brand_array.include?(racket.brand) %>
+        <% brand_array << racket.brand %>
+        <div class= 'label-design'>
+          <%= check_box_tag "brand[]", brand_array.last,
+          if @search_params[:brand] != nil
+            @search_params[:brand].include?(racket.brand)
+          end, data: {brand: racket.brand},
+          id: brand_array.last,
+          class: 'searchbar-checkbox'%>
+          <%= label_tag brand_array.last, nil, class: 'label' %>
+        </div>
+        <% end %>
+        <% } %>
+      </div>
 
-  <div class= 'filter-type'>
-    <h5>
-      <%= "Balance" %>
-    </h5>
+      <div class= 'filter-type'>
+        <h5>
+          <%= "String pattern" %>
+        </h5>
+      </div>
 
-  </div>
-  <div class= 'filters'>
-    <% balance_list = [(0..299),(300..309), (310..319), (320..329), (330..339), (340..349), (350..1000)] %>
-    <% balance_list.each {|balance| %>
-    <div class= 'label-design'>
-      <%= check_box_tag "balance[]", balance,
-      if @search_params[:balance] != nil
-        @search_params[:balance].include?(balance)
-      end,
-      id: balance,
-      class: 'searchbar-checkbox' %>
-      <%= label_tag balance,
-      if balance.first == 0
-        "< #{balance.last} mm"
-      elsif balance.first == 350
-        " > #{balance.first} mm"
-      else
-        "#{balance.first} - #{balance.last} mm"
-      end,
-      class: 'label'  %>
+      <div class = filters>
+        <% string_patterns = [] %>
+        <% @all_rackets.each{|racket| string_patterns << racket.string_pattern }%>
+        <% string_patterns.uniq.each{|pattern| %>
+        <div class= 'label-design'>
+          <%= check_box_tag "string_pattern[]", pattern,
+          if @search_params[:string_pattern] != nil
+          @search_params[:string_pattern].include?(pattern.to_s)
+          end,
+          id: pattern,
+          class: 'searchbar-checkbox' %>
+          <% pattern_label = pattern.to_s.split('') %>
+          <%= label_tag pattern, "#{pattern_label[0] + pattern_label[1]}/#{pattern_label[2] + pattern_label[3]}", class: 'label'  %>
+        </div>
+        <% } %>
+      </div>
+
+
+      <div class= 'filter-type'>
+        <h5>
+          <%= "Weight" %>
+        </h5>
+      </div>
+
+      <div class= 'filters'>
+        <% weight_list = [0..239, 240..254, 255..269, 270..284, 285..299, 300..314, 315..329, 330..344, 345..500] %>
+        <% weight_list.each {|weight| %>
+        <div class= 'label-design'>
+          <%= check_box_tag "weight[]", weight,
+          if @search_params[:weight] != nil
+          @search_params[:weight].include?(weight)
+          end,
+          id: weight,
+          class: 'searchbar-checkbox' %>
+          <%= label_tag weight,
+          if weight.first == 0
+            "< #{weight.last} gr"
+          elsif weight.first == 680
+            " > #{weight.first} gr"
+          else
+            "#{weight.first} - #{weight.last} gr"
+          end,
+          class: 'label'  %>
+        </div>
+        <% } %>
+      </div>
+
+      <div class= 'filter-type'>
+        <h5>
+          <%= "Headsize" %>
+        </h5>
+      </div>
+    
+      <div class= 'filters'>
+        <% headsize_list = [(0..619), (620..644), (645..679), (680..2000)] %>
+        <% headsize_list.each {|headsize| %>
+        <div class= 'label-design'>
+          <%= check_box_tag "headsize[]", headsize,
+          if @search_params[:headsize] != nil
+            @search_params[:headsize].include?(headsize)
+          end,
+          id: headsize,
+          class: 'searchbar-checkbox' %>
+          <%= label_tag headsize,
+          if headsize.first == 0
+            "< #{headsize.last} cm²"
+          elsif headsize.first == 680
+            " > #{headsize.first} cm²"
+          else
+            "#{headsize.first} - #{headsize.last} cm²"
+          end,
+
+          class: 'label'  %>
+        </div>
+        <% } %>
+      </div>
+
+      <div class= 'filter-type'>
+        <h5>
+          <%= "Balance" %>
+        </h5>
+      </div>
+    
+      <div class= 'filters'>
+        <% balance_list = [(0..299),(300..309), (310..319), (320..329), (330..339), (340..349), (350..1000)] %>
+        <% balance_list.each {|balance| %>
+        <div class= 'label-design'>
+          <%= check_box_tag "balance[]", balance,
+          if @search_params[:balance] != nil
+            @search_params[:balance].include?(balance)
+          end,
+          id: balance,
+          class: 'searchbar-checkbox' %>
+          <%= label_tag balance,
+          if balance.first == 0
+            "< #{balance.last} mm"
+          elsif balance.first == 350
+            " > #{balance.first} mm"
+          else
+            "#{balance.first} - #{balance.last} mm"
+          end,
+          class: 'label'  %>
+        </div>
+        <% } %>
+      </div>
     </div>
-    <% } %>
-  </div>
-
-
-    <%= link_to 'Remove filter', rackets_path, class: 'clear-search' %>
-  </div>
+  <!-- </div> -->
+  <div class= 'clear-search button-up'> Clear Search </div>
 </div>
 

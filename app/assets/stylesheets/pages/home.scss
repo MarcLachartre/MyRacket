@@ -35,17 +35,15 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-self: center;
   align-items: center;
-  height: 21%;
   width: 26%;
   opacity: 0;
   background-color: $dark-blue;
-  box-shadow: 0px 0px 20px 22px $dark-blue;
+  box-shadow: 0px 0px 20px 30px $dark-blue;
   h2 {
     color: white;
-    align-self: center;
+    text-align: center;
     margin-bottom: 15px;
   }
 }

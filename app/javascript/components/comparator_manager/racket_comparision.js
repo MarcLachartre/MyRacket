@@ -28,6 +28,11 @@ export class RacketComparision extends Comparator {
     largeComparator.appendChild(this.createLargeCard());
   }
 
+  positionCardInComparatorGrid() { //new rackets will always be positionned at the end on the list
+    const lastGridColumnPosition = super.racketsCompared().length;
+    return lastGridColumnPosition
+  }
+
   createRemoveLabel() { // each racket in comparator should have one remove label made of one checkbox (so that we can remove it from comparator when unchecking it), its label and a delete cross item.
     const checkbox = document.createElement("input");
     const deleteLabel = document.createElement("label");
@@ -71,18 +76,16 @@ export class RacketComparision extends Comparator {
     brandModelContainer.classList.toggle('short-brand-model-container');
 
     card.appendChild(brandModelContainer);
-
-
-      let specData = document.createElement("div");
-      specData.classList.toggle("spec-data");
-
-      brandModelContainer.appendChild(specData);
-
+      
+    let specData = document.createElement("div");
+    specData.classList.toggle("spec-data");
+    brandModelContainer.appendChild(specData);
 
     const allSpecData = brandModelContainer.querySelectorAll(".spec-data");
     allSpecData[0].innerHTML = `${this.brand} ${this.model}`;
     card.appendChild(removeLabel);
-
+    card.style.gridColumnStart = `${this.positionCardInComparatorGrid() + 1}`;
+    card.style.gridRowStart = "1";
     return card
   }
 
