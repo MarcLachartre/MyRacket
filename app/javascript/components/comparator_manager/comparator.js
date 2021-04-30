@@ -1,7 +1,7 @@
 import { AnimateThatSearch } from '../effects/animate_that_search';
 import {ComparatorDisplay, RacketComparision} from './comparator_file_manager';
+// console.log(module.loaded)
 
-// console.log('Comparator');
 export class Comparator {
   constructor() {
     this.racketsInComparator = document.querySelector('.racket-comparator-container').querySelectorAll('input.compared-racket-checkbox');
@@ -18,33 +18,76 @@ export class Comparator {
     });
     this.isEnabled(document.querySelectorAll('.racket-checkbox'));
     this.cardTranslateIn();
-    this.positionningCardsInGrid();
+    this.positionningCardsInGrid(document.querySelectorAll(".short-comparator-racket-card"));
+    this.positionningCardsInGrid(document.querySelectorAll(".compared-racket-cards-container"));
+    this.containerResizing(".short-comparator-racket-card");
+    this.containerResizing(".compared-racket-cards-container");
   }
 
-  positionningCardsInGrid() {
-    const initialComparedRacketCards = document.querySelector(".short-displayed-rackets").querySelectorAll(".short-comparator-racket-card");
-
-    for (let i = 0; i < initialComparedRacketCards.length; i++) {
+  positionningCardsInGrid(cards) {
+    for (let i = 0; i < cards.length; i++) {
       const position = new AnimateThatSearch();
       position.columnsAmount = 5;
       const column = position.positionning(i).column;
       const row = position.positionning(i).row;
 
-      initialComparedRacketCards[i].style.gridColumnStart = `${column}`;
-      initialComparedRacketCards[i].style.gridRowStart = `${row}`;
+      cards[i].style.gridColumnStart = `${column}`;
+      cards[i].style.gridRowStart = `${row}`;
     }
   }
 
-  animateSearch(initialComparedRacketCheckboxes, finalComparedRacketsIdsObj) {
-    for (let i = 0; i < document.querySelectorAll(".short-comparator-racket-card").length; i++) {
-      console.log(document.querySelectorAll(".short-comparator-racket-card")[i])
-      document.querySelectorAll(".short-comparator-racket-card")[i].style.webkitAnimation = "none"
-      document.querySelectorAll(".short-comparator-racket-card")[i].style.webkitAnimationDelay = "none"
-      document.querySelectorAll(".short-comparator-racket-card")[i].style.webkitAnimationFillMode = "none"
-      document.querySelectorAll(".short-comparator-racket-card")[i].style.opacity = "1"
+  containerResizing(cardsSelector) {
+    const initCardsPositions = new AnimateThatSearch();
+    initCardsPositions.cardSelector = cardsSelector;
+    initCardsPositions.columnsAmount = 5;
+    initCardsPositions.resizingSetCardsState(cardsSelector)
+  }
+
+  animateSearch(initialComparedRacketCheckboxes, columsAmount, removedElement) { // this function prepares the compared racket cards to be animated with the AnimateThatSearch class and retrieves every variable with the right format to pass as AnimateThatSearch class variable (for more info see AnimateThatSearch class). First argument needs to be the node list of the compared racket checboxes contained in the displayed comparator. Second arg is the element to remove. Third is the node element to remove. 
+    // console.log("animatesearch") 
+    const finalComparedRacketsIdsObj = (nodeList) => {
+      const arrayObj = [];
+      const finalComparedRacketsIdsArray = nodeList.map(el => Number(el.id));
+      finalComparedRacketsIdsArray.forEach((el) => { arrayObj.push({id: el})}); 
+      return arrayObj
+    } 
+
+    const arg = () => {
+      if (removedElement.closest(".short-comparator-racket-card") === null) {
+        return {finalComparedRacketsIdsObj: finalComparedRacketsIdsObj(Array.from(document.querySelector(".racket-comparator").querySelectorAll(".compared-racket-checkbox"))), cardSelector: ".compared-racket-cards-container", container: document.querySelector(".racket-comparator")};
+      } else {
+        return {finalComparedRacketsIdsObj: finalComparedRacketsIdsObj(Array.from(document.querySelector(".short-displayed-rackets").querySelectorAll(".compared-racket-checkbox"))), cardSelector: ".short-comparator-racket-card", container: document.querySelector(".short-displayed-rackets")};
+      }
     }
-    const animateThatSearch = new AnimateThatSearch(initialComparedRacketCheckboxes, finalComparedRacketsIdsObj , document.querySelector(".short-displayed-rackets"), ".short-comparator-racket-card", "racket-checkbox", 5); // Now lets apply style to the cards that remaining in the container and that were not removed nor added.
+
+    const setInitialState = (node) => {
+      for (let i = 0; i < node.length; i++) {
+        node[i].style.webkitAnimation = "none";
+        node[i].style.webkitAnimationDelay = "none";
+        node[i].style.webkitAnimationFillMode = "none";
+        node[i].style.opacity = "1";
+      };
+    };
+
+    const setFinalState = (nodes) => {
+      this.positionningCardsInGrid(nodes);
+      nodes.forEach(node => {
+        node.style.transition = "none";
+        node.style.transform = "none";      
+      }); 
+    } 
+    
+    setInitialState(document.querySelectorAll(".short-comparator-racket-card"));
+    setInitialState(document.querySelectorAll(".compared-racket-cards-container"));
+
+    const animateThatSearch = new AnimateThatSearch(initialComparedRacketCheckboxes, arg().finalComparedRacketsIdsObj, arg().container, arg().cardSelector, "racket-checkbox", columsAmount); // Now lets apply style to the cards that remaining in the container and that were not removed nor added.
     animateThatSearch.applyTranslation();
+
+    if (arg().container === document.querySelector(".racket-comparator")) {
+      setFinalState(document.querySelectorAll(".short-comparator-racket-card"));   
+    } else {  
+      setFinalState(document.querySelectorAll(".compared-racket-cards-container"));
+    }
   }
 
   addComparisionListener(racket) { // this function initializes comparisions. it takes as an argument each racket in the rackets container and the ones added by the search. Then on comparision button click it adds a racket to the comparator or removes it
@@ -83,8 +126,17 @@ export class Comparator {
   }
 
   removeComparedRacket(event) {
-    console.log("remove compared racket")
-    const initialComparedRacketCheckboxes = document.querySelector(".short-displayed-rackets").querySelectorAll(".compared-racket-checkbox");
+    // console.log("remove compared racket")
+    const checkboxes = () => {  
+      if (event.target.closest(".short-comparator-racket-card") !== null || event.target.closest(".racket-compare-button") !== null) {
+        return document.querySelector(".short-displayed-rackets").querySelectorAll(".compared-racket-checkbox");
+      } else {
+        return document.querySelector(".racket-comparator").querySelectorAll(".compared-racket-checkbox");
+      };
+    };
+
+    const initialComparedCheckboxes = checkboxes();
+
     const racketsCompared = document.querySelectorAll('input.compared-racket-checkbox');
     if (this.reachedMaxCapacity() === true) {
       document.querySelectorAll('.racket-checkbox').forEach(racket => {
@@ -92,31 +144,35 @@ export class Comparator {
       });
     };
 
-    for (let card of racketsCompared.values()) {
-      if (event.target.id == card.id) {
-        card.parentElement.parentElement.remove();
-      };
-    };
-    const finalComparedRackets = document.querySelector(".short-displayed-rackets").querySelectorAll(".compared-racket-checkbox");
-    const finalComparedRacketsIds = Array.from(finalComparedRackets).map((el) => Number(el.id))
-    const finalComparedRacketsIdsObj = [];
-    finalComparedRacketsIds.forEach(el => {
-      finalComparedRacketsIdsObj.push({id: el})
-    });
+    let cardToRemove = ""
+    for (let checkbox of racketsCompared.values()) {
+      if (event.target.id == checkbox.id && checkbox.closest(".compared-racket-cards-container") !== null) {
+        checkbox.closest(".compared-racket-cards-container").remove();
+      } else if (event.target.id == checkbox.id && checkbox.closest(".compared-racket-cards-container") === null) {
+        cardToRemove = checkbox.closest(".short-comparator-racket-card");
+        checkbox.closest(".short-comparator-racket-card").remove();
+      }
+    }
 
-    this.animateSearch(initialComparedRacketCheckboxes, finalComparedRacketsIdsObj);
+    if (event.target.className === "compared-racket-checkbox") {
+      this.animateSearch(initialComparedCheckboxes, 5, event.target);
+    } else if (event.target.className === "racket-checkbox") {
+      this.animateSearch(initialComparedCheckboxes, 5, cardToRemove);
+    }
   }
 
   cardTranslateIn() {
-    const cards = document.querySelectorAll(".short-comparator-racket-card");
+  const cards = document.querySelectorAll(".short-comparator-racket-card");
     for (let i = 0; i < cards.length; i++) {
-      cards[i].style.animationDelay = `${i*250}ms`
+      cards[i].style.animation = "0.6s ease-out translateIn";
+      cards[i].style.animationFillMode = "forwards";
+      cards[i].style.webkitAnimationDelay = `${i*250}ms`;
     }
   }
 
   isEnabled(rackets) { // enable or disable racket comparision depending on the amount of rackets that are in the comparator
     rackets.forEach(racket => {
-      if (this.reachedMaxCapacity()) {
+      if (this.reachedMaxCapacity() && this.racketsCompared().includes(racket.id) === false) {
         this.disableComparision(racket);
         // console.log(`is enabled false`)
         return false
@@ -135,12 +191,10 @@ export class Comparator {
 
   disableComparision(racket) {
     // console.log("disableComparision")
-    if (this.racketsCompared().includes(racket.id) === false) {
-      racket.disabled = true;
-      racket.closest(".racket-card").classList.add("racket-card-disabled");
-      racket.closest(".racket-checkbox-label").classList.add("racket-checkbox-label-disabled");
-      racket.closest(".button-up").classList.add("button-up-disabled");
-    };
+    racket.disabled = true;
+    racket.closest(".racket-card").classList.add("racket-card-disabled");
+    racket.closest(".racket-checkbox-label").classList.add("racket-checkbox-label-disabled");
+    racket.closest(".button-up").classList.add("button-up-disabled");
   }
 
   enableComparision(racket) {

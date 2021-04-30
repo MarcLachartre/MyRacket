@@ -21,11 +21,23 @@ export class RacketComparision extends Comparator {
   }
 
   addRacketToComparator() {
-    // console.log("add racket to comparator")
+    console.log("adding racket to comparator")
     const shortComparator = document.querySelector('.short-displayed-rackets');
     const largeComparator = document.querySelector('.racket-comparator');
-    shortComparator.appendChild(this.createShortCard());
-    largeComparator.appendChild(this.createLargeCard());
+
+    const shortCard = this.createShortCard();
+    const largeCard = this.createLargeCard();
+
+    largeCard.style.gridColumnStart = `${this.positionCardInComparatorGrid() + 1}`;
+    largeCard.style.gridRowStart = "1";
+
+    shortCard.style.gridColumnStart = `${this.positionCardInComparatorGrid() + 1}`;
+    shortCard.style.gridRowStart = "1";
+    shortCard.style.animation = "0.6s ease-out translateIn";
+    shortCard.style.animationFillMode = "forwards";
+
+    shortComparator.appendChild(shortCard);
+    largeComparator.appendChild(largeCard);
   }
 
   positionCardInComparatorGrid() { //new rackets will always be positionned at the end on the list
@@ -84,8 +96,6 @@ export class RacketComparision extends Comparator {
     const allSpecData = brandModelContainer.querySelectorAll(".spec-data");
     allSpecData[0].innerHTML = `${this.brand} ${this.model}`;
     card.appendChild(removeLabel);
-    card.style.gridColumnStart = `${this.positionCardInComparatorGrid() + 1}`;
-    card.style.gridRowStart = "1";
     return card
   }
 
@@ -102,7 +112,6 @@ export class RacketComparision extends Comparator {
     comparedRacketCardsData.classList.toggle('compared-racket-cards-data');
 
     for (let i = 1; i < Object.keys(this).length-1; i++) {
-      // console.log (this)
       if ( i < 3) {
       let specTitle = document.createElement("h4");
       specTitle.innerHTML = this[Object.keys(this)[i]];
@@ -114,11 +123,10 @@ export class RacketComparision extends Comparator {
       comparedRacketCardsData.appendChild(spec);
       };
     };
-
+    comparedRacketCardsData.appendChild(removeLabel)
     largeComparatorRacketCard.appendChild(brandModelContainer);
     largeComparatorRacketCard.appendChild(comparedRacketCardsData);
     card.appendChild(largeComparatorRacketCard);
-    card.appendChild(removeLabel);
 
     return card
   }

@@ -3,8 +3,8 @@ import {Comparator} from '../comparator_manager/comparator_file_manager'
 import {AnimateThatSearch} from '../effects/animate_that_search'
 
 export class RacketSearchDisplay extends RacketSearch {
-  constructor(checkboxInputs, searchbar, page, rackets) {
-    super(checkboxInputs, searchbar, page);
+  constructor(checkboxInputs, searchbar, page_batch, rackets) {
+    super(checkboxInputs, searchbar, page_batch);
     this.rackets = rackets;
   }
 
@@ -12,7 +12,6 @@ export class RacketSearchDisplay extends RacketSearch {
     // console.log("racketsUpdate")
     const racketIndexFetch = await super.racketFetch(); // First, we fetch the searched rackets and the pagination in the database (json object).
     const racketFetched = racketIndexFetch.rackets;
-    console.log(racketFetched)
     const pagesNumber = racketIndexFetch.pages;
 
     // Then we look for the rackets to remove and the ones to add to the container.
@@ -28,7 +27,7 @@ export class RacketSearchDisplay extends RacketSearch {
     const animateThatSearch = new AnimateThatSearch(this.rackets, racketFetched, gridContainer, ".racket-card", "racket-checkbox", 4); // Now lets apply style to the cards that remained in the container and that were not removed nor added.
     animateThatSearch.applyTranslation();
 
-    const pagination = new Pagination(this.page, pagesNumber); // Finally let's not forget the pagination that has to take place each time we filter through the rackets.
+    const pagination = new Pagination(this.page_batch, pagesNumber); // Finally let's not forget the pagination that has to take place each time we filter through the rackets.
     pagination.initPagination();
 
     return

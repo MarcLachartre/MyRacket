@@ -8,15 +8,14 @@ export class Pagination extends PaginationStyle { // this class manages the link
   createPageLink(i) {
     const link = document.createElement('a');
     link.className = "pagination";
-    link.dataset.page = `[${(i-1)*40},40]`;
+    link.dataset.pageBatch = `[${(i-1)*40},40]`;
     link.innerHTML = i;
-    link.addEventListener('click', () => {
-      event.preventDefault()
+    link.addEventListener('click', (event) => {
       const searchbarCheckboxes = document.querySelectorAll('.searchbar-checkbox');
       const searchField = document.querySelector(".type-search");
       const racketsInContainer = document.querySelectorAll('.racket-checkbox');
-
-      const search = new RacketSearchDisplay(searchbarCheckboxes, '', event.target.dataset.page, racketsInContainer);
+      console.log(event.target.dataset.pageBatch)
+      const search = new RacketSearchDisplay(searchbarCheckboxes, '', event.target.dataset.pageBatch, racketsInContainer);
       search.racketsUpdate();
     });
     document.querySelector(".pages").appendChild(link);

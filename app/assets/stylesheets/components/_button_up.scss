@@ -12,7 +12,8 @@
   cursor: pointer;
   color: $dark-blue;
   cursor: pointer;
-  transition: all 0.25s;
+  transition: background-color 0.25s;
+  background-color: $light-grey;
 }
 
 .button-up:hover {

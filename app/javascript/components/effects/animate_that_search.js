@@ -2,38 +2,32 @@ export class AnimateThatSearch {
   constructor(initialItemsArray, finalItemsArray, gridContainer, cardSelector, nodeIdSelector, columnsAmount) {
     this.initialItemsArray = initialItemsArray; // has to be a nodelist containing an input (checkbox) with the id
     this.finalItemsArray = finalItemsArray; // has to be an array made of obects containing the id of the final items 
-    this.gridContainer = gridContainer; // is the grid containing the items to animate
+    this.gridContainer = gridContainer; // is the grid containing the items to animate, IT NEEDS TO CONTAIN THE STYLE "GRID-AUTO-ROWS" WITH A VALUE IN PX.
     this.cardSelector = cardSelector; // is the class selector/name of the card (with the dot at the beginning), the highest node of the card.
     this.nodeIdSelector = nodeIdSelector; // is teh selector name of the node (without the dot at the beginning).
     this.columnsAmount = columnsAmount; // the amount of columns the grid contains
-
-    // console.log(this.initialItemsArray = initialItemsArray); // has to be a nodelist containing an input (checkbox) with the id
-    // console.log(this.finalItemsArray = finalItemsArray); // has to be an array made of obects containing the id of the final items 
-    // console.log(this.gridContainer = gridContainer); // is the grid containing the items to animate
-    // console.log(this.cardSelector = cardSelector); // is the class selector/name of the card (with the dot at the beginning), the highest node of the card.
-    // console.log(this.nodeIdSelector = nodeIdSelector); // is teh selector name of the node (without the dot at the beginning).
-    // console.log(this.columnsAmount = columnsAmount); // the amount of columns the grid contains
-
-
   }
 
   applyTranslation() { // This function applies the style (translation) to the items that are left in the grid container (items that are not removed and not added, the remaining items) 
-    console.log('app translation started')
-    
-    this.initItemsPosition(); // First, it takes the initial items in the container (before filtering/searching), and it makes sure they have their grid position (row start and column start) and no transform/translate effect
+    console.log('app translation started');
+    this.initItemsPosition(this.initialItemsArray); // First, it takes the initial items in the container (before filtering/searching), and it makes sure they have their grid position (row start and column start) and no transform/translate effect
     const itemsArrayToTranslate = this.itemsArrayToTranslate(); // Then, we select the items left in the container and creates the remainingItemsArray containing, the item card, both initial and final grid positions, and the index of the item
     const gridCellSize = this.gridCellSize(); // We calculate the grid cell size, combined with the future grid position of the items to translate, we can calculate the translation vector
-    this.containerResizing(gridCellSize.height); // This is necessary to make sure the container always has the right size and that the items below are not overlaping the grid
+    // this.containerResizing(gridCellSize.height); // This is necessary to make sure the container always has the right size and that the items below are not overlaping the grid
     
     itemsArrayToTranslate.forEach((i, index) => {
+      let initialCardTransitionStyle = ""
+      if (window.getComputedStyle(i.card, null).getPropertyValue('transition') !== "all 0s ease 0s"){
+        initialCardTransitionStyle = ", " + String(window.getComputedStyle(i.card, null).getPropertyValue("transition")); //To apply any animation to the card, we needed to remove the initial transition css style from the card, let's reapply it now.
+      };
       const translationVector = this.translationVector(i.initialCardPosition, i.finalCardPosition, gridCellSize); // Now let's get the translation vector for each item to translate and lets apply it below with the desired style
-      i.card.style.setProperty("transition", `transform 0.35s ease-in-out ${index/30}s` , "important");
+      i.card.style.setProperty("transition", `transform 0.35s ease-in-out ${index/30}s` +  initialCardTransitionStyle, "important");
       i.card.style.setProperty("transform", "translate(" + String(translationVector.vectorX) + "px," + String(translationVector.vectorY) + "px)" , "important");
     });
   }
 
-  initItemsPosition() {
-    this.initialItemsArray.forEach((racket, index) => {
+  initItemsPosition(items) {
+    items.forEach((racket, index) => {
       const position = this.positionning(index);
       racket.closest(this.cardSelector).style.gridColumnStart = position.column;
       racket.closest(this.cardSelector).style.gridRowStart = position.row;
@@ -73,9 +67,8 @@ export class AnimateThatSearch {
     const containerPadding = Number(window.getComputedStyle(this.gridContainer, null).getPropertyValue('padding').slice(0, -2));
 
     const height = Number(window.getComputedStyle(this.gridContainer, null).getPropertyValue('grid-auto-rows').slice(0, -2));
-
     const width = (Number(this.gridContainer.getBoundingClientRect().width) - Number(containerPadding) * 2)/(this.columnsAmount);
-    
+
     const gridCellSize = {height: height, width: width};
 
     return gridCellSize
@@ -96,15 +89,13 @@ export class AnimateThatSearch {
     } else {
       coeffX = - (initialColumnPosition - finalColumnPosition);
     };
-    
+
     if (finalRowPosition > initialRowPosition) {
       coeffY = finalRowPosition - initialRowPosition;
     } else {
       coeffY = - (initialRowPosition - finalRowPosition);
     }
-    
-    // console.log(gridCellSize.height)
-    // console.log(coeffY)
+
     const vectorX = gridCellSize.width * coeffX;
     const vectorY = gridCellSize.height * coeffY;
     const vector = {vectorX, vectorY};
@@ -115,7 +106,7 @@ export class AnimateThatSearch {
   positionning(index) { // this function retrieves the grid position of the item according to its position in its array
     let cardPosition = index;
     let rowPosition = Math.floor((cardPosition/this.columnsAmount)+1);
-    // console.log(rowPosition)
+
     let columnPosition = cardPosition;
     if (cardPosition > (this.columnsAmount -1)) {
       do {
@@ -133,11 +124,27 @@ export class AnimateThatSearch {
     return position
   }
 
-  containerResizing(gridCellHeight) { // Defines the final size of the container when necessary
-    if (this.initialItemsArray.length <= this.finalItemsArray.length) {
-      const containerHeight = Number(gridCellHeight * Math.ceil(this.finalItemsArray.length/4));
-      const containerPadding = Number(window.getComputedStyle(this.gridContainer, null).getPropertyValue("padding").slice(0, -2));
-      this.gridContainer.style.height = String(containerHeight + containerPadding * 2) + "px";
-    }
+  // containerResizing(gridCellHeight) { // Defines the final size of the container when necessary
+  //   if (this.initialItemsArray.length <= this.finalItemsArray.length) {
+  //     const containerHeight = Number(gridCellHeight * Math.ceil(this.finalItemsArray.length/4));
+  //     const containerPadding = Number(window.getComputedStyle(this.gridContainer, null).getPropertyValue("padding").slice(0, -2));
+  //     this.gridContainer.style.height = String(containerHeight + containerPadding * 2) + "px";
+  //   }
+  // }
+
+  resizingSetCardsState(cardsSelector) { // argument is a node array containing the items to stick and init their row/column position after container resizing
+    window.addEventListener("resize", () => {
+      let resizes = false;
+      for (let i = 0; i < document.querySelectorAll(cardsSelector).length; i++) {
+        if (document.querySelectorAll(cardsSelector)[i].style.transform !== "") {
+          resizes = true;
+          break;
+        };
+      };
+
+      if (resizes === true) {
+        this.initItemsPosition(document.querySelectorAll(cardsSelector));
+      };
+    });
   }
 }

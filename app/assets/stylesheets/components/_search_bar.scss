@@ -5,6 +5,7 @@
   display: flex;
   padding-left: 15px;
   padding-right: 15px;
+  padding-bottom: 30px;
   border-right: 1px solid #dadada;
   height: auto;
   width: 19%;
@@ -41,7 +42,7 @@
     border-radius: 4px;
     display: inline-block;
     padding: 4px;
-    transition: all 0.4s;
+    transition: all 0.25s ease-in-out;
     
   }
   .arrow-up {
@@ -52,8 +53,7 @@
     border-radius: 4px;
     display: inline-block;
     padding: 4px;
-    transition: all 0.4s;
-    
+    transition: all 0.25s ease-in-out; 
   }
 }
 
@@ -74,7 +74,7 @@
   border: 3px solid $mid-blue;
   border-radius: 50px;
   overflow: hidden;
-  transition: all 0.30s ease-in-out;
+  transition: all 0.25s ease-in-out;
   .fa-search {
     width: 100%;
     height: 100%;
@@ -83,7 +83,7 @@
     justify-content: center;
     margin-right: 5px;
     color: $mid-blue;
-    transition: all 0.30s ease-in-out;
+    transition: all 0.25s ease-in-out;
   }
   .fa-search:hover {
     cursor: pointer;
@@ -151,8 +151,7 @@
   display: flex;
   justify-content: center;
   height:100%;
-
-  transition: all 0.15s ease-in-out;
+  transition: all 0.25s ease-in-out;
   cursor: pointer;
 }
 
@@ -193,6 +192,7 @@
   margin-top: 10px;
   border: 2px solid $light-red;
   color: $light-red;
+  transition: padding 0.25s ease-in-out, background-color 0.25s ease-in-out;;
 }
 
 .clear-search:hover {

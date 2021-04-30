@@ -8,7 +8,6 @@
         <div class='short-brand-model-container'>
           <div class= 'spec-data'>
             <%= racket.brand %>
-
             <%= racket.model %>
           </div>
         </div>
@@ -41,24 +40,24 @@
 
       </div>
       <div class= "comparator-container">
-        <div class= 'racket-comparator'>
-          <div class = "racket-specs-container">
-            <div class = 'logo-placeholder'>
+        <div class = "racket-specs-container">
+          <div class = 'logo-placeholder'>
 
-            </div>
-            <div class= 'racket-comparator-specs'>
-              <div class = 'spec-list'>Headsize</div>
-              <div class = 'spec-list'>String Pattern</div>
-              <div class = 'spec-list'>Weight</div>
-              <div class = 'spec-list'>Length</div>
-              <div class = 'spec-list'>Swingweight</div>
-              <div class = 'spec-list'>Stiffness</div>
-              <div class = 'spec-list'>Power</div>
-              <div class = 'spec-list'>Manoeuvrability</div>
-              <div class = 'spec-list'>Comfort</div>
-              <div class = 'spec-list'>Control</div>
-            </div>
           </div>
+          <div class= 'racket-comparator-specs'>
+            <div class = 'spec-list'>Headsize</div>
+            <div class = 'spec-list'>String Pattern</div>
+            <div class = 'spec-list'>Weight</div>
+            <div class = 'spec-list'>Length</div>
+            <div class = 'spec-list'>Swingweight</div>
+            <div class = 'spec-list'>Stiffness</div>
+            <div class = 'spec-list'>Power</div>
+            <div class = 'spec-list'>Manoeuvrability</div>
+            <div class = 'spec-list'>Comfort</div>
+            <div class = 'spec-list'>Control</div>
+          </div>
+        </div>
+        <div class= 'racket-comparator'>
           <% @rackets_to_display.each {|racket| %>
           <div class="compared-racket-cards-container">
             <div class="large-comparator-racket-card">
@@ -77,8 +76,6 @@
                 <div class= "spec"><%= "manoeuvrability" %></div>
                 <div class= "spec"><%= "comfort" %></div>
                 <div class= "spec"><%= "control" %></div>
-              </div>
-            </div>
             <%= label_tag nil, class: 'compared-racket-checkbox-label' do %>
             <%= check_box_tag "selected_racket_id[]", racket.id,
             if @selected_racket[:racket_id] != nil
@@ -90,8 +87,9 @@
               <i class="fas fa-times"></i>
               <% end %>
             </div>
-            <% } %>
-
+            </div>
+          </div>
+          <% } %>
           </div>
         </div>
         <div class= "close-comparator-arrow">

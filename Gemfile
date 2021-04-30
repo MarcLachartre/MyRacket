@@ -1,23 +1,25 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.3'
+ruby '3.0.0'
 
 gem 'lorem_ipsum_amet'
 
 gem 'bootstrap', '~> 4.3.1'
 gem 'rails-ujs'
 gem 'devise'
-gem 'sprockets-rails', '~> 3.2.2'
+gem 'sprockets', '~> 4'
 gem 'sassc-rails'
-# gem 'sass-rails', '~> 5.0'
+
+
+
 
 gem 'font-awesome-sass', '~> 5.12.0'
 
 gem 'webpacker'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.2'
+gem 'rails', '~> 6.0y'
 # Use sqlite3 as the database for Active Record
 gem 'cloudinary'
 
@@ -68,8 +70,14 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
+
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  gem 'minitest-reporters'
+end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 5.0.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

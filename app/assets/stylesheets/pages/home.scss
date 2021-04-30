@@ -58,7 +58,7 @@
   text-decoration: none;
   background-color: $dark-blue;
   border-radius: 50px;
-  transition: transform 0.4s;
+  transition: all 0.25s ease-in-out;
 
     .go-button {
       display: flex;
@@ -68,7 +68,6 @@
       align-self: center;
       border-radius: 50px;
       border: solid 3px white;
-
       text: white;
       font-size: 20px;
       color:white;

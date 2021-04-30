@@ -1,3 +1,4 @@
+<% require 'pathname'%>
 
 <%= form_with url: "/rackets", method: "get", class: 'select-racket', remote: :true  do %>
 <%= hidden_field_tag "select_racket_input", 1 %>
@@ -8,7 +9,15 @@
     <div class="card-top">
 
         <div class= 'card-image'>
-          <img src="/assets/racket-sample.jpg">
+          <% pn = racket.brand.downcase.gsub(/\s+/, '') + "-" + racket.model.downcase.gsub(/\s+/, '') %>
+          <% path = Rails.root.join('app', 'javascript', 'images', "#{pn}").to_s %>
+          <% if File.exist?(path + ".jpg") == true %>
+            <%= image_pack_tag "media/images/#{pn.to_s}.jpg" %>
+          <% elsif File.exist?(path + ".jpeg") == true %>
+            <%= image_pack_tag "media/images/#{pn.to_s}.jpeg" %>
+          <% else %>
+            <%= image_pack_tag "media/images/racket-sample.jpg" %>
+          <% end %>  
         </div>
 
         <div class= 'card-brand-model'>
@@ -16,7 +25,7 @@
             <h4> <%= racket.brand %> </h4>
           </div>
           <div class= 'card-model'>
-            <h6> <%= racket.model %> </h6>
+            <h5> <%= racket.model %> </h5>
           </div>
         </div>
 
@@ -30,21 +39,21 @@
         </div>
       <div class= 'card-spec'>
         <div class= 'card-weight-stringpattern'>
-          <div class= 'card-weight'>
-            <%= "#{racket.weight} gr"%>
-          </div>
-          <div class= 'card-string-pattern'>
+          <h6 class= 'card-weight'>
+            <%= "#{racket.weight}g"%>
+          </h6>
+          <h6 class= 'card-string-pattern'>
             <% pattern_array = racket.string_pattern.to_s.split('')%>
-            <%= pattern_array[0] + pattern_array[1] %>x<%= pattern_array[2] + pattern_array[3] %>
-          </div>
+            <%= "#{pattern_array[0]}#{pattern_array[1]}x#{pattern_array[2]}#{pattern_array[3]}" %>
+          </h6>
         </div>
         <div class="card-balance-headsize">
-          <div class= 'card-balance'>
+          <h6 class= 'card-balance'>
             <%= "#{racket.balance}cm" %>
-          </div>
-          <div class= 'card-headsize'>
-            <%= "#{racket.headsize} cm2"  %>
-          </div>
+          </h6>
+          <h6 class= 'card-headsize'>
+            <%= "#{racket.headsize}cm²"  %>
+          </h6>
         </div>
 
       </div>
@@ -77,8 +86,8 @@
 
 
   <div class = "previous-next-buttons">
-  <%= link_to "Previous", rackets_path(page: @previous_page), data: {page: "[40,40]"}, class: "button-up previous" %>
-  <%= link_to "Next", rackets_path(page: @next_page), data: {page: "[40,40]"}, class: "button-up next" %>
+  <%= link_to "Previous", rackets_path(page_batch: previous_page(@current_page)), data: {page_batch: "[40,40]"}, class: "button-up previous" %>
+  <%= link_to "Next", rackets_path(page_batch: next_page(@current_page)), data: {page_batch: "[40,40]"}, class: "button-up next" %>
   </div>
   <div class= "page-list-container">
     <div class= "pages">
@@ -86,9 +95,9 @@
 
       <% for i in (1..@pages) do %>
         <% if i == 1 %>
-          <%= link_to "#{i}", rackets_path(page: [((i-1)*40),40]), data: {page: [((i-1)*40),40]}, class: 'pagination selected-page'%>
+          <%= link_to "#{i}", rackets_path(page_batch: [((i-1)*40),40]), data: {page_batch: [((i-1)*40),40]}, class: 'pagination selected-page'%>
           <% else %>
-          <%= link_to "#{i}", rackets_path(page: [((i-1)*40),40]), data: {page: [((i-1)*40),40]}, class: 'pagination'%>
+          <%= link_to "#{i}", rackets_path(page_batch: [((i-1)*40),40]), data: {page_batch: [((i-1)*40),40]}, class: 'pagination'%>
           <% end %>
       <% i+1 %>
       <% end %>
@@ -96,9 +105,9 @@
     <% else %>
       <% for i in (1..@pages) do %>
         <% if i == 1 %>
-          <%= link_to "#{i}", rackets_path(page: [((i-1)*40),40]), data: {page: [((i-1)*40),40]}, class: 'pagination selected-page'%>
+          <%= link_to "#{i}", rackets_path(page_batch: [((i-1)*40),40]), data: {page_batch: [((i-1)*40),40]}, class: 'pagination selected-page'%>
         <% elsif i <= 2 %>
-          <%= link_to "#{i}", rackets_path(page: [((i-1)*40),40]), data: {page: [((i-1)*40),40]}, class: 'pagination'%>
+          <%= link_to "#{i}", rackets_path(page_batch: [((i-1)*40),40]), data: {page_batch: [((i-1)*40),40]}, class: 'pagination'%>
           <% i+1 %>
 
         <% elsif i == 3 %>
@@ -109,7 +118,7 @@
           <% i+1 %>
 
         <% else %>
-          <%= link_to "#{i}", rackets_path(page: [((i-1)*40),40]), data: {page: [((i-1)*40),40]}, class: 'pagination'%>
+          <%= link_to "#{i}", rackets_path(page_batch: [((i-1)*40),40]), data: {page_batch: [((i-1)*40),40]}, class: 'pagination'%>
           <% i+1 %>
         <% end %>
       <% end %>

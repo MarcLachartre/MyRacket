@@ -25,7 +25,7 @@ export class PaginationStyle { //this class applies style to the elements in the
     if (document.querySelector(".pages").querySelectorAll(".pagination").length !== 1 && document.querySelector(".pages").querySelectorAll(".pagination").length !== 0 && this.currentPageBatch !== `[${(this.racketBatchAmount-1)*40},40]` && this.racketBatchAmount !== 1) {
       nextBtn.style.display = "flex";
         if (this.currentPageBatch !== undefined && this.racketBatchAmount !== undefined ) {
-          nextBtn.dataset.page = `[${(Number(this.currentPageBatch.substring(1, this.currentPageBatch.length - 4))) + 40},40]`;
+          nextBtn.dataset.pageBatch = `[${(Number(this.currentPageBatch.substring(1, this.currentPageBatch.length - 4))) + 40},40]`;
         }
     } else {
       nextBtn.style.display = "none";
@@ -36,7 +36,7 @@ export class PaginationStyle { //this class applies style to the elements in the
     const previousBtn = document.querySelector(".previous");
     if (this.currentPageBatch !== "[0,40]" && this.currentPageBatch !== undefined) {
       previousBtn.style.display = "flex";
-      previousBtn.dataset.page = `[${(Number(this.currentPageBatch.substring(1, this.currentPageBatch.length - 4))) - 40},40]`;
+      previousBtn.dataset.pageBatch = `[${(Number(this.currentPageBatch.substring(1, this.currentPageBatch.length - 4))) - 40},40]`;
     } else {
       previousBtn.style.display = "none";
     }
@@ -57,12 +57,21 @@ export class PaginationStyle { //this class applies style to the elements in the
   }
 
   addStyleOnClick() {
-    document.querySelector(".page-list-container").querySelectorAll('[data-page]').forEach(page => {
-      page.classList.remove("selected-page");
-      if (page.dataset.page === this.currentPageBatch) {
+    document.querySelector(".page-list-container").querySelectorAll('[data-page-batch]').forEach(page => {
+      // console.log(page.classList.contains("selected-page"))
+      // console.log(page.dataset.pageBatch)
+      // console.log(this.currentPageBatch)
+      // if (page.classList.contains("selected-page")) {
+      //   page.classList.remove("selected-page")
+      // }
+      
+      // page.classList.remove("selected-page");
+      // console.log(page.classList.remove("selected-page"))
+
+      if (page.dataset.pageBatch === this.currentPageBatch) {
         page.classList.add("selected-page");
       } else if (this.currentPageBatch === undefined || this.currentPageBatch === []) {
-        document.querySelector(".page-list-container").querySelector('[data-page]').classList.add("selected-page");
+        document.querySelector(".page-list-container").querySelector('[data-page-batch]').classList.add("selected-page");
       };
     });
   }

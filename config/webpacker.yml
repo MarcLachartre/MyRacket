@@ -10,7 +10,7 @@ default: &default
 
   # Additional paths webpack should lookup modules
   # ['app/assets', 'engine/foo/app/assets']
-  additional_paths: []
+  additional_paths: ['app/javascript/images/']
 
   # Reload manifest.json on all requests so we reload latest compiled packs
   cache_manifest: false
@@ -33,6 +33,7 @@ default: &default
     - .woff2
 
   extensions:
+    - .jsx
     - .mjs
     - .js
     - .sass
@@ -68,8 +69,8 @@ development:
     pretty: false
     headers:
       'Access-Control-Allow-Origin': '*'
-    watch_options:
-      ignored: '**/node_modules/**'
+    # watch_options:
+    #   ignored: '**/node_modules/**'
 
 
 test:

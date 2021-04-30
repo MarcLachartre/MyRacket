@@ -25,7 +25,7 @@
         <i class= "arrow-up"></i>
       </div>
     </div>
-    <!-- <div class= "filters-container"> -->
+
       <div class= 'filter-type' >
         <h5>
           <%= "Brands" %>
@@ -34,7 +34,7 @@
 
       <div class= 'filters'>
         <% brand_array = [] %>
-        <% @all_rackets.each {|racket| %>
+        <% all_rackets.each {|racket| %>
         <% unless brand_array.include?(racket.brand) %>
         <% brand_array << racket.brand %>
         <div class= 'label-design'>
@@ -58,7 +58,7 @@
 
       <div class = filters>
         <% string_patterns = [] %>
-        <% @all_rackets.each{|racket| string_patterns << racket.string_pattern }%>
+        <% all_rackets.each{|racket| string_patterns << racket.string_pattern }%>
         <% string_patterns.uniq.each{|pattern| %>
         <div class= 'label-design'>
           <%= check_box_tag "string_pattern[]", pattern,
@@ -68,11 +68,10 @@
           id: pattern,
           class: 'searchbar-checkbox' %>
           <% pattern_label = pattern.to_s.split('') %>
-          <%= label_tag pattern, "#{pattern_label[0] + pattern_label[1]}/#{pattern_label[2] + pattern_label[3]}", class: 'label'  %>
+          <%= label_tag pattern, "#{pattern_label[0]}#{pattern_label[1]}/#{pattern_label[2]}#{pattern_label[3]}", class: 'label'  %>
         </div>
         <% } %>
       </div>
-
 
       <div class= 'filter-type'>
         <h5>
@@ -162,7 +161,6 @@
         <% } %>
       </div>
     </div>
-  <!-- </div> -->
   <div class= 'clear-search button-up'> Clear Search </div>
 </div>
 
