@@ -1,0 +1,128 @@
+@import "index";
+
+.devise-page {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  bottom: 0;
+  min-width: 100%;
+  background-color: $shiny-blue;
+  h1 {
+    display: flex;
+    align-content: flex-start;
+    align-self: center;
+    text-align: center;
+    // color: #b32a30
+    color: $orange;
+    transform: translateY(-15px)
+  }
+  label {
+    display: flex;
+    margin: 0px;
+    width: 80%;
+    font-size: 0.9em;
+  }
+  .button-up:hover {
+    background-color: $orange;
+    border: solid 1px $orange
+  }
+}
+
+.devise-card{
+  position: relative;
+  display: grid;
+  grid-template-rows: 35% 65%;
+  background-color: white;
+  height: 30rem;
+  width: 320px;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0px 0px 30px 5px #006b93;
+  z-index: 2;
+}
+
+.devise-image {
+  display: flex;
+  justify-content: center;
+}
+
+.devise-image img {
+  position: absolute;
+  height: 130%;
+  width: 200%
+}
+
+.form-container {
+  display: flex;
+  z-index: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $light-grey;
+  padding-bottom: 15px;
+  padding-right: 15px;
+  padding-left: 15px;
+  border-radius: 25px;
+  box-shadow: 0px 0px 50px 50px $light-grey;
+
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.remember-me{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-self: center;
+  width: 80%;
+  margin-bottom: 0px;
+    input{
+      width: auto;
+    }
+    label {
+      margin-left: 8px;
+  }
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center
+}
+
+.devise-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center
+}
+
+@media screen and (max-height: 600px) {
+  .devise-page {
+    h1 {
+      transform: translateY(0px)
+    }
+  }
+  
+  .devise-card{
+    margin-top: 100px;
+    height: 20rem;
+    grid-template-rows: 0% 100%;
+  }
+  .devise-image img{
+    height: 0%;
+    width: 0%
+    // justify-content: center;
+  }
+}

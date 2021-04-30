@@ -4,11 +4,30 @@
 <div class= 'product-page-container'>
 
   <div class= 'product-image-and-spec'>
-    <img src="/assets/racket-sample.jpg" class= 'product-image'>
+
+
+    <% pn = @racket.brand.downcase.gsub(/\s+/, '') + "-" + @racket.model.downcase.gsub(/\s+/, '') %>
+    <% path = Rails.root.join('app', 'javascript', 'images', "#{pn}").to_s %>
+    <% if File.exist?(path + ".jpg") == true %>
+      <%= image_pack_tag "media/images/#{pn.to_s}.jpg", class: "product-image" %>
+      <% elsif File.exist?(path + ".jpeg") == true %>
+        <%= image_pack_tag "media/images/#{pn.to_s}.jpeg", class: "product-image" %>
+      <% else %>
+        <%= image_pack_tag "media/images/racket-sample.jpg", class: "product-image" %>
+      <% end %> 
+
     <div class= 'product-spec-container'>
       <div class= 'product-spec'>
         <div class = 'spec-title'>
           <h1> <%= @racket.brand.capitalize %> </h1><h2><%= @racket.model.capitalize %></h2>
+        </div>
+        <div class= 'show-spec'>
+          <h5 class= "show-spec-details">
+            Advantage:
+          </h5>
+          <h5 class= "show-spec-details">
+            <%= @racket.play_type%>
+          </h5>
         </div>
         <div class= 'show-spec'>
           <h5 class= "show-spec-details">
@@ -48,15 +67,7 @@
           </h5>
           <h5 class= "show-spec-details">
             <% pattern_array = @racket.string_pattern.to_s.split('')%>
-            <%= pattern_array[0] + pattern_array[1] %> x <%= pattern_array[2] + pattern_array[3] %>
-          </h5>
-        </div>
-        <div class= 'show-spec'>
-          <h5 class= "show-spec-details">
-            Composition:
-          </h5>
-          <h5 class= "show-spec-details">
-            <%= @racket.material.capitalize %>
+            <%= "#{pattern_array[0]}#{pattern_array[1]}x#{pattern_array[2]}#{pattern_array[3]}"%>
           </h5>
         </div>
         <div class= 'show-spec'>
@@ -75,6 +86,22 @@
             <%= @racket.swingweight%>
           </h5>
         </div>
+        <div class= 'show-spec'>
+          <h5 class= "show-spec-details">
+            Composition:
+          </h5>
+          <h5 class= "show-spec-details">
+            <%= @racket.material.capitalize %>
+          </h5>
+        </div>
+        <div class= 'show-spec'>
+          <h5 class= "show-spec-details">
+            Players:
+          </h5>
+          <h5 class= "show-spec-details">
+            <%= @racket.players %> 
+          </h5>
+        </div>
       </div>
     </div>
   </div>
@@ -82,7 +109,7 @@
   <div class= 'show-product-description'>
     <h3> Description </h3>
     <div class= "show-desc">
-      <%= lorem_ipsum(1200) %>
+      <%= @racket.description %>
     </div>
   </div>
 
@@ -106,7 +133,7 @@
         <div class="review-user-detail">
           <i class="fas fa-grin-alt"></i>
           <h5 class= "user-name-review">
-            <%= racketreview.user.name.capitalize %>
+            <%= racketreview.user.username.capitalize %>
           </h5>
 
           <% if user_signed_in? && racketreview.user.id == @user.id%>
@@ -117,7 +144,7 @@
           </h7>
         </div>
         <div class= "review-text-and-delete">
-          <div class= review-text>
+          <div class= "review-text">
             <%= racketreview.comment %>
           </div>
           <% if user_signed_in? && racketreview.user.id == @user.id%>

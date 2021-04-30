@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
-
+  devise_for :users
   get 'pages/home'
   get 'pages/about'
-
-  get 'users/dashboard'
-  devise_for :users
+ 
   root :to => "pages#home"
   get "rackets", to: "rackets#index"
 
@@ -16,6 +14,8 @@ Rails.application.routes.draw do
   # resources :racketreviews
 
   resources :users, only: [:show, :index, :destroy]
+  get 'my_account/:id', to: 'users#show'
+  
 end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

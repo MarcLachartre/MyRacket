@@ -6,11 +6,13 @@
   overflow: hidden;
   display: flex;
   width: 100%;
+  height: 100vh;
+  margin-top: 70px;
   justify-content: flex-start;
   flex-direction: column;
   height:auto;
   box-shadow: 0px 0px 0px 0px none;
-  // transition: all 0.4s;
+  transition: all 0.25s ease-in-out;
 }
 
 .open-comparator-arrow {
@@ -29,7 +31,7 @@
   text-decoration: underline;
   cursor: pointer;
   text-align:center;
-  transition: all 0.4s;
+  transition: all 0.25s ease-in-out;
 }
 
 .racket-comparator-container:hover {
@@ -66,10 +68,9 @@
   position:relative;
   background-color: transparent;
   display:flex;
-  margin-top: 70px;
   justify-content: space-between;
   width: auto;
-  transition: background-color 1s;
+  transition: background-color 0.25s ease-in-out;
 }
 
 .short-displayed-rackets {
@@ -95,11 +96,10 @@
   border: solid 1px $mid-blue;
   border-radius: 50px;
   opacity: 0;
-  animation: 1s ease-out translateIn;
-  animation-fill-mode: forwards;
   .compared-racket-checkbox-label{
     position: relative;
     height: 100%;
+    
   }
 }
 
@@ -118,17 +118,18 @@
 .compared-racket-checkbox-label{
   display: flex;
   justify-content: center;
+  align-self: center;
+  justify-self: center;
   align-items: center;
   margin:0;
-  min-width:20%;
+  min-width:20.05%;
   background-color: white;
+  transition: background-color 0.25s ease-in-out;
   cursor: pointer;
 }
 
 .compared-racket-checkbox-label:hover {
-  transition: all 1s;
   background-color: $light-red;
-  height: 100%;
   .fa-times{
     color: white;
   }
@@ -136,7 +137,7 @@
 
 .fa-times{
   color: $dark-red;
-  transition: all 0.4s
+  transition: all 0.25s ease-in-out;
 }
 
 .compared-racket-checkbox {
@@ -144,7 +145,6 @@
 }
 
 .spec-data{
-  // font-size:10px;
   display: flex;
   justify-content: center;
   align-self: center;
@@ -161,7 +161,6 @@
 }
 
 .large-comparator-container {
-  background-color: #f5f5f5;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -173,13 +172,13 @@
   flex-direction: column;
   align-items: flex-end;
   width:100%;
-  height: 90%;
+  height: 100%;
 }
 
 .top-background{
   position: relative;
   width: 100%;
-  height: 25%;
+  height: 20%;
   background-color: $dark-blue;
 }
 
@@ -187,13 +186,14 @@
   position: relative;
   background-color: #f5f5f5;
   width: 100%;
-  height: 75%;
+  height: 80%;
 }
 
 
 
 .close-comparator-arrow {
-  position: relative;
+  position: absolute;
+  top: 90%; left: 50%;
   display: flex;
   justify-content: center;
   width: 8vh;
@@ -201,10 +201,9 @@
   z-index: 1;
   border-radius:50px;
   border: solid 2px $light-blue;
-  align-self: center;
   cursor: pointer;
   transform: translateY(2vh);
-  transition: all 0.4s;
+  transition: all 0.25s ease-in-out;
   // .arrow-up {
   //   position: relative;
   //   align-self: center;
@@ -234,15 +233,17 @@
     border-radius: 4px;
     display: inline-block;
     padding: 4px;
-    transition: all 0.4s;
+    transition: all 0.25s;
     cursor: pointer;
   }
 }
 
 .comparator-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 10% 90%;
   position: absolute;
-  margin-left: 15px;
+  flex-direction: column;
+  margin-bottom: 10%;
   width: 100%;
   height: 100%;
 }
@@ -251,45 +252,47 @@
   display: flex;
   position: relative;
   flex-direction: column;
-  justify-content: flex-start;
-  height: 90%;
-  width: 10%;
+  width: 100%;
   margin-right: 0.5%;
 }
 
 .logo-placeholder{
   display: flex;
   position: relative;
-  height: 25%;
+  height: 20%;
   width: auto;
 }
 
+.racket-comparator{
+  position: relative;
+  display:grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-auto-rows: 100%;
+  width: 100%;
+  height: 85vh;
+}
+
 .racket-comparator-specs{
-  display: flex;
+  display: grid;
+  grid-template-rows: repeat(11, 9.09%);
   position: relative;
   background-color: white;
   justify-content: space-evenly;
   flex-direction: column;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
-  height: 65%;
+  border-bottom-right-radius: 15px;
   width: 100%;
+  height: 70%;
 }
 
 .spec-list {
   display: flex;
   flex-direction: column;
   align-self: center;
+  justify-self: center;
 }
 
-.racket-comparator{
-  position: relative;
-  display:flex;
-  align-items: flex-start;
-  height: 100%;
-  width: 100%;
-  justify-content: flex-start;
-}
 
 .compared-racket-cards-container{
   position: relative;
@@ -299,26 +302,25 @@
   margin-left: 0.5%;
   margin-right: 0.5%;
   border-radius: 15px;
-  width: 16.66%;
-  height: 90%;
-  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
   .compared-racket-checkbox-label{
     display: flex;
     align-self: center;
+    justify-self: center;
     border-radius:50px;
     overflow: hidden;
-    width: 25%;
-    height: 4vh;
+    width: 33%;
+    height: 80%;
     border: solid 1px $light-red;
-    transition: all 0.4s ease-in-out;
-    transform: translateY(-1vh)
+    transition: all 0.25s ease-in-out;
   }
   .fas {
     color: $light-red;
   }
 }
 
-.compared-racket-cards-container:hover{
+.compared-racket-cards-data:hover{
   .compared-racket-checkbox-label{
     width: 50%;
   }
@@ -330,7 +332,6 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background-color: white;
 }
 
 .model-brand-container {
@@ -340,7 +341,7 @@
   justify-content: center;
   background-color: $light-blue;
   width: 100%;
-  height: 25%;
+  height: 20%;
   h4 {
     color: white;
     text-align: center;
@@ -349,12 +350,14 @@
 
 .compared-racket-cards-data{
   position: relative;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-evenly;
-  height: 65%;
+  display: grid;
+  grid-template-rows: repeat(11, 9.09%);
+  // grid-template-rows: repeat(11, 10%);
+  background-color: white;
+  height: 70%;
   width: 100%;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 // .spec-list-container {
@@ -370,18 +373,15 @@
 .spec {
   display: flex;
   position: relative;
+  align-self: center;
+  justify-self: center;
   height: auto;
   width: auto;
-  align-self: center;
 }
 
 @keyframes translateIn {
   0%{
-    transform: translateX(700px);
-    opacity: 0;
-  }
-
-  25%{
+    transform: translateX(250px);
     opacity: 0;
   }
 

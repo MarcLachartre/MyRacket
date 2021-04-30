@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  respond_to :json, only: [:show]
   def index
     user
     if user_is_admin? # user_signed_in? && @user.admin == 1
@@ -8,10 +9,18 @@ class UsersController < ApplicationController
 
   def show
     user
-    if user_is_admin?
+    @devise_mapping = Devise.mappings[:user]
+    @users = User.all
+    if user_signed_in? && params[:id].to_i == current_user.id || user_is_admin? == true
       @user = User.find(params[:id])
-    else
+      @user_reviews = @user.racketreviews.map{|r| {id: r.id, comment: r.comment, created_at: r.created_at, racket_brand: r.racket.brand, racket_model: r.racket.model}}
+      else
       redirect_to rackets_path
+    end
+
+    respond_to do |format|
+      format.html
+      format.json {render json: {user: @user, user_reviews: @user.racketreviews, users: @users, devise_mapping: @devise_mapping}}
     end
   end
 

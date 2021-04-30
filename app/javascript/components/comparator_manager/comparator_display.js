@@ -15,13 +15,15 @@ export class ComparatorDisplay extends Comparator { //this class in only respons
     const upArrow = document.querySelector(".close-comparator-arrow");
 
     upArrow.addEventListener('click', () => {
+      console.log("cul")
       this.closeLargeComparator();
+      this.setInitialCardState(document.querySelectorAll(".short-comparator-racket-card"));
       // scrollUp(comparator, 1, 8, 85, "vh") //effects.js
     })
 
     downArrow.addEventListener('click', () => {
       this.openLargeComparator();
-      super.cardTranslateIn();
+      this.setInitialCardState(document.querySelectorAll(".compared-racket-cards-container"));
       // scrollDown(comparator, 1, 8, 85, "vh"); //effects.js
     });
   }
@@ -36,5 +38,14 @@ export class ComparatorDisplay extends Comparator { //this class in only respons
     this.largeComparator.style.display = "none";
     this.shortComparator.style.display = "flex";
     this.shortComparator.style.height = "70px";
+  }
+
+  setInitialCardState(node) {
+    for (let i = 0; i < node.length; i++) {
+      node[i].style.webkitAnimation = "none";
+      node[i].style.webkitAnimationDelay = "none";
+      node[i].style.webkitAnimationFillMode = "none";
+      node[i].style.opacity = "1";
+    }
   }
 }

@@ -6,24 +6,26 @@ export class ComparedRacketCookie extends CookieManager {
   }
 
   init(rackets) {
+    // console.log("cookie init")
     rackets.forEach((racket) => {
       this.racketCookieEvent(racket)
     });
   }
 
   racketCookieEvent(racket) {
-    racket.addEventListener('change', (thisRacketCheckbox) => {
+    racket.addEventListener('change', (e) => {
       if (super.cookieExists() === false) { //If the selected_racket cookie doesnt exist, we have to create it
         this.ckey = "racket_id";
-        this.cvalue = thisRacketCheckbox.target.value;
+        this.cvalue = e.target.value;
         super.createCookie();
       } else if (super.cookieExists() === true) { //If the selected_racket cookie already exists, we get its value, update its value, save it in a newly created selected_racket cookie
-        this.update(thisRacketCheckbox.target.value, thisRacketCheckbox.target.checked);
+        this.update(e.target.value, e.target.checked);
       };
     });
   }
 
   update(newValue, condition) { // sets the compared racket cookie object to the cookie value, updates its value and save it
+    console.log("update cookie")
     this.ckey = "racket_id";
     this.cvalue = super.getCookieValue().racket_id;
     this.cvalue = super.updateCookieValue(newValue, condition);

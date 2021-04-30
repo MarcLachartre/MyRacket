@@ -1,6 +1,7 @@
-import {Comparator} from '../comparator_manager/comparator_file_manager'
-import {RacketCardStyleSelector} from '../racket_cards/racket_card_style_selector'
-import {ComparedRacketCookie} from '../cookies_manager/compared_racket_cookies'
+import {Comparator} from '../comparator_manager/comparator_file_manager';
+import {RacketCardStyleSelector} from '../racket_cards/racket_card_style_selector';
+import {ComparedRacketCookie} from '../cookies_manager/compared_racket_cookies';
+const defaultImage = require("../../images/racket-sample.jpg");
 // console.log("racket")
 export class Racket extends RacketCardStyleSelector {
   constructor(id, brand, model, weight, stringPattern, balance, headsize, length, swingweight, stiffness, power, manoeuvrability, comfort, control, index){
@@ -24,7 +25,7 @@ export class Racket extends RacketCardStyleSelector {
 
   createCard() { //creates the card and then create the card top/bottom/button to appends to it. It also adds the event listeners to the card
     const card = document.createElement("div");
-
+    card.style.opacity = "1"
     const cardItemDescription = document.createElement("div");
 
     card.classList.toggle("racket-card");
@@ -70,7 +71,7 @@ export class Racket extends RacketCardStyleSelector {
   createCardTop() {
     const topCard = document.createElement("div");
     const cardImage = document.createElement("div");
-    const image = document.createElement("img");
+    const image = this.image();
     const cardBrandModel = document.createElement("div");
     const cardBrand = document.createElement("div");
     const cardModel = document.createElement("div");
@@ -78,8 +79,6 @@ export class Racket extends RacketCardStyleSelector {
     const model = document.createElement("h5");
     brand.innerHTML = this.brand;
     model.innerHTML = this.model;
-
-    image.src = "assets/racket-sample.jpg";
 
     topCard.classList.toggle("card-top");
     cardImage.classList.toggle("card-image");
@@ -102,11 +101,29 @@ export class Racket extends RacketCardStyleSelector {
     return topCard
   }
 
-  createCardBottom(){
-    const bottomCardClassNames = ["card-bottom", "card-spec", "card-weight-stringpattern", "card-balance-headsize", "card-weight", "card-string-pattern", "card-balance", "card-headsize"]
-    const bottomCardElements = []
-    bottomCardClassNames.forEach(className => { //creates each div with its class name
-      let element = document.createElement("div");
+  image() {
+    const cardImage = document.createElement("img");
+    const pathEnd = String(this.brand.toLowerCase().replace(/\s/g, "")) + "-" + String(this.model.toLowerCase().replace(/\s/g, "") + ".jpeg");
+  
+      import(`../../images/${pathEnd}`).then(module => {  
+        cardImage.src = module.default;
+      }).catch(() => {
+        cardImage.src = defaultImage;
+      });
+      
+    return cardImage
+  }
+
+  createCardBottom() {
+    const bottomCardClassNames = ["card-bottom", "card-spec", "card-weight-stringpattern", "card-balance-headsize", "card-weight", "card-string-pattern", "card-balance", "card-headsize"];
+    const bottomCardElements = [];
+    bottomCardClassNames.forEach(className => { //creates each div/h6 with its class name
+      let element = "";
+      if (["card-weight", "card-string-pattern", "card-balance", "card-headsize"].includes(className)) {
+        element = document.createElement("h6");
+      } else {
+        element = document.createElement("div");
+      };
       element.classList.toggle(className);
       bottomCardElements.push(element);
     });
@@ -123,14 +140,14 @@ export class Racket extends RacketCardStyleSelector {
         element.appendChild(bottomCardElements[3]);
 
       } else if (element.className === "card-weight-stringpattern") {
-        bottomCardElements[4].innerHTML = this.weight;
-        bottomCardElements[5].innerHTML = this.stringPattern;
+        bottomCardElements[4].innerHTML = String(this.weight) + "g";
+        bottomCardElements[5].innerHTML = String(this.stringPattern).slice(0,2) + "x" + String(this.stringPattern).slice(2,4);
         element.appendChild(bottomCardElements[4]);
         element.appendChild(bottomCardElements[5]);
 
       } else if (element.className === "card-balance-headsize") {
-        bottomCardElements[6].innerHTML = this.balance;
-        bottomCardElements[7].innerHTML = this.headsize;
+        bottomCardElements[6].innerHTML = String(this.balance) + "cm";
+        bottomCardElements[7].innerHTML = String(this.headsize) + "cm²";
         element.appendChild(bottomCardElements[6]);
         element.appendChild(bottomCardElements[7]);
       }

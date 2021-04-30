@@ -1,49 +1,101 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+    # Racket.create(brand:'Wilson', model:'Ben', weight: 285,
+    #   headsize: 645, length: 68, price: 179, color: 'black, yellow',
+    # material: 'graphite', string_pattern: 1619, balance: 325, kid: false, adult: true, stiffness: 68, swingweight:318)  
 
-one:
-  headsize: 1
-  length: 1
-  weight: 1
-  balance: 1.5
-  swingweight: 1
-  verticalstringpattern: 1
-  horizontalstringpattern: 1
+racketOne:
+  headsize: 645
+  length: 68
+  weight: 285
+  balance: 325
+  swingweight: 318
+  string_pattern: 1
   power: 1
   confort: 1
   vibration: 1
   sweetzone: 1
   swingweight: 1
-  yearoffabrication: 1
-  price: 1
-  brand: MyString
-  model: MyString
-  color: MyString
-  material: MyString
-  female: false
-  male: false
+  yearoffabrication: 2000
+  price: 200
+  brand: Wilson
+  model: Cool
+  material: Graphite
+  adult: true
   kid: false
-  players: MyString
+  stiffness: 70
+  players: Benoit Paire
+  description: "quelle belle racket"
+  play_type: "confort"
 
-two:
-  headsize: 1
-  length: 1
-  weight: 1
-  balance: 1.5
-  swingweight: 1
-  verticalstringpattern: 1
-  horizontalstringpattern: 1
+racketTwo:
+  headsize: 630
+  length: 68
+  weight: 301
+  balance: 325
+  swingweight: 299
+  string_pattern: 1
   power: 1
   confort: 1
   vibration: 1
   sweetzone: 1
   swingweight: 1
-  yearoffabrication: 1
-  price: 1
-  brand: MyString
-  model: MyString
-  color: MyString
-  material: MyString
-  female: false
-  male: false
+  yearoffabrication: 2000
+  price: 200
+  brand: Wilson
+  model: Cool 360
+  material: Graphite
+  adult: true
   kid: false
-  players: MyString
+  stiffness: 69
+  players: Gilles Simon
+  description: "quelle belle racket"
+  play_type: "precision"
+
+racketThree:
+  headsize: 645
+  length: 68
+  weight: 300
+  balance: 325
+  swingweight: 330
+  string_pattern: 1
+  power: 1
+  confort: 1
+  vibration: 1
+  sweetzone: 1
+  swingweight: 1
+  yearoffabrication: 2000
+  price: 200
+  brand: Babolat
+  model: Pure
+  material: Graphite
+  adult: true
+  kid: false
+  stiffness: 68
+  players: Ugo Humbert
+  description: "quelle belle racket"
+  play_type: "power"
+
+racketFour:
+  headsize: 645
+  length: 68
+  weight: 299
+  balance: 325
+  swingweight: 310
+  string_pattern: 1
+  power: 1
+  confort: 1
+  vibration: 1
+  sweetzone: 1
+  swingweight: 1
+  yearoffabrication: 2000
+  price: 200
+  brand: Wilson
+  model: Super
+  material: Graphite
+  adult: true
+  kid: false
+  stiffness: 72
+  players: Roger Federer
+  description: "quelle belle racket"
+  play_type: "spin"
+

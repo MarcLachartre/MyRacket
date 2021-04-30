@@ -2,6 +2,8 @@
 import ScrollReveal from 'scrollreveal';
 import {ElementReveal} from '../effects/element_reveal';
 import {RacketSearchDisplay, PaginationStyle} from './search_function_file_manager';
+import {AnimateThatSearch} from '../effects/animate_that_search';
+
 
 export class Searchbar extends ElementReveal { // This class's role is to manage the checkbox click event and to be the ochestrator of search through and filter rackets. It also initiates the pagination as the search function makes the amount of rackets vary.
   constructor() {
@@ -27,7 +29,14 @@ export class Searchbar extends ElementReveal { // This class's role is to manage
 
   initSearchbar() { //this inits the search function of the app. It creates a RacketSearchDisplay objects which will display the rackets the user is searching for. The racket search is async (fetch db).
     // console.log("init Searchbar")
-    const searchbarCheckboxes = document.querySelectorAll('.searchbar-checkbox');
+    this.initDropdowns();
+    this.initQuickSearch();
+    this.initCheckboxSearch()
+    this.clearSearch();
+    this.containerResizing(".racket-card");
+  }
+
+  initQuickSearch() {
     this.searchField.addEventListener('keydown', (event) => {
       if (event.key === 'Enter') {
         this.displaySearch([], this.searchField, "[0,40]");
@@ -35,26 +44,31 @@ export class Searchbar extends ElementReveal { // This class's role is to manage
     });
 
     document.querySelector(".quick-search-container").querySelector(".fa-search").addEventListener('click', (event) => {
-        this.displaySearch([], this.searchField, "[0,40]");
-        console.log(document.activeElement.classList)
+      this.displaySearch([], this.searchField, "[0,40]");
     });
 
+    document.querySelector(".quick-search").querySelector(".search-category").addEventListener('click', (event) => {
+      this.displaySearch([], this.searchField, "[0,40]");
+    });
+    this.initQuickSearchDesign();
+  }
+
+  initCheckboxSearch() {
+    const searchbarCheckboxes = document.querySelectorAll('.searchbar-checkbox');
     searchbarCheckboxes.forEach(checkbox => {
       checkbox.addEventListener('change', () => {
         this.displaySearch(searchbarCheckboxes, '',  "[0,40]");
       });
     });
 
-    this.initQuickSearchDesign();
-    this.initDropdowns();
-    this.clearSearch();
+    document.querySelector(".filtering").querySelector(".search-category").addEventListener('click', (event) => {
+      this.displaySearch(searchbarCheckboxes, '',  "[0,40]");
+    });
   }
-
   
   initQuickSearchDesign() {
     document.querySelector(".type-search").setAttribute("autocomplete", "off")
     const quickSearchDesign = () => {
-
       if (document.activeElement.classList.value === "type-search") {
         document.querySelector(".quick-search-container").classList.add("quick-search-container-active");
       } else {
@@ -67,13 +81,20 @@ export class Searchbar extends ElementReveal { // This class's role is to manage
     });
   }
 
+  containerResizing(cardsSelector) {
+    const initCardsPositions = new AnimateThatSearch();
+    initCardsPositions.cardSelector = cardsSelector;
+    initCardsPositions.columnsAmount = 4;
+    initCardsPositions.resizingSetCardsState(cardsSelector)
+  }
+
   clearSearch() { //this function removes all the checked checkboxes and reinitialize the racket search (racket container will contain all rackets)
     document.querySelector('.clear-search').addEventListener('click', (event) => {
       const searchbarCheckboxes = document.querySelectorAll('.searchbar-checkbox');
       searchbarCheckboxes.forEach(checkbox => {
         checkbox.checked = false;
-        console.log(checkbox.checked);
       });
+      document.querySelector(".type-search").value = ''
       this.displaySearch([], '', "[0,40]");
     });
   }
@@ -88,8 +109,8 @@ export class Searchbar extends ElementReveal { // This class's role is to manage
         const searchbarCheckboxes = document.querySelectorAll('.searchbar-checkbox');
         const searchField = document.querySelector(".type-search");
         const racketsInContainer = document.querySelectorAll('.racket-checkbox');
-
-        const search = new RacketSearchDisplay(searchbarCheckboxes, '', event.target.dataset.page, racketsInContainer);
+        // console.log(event.target.dataset.pageBatch)
+        const search = new RacketSearchDisplay(searchbarCheckboxes, '', event.target.dataset.pageBatch, racketsInContainer);
         search.racketsUpdate();
       });
     });

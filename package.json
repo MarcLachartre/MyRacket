@@ -2,6 +2,8 @@
   "name": "MyRacket",
   "private": true,
   "dependencies": {
+    "@babel/preset-react": "^7.13.13",
+    "@popperjs/core": "^2.9.1",
     "@rails/activestorage": "^6.0.3-4",
     "@rails/ujs": "^6.0.3-4",
     "@rails/webpacker": "5.2.1",
@@ -10,11 +12,18 @@
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
     "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "scrollreveal": "^4.0.7",
     "turbolinks": "^5.2.0",
     "vue-template-compiler": "^2.6.11"
   },
   "devDependencies": {
-    "prettier": "2.2.1"
+    "eslint": "^7.25.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "prettier": "2.2.1",
+    "speed-measure-webpack-plugin": "^1.4.2",
+    "webpack-dev-server": "^3.11.2"
   }
 }

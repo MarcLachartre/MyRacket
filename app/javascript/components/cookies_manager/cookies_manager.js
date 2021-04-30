@@ -23,20 +23,19 @@ export class CookieManager {
     cookieObj[this.ckey] = cookieObj[keys[0]];
     delete cookieObj[keys[0]];
 
-    document.cookie = `${this.cname}${encodeURIComponent(JSON.stringify(cookieObj))}; path=/`;
-    // console.log(`-- cookie created and contains cookie array: ${cookieArray}`);
+    document.cookie = `${this.cname}${encodeURIComponent(JSON.stringify(cookieObj))}; expires= 4 Jun 2091 07:45:00 GMT ;path=/`;
+    console.log(`-- cookie created and contains cookie array: ${cookieArray}`);
   }
 
   getCookieValue() {
     const decodedCookies = decodeURIComponent(document.cookie);
     const allDecodedCookies = decodedCookies.split(';');
-
+    console.log(document.cookie.name)
     for(var i = 0; i <allDecodedCookies.length; i++) { //We iterate in the array of cookies to retrieve all cookies
       if (allDecodedCookies[i].includes(this.cname)) { //If the cookies array contains the cname cookie
         const selectedRacketCookie = allDecodedCookies[i].trim();
       this.cvalue = JSON.parse(selectedRacketCookie.substring(this.cname.length)); //We parse the cname cookie into an object containing what interests us: the array of values saved in the cookie
       return this.cvalue
-      //console.log(`cookie value = ${cvalue}`)
     };
   };
 }
@@ -50,7 +49,7 @@ export class CookieManager {
         this.cvalue.splice(index, 1);
       };
     };
+    console.log(`-- cookie value updated with: ${this.cvalue}`);
     return this.cvalue;
-  //console.log("cookie value updated")
   }
 }

@@ -1,6 +1,6 @@
 import ExpandSquare from '../effects/expand_square'
 import {fadeIn} from '../effects/fade_in_out'
-
+// console.log(module.loaded)
 // console.log('HomepageTennisCourt')
 export class HomepageTennisCourt {
   constructor(welcomeMessage) {
@@ -39,7 +39,7 @@ export class HomepageTennisCourt {
   }
 
   expandCourt(elements) {
-    console.log("start")
+    // console.log("start")
     const exteriorLinesPromise = new Promise((resolve) => {
       elements[0].forEach(element => {
         element.expand(resolve, "width");
@@ -69,7 +69,7 @@ export class HomepageTennisCourt {
         });
       });
     });
-    console.log("end")
+    // console.log("end")
   }
 }
 

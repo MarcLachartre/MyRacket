@@ -2,11 +2,11 @@
 import {FetchDatabase} from "../fetch_database/fetch_database"
 
 export class RacketSearch extends FetchDatabase{ //this class creates an object containing the checkboxes and the values of the racket search query so that we can later fetch the database
-  constructor(checkboxInputs, searchbar, page, brand, string_pattern, weight, headsize, balance, form_input, quick_search) {
+  constructor(checkboxInputs, searchbar, page_batch, brand, string_pattern, weight, headsize, balance, form_input, quick_search) {
     super();
     this.checkboxInputs = checkboxInputs;
     this.searchbar = searchbar;
-    this.page = page;
+    this.page_batch = page_batch;
     this.brand = [];
     this.string_pattern = [];
     this.weight = [];

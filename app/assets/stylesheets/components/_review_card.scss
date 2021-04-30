@@ -94,7 +94,7 @@
   border-radius: 50px;
   border-color: $light-red;
   color: $light-red;
-  transition: all 0.4s;
+  transition: all 0.25s ease-in-out;
   margin-right: 10px;
   }
 
@@ -111,4 +111,12 @@
   display: flex;
   justify-content: center;
   font-size:14px
+}
+
+.racketreview-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  width: 150px;
 }

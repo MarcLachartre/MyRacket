@@ -1,9 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  rating: 1
-  comment: MyText
+reviewOne:
+  rating: 2
+  comment: "super racket"
+  user: userOne
+  racket: racketOne
 
-two:
-  rating: 1
-  comment: MyText
+reviewTwo:
+  rating: 4
+  comment: "bad racket"
+  user: userOne
+  racket: racketTwo
+
+reviewThree:
+  rating: 4
+  comment: "ok racket"
+  user: userOne
+  racket: racketThree

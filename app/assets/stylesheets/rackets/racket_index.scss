@@ -30,6 +30,7 @@ html {
 .racket-container{
   position: relative;
   width: 83vw;
+  min-height: 80vh;
   display:flex;
   flex-direction: column;
   border-top: solid 1px $grey
