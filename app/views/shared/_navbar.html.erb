@@ -3,7 +3,7 @@
     <div class= 'user-navbar'>
       <div class = 'navbar-link'>
 
-        <%= link_to 'Home', pages_home_path %>
+        <%= link_to 'Home', pages_home_path, data: { turbolinks: false } %>
 
       </div>
       <% if user_signed_in? %>

@@ -1,7 +1,7 @@
 import React from "react"
 import {capitalize, date_format} from "../helpers/string_methods"
 
-class Details extends React.Component {
+export class Details extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -39,5 +39,3 @@ class Details extends React.Component {
   }
 }
 
-
-export default Details

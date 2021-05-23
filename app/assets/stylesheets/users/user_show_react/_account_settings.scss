@@ -1,0 +1,40 @@
+@import "index";
+
+.account-settings {
+  display:flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: calc(100vh - 110px - 70px);
+  .edit_user{
+      // height: calc(100vh - 110px - 70px);
+  display: grid;
+
+  grid-template: 
+    "modify-credentials modify-password delete-account" 
+    "validate-modifications validate-modifications validate-modifications" 
+  }
+}
+
+.modify-credentials {
+  grid-area: modify-credentials
+}
+
+.modify-password {
+  grid-area: modify-password
+}
+
+.delete-account {
+  grid-area: delete-account
+}
+
+.validate-modifications {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-area: validate-modifications
+}
+

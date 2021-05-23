@@ -4,19 +4,20 @@ import {CreateReviewDisplay} from './reviews_file_manager';
 import {EditReviewFormDisplay} from './reviews_file_manager';
 
 export class RacketReviews extends FetchDatabase{
-  constructor() {
-    super()
+  constructor(reviewsPageContainer) {
+    super();
+    this.reviewsPageContainer = reviewsPageContainer
   }
 
   init() {
-    this.createReview();
+    this.createReview(this.reviewsPageContainer);
 
     document.querySelectorAll(".delete-review").forEach(deleteReviewBtn => {
       this.deleteReview(deleteReviewBtn);
     });
 
     document.querySelectorAll(".user-edit-review").forEach((editLink) => {
-      this.editReview(editLink);
+      this.editReview(editLink, this.reviewsPageContainer);
     });
   }
 
@@ -27,18 +28,18 @@ export class RacketReviews extends FetchDatabase{
       console.log(deleteReviewBtn.querySelector("#delete").dataset.racketreview)
       if (confirmation === true ) {
         deleteReviewBtn.closest(".review-card").style.display = "none";
-        const url = new URL(`${window.location.href}/racketreviews/${deleteReviewBtn.querySelector("#delete").dataset.racketreview}`);
+        const url = new URL(`${window.origin}/rackets/${deleteReviewBtn.querySelector("#delete").dataset.racket_id}/racketreviews/${deleteReviewBtn.querySelector("#delete").dataset.racketreview}`);
         super.destroy(url);
       };
     });
   }
 
-  createReview() {
+  createReview(pageContainer) {
     if (document.querySelector(".create-review-fields") != null) {
-      document.querySelector(".create-review-fields").querySelector('input[type="submit"]').addEventListener("click", () => {
+      document.querySelector(".create-review-fields").querySelector('input[type="submit"]').addEventListener("click", (event) => {
         event.preventDefault();
+
         const url = new URL(`${window.location.href}/racketreviews/`);
-        console.log(url)
         const com = {comment: document.querySelector("#racketreview_comment").value};
         const body = JSON.stringify({racketreview: com});
 
@@ -49,7 +50,7 @@ export class RacketReviews extends FetchDatabase{
         const newReview = super.create(url, body);
         newReview.then(response => {
           const message = ["Nice!", "Your review has been succesfully posted.", "Thank you!"]
-          this.fetchSuccess(response, message);
+          this.fetchSuccess(response, message, pageContainer);
 
           return response.json()
         }).then(response => {
@@ -64,14 +65,15 @@ export class RacketReviews extends FetchDatabase{
     };
   }
 
-  editReview(editLink) {
+  editReview(editLink, pageContainer) {
     editLink.addEventListener("click", (event) => {
+      console.log("editreview")
       event.preventDefault();
-      const url = new URL(event.srcElement.href);
+      const url = new URL(event.target.href);
       const getEditReview = super.get(url);
-
+     
       getEditReview.then(response => {
-        const showEditReviewForm = new EditReviewFormDisplay(response.racketreview.comment);
+        const showEditReviewForm = new EditReviewFormDisplay(response.racketreview.comment, pageContainer);
         showEditReviewForm.init();
 
       }).then(response => {
@@ -83,7 +85,7 @@ export class RacketReviews extends FetchDatabase{
           document.querySelector(".pop-up-page-container").remove();
 
           const message = ["Great!", "Your review has been succesfully modified.", "Thank you!"];
-          this.fetchSuccess(response, message);
+          this.fetchSuccess(response, message, pageContainer);
           return response.json()
 
           }).then(response => {
@@ -94,12 +96,12 @@ export class RacketReviews extends FetchDatabase{
     });
   }
 
-  fetchSuccess(response, message) {
+  fetchSuccess(response, message, container) {
     console.log(message)
     if (response.statusText === "OK") {
       const successPopUpBox = new PopUpBox(message[0], message[1], message[2]);
       successPopUpBox.initPopUpBox();
-      successPopUpBox.successMessage();
+      successPopUpBox.successMessage(container);
     } else {
       const failPopUpBox = new PopUpBox();
       failPopUpBox.initPopUpBox();

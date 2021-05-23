@@ -90,7 +90,7 @@ export class FetchDatabase {
   }
 
   patch(url, body) {
-    // console.log(url)
+    console.log(url)
     const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
 
     const patchInit =  {
@@ -104,8 +104,9 @@ export class FetchDatabase {
     };
 
     const patchRequest = new Request(url, patchInit)
-
+    console.log(patchRequest)
     const response = fetch(patchRequest).then(response => {
+      console.log(response)
       if (!response.ok) {
         throw Error(response.statusText);
       }
@@ -118,6 +119,7 @@ export class FetchDatabase {
 
   destroy(url) {
     const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
+    console.log(csrf)
     let deleteInit =  {
       method: 'DELETE',
       headers: {

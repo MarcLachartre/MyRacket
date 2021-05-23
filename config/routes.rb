@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations'}
   get 'pages/home'
   get 'pages/about'
  
@@ -14,7 +14,10 @@ Rails.application.routes.draw do
   # resources :racketreviews
 
   resources :users, only: [:show, :index, :destroy]
-  get 'my_account/:id', to: 'users#show'
+
+  get "users/:id/account", to: 'users#show'
+  get "users/:id/my_reviews", to: 'users#show'
+  get "users/:id/settings", to: 'users#show'
   
 end
 

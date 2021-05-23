@@ -2,7 +2,9 @@
 
 .footer {
   position: relative;
+  display: flex;
+  flex-grow: 0;
   width: 100%;
-  height: 10rem;
-  background-color: $dark-blue;
+  height: 110px;
+  background-color: $shiny-blue;
 }
