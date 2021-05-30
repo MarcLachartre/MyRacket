@@ -7,10 +7,7 @@ gem 'lorem_ipsum_amet'
 
 gem 'bootstrap', '~> 4.3.1'
 gem 'rails-ujs'
-
 gem 'devise'
-gem 'devise-secure_password', '~> 2.0'
-
 gem 'sprockets', '~> 4'
 gem 'sassc-rails'
 

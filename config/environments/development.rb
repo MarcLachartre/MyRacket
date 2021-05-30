@@ -36,20 +36,6 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-  address: "smtp.gmail.com",
-  domain: "gmail.com",
-  port: 587,
-  user_name: "marc.lachartre@gmail.com",
-  password: "rqyvpkqcddvcqvjk",
-  authentication: 'plain',
-  enable_starttls_auto: true
-}
-  # The default_url_options setting is useful for constructing link URLs in email templates. Usually, the :host, i.e. the fully qualified name of the web server, is needed to be set up with this config option. 
-  # It has nothing to do with sending emails, it only configures displaying links in the emails.
-
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -62,7 +48,7 @@ Rails.application.configure do
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
-  config.assets.debug = false
+  config.assets.debug = true
   config.assets.compile = true
   # Suppress logger output for asset requests.
   config.assets.quiet = false

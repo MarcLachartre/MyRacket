@@ -13,7 +13,7 @@ export class ComparatorDisplay extends Comparator { //this class in only respons
     const comparator = this.comparatorContainer;
     const downArrow = document.querySelector(".open-comparator-arrow");
     const upArrow = document.querySelector(".close-comparator-arrow");
-    this.setEmptyComparatorMessage()
+
     upArrow.addEventListener('click', () => {
       console.log("cul")
       this.closeLargeComparator();
@@ -46,16 +46,6 @@ export class ComparatorDisplay extends Comparator { //this class in only respons
       node[i].style.webkitAnimationDelay = "none";
       node[i].style.webkitAnimationFillMode = "none";
       node[i].style.opacity = "1";
-    }
-  }
-
-  setEmptyComparatorMessage() {
-    if (Array.from(document.querySelector(".short-displayed-rackets").querySelectorAll(".short-comparator-racket-card")).length === 0) {
-      document.querySelector(".empty-comparator").style.display = "flex"; //adds empty comparator message, if there are no compared rackets
-      document.querySelector(".short-displayed-rackets").style.display = "none"
-    } else {
-      document.querySelector(".empty-comparator").style.display = "none"; //removes empty comparator message, if there are no compared rackets
-      document.querySelector(".short-displayed-rackets").style.display = "grid"
     }
   }
 }
