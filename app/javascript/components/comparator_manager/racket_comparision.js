@@ -1,7 +1,9 @@
 import {RacketCardStyleSelector} from '../racket_cards/racket_card_style_selector';
 import {Comparator} from './comparator_file_manager';
 import {ComparedRacketCookie} from '../cookies_manager/compared_racket_cookies'
-// console.log('RacketComparision')
+
+const defaultImage = require("../../images/racket-sample.jpg");
+
 export class RacketComparision extends Comparator {
   constructor(brand, model, headsize, stringpattern, weight, length, swingweight, stiffness, power, manoeuvrability, comfort, control, id) {
     super();
