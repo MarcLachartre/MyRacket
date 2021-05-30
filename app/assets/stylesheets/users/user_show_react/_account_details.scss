@@ -1,0 +1,51 @@
+@import "index";
+
+.account-details-container {
+  position: relative;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 10% 90%;
+  row-gap: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  grid-template-areas:
+    "h1 h1"
+    "user-details reviews-count";
+    h1{
+      display: flex;
+      justify-content: center;
+      grid-area: h1
+    }
+  }
+
+.user-details {
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-area: user-details;
+  // border: solid 1px $grey;
+  .fas {
+    font-size: 150px;
+  }
+}
+
+.reviews-count-container {
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-area: reviews-count;
+}
+
+.reviews-count {
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px $grey;
+  width: 150px;
+  height: 150px;
+  border-radius: 50% 50%
+}

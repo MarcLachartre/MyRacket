@@ -30,7 +30,7 @@ export class CookieManager {
   getCookieValue() {
     const decodedCookies = decodeURIComponent(document.cookie);
     const allDecodedCookies = decodedCookies.split(';');
-    console.log(document.cookie.name)
+
     for(var i = 0; i <allDecodedCookies.length; i++) { //We iterate in the array of cookies to retrieve all cookies
       if (allDecodedCookies[i].includes(this.cname)) { //If the cookies array contains the cname cookie
         const selectedRacketCookie = allDecodedCookies[i].trim();

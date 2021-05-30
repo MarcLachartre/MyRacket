@@ -1,5 +1,16 @@
 @import "index";
 
+.devise-page.log-in {
+  .devise-card {
+    position: relative;
+    grid-template-rows: 25% 75%;
+    height: 100%;
+    margin-top: 4%;
+    margin-bottom: 10%;
+    min-height: 450px;
+    z-index: 5
+  }
+}
 .user-log-in {
   position: relative;
   display: flex;

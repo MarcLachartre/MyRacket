@@ -28,6 +28,7 @@ export class ComparedRacketCookie extends CookieManager {
     console.log("update cookie")
     this.ckey = "racket_id";
     this.cvalue = super.getCookieValue().racket_id;
+    console.log(`current cookie ${this.cvalue}`)
     this.cvalue = super.updateCookieValue(newValue, condition);
     if (this.cvalue.length <= 5) { // this limites the size of the cookie, as we cannot have more than 5 rackets in the comparator, the cookie should'nt be updated with more than 5 racket ids
       super.createCookie();

@@ -109,15 +109,15 @@ end
   #   headsize: 626, length: 68, price: 209, color: 'black', material: 'graphite', string_pattern: 1619, balance: 310, kid: false, adult: true, stiffness: 65, swingweight:330)
   
 
-user1 = User.create!(name:'marc', lastname: "Lachartre", username: "Kemar", rank:'pgm de la raquette', email: 'marc@gmail.com', password: 111111, admin: 1)
-user2 = User.create!(name:'maxime', lastname: "Max", username: "Max", rank:'a deja sniffé de la terre battue', email: 'maxime@gmail.com', password: 111111, admin: 0)
-user3 = User.create!(name:'yoann', lastname: "Robin", username: "Bendak", rank:'joue avec un planche (avaleur de sucette)', email: 'yoann@gmail.com', password: 111111, admin: 0)
-user4 = User.create!(name:'benjamin', lastname: "Lacour", username: "Ramon", rank:'amis des parebrises', email: 'benjamin@gmail.com', password: 111111, admin: 0)
+# user1 = User.create!(name:'marc', lastname: "Lachartre", username: "Kemar", rank:'pgm de la raquette', email: 'marc@gmail.com', password: "Hubert140261!", admin: 0)
+user2 = User.create!(name:'maxime', lastname: "Max", username: "Max", rank:'a deja sniffé de la terre battue', email: 'maxime@gmail.com', password: "Hubert140261!", admin: 0)
+user3 = User.create!(name:'yoann', lastname: "Robin", username: "Bendak", rank:'joue avec un planche (avaleur de sucette)', email: 'yoann@gmail.com', password: "Hubert140261!", admin: 0)
+user4 = User.create!(name:'benjamin', lastname: "Lacour", username: "Ramon", rank:'amis des parebrises', email: 'benjamin@gmail.com', password: "Hubert140261!", admin: 0)
 
-userracket1 = Userracket.create!(racket: racket1, user: user1)
+# userracket1 = Userracket.create!(racket: racket1, user: user1)
 userracket2 = Userracket.create!(racket: racket2, user: user2)
 userracket3 = Userracket.create!(racket: racket3, user: user3)
 userracket4 = Userracket.create!(racket: racket4, user: user4)
 
-racketreview1 = Racketreview.create!(comment: 'great racket', racket: racket1, user: user1)
+# racketreview1 = Racketreview.create!(comment: 'great racket', racket: racket1, user: user1)
 

@@ -4,12 +4,17 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  min-height: 100%;
+  height: 101vh;
   bottom: 0;
   min-width: 100%;
   background-color: $shiny-blue;
+  overflow:auto; 
+  .myracket-navbar{
+    position: relative;
+  }
+  
   h1 {
     display: flex;
     align-content: flex-start;
@@ -23,7 +28,7 @@
     display: flex;
     margin: 0px;
     width: 80%;
-    font-size: 0.9em;
+    font-size: 1em;
   }
   .button-up:hover {
     background-color: $orange;
@@ -79,6 +84,11 @@
   margin-bottom: 10px;
 }
 
+.field-row {
+  display: flex;
+  justify-content: space-between
+}
+
 .remember-me{
   display: flex;
   flex-direction: row;
@@ -108,21 +118,22 @@
   align-items: center
 }
 
-@media screen and (max-height: 600px) {
-  .devise-page {
-    h1 {
-      transform: translateY(0px)
-    }
-  }
+
+// @media screen and (max-height: 600px) {
+//   .devise-page.log-in {
+//     h1 {
+//       transform: translateY(0px)
+//     }
+//   }
   
-  .devise-card{
-    margin-top: 100px;
-    height: 20rem;
-    grid-template-rows: 0% 100%;
-  }
-  .devise-image img{
-    height: 0%;
-    width: 0%
-    // justify-content: center;
-  }
-}
+//   .devise-card{
+//     margin-top: 100px;
+//     height: 20rem;
+//     grid-template-rows: 0% 100%;
+//   }
+//   .devise-image img{
+//     height: 0%;
+//     width: 0%
+//     // justify-content: center;
+//   }
+// }

@@ -1,22 +1,21 @@
 import {RacketCardStyleSelector} from '../racket_cards/racket_card_style_selector';
 import {Comparator} from './comparator_file_manager';
 import {ComparedRacketCookie} from '../cookies_manager/compared_racket_cookies'
+const defaultImage = require("../../images/racket-sample.jpg");
 // console.log('RacketComparision')
 export class RacketComparision extends Comparator {
-  constructor(brand, model, headsize, stringpattern, weight, length, swingweight, stiffness, power, manoeuvrability, comfort, control, id) {
+  constructor(brand, model, strength, weight, headsize, stringpattern, balance, length, swingweight, stiffness, id) {
     super();
     this.brand = brand;
     this.model = model;
-    this.headsize = headsize;
+    this.strength = strength;
+    this.weight = `${weight} g`;
+    this.headsize = `${headsize} cm²`;
     this.stringpattern = stringpattern;
-    this.weight = weight;
-    this.length = length;
-    this.swingweight = swingweight;
-    this.stiffness = stiffness;
-    this.power = power;
-    this.manoeuvrability = manoeuvrability;
-    this.comfort = comfort;
-    this.control = control;
+    this.balance = `${balance} cm`;
+    this.length = `${length} cm`;
+    this.swingweight = `${swingweight} kg/cm²`;
+    this.stiffness = `${stiffness} RA`;
     this.id = id
   }
 
@@ -99,32 +98,53 @@ export class RacketComparision extends Comparator {
     return card
   }
 
+  image() {
+    const cardImage = document.createElement("img");
+    const pathEnd = String(this.brand.toLowerCase().replace(/\s/g, "")) + "-" + String(this.model.toLowerCase().replace(/\s/g, "") + ".jpeg");
+  
+      import(`../../images/${pathEnd}`).then(module => {  
+        cardImage.src = module.default;
+      }).catch(() => {
+        cardImage.src = defaultImage;
+      });
+      
+    return cardImage
+  }
+
   createLargeCard() {
     const card = document.createElement("div");
-    const brandModelContainer = document.createElement("div");
+    const imageContainer = document.createElement("div");
     const removeLabel = this.createRemoveLabel();
     const largeComparatorRacketCard = document.createElement("div");
     const comparedRacketCardsData = document.createElement("div");
 
     card.classList.toggle('compared-racket-cards-container');
     largeComparatorRacketCard.classList.toggle('large-comparator-racket-card');
-    brandModelContainer.classList.toggle('model-brand-container');
+    imageContainer.classList.toggle('comparator-card-image');
     comparedRacketCardsData.classList.toggle('compared-racket-cards-data');
 
     for (let i = 1; i < Object.keys(this).length-1; i++) {
-      if ( i < 3) {
-      let specTitle = document.createElement("h4");
-      specTitle.innerHTML = this[Object.keys(this)[i]];
-      brandModelContainer.appendChild(specTitle);
-      } else if ( 3 <= i < 12) {
-      let spec = document.createElement("div");
-      spec.innerHTML = this[Object.keys(this)[i]];
-      spec.classList.toggle("spec");
-      comparedRacketCardsData.appendChild(spec);
+      if ( i === 1) {
+        let spec = document.createElement("h4");
+        spec.innerHTML = this[Object.keys(this)[i]];
+        spec.classList.toggle("spec");
+        comparedRacketCardsData.appendChild(spec);
+      } else if (i === 2) {
+        let spec = document.createElement("h5");
+        spec.innerHTML = this[Object.keys(this)[i]];
+        spec.classList.toggle("spec");
+        comparedRacketCardsData.appendChild(spec);
+      } else if ( 3 <= i < 10) {
+        let spec = document.createElement("div");
+        spec.innerHTML = this[Object.keys(this)[i]];
+        spec.classList.toggle("spec");
+        comparedRacketCardsData.appendChild(spec);
       };
     };
+
     comparedRacketCardsData.appendChild(removeLabel)
-    largeComparatorRacketCard.appendChild(brandModelContainer);
+    largeComparatorRacketCard.appendChild(imageContainer);
+    imageContainer.appendChild(this.image())
     largeComparatorRacketCard.appendChild(comparedRacketCardsData);
     card.appendChild(largeComparatorRacketCard);
 

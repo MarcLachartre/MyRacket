@@ -1,5 +1,9 @@
-<p>Welcome <%= @email %>!</p>
+<p>Hello <%= @resource.name.capitalize() %>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>You can confirm your account creation through the link below:</p>
 
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+
+<p>Thank you for creating an account on the MyRacket app and making sure this one was on the line! We can't wait to see you there!</p>
+
+<p>The My Racket Team</p>

@@ -1,3 +1,29 @@
 <div class= "footer">
+  <div class= "footer-info-container">
+    <div class="footer-navigation-links">
+      <%= link_to "Home", "/pages/home" %>
+      <%= link_to "Compare rackets", "/rackets" %>
+    </div>
 
+    <div class="footer-account-links">
+    <% if user_signed_in? %>
+      <%= link_to "My account", "/users/#{current_user.id}" %>
+      <%= link_to "My reviews", "/users/#{current_user.id}/my_reviews" %>
+      <%= link_to "Settings", "/users/#{current_user.id}/settings" %>
+    <% else %>
+      <%= link_to "Sign-in", "/users/sign_in" %>
+      <%= link_to "Create account", "/users/sign_up" %>
+      <%= link_to "Forgot password?", "/users/password/new" %>
+    <% end %>
+    </div>
+
+    <div class= "contact-us">
+      <div>
+        Contact us:
+      </div>
+      <div>
+        marc.lachartre@gmail.com
+      </div>
+    </div>
+  </div>
 </div>
