@@ -1,11 +1,7 @@
 .devise-page.sign-up {
   .devise-card {
-    position: relative;
     grid-template-rows: 25% 75%;
-    height: 100%;
-    margin-top: 2%;
-    margin-bottom: 3%;
-    min-height: 570px;
+    height: 33rem;
     width: 420px;
     z-index: 5
   }
@@ -27,3 +23,6 @@
   }
 }
 
+.field-row {
+  display: flex
+}
