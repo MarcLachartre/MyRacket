@@ -57,7 +57,7 @@ export class RacketReviews extends FetchDatabase{
           const newReviewDisplay = new CreateReviewDisplay(response.racketreview.comment, response.racketreview.id, response.current_user.name, url.href, response.racketreview.created_at);
           const reviewCard = newReviewDisplay.init();
           this.deleteReview(reviewCard.querySelector(".fa-times"));
-          this.editReview(reviewCard.querySelector(".user-edit-review"));
+          this.editReview(reviewCard.querySelector(".user-edit-review"), this.reviewsPageContainer);
           document.querySelector("#racketreview_comment").value = "";
           return response
         });
@@ -68,6 +68,7 @@ export class RacketReviews extends FetchDatabase{
   editReview(editLink, pageContainer) {
     editLink.addEventListener("click", (event) => {
       console.log("editreview")
+      console.log(pageContainer)
       event.preventDefault();
       const url = new URL(event.target.href);
       const getEditReview = super.get(url);

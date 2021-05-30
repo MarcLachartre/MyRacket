@@ -1,12 +1,26 @@
-<%= render partial: "shared/navbar" %>
+<div class= "devise-page log-in"> 
+  <%= render partial: "shared/navbar" %>
+    <% if flash.keys.length > 0  %>
 
-<div class= "devise-page"> 
+        <% flash.each do |type, msg| %>
+        <% if type == "alert" %>
+          <div class= "alert alert-danger">
+            <%= msg %>
+          </div>
+          <% elsif type == "notice" %>
+          <div class= "alert alert-success">
+            <%= msg %>
+          </div>
+          <% end %>
+        <% end %>   
+    <% end %>
     <div class= "devise-card"> 
       <div class= "devise-image">
       <%= image_pack_tag 'devise-racket.jpeg' %> 
       </div>
       <div class= "form-container">
         <h1>Log in</h1>
+
         <%= form_for(resource, as: resource_name, url: session_path(resource_name), html:{class: "user-log-in"}) do |f| %>
           <div class="field">
             <%= f.label :email %>

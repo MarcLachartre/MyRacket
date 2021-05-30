@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: 'users/registrations'}
+  devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions'}
   get 'pages/home'
   get 'pages/about'
  
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   patch "rackets/:racket_id/racketreviews/:racketreview_id/edit", to: "racketreviews#update"
   # resources :racketreviews
 
-  resources :users, only: [:show, :index, :destroy]
+  resources :users, only: [:show]
 
   get "users/:id/account", to: 'users#show'
   get "users/:id/my_reviews", to: 'users#show'

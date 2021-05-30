@@ -66,13 +66,14 @@
           <%= check_box_tag "selected_racket_id[]", racket.id,
           if @selected_racket[:racket_id] != nil
             @selected_racket[:racket_id].include?(racket.id.to_s)
-          end,  data: {id: racket.id.to_i, brand: racket.brand, model: racket.model, headsize: racket.headsize, weight: racket.weight, length: racket.length, swingweight: racket.swingweight, stringpattern: racket.string_pattern, stiffness: racket.stiffness, powerpotential: "powerpotential", manoeuvrability: "manoeuvrability", confort: "confort", control: "control"},
+          end,  data: {brand: racket.brand, model: racket.model, strength: "strength", weight: racket.weight, headsize: racket.headsize, balance: racket.balance, length: racket.length, swingweight: racket.swingweight, stringpattern: racket.string_pattern, stiffness: racket.stiffness, strength: "strength", id: racket.id.to_i},
           id: racket.id,
           class: 'racket-checkbox'
             %>
             <i class="fas fa-plus"></i>
             <i class="fas fa-check"></i>
             <i class="fas fa-times"></i>
+            <div class="compare"> Compare </div>
             </div>
           </div>
           <% end %>

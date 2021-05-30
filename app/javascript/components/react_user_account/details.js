@@ -10,7 +10,7 @@ export class Details extends React.Component {
     return (
       
         <div className= "account-details-container">
-          <h2> Welcome to your account {this.props.user.username} </h2>
+          <h1> Welcome to your account {this.props.user.username} </h1>
           <div className= "user-details"> 
             <i className= "fas fa-grin-alt"></i>
             <h5>

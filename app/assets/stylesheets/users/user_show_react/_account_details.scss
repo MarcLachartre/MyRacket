@@ -6,16 +6,16 @@
   grid-template-columns: 50% 50%;
   grid-template-rows: 10% 90%;
   row-gap: 15px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   width: 100%;
   grid-template-areas:
-    "h2 h2"
+    "h1 h1"
     "user-details reviews-count";
-    h2{
+    h1{
       display: flex;
       justify-content: center;
-      grid-area: h2
+      grid-area: h1
     }
   }
 

@@ -6,21 +6,27 @@
   overflow: hidden;
   display: flex;
   width: 100%;
-  height: 100vh;
   margin-top: 70px;
   justify-content: flex-start;
   flex-direction: column;
-  height:auto;
-  box-shadow: 0px 0px 0px 0px none;
   transition: all 0.25s ease-in-out;
+  h4 {
+    color: $orange;
+    margin: 0px;
+  }
+  h5 {
+    color: $orange;
+    margin: 0px;
+  }
 }
 
 .open-comparator-arrow {
   position: relative;
   display:flex;
   background-color: white;
-  width:7%;
-  min-width: 5%;
+  width:70px;
+  min-width: 70px;
+  margin-right:4px;
   height: 80%;
   border-radius:40px;
   border: solid 1px $dark-blue;
@@ -28,7 +34,6 @@
   align-items: center;
   align-self: center;
   font-size: 17px;
-  text-decoration: underline;
   cursor: pointer;
   text-align:center;
   transition: all 0.25s ease-in-out;
@@ -59,8 +64,8 @@
 .short-comparator-background {
   position: relative;
   display: flex;
-
-  height:140px;
+  margin-top: 70px;
+  height:70px;
   background-color: white;
 }
 
@@ -68,9 +73,19 @@
   position:relative;
   background-color: transparent;
   display:flex;
-  justify-content: space-between;
-  width: auto;
+  height: 70px;
+  justify-content: flex-end;
+  width:100%;
   transition: background-color 0.25s ease-in-out;
+}
+
+.empty-comparator {
+  display: none;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 .short-displayed-rackets {
@@ -78,7 +93,7 @@
   grid-template-columns: 20% 20% 20% 20% 20%;
   grid-auto-rows: 70px;
   position: relative;
-  justify-content: center;
+  justify-items: start;
   align-items: center;
   height: 70px;
   width: 100%;
@@ -153,6 +168,7 @@
   margin-right: 4px;
   width: 150px;
   min-width:70px;
+  text-align: center;
   word-break: normal;
   overflow-wrap: break-word;
   display: -webkit-box;
@@ -163,6 +179,7 @@
 .large-comparator-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   height: 100%;
 }
 
@@ -178,64 +195,41 @@
 .top-background{
   position: relative;
   width: 100%;
-  height: 20%;
-  background-color: $dark-blue;
+  height: 25%;
+  background-color: $shiny-blue;
 }
 
 .bottom-background{
   position: relative;
   background-color: #f5f5f5;
   width: 100%;
-  height: 80%;
+  height: 75%;
 }
 
 
 
 .close-comparator-arrow {
   position: absolute;
-  top: 90%; left: 50%;
+  top: 91%; left: 50%;
   display: flex;
   justify-content: center;
-  width: 8vh;
-  height: 4vh;
+  align-items: center;
+  width: 80px;
+  height: 45px;
   z-index: 1;
   border-radius:50px;
-  border: solid 2px $light-blue;
+  border: solid 1px red;
+  text-align: center;
+  color: red;
   cursor: pointer;
-  transform: translateY(2vh);
+  font-size: 17px;
   transition: all 0.25s ease-in-out;
-  // .arrow-up {
-  //   position: relative;
-  //   align-self: center;
-  //   border: solid 2px $light-blue;
-  //   border-width: 0 4px 4px 0;
-  //   border-radius: 4px;
-  //   display: inline-block;
-  //   padding: 4px;
-  //   transition: all 0.4s;
-  // }
-  // i {
-  //       color: $light-blue;
-  // }
 }
 
 .close-comparator-arrow:hover{
-  box-shadow: 0px 8px $dark-blue;
-  background-color: $light-blue;
-  border: solid 2px $light-blue;
-  transform: translateY(1vh);
-
-.arrow-up {
-    position: relative;
-    align-self: center;
-    border: solid white;
-    border-width: 0 4px 4px 0;
-    border-radius: 4px;
-    display: inline-block;
-    padding: 4px;
-    transition: all 0.25s;
-    cursor: pointer;
-  }
+  background-color: red;
+  color: white;
+  border: solid 1px red;
 }
 
 .comparator-container {
@@ -244,7 +238,9 @@
   position: absolute;
   flex-direction: column;
   margin-bottom: 10%;
-  width: 100%;
+  margin-right: 10px;
+  margin-left: 10px;
+  width: 95%;
   height: 100%;
 }
 
@@ -252,14 +248,13 @@
   display: flex;
   position: relative;
   flex-direction: column;
-  width: 100%;
-  margin-right: 0.5%;
+  width: 98%;
 }
 
 .logo-placeholder{
   display: flex;
   position: relative;
-  height: 20%;
+  height: 25%;
   width: auto;
 }
 
@@ -283,7 +278,7 @@
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
   width: 100%;
-  height: 70%;
+  height: 65%;
 }
 
 .spec-list {
@@ -291,6 +286,7 @@
   flex-direction: column;
   align-self: center;
   justify-self: center;
+  text-align: center;
 }
 
 
@@ -299,10 +295,8 @@
   display: flex;
   overflow: hidden;
   flex-direction: column;
-  margin-left: 0.5%;
-  margin-right: 0.5%;
   border-radius: 15px;
-  width: 100%;
+  width: 99%;
   height: 100%;
   .compared-racket-checkbox-label{
     display: flex;
@@ -334,28 +328,23 @@
   height: 100%;
 }
 
-.model-brand-container {
+.comparator-card-image {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  background-color: $light-blue;
+  justify-content: flex-start;
   width: 100%;
-  height: 20%;
-  h4 {
-    color: white;
-    text-align: center;
-  }
+  height: 25%;
 }
 
 .compared-racket-cards-data{
   position: relative;
   display: grid;
   grid-template-rows: repeat(11, 9.09%);
-  // grid-template-rows: repeat(11, 10%);
   background-color: white;
-  height: 70%;
+  height: 65%;
   width: 100%;
+  box-shadow: 0px -30px 15px white;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
 }

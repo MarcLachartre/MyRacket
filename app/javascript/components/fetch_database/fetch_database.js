@@ -117,29 +117,27 @@ export class FetchDatabase {
     return response;
   }
 
-  destroy(url) {
+  destroy(url, body) {
     const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
-    console.log(csrf)
+
     let deleteInit =  {
       method: 'DELETE',
       headers: {
         "Content-Type": 'application/json',
         "Accept": 'application/json',
         'X-CSRF-Token': csrf
-      }
+      },
+      body: body
     };
 
     const deleteRequest = new Request(url, deleteInit);
 
-    const response = fetch(deleteRequest).then(function(response) {
+    const response = fetch(deleteRequest).then(response => {
       if (!response.ok) {
         throw Error(response.statusText);
       }
-    }).then(function(response) {
-      console.log("ok");
-      return response;
-    }).catch(function(error) {
-        console.log(error);
-    });
+      return response
+    })
+    return response
   }
 }

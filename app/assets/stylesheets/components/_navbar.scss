@@ -10,24 +10,29 @@
   min-height: 70px;
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   transition: all 0.25s ease-in-out;
   a{
-    color:white !important;
+    transition: all 0.25s ease-in-out;
+    color:white;
     text-decoration: none !important;
+  }
+  a:hover{
+    color: $orange
   }
 }
 
 .user-navbar {
   position: absolute;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  width: 400px;
+  width: 95%;
   height: 100%;
   text-align: center;
 }
+
 .navbar-link {
   position: relative;
   display: flex;
@@ -35,7 +40,6 @@
   justify-content: center;
   height: 100%;
   a{
-  color: black;
   align-self: center;
   display: inline-block;
   text-decoration: none;
@@ -48,4 +52,9 @@
   cursor: pointer;
 }
 
+.navbar-right-links {
+  display: flex;
+  width: 320px;
+  justify-content: space-between
+}
 

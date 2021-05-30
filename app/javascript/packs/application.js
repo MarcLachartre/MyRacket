@@ -25,8 +25,4 @@ import {Main} from './main';
 
 document.addEventListener('turbolinks:load', () => {
   new Main().init();
-  console.log(window)
 });
-// window.onhashchange = function() {
-
-//  }

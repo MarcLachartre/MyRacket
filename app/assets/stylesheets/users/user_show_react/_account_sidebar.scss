@@ -11,11 +11,28 @@
     padding-left: 10px;
   }
   h5 {
-    transition: padding-left 0.25s;
+    transition: padding-left 0.25s ease-in-out;
   }
   i {
-    font-size: 50px;
+    font-size: 40px;
+    color: $shiny-blue;
+    transition: all 0.25s;
   }
+
+  i:hover {
+    color: white;
+    background-color: $light-orange;
+    padding: 10px;
+    border-radius: 20px;
+  }
+}
+
+.selected-account-icon {
+  font-size: 40px;
+  padding: 15px !important;
+  border-radius: 20px;
+  color: white !important;
+  background-color: $orange !important;
 }
 
 .account-sidebar {
