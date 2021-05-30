@@ -11,7 +11,7 @@ export class RacketComparision extends Comparator {
     this.strength = strength;
     this.weight = `${weight} g`;
     this.headsize = `${headsize} cm²`;
-    this.stringpattern = stringpattern;
+    this.stringpattern = `${stringpattern[0]}${stringpattern[1]}x${stringpattern[2]}${stringpattern[3]}`;
     this.balance = `${balance} cm`;
     this.length = `${length} cm`;
     this.swingweight = `${swingweight} kg/cm²`;
