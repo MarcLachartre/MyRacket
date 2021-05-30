@@ -7,16 +7,14 @@ export class RacketComparision extends Comparator {
     super();
     this.brand = brand;
     this.model = model;
-    this.headsize = headsize;
-    this.stringpattern = stringpattern;
-    this.weight = weight;
-    this.length = length;
-    this.swingweight = swingweight;
-    this.stiffness = stiffness;
-    this.power = power;
-    this.manoeuvrability = manoeuvrability;
-    this.comfort = comfort;
-    this.control = control;
+    this.strength = strength;
+    this.weight = `${weight} g`;
+    this.headsize = `${headsize} cm²`;
+    this.stringpattern = `${stringpattern[0]}${stringpattern[1]}x${stringpattern[2]}${stringpattern[3]}`;
+    this.balance = `${balance} cm`;
+    this.length = `${length} cm`;
+    this.swingweight = `${swingweight} kg/cm²`;
+    this.stiffness = `${stiffness} RA`;
     this.id = id
   }
 
