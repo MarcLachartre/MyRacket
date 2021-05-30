@@ -4,7 +4,7 @@ export class AnimateThatSearch {
     this.finalItemsArray = finalItemsArray; // has to be an array made of obects containing the id of the final items 
     this.gridContainer = gridContainer; // is the grid containing the items to animate, IT NEEDS TO CONTAIN THE STYLE "GRID-AUTO-ROWS" WITH A VALUE IN PX.
     this.cardSelector = cardSelector; // is the class selector/name of the card (with the dot at the beginning), the highest node of the card.
-    this.nodeIdSelector = nodeIdSelector; // is the selector name of the node (without the dot at the beginning).
+    this.nodeIdSelector = nodeIdSelector; // is teh selector name of the node (without the dot at the beginning).
     this.columnsAmount = columnsAmount; // the amount of columns the grid contains
   }
 
@@ -27,12 +27,12 @@ export class AnimateThatSearch {
   }
 
   initItemsPosition(items) {
-    items.forEach((item, index) => {
+    items.forEach((racket, index) => {
       const position = this.positionning(index);
-      item.closest(this.cardSelector).style.gridColumnStart = position.column;
-      item.closest(this.cardSelector).style.gridRowStart = position.row;
-      item.closest(this.cardSelector).style.transform = null;
-      item.closest(this.cardSelector).style.transition = null;
+      racket.closest(this.cardSelector).style.gridColumnStart = position.column;
+      racket.closest(this.cardSelector).style.gridRowStart = position.row;
+      racket.closest(this.cardSelector).style.transform = null;
+      racket.closest(this.cardSelector).style.transition = null;
     });
   }
 

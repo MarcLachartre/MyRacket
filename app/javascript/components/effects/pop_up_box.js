@@ -30,7 +30,7 @@ export class PopUpBox {
     });
   }
 
-  successMessage(container) {
+  successMessage() {
     const successBox = this.initPopUpBox();
     const successMessage1 = document.createElement("div");
     const successMessage2 = document.createElement("div");
@@ -51,7 +51,7 @@ export class PopUpBox {
     title.appendChild(successMessage1);
     subTitle.appendChild(successMessage2);
     subTitle.appendChild(successMessage3);
-    container.appendChild(successBox);
+    document.querySelector(".product-page-container").appendChild(successBox);
     successBox.addEventListener("click", ()=>{
       successBox.remove()
     });
