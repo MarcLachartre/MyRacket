@@ -1,29 +1,84 @@
 @import "index";
 
 .user-account-page-container {
-  position: relative;
+  position: absolute;
   display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  height: 100%;
   width: 100%;
-  h1 {
-    color: $orange
-  }
+  height: auto;
 }
 
 .user-account-container {
   position: relative;
   display: flex;
   flex-direction: column;
-  margin-top: 70px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  margin-top: 80px;
+  margin-right: 35px;
+  margin-left: 35px;
 }
 
 .user-account-app {
   width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
   align-items: center; 
+}
+
+.account-details-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto;
+  row-gap: 15px;
+  width: 100%;
+  grid-template-areas:
+    "h2 h2"
+    "user-details reviews-count";
+    h2{
+      display: flex;
+      justify-content: center;
+      grid-area: h2
+    }
+  }
+
+.user-details {
+  display: flex; 
+  height: 350px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-area: user-details;
+  // border: solid 1px $grey;
+  .fas {
+    font-size: 150px;
+  }
+}
+
+.reviews-count-container {
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-area: reviews-count;
+}
+
+.reviews-count {
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px $grey;
+  width: 150px;
+  height: 150px;
+  border-radius: 50% 50%
+}
+
+.account-reviews-container {
+  display: flex;
+  flex-direction: column;
 }
