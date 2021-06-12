@@ -21,8 +21,14 @@
   position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 14rem;
-  margin-bottom: 3vh
+  margin-bottom: 3vh;
+  background-color: white;
+  text-align: center;
+}
+.leave-review-btn:hover {
+  text-decoration: none
 }
 
 .create_review_form {
@@ -50,10 +56,16 @@
   background-color: white;
 }
 
-.create-review-fields .button-up:hover {
+.create-review-fields{ 
+  .button-up {
+    transition: all 0.25s ease-in-out
+  }
+
+  .button-up:hover {
   width: 160px;
-  background-color: $light-blue;
-  border: $light-blue
+  background-color: $shiny-blue;
+  border: $shiny-blue
+  }
 }
 
 .create-review-fields textarea {

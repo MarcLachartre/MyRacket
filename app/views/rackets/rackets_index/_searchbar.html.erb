@@ -59,7 +59,7 @@
       <div class = filters>
         <% string_patterns = [] %>
         <% all_rackets.each{|racket| string_patterns << racket.string_pattern }%>
-        <% string_patterns.uniq.each{|pattern| %>
+        <% string_patterns.uniq.sort.each{|pattern| %>
         <div class= 'label-design'>
           <%= check_box_tag "string_pattern[]", pattern,
           if @search_params[:string_pattern] != nil
@@ -85,7 +85,7 @@
         <div class= 'label-design'>
           <%= check_box_tag "weight[]", weight,
           if @search_params[:weight] != nil
-          @search_params[:weight].include?(weight)
+          @search_params[:weight].include?(weight.to_s)
           end,
           id: weight,
           class: 'searchbar-checkbox' %>
@@ -112,9 +112,12 @@
         <% headsize_list = [(0..619), (620..644), (645..679), (680..2000)] %>
         <% headsize_list.each {|headsize| %>
         <div class= 'label-design'>
+
           <%= check_box_tag "headsize[]", headsize,
+          
           if @search_params[:headsize] != nil
-            @search_params[:headsize].include?(headsize)
+          puts @search_params[:headsize] 
+            @search_params[:headsize].include?(headsize.to_s)
           end,
           id: headsize,
           class: 'searchbar-checkbox' %>
@@ -139,22 +142,22 @@
       </div>
     
       <div class= 'filters'>
-        <% balance_list = [(0..299),(300..309), (310..319), (320..329), (330..339), (340..349), (350..1000)] %>
+        <% balance_list = [(0..29.9),(30.0..30.9), (31.0..31.9), (32.0..32.9), (33.0..33.9), (34.0..34.9), (35.0..1000.0)] %>
         <% balance_list.each {|balance| %>
         <div class= 'label-design'>
           <%= check_box_tag "balance[]", balance,
           if @search_params[:balance] != nil
-            @search_params[:balance].include?(balance)
+            @search_params[:balance].include?(balance.to_s)
           end,
           id: balance,
           class: 'searchbar-checkbox' %>
           <%= label_tag balance,
           if balance.first == 0
-            "< #{balance.last} mm"
-          elsif balance.first == 350
-            " > #{balance.first} mm"
+            "< #{balance.last} cm"
+          elsif balance.first == 35.0
+            " > #{balance.first} cm"
           else
-            "#{balance.first} - #{balance.last} mm"
+            "#{balance.first} - #{balance.last} cm"
           end,
           class: 'label'  %>
         </div>

@@ -4,11 +4,12 @@ import {ComparedRacketCookie} from '../cookies_manager/compared_racket_cookies';
 const defaultImage = require("../../images/racket-sample.jpg");
 // console.log("racket")
 export class Racket extends RacketCardStyleSelector {
-  constructor(id, brand, model, weight, stringPattern, balance, headsize, length, swingweight, stiffness, power, manoeuvrability, comfort, control, index){
+  constructor(id, brand, model, strength, weight, stringPattern, balance, headsize, length, swingweight, stiffness, index){
     super();
     this.id = id;
     this.brand = brand;
     this.model = model;
+    this.strength = strength;
     this.weight = weight;
     this.stringPattern = stringPattern;
     this.balance = balance;
@@ -16,10 +17,6 @@ export class Racket extends RacketCardStyleSelector {
     this.length = length;
     this.swingweight = swingweight;
     this.stiffness = stiffness;
-    this.power = power;
-    this.manoeuvrability = manoeuvrability;
-    this.comfort = comfort;
-    this.control = control;
     this.index = index
   }
 
@@ -230,5 +227,6 @@ export class Racket extends RacketCardStyleSelector {
     checkbox.dataset.swingweight = this.swingweight;
     checkbox.dataset.stringpattern = this.stringPattern;
     checkbox.dataset.stiffness = this.stiffness;
+    checkbox.dataset.strength = this.strength;
   }
 }

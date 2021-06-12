@@ -1,7 +1,7 @@
 
 <div class= 'racket-comparator-container'>
   <div class= 'short-comparator-container'>
-    <%# <% if @rackets_to_display == [] %> 
+    <%# <% if @rackets_to_display == []  %>
     
       <h5 class= "empty-comparator" style= "position: absolute"> 
         <i class="fas fa-arrow-alt-circle-right" style= "margin-right: 15px"></i>
@@ -61,9 +61,10 @@
             <div class = 'spec-list'>Headsize</div>
             <div class = 'spec-list'>String Pattern</div>
             <div class = 'spec-list'>Balance</div>
-            <div class = 'spec-list'>Length</div>
-            <div class = 'spec-list'>Swingweight</div>
             <div class = 'spec-list'>Stiffness</div>
+            <div class = 'spec-list'>Swingweight</div>
+            <div class = 'spec-list'>Length</div>
+            <div class = 'spec-list'>Price</div>
           </div>
         </div>
         <div class= 'racket-comparator'>
@@ -71,6 +72,8 @@
           <div class="compared-racket-cards-container">
             <div class="large-comparator-racket-card">
               <div class="comparator-card-image">
+                <%= link_to "See more", racket_path(racket.id), class: 'see-more-link' %>
+
                 <% pn = racket.brand.downcase.gsub(/\s+/, '') + "-" + racket.model.downcase.gsub(/\s+/, '') %>
                 <% path = Rails.root.join('app', 'javascript', 'images', "#{pn}").to_s %>
                 <% if File.exist?(path + ".jpg") == true %>
@@ -82,16 +85,26 @@
                 <% end %> 
               </div>
               <div class="compared-racket-cards-data">
+                <%= link_to "See more", racket_path(racket.id), class: 'see-more-link' %>
                 <h4 class= "spec"><%= racket.brand %></h4>
                 <h5 class= "spec"><%= racket.model %></h5>
-                <div class= "spec"><%= "strength" %></div>
+                <div class= "spec"><%= racket.strength %></div>
                 <div class= "spec"><%= racket.weight %> g</div>
                 <div class= "spec"><%= racket.headsize %> cm²</div>
                 <div class= "spec"><%= "#{racket.string_pattern[0]}#{racket.string_pattern[1]}x#{racket.string_pattern[2]}#{racket.string_pattern[3]}"%></div>
                 <div class= "spec"><%= racket.balance %> cm</div>
+                <% if racket.stiffness != nil %>
+                  <div class= "spec"><%= racket.stiffness %> RA</div>
+                <% else %>
+                  <div class= "spec"> undefined</div> 
+                <% end %>
+                <% if racket.swingweight != nil %>
+                  <div class= "spec"><%= racket.swingweight %> kg-cm²</div>
+                <% else %>
+                  <div class= "spec"> undefined</div> 
+                <% end %>
                 <div class= "spec"><%= racket.length %> cm</div>
-                <div class= "spec"><%= racket.swingweight %> kg/cm²</div>
-                <div class= "spec"><%= racket.stiffness %> RA</div>
+                <div class= "spec"><%= racket.price %> Euros</div>
 
             <%= label_tag nil, class: 'compared-racket-checkbox-label' do %>
             <%= check_box_tag "selected_racket_id[]", racket.id,

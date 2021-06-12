@@ -1,4 +1,4 @@
-<% require 'pathname'%>
+<% require 'pathname' %>
 
 <%= form_with url: "/rackets", method: "get", class: 'select-racket', remote: :true  do %>
 <%= hidden_field_tag "select_racket_input", 1 %>
@@ -66,7 +66,7 @@
           <%= check_box_tag "selected_racket_id[]", racket.id,
           if @selected_racket[:racket_id] != nil
             @selected_racket[:racket_id].include?(racket.id.to_s)
-          end,  data: {brand: racket.brand, model: racket.model, strength: "strength", weight: racket.weight, headsize: racket.headsize, balance: racket.balance, length: racket.length, swingweight: racket.swingweight, stringpattern: racket.string_pattern, stiffness: racket.stiffness, strength: "strength", id: racket.id.to_i},
+          end,  data: {brand: racket.brand, model: racket.model, strength: racket.strength, weight: racket.weight, headsize: racket.headsize, balance: racket.balance, length: racket.length, swingweight: racket.swingweight, stringpattern: racket.string_pattern, stiffness: racket.stiffness, price: racket.price, id: racket.id.to_i},
           id: racket.id,
           class: 'racket-checkbox'
             %>

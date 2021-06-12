@@ -5,13 +5,14 @@ class Racket < ApplicationRecord
   validates :length, presence: true
   validates :weight, presence: true
   validates :balance, presence: true
-  validates :swingweight, presence: true
+  # validates :swingweight, presence: true
   validates_inclusion_of :kid, in: [true, false]
   validates_inclusion_of :adult, in: [true, false]
-  validates :play_type, presence: true
+  # validates :play_type, presence: true
+  validates :strength, presence: true
   validates :description, presence: true
-  validates :stiffness, presence: true
-  validates :players, presence: true, length: { maximum: 35,
+  # validates :stiffness, presence: true
+  validates :players, length: { maximum: 35,
     too_long: "%{count} characters is the maximum allowed" }
 
   has_many :userrackets, foreign_key: :racket_id, class_name: 'Userracket', dependent: :destroy

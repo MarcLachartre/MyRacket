@@ -2,7 +2,7 @@
   <%= render partial: "shared/navbar" %>
     <% if flash.keys.length > 0  %>
 
-        <% flash.each do |type, msg| %>
+        <% flash.each do |type, msg| %> 
         <% if type == "alert" %>
           <div class= "alert alert-danger">
             <%= msg %>
