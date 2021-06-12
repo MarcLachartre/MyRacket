@@ -1,6 +1,4 @@
-<div class= "devise-page log-in"> 
-  <%= render partial: "shared/navbar" %>
-    <% if flash.keys.length > 0  %>
+<%= render partial: "shared/navbar" %>
 
         <% flash.each do |type, msg| %> 
         <% if type == "alert" %>
@@ -14,13 +12,13 @@
           <% end %>
         <% end %>   
     <% end %>
+
     <div class= "devise-card"> 
       <div class= "devise-image">
       <%= image_pack_tag 'devise-racket.jpeg' %> 
       </div>
       <div class= "form-container">
         <h1>Log in</h1>
-
         <%= form_for(resource, as: resource_name, url: session_path(resource_name), html:{class: "user-log-in"}) do |f| %>
           <div class="field">
             <%= f.label :email %>

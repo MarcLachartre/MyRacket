@@ -5,17 +5,17 @@ require 'minitest/reporters'
 
 class RacketTest < ActiveSupport::TestCase
   test "brand or model search" do
-    assert Racket.brand_or_model_search({brands: ["Wilson"], models: []}).size == 3, 'expected to be 3'
-    assert Racket.brand_or_model_search({brands: [], models: ["Cool"]}).size == 2, 'expected to be 2'
-    assert Racket.brand_or_model_search({brands: ["Wilson"], models: ["Cool"]}).size == 2, 'expected to be 3'
-    assert Racket.brand_or_model_search({brands: ["Wilson"], models: ["Error"]}).size == 0, 'expected to be 0'
-    assert Racket.brand_or_model_search({brands: ["Error"], models: ["Cool"]}).size == 0, 'expected to be 0'
-    assert Racket.brand_or_model_search({brands: ["Error"], models: ["Error"]}).size == 0, 'expected to be 0'
-    assert Racket.brand_or_model_search({brands: ["Wilson"], models: ["Cool", "360"]}).size == 1, 'expected to be 1'
-    assert Racket.brand_or_model_search({brands: [], models: ["360"]}).size == 1, 'expected to be 1'
-    assert Racket.brand_or_model_search({brands: ["Wilson"], models:["Cool", "360"]}).size == 1, 'expected to be 1'
-    assert Racket.brand_or_model_search({brands: ["Babolat", "Wilson"], models:["Cool"]}).size == 0, 'expected to be 0'
-    assert Racket.brand_or_model_search({brands: ["Babolat", "Wilson"], models:[]}).size == 0, 'expected to be 0'
+    assert Racket.brand_or_model({brands: ["Wilson"], models: []}).size == 3, 'expected to be 3'
+    assert Racket.brand_or_model({brands: [], models: ["Cool"]}).size == 2, 'expected to be 2'
+    assert Racket.brand_or_model({brands: ["Wilson"], models: ["Cool"]}).size == 2, 'expected to be 3'
+    assert Racket.brand_or_model({brands: ["Wilson"], models: ["Error"]}).size == 0, 'expected to be 0'
+    assert Racket.brand_or_model({brands: ["Error"], models: ["Cool"]}).size == 0, 'expected to be 0'
+    assert Racket.brand_or_model({brands: ["Error"], models: ["Error"]}).size == 0, 'expected to be 0'
+    assert Racket.brand_or_model({brands: ["Wilson"], models: ["Cool", "360"]}).size == 1, 'expected to be 1'
+    assert Racket.brand_or_model({brands: [], models: ["360"]}).size == 1, 'expected to be 1'
+    assert Racket.brand_or_model({brands: ["Wilson"], models:["Cool", "360"]}).size == 1, 'expected to be 1'
+    assert Racket.brand_or_model({brands: ["Babolat", "Wilson"], models:["Cool"]}).size == 0, 'expected to be 0'
+    assert Racket.brand_or_model({brands: ["Babolat", "Wilson"], models:[]}).size == 0, 'expected to be 0'
   end
 
   test "all unique brands" do

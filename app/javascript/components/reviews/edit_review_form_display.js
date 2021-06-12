@@ -1,17 +1,16 @@
 import {PopUpBox} from '../effects/pop_up_box'
 
 export class EditReviewFormDisplay extends PopUpBox {
-  constructor(comment, pageContainer) {
-    super(pageContainer);
+  constructor(comment) {
+    super();
     this.comment = comment;
-    this.pageContainer = pageContainer;
   }
 
   init() {
-    const popUpBox = super.initPopUpBox(this.pageContainer);
-    this.pageContainer.appendChild(popUpBox);
+    const popUpBox = super.initPopUpBox();
+    document.querySelector(".product-page-container").appendChild(popUpBox);
     const form = this.editFormContent();
-    popUpBox.children[0].appendChild(form);
+    popUpBox.children[0].appendChild(form)
   }
 
   editFormContent() {

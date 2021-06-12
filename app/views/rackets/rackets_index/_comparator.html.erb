@@ -1,6 +1,7 @@
 
 <div class= 'racket-comparator-container'>
   <div class= 'short-comparator-container'>
+
     <%# <% if @rackets_to_display == []  %>
     
       <h5 class= "empty-comparator" style= "position: absolute"> 
@@ -10,6 +11,7 @@
 
       </h5>
     <%# <% end %> 
+
     <div class = 'short-displayed-rackets'>
       <% @rackets_to_display.each {|racket| %>
       <div class = 'short-comparator-racket-card'>
@@ -22,15 +24,15 @@
         </div>
         <%= label_tag nil, class: 'compared-racket-checkbox-label' do %>
         <%= check_box_tag "selected_racket_id[]", racket.id,
-          if @selected_racket[:racket_id] != nil
-            @selected_racket[:racket_id].include?(racket.id.to_s)
-          end,
-          id: racket.id,
-          class: 'compared-racket-checkbox'
+        if @selected_racket[:racket_id] != nil
+          @selected_racket[:racket_id].include?(racket.id.to_s)
+        end,
+        id: racket.id,
+        class: 'compared-racket-checkbox'
           %>
           <i class="fas fa-times"></i>
           <% end %>
-        <% end %>
+          <% end %>
         </div>
         <%  }  %>
       </div>
@@ -65,6 +67,7 @@
             <div class = 'spec-list'>Swingweight</div>
             <div class = 'spec-list'>Length</div>
             <div class = 'spec-list'>Price</div>
+
           </div>
         </div>
         <div class= 'racket-comparator'>
@@ -123,7 +126,7 @@
           </div>
         </div>
         <div class= "close-comparator-arrow">
-           Close 
+          <i class="arrow-up"></i>
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
+<%= render partial: "shared/navbar" %>
+
 <div class= "devise-page forgot-password"> 
-  <%= render partial: "shared/navbar" %>
-  <%= render "devise/shared/error_messages", resource: resource %>
   <div class= "devise-card"> 
     <div class= "devise-image">
     <%= image_pack_tag 'devise-racket.jpeg' %> 
@@ -9,6 +9,7 @@
       <h1>Forgot your password?</h1>
 
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "forgot-password" }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="field">
           <%= f.label :email %>

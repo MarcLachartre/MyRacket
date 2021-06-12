@@ -1,27 +1,16 @@
-<div class= "devise-page resend-instructions">
-  <%= render partial: "shared/navbar" %>
+<h2>Resend confirmation instructions</h2>
+
+<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-  <div class= "devise-card">
-    <div class= "devise-image">
-    <%= image_pack_tag 'devise-racket.jpeg' %> 
-    </div>
-      <div class= "form-container">
-      <h1>Resend instructions</h1>
 
-      <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-
-
-        <div class="field">
-          <%= f.label :email %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "Resend instructions", class: "button-up" %>
-        </div>
-      <% end %>
-
-      <%= render "devise/shared/links" %>
-    </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
   </div>
-</div>
+
+  <div class="actions">
+    <%= f.submit "Resend confirmation instructions" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

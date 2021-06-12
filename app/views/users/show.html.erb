@@ -1,15 +1,26 @@
-
-<%= render "shared/navbar" %>
+<%# <%= react_component("/account/details", {greeting: "hello"}) %>  
+   
 <div class= "user-account-page-container"> 
-  <div class= "user-account-container">  
+
+  <%= render "shared/navbar" %>
+  <div class= account-sidebar-container> 
+    <h2> My Account </h2>
+    <h4> Details </h4>
+    <h4> My reviews </h4>
+    <h4> Account Settings </h4>
+  </div>
+  <div class= "user-account-container">
     <div class= "user-account-app" data-user= "<%= @user.to_json %>" data-user-reviews= "<%= @user_reviews.to_json%>">
-      <%= javascript_pack_tag "user_account", 'data-turbolinks-track': 'reload' %>
+     <%= javascript_pack_tag "user_account" %>
     </div>
 
     <% if @user.admin == 1 %>
     <%# Manage <%= link_to "users", users_path %> 
     <%# Add a new <%= link_to "racket", controller: "rackets", action: "new" %> 
     <% end %>
-  </div> 
-  <%= render partial: "shared/footer"%>  
+
+    <h2> Edit account </h2>
+      <%= render template: "devise/registrations/edit", locals: {resource_name: "user", resource: @user, devise_mapping: @devise_mapping}%>
+  </div>  
 </div>
+<%#= button_to "Delete Review", { action: "destroy", :controller=>"racketreviews", id: racketreview.id }, method: :delete, data: { confirm: "t'es certain Roger?", remote: true}, class: "delete_review" %>

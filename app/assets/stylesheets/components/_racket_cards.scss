@@ -15,10 +15,6 @@
   width: 85%;
   transition: width 0.25s ease-in-out, border 0.25s ease-in-out, box-shadow 0.25S ease-in-out;
   opacity: 0;
-  .button-up {
-    background-color: white;
-    // width: 70px;
-  }
   .fa-times{
     display: none;
   }
@@ -27,11 +23,6 @@
   }
   .fa-plus{
     display: flex;
-  }
-  .compare {
-    display: none;
-    color: white;
-    text-align: center;
   }
 }
 
@@ -48,6 +39,7 @@
   
   .button-up:hover {
     color: white;
+
     background-color: $shiny-blue;
     border: solid 1px $shiny-blue;
   }
@@ -94,6 +86,7 @@
 }
 
 .racket-card-disabled:hover {
+
   border-color: $light-grey;
   .fa-plus {
     display: flex;
@@ -102,11 +95,11 @@
   .compare {
     display: none
   }
+
   .button-up-disabled{
     border: solid 1px $dark-grey;
     color: $dark-grey;
     cursor: auto;
-    background-color: white
   }
   .button-up-disabled:hover{
     background-color: white;
@@ -336,10 +329,6 @@
   .fa-plus{
     display: none;
   }
-
-  .compare {
-    display: none
-  }
 }
 
 .selected-racket:hover {
@@ -360,9 +349,6 @@
   }
   .fa-plus{
     display: none;
-  }
-  .compare {
-    display: none
   }
   
   .button-up:hover {
