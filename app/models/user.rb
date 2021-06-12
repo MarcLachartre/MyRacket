@@ -16,7 +16,13 @@ class User < ApplicationRecord
   validates :lastname, presence: true, length: { maximum: 50, too_long: "%{count} characters is the maximum allowed"}
   validates :username, presence: true, length: { maximum: 25, too_long: "%{count} characters is the maximum allowed"}
   validates :email, presence: true
-  validates :admin, presence: true, inclusion: { in: [0, 1, 2], message: "%{value} is not a valid value" }
+
+  validates :admin, presence: true, inclusion: { in: [0], message: "%{value} is not a valid value" }
+
+  # validates_format_of :name, :lastname, :with => /[A-Za-z]/, message: "should not contain numerical characters"
+  validates :name, format: { with: /\A[a-zA-Z]+\z/,
+    message: "only allows letters" }
+
 end
 
 

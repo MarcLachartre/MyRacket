@@ -15,8 +15,8 @@
     </div>
 
     <% if @user.admin == 1 %>
-    Manage <%= link_to "users", users_path %>
-    Add a new <%= link_to "racket", controller: "rackets", action: "new" %>
+    <%# Manage <%= link_to "users", users_path %> 
+    <%# Add a new <%= link_to "racket", controller: "rackets", action: "new" %> 
     <% end %>
 
     <h2> Edit account </h2>

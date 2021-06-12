@@ -52,15 +52,15 @@ class RacketTest < ActiveSupport::TestCase
     assert_not rackets(:racketOne).valid?, 'racket can be saved without balance'     
   end
 
-  test "should not save the racket without stiffness" do
-    rackets(:racketOne)[:stiffness] = ""
-    assert_not rackets(:racketOne).valid?, 'racket can be saved without stiffness'     
-  end
+  # test "should not save the racket without stiffness" do
+  #   rackets(:racketOne)[:stiffness] = ""
+  #   assert_not rackets(:racketOne).valid?, 'racket can be saved without stiffness'     
+  # end
 
-  test "should not save the racket without swingweight" do
-    rackets(:racketOne)[:swingweight] = ""
-    assert_not rackets(:racketOne).valid?, 'racket can be saved without swingweight'
-  end
+  # test "should not save the racket without swingweight" do
+  #   rackets(:racketOne)[:swingweight] = ""
+  #   assert_not rackets(:racketOne).valid?, 'racket can be saved without swingweight'
+  # end
 
   test "should not save the racket without adult" do
     rackets(:racketOne)[:adult] = ""

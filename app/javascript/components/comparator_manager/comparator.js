@@ -17,11 +17,25 @@ export class Comparator {
       this.addComparisionListener(racket);
     });
     this.isEnabled(document.querySelectorAll('.racket-checkbox'));
+    this.clickableCard(document.querySelectorAll(".comparator-card-image"))
+    
     this.cardTranslateIn();
     this.positionningCardsInGrid(document.querySelectorAll(".short-comparator-racket-card"));
     this.positionningCardsInGrid(document.querySelectorAll(".compared-racket-cards-container"));
     this.containerResizing(".short-comparator-racket-card");
     this.containerResizing(".compared-racket-cards-container");
+  }
+
+  clickableCard(cards) {
+    cards.forEach((card) => {
+      this.clickCardListener(card)
+    });
+  }
+
+  clickCardListener(card) {
+    card.addEventListener('click', () => {
+      location.href = card.getElementsByClassName("see-more-link")[0].href; //redirects to the racket show page
+    });
   }
 
   positionningCardsInGrid(cards) {
@@ -92,7 +106,9 @@ export class Comparator {
 
   addComparisionListener(racket) { // this function initializes comparisions. it takes as an argument each racket in the rackets container and the ones added by the search. Then on comparision button click it adds a racket to the comparator or removes it
     racket.addEventListener("change", (event) => { //adds event listener to each rackets so that on click it does the following (see comments)
-      const racketComparision = new RacketComparision(racket.dataset.brand, racket.dataset.model, racket.dataset.headsize, racket.dataset.stringpattern, racket.dataset.weight, racket.dataset.length, racket.dataset.swingweight, racket.dataset.stiffness, racket.dataset.power, racket.dataset.manoeuvrability, racket.dataset.comfort, racket.dataset.control, racket.dataset.id);
+ 
+      const racketComparision = new RacketComparision(racket.dataset.brand, racket.dataset.model, racket.dataset.strength, racket.dataset.weight, racket.dataset.headsize, racket.dataset.stringpattern, racket.dataset.balance, racket.dataset.stiffness, racket.dataset.swingweight, racket.dataset.length, racket.dataset.price, racket.dataset.id);
+
       if (this.reachedMaxCapacity() === false && this.isAlreadyInComparator(racket) === false) {  // if comparator didnt reach max capacity and racket is not already in comparator, create a racket comparision with the racket dataset, add it to comparator
         racketComparision.addRacketToComparator();
 

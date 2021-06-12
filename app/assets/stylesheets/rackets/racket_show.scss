@@ -6,6 +6,8 @@
   display: flex;
   flex-direction: column;
   list-style: none;
+  h3 {
+    color: $orange}
 }
 
 .product-image-and-spec {
@@ -21,10 +23,13 @@
 }
 
 
-.product-image{
+.product-image {
+  align-self: center;
   position: relative;
-  width: 38rem;
-  min-width: 38rem
+  width: 50%;
+  min-width: 50%;
+  height: 98%;
+
 }
 
 .product-image img {
@@ -105,10 +110,10 @@
 .show-desc {
   font-size: 18px;
   word-break: normal;
-  text-align: center;
+  text-align: justify;
   padding-right: 20px;
   padding-left: 20px;
-  white-space: pre-line;
+  white-space: break-spaces;
 }
 
 .product-reviews-section {

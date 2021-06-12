@@ -5,7 +5,8 @@ import {ComparedRacketCookie} from '../cookies_manager/compared_racket_cookies'
 const defaultImage = require("../../images/racket-sample.jpg");
 
 export class RacketComparision extends Comparator {
-  constructor(brand, model, headsize, stringpattern, weight, length, swingweight, stiffness, power, manoeuvrability, comfort, control, id) {
+
+  constructor(brand, model, strength, weight, headsize, stringpattern, balance, stiffness, swingweight, length, price, id) {
     super();
     this.brand = brand;
     this.model = model;
@@ -14,9 +15,10 @@ export class RacketComparision extends Comparator {
     this.headsize = `${headsize} cm²`;
     this.stringpattern = `${stringpattern[0]}${stringpattern[1]}x${stringpattern[2]}${stringpattern[3]}`;
     this.balance = `${balance} cm`;
-    this.length = `${length} cm`;
-    this.swingweight = `${swingweight} kg/cm²`;
     this.stiffness = `${stiffness} RA`;
+    this.swingweight = `${swingweight} kg/cm²`;
+    this.length = `${length} cm`;
+    this.price = `${price} Euros`;
     this.id = id
   }
 
@@ -105,28 +107,48 @@ export class RacketComparision extends Comparator {
     const removeLabel = this.createRemoveLabel();
     const largeComparatorRacketCard = document.createElement("div");
     const comparedRacketCardsData = document.createElement("div");
+    const link = document.createElement("a");
 
     card.classList.toggle('compared-racket-cards-container');
     largeComparatorRacketCard.classList.toggle('large-comparator-racket-card');
     brandModelContainer.classList.toggle('model-brand-container');
     comparedRacketCardsData.classList.toggle('compared-racket-cards-data');
+    link.classList.toggle('see-more-link');
+    link.href = `/rackets/${this.id}`
 
     for (let i = 1; i < Object.keys(this).length-1; i++) {
-      if ( i < 3) {
-      let specTitle = document.createElement("h4");
-      specTitle.innerHTML = this[Object.keys(this)[i]];
-      brandModelContainer.appendChild(specTitle);
-      } else if ( 3 <= i < 12) {
-      let spec = document.createElement("div");
-      spec.innerHTML = this[Object.keys(this)[i]];
-      spec.classList.toggle("spec");
-      comparedRacketCardsData.appendChild(spec);
+      if ( i === 1) {
+        let spec = document.createElement("h4");
+        spec.innerHTML = this[Object.keys(this)[i]];
+        spec.classList.toggle("spec");
+        comparedRacketCardsData.appendChild(spec);
+      } else if (i === 2) {
+        let spec = document.createElement("h5");
+        spec.innerHTML = this[Object.keys(this)[i]];
+        spec.classList.toggle("spec");
+        comparedRacketCardsData.appendChild(spec);
+      } else if ( 3 <= i < 13) {
+        let spec = document.createElement("div");
+        if (this[Object.keys(this)[i]].includes("undefined") == false) {
+          spec.innerHTML = this[Object.keys(this)[i]];
+        } else {
+          spec.innerHTML = "undefined";
+        }
+
+        spec.classList.toggle("spec");
+        comparedRacketCardsData.appendChild(spec);
       };
     };
-    comparedRacketCardsData.appendChild(removeLabel)
-    largeComparatorRacketCard.appendChild(brandModelContainer);
+
+    comparedRacketCardsData.appendChild(removeLabel);
+    largeComparatorRacketCard.appendChild(imageContainer);
+    imageContainer.appendChild(this.image());
+    imageContainer.appendChild(link);
+
+
     largeComparatorRacketCard.appendChild(comparedRacketCardsData);
     card.appendChild(largeComparatorRacketCard);
+    super.clickCardListener(imageContainer)
 
     return card
   }

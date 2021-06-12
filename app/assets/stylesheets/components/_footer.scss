@@ -3,6 +3,30 @@
 .footer {
   position: relative;
   width: 100%;
-  height: 10rem;
-  background-color: $dark-blue;
+
+  height: 110px;
+  background-color: $shiny-blue;
+  a {
+    color: white;
+    transition: all 0.25s 
+  }
+
+  .footer-info-container {
+    display:flex;
+    width: 95%;
+    height: 80%;
+    justify-content: space-between;
+  }
+
+  .footer-navigation-links {
+    display: flex;
+    flex-direction: column
+  }
+  .footer-account-links {
+    display: flex;
+    flex-direction: column
+  }
+  .contact-us{ 
+    color: white
+  }
 }

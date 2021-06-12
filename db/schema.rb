@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_20_112257) do
+
+ActiveRecord::Schema.define(version: 2021_05_31_153014) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +34,7 @@ ActiveRecord::Schema.define(version: 2021_04_20_112257) do
 
   create_table "rackets", force: :cascade do |t|
     t.integer "headsize"
-    t.integer "length"
+    t.float "length"
     t.integer "weight"
     t.integer "swingweight"
     t.integer "power"
@@ -40,7 +42,7 @@ ActiveRecord::Schema.define(version: 2021_04_20_112257) do
     t.integer "vibration"
     t.integer "sweetzone"
     t.integer "yearoffabrication"
-    t.integer "price"
+    t.float "price"
     t.string "brand"
     t.string "model"
     t.string "color"
@@ -53,10 +55,11 @@ ActiveRecord::Schema.define(version: 2021_04_20_112257) do
     t.integer "precision"
     t.integer "stiffness"
     t.boolean "adult"
-    t.integer "balance"
+    t.float "balance"
     t.string "string_pattern"
     t.string "description"
     t.string "play_type"
+    t.string "strength"
   end
 
   create_table "userrackets", force: :cascade do |t|

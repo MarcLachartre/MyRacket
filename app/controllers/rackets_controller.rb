@@ -33,7 +33,7 @@ class RacketsController < ApplicationController
     @user = current_user
     @racket = Racket.find(params[:id])
     @reviews = @racket.racketreviews.order(created_at: :desc)
-
+    
     respond_to do |format|
       format.html
       format.json
@@ -93,7 +93,6 @@ private
     if @search_params != {}
       cookies[:search_params] = {value: @search_params.to_json, expires: Time.utc(2091, 06, 04, 7, 45)} 
     elsif cookies[:search_params].present?
-        p "racket_search_2"
       @selected_search_json = JSON.parse(cookies[:search_params])
       @search_params = @selected_search_json.transform_keys {|key|
         key.to_sym

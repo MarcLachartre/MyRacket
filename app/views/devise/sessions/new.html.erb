@@ -1,6 +1,18 @@
 <%= render partial: "shared/navbar" %>
 
-<div class= "devise-page"> 
+        <% flash.each do |type, msg| %> 
+        <% if type == "alert" %>
+          <div class= "alert alert-danger">
+            <%= msg %>
+          </div>
+          <% elsif type == "notice" %>
+          <div class= "alert alert-success">
+            <%= msg %>
+          </div>
+          <% end %>
+        <% end %>   
+    <% end %>
+
     <div class= "devise-card"> 
       <div class= "devise-image">
       <%= image_pack_tag 'devise-racket.jpeg' %> 
