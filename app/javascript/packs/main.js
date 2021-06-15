@@ -13,19 +13,21 @@ export class Main {
 
   init() {
     if (window.location.href.match('/rackets') != null && document.querySelector('.racket-page-container') !== null) {
+      console.log("/rackets")
       this.comparatorInit();
       this.comparedRacketCookieInit();
       this.racketCardStyleSelectorInit();
       this.searchbarInit();
       this.pageVisualEffectInit().initRacketsIndexVE()
 
-    } else if (window.location.href.match('/rackets/') != null ) {
+    } else if (window.location.href.match('/rackets/') != null && document.querySelector('.product-page-container') !== null) {
+      console.log("/rackets/")
       this.racketReviewsInit();
-      this.pageVisualEffectInit().initRacketShowVE();
+      // this.pageVisualEffectInit().initRacketShowVE();
 
     } else if (window.location.href.match('pages/home') != null || window.location.href === (window.location.origin + "/")) {
       this.homepageInit();  
-      };
+    };
   }
 
   pageVisualEffectInit() {
@@ -55,7 +57,7 @@ export class Main {
   }
 
   racketReviewsInit() {      
-    const racketReviews = new RacketReviews();
+    const racketReviews = new RacketReviews(document.querySelector(".product-page-container"));
     racketReviews.init();
   }
 

@@ -76,7 +76,7 @@ export class Searchbar extends ElementReveal { // This class's role is to manage
       } 
     }
     
-    document.addEventListener('click', (event) => {
+    document.querySelector("#search-bar-items").addEventListener('click', (event) => {
       quickSearchDesign()
     });
   }
@@ -109,7 +109,6 @@ export class Searchbar extends ElementReveal { // This class's role is to manage
         const searchbarCheckboxes = document.querySelectorAll('.searchbar-checkbox');
         const searchField = document.querySelector(".type-search");
         const racketsInContainer = document.querySelectorAll('.racket-checkbox');
-        // console.log(event.target.dataset.pageBatch)
         const search = new RacketSearchDisplay(searchbarCheckboxes, '', event.target.dataset.pageBatch, racketsInContainer);
         search.racketsUpdate();
       });

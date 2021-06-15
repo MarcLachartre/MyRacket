@@ -175,7 +175,7 @@ export class Racket extends RacketCardStyleSelector {
   }
 
   createButton() {
-    const buttonClassNames = [["button-and-link", "div"], ["see-more-link", "a"], ["racket-compare-button", "div"], ["button-up", "div"], ["racket-checkbox-label", "label"], ["racket-checkbox", "input"], ["fas", "i", "fa-plus"], ["fas", "i", "fa-check"], ["fas", "i", "fa-times"]]
+    const buttonClassNames = [["button-and-link", "div"], ["see-more-link", "a"], ["racket-compare-button", "div"], ["button-up", "div"], ["racket-checkbox-label", "label"], ["racket-checkbox", "input"], ["fas", "i", "fa-plus"], ["fas", "i", "fa-check"], ["fas", "i", "fa-times"], ["compare", "div"]]
     const buttonElements = [];
     for (let i = 0; i < buttonClassNames.length; i++) {
       let element = document.createElement(buttonClassNames[i][1]);
@@ -185,6 +185,9 @@ export class Racket extends RacketCardStyleSelector {
         buttonElements[i-1].appendChild(element);
       } else if (element.className === "racket-compare-button") {
         buttonElements[i-2].appendChild(element);
+      } else if (element.className === "compare") {
+        buttonElements[i-5].appendChild(element);
+        element.innerHTML= "Compare"
       } else if (element.className === "fas") {
         element.classList.toggle(buttonClassNames[i][2]);
         buttonElements[i-1].appendChild(element);

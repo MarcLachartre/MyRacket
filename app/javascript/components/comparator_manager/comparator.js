@@ -9,6 +9,7 @@ export class Comparator {
 
   initOnLoad() {
     const comparatorDisplay = new ComparatorDisplay();
+    
     comparatorDisplay.init(); // initialization of comparator display ( add envent listeners to open/close it)
     this.racketsInComparator.forEach(checkbox => {
       this.addRemoveCardListener(checkbox); //add listener to cards in comparator (to remove them)
@@ -106,14 +107,20 @@ export class Comparator {
 
   addComparisionListener(racket) { // this function initializes comparisions. it takes as an argument each racket in the rackets container and the ones added by the search. Then on comparision button click it adds a racket to the comparator or removes it
     racket.addEventListener("change", (event) => { //adds event listener to each rackets so that on click it does the following (see comments)
- 
+      
       const racketComparision = new RacketComparision(racket.dataset.brand, racket.dataset.model, racket.dataset.strength, racket.dataset.weight, racket.dataset.headsize, racket.dataset.stringpattern, racket.dataset.balance, racket.dataset.stiffness, racket.dataset.swingweight, racket.dataset.length, racket.dataset.price, racket.dataset.id);
-
       if (this.reachedMaxCapacity() === false && this.isAlreadyInComparator(racket) === false) {  // if comparator didnt reach max capacity and racket is not already in comparator, create a racket comparision with the racket dataset, add it to comparator
         racketComparision.addRacketToComparator();
-
+        if (document.querySelector(".empty-comparator") != null) {
+          document.querySelector(".empty-comparator").style.display = "none"; //removes empty comparator message
+          document.querySelector(".short-displayed-rackets").style.display = "grid"
+        }
       } else if (this.isAlreadyInComparator(racket) === true) { // if racket is already in comparator, lets remove it from there(remove compared racket method checks if comparator is full, if true, removing the racket will enable the comparision of rackets)
         this.removeComparedRacket(event);
+        if (Array.from(document.querySelector(".short-displayed-rackets").querySelectorAll(".short-comparator-racket-card")).length === 0) {
+          document.querySelector(".empty-comparator").style.display = "flex"; //adds empty comparator message, if there are no compared rackets
+          document.querySelector(".short-displayed-rackets").style.display = "none"
+        }
       };
       this.isEnabled(document.querySelectorAll('.racket-checkbox'));
     });
@@ -138,6 +145,10 @@ export class Comparator {
   // console.log("add remove card listener");
     checkbox.addEventListener('change', (event) => {
       this.removeComparedRacket(event);
+      if (Array.from(document.querySelector(".short-displayed-rackets").querySelectorAll(".short-comparator-racket-card")).length === 0) {
+        document.querySelector(".empty-comparator").style.display = "flex"; //adds empty comparator message, if there are no compared rackets
+        document.querySelector(".short-displayed-rackets").style.display = "none"
+      }
     });
   }
 

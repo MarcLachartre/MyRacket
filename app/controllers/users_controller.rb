@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @users = User.all
     if user_signed_in? && params[:id].to_i == current_user.id || user_is_admin? == true
       @user = User.find(params[:id])
-      @user_reviews = @user.racketreviews.map{|r| {id: r.id, comment: r.comment, created_at: r.created_at, racket_brand: r.racket.brand, racket_model: r.racket.model}}
+      @user_reviews = @user.racketreviews.map{|r| {id: r.id, comment: r.comment, created_at: r.created_at, racket_brand: r.racket.brand, racket_model: r.racket.model, racket_id: r.racket_id}}
       else
       redirect_to rackets_path
     end

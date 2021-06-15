@@ -1,0 +1,21 @@
+@import "index";
+
+.account-reviews-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 1px;
+  .reviews-list {
+    min-width: 60vw;
+    width: 70vw;
+  }
+}
+
+.no-reviews-message {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20px;
+}

@@ -1,0 +1,150 @@
+@import "index";
+
+.account-settings {
+  display:flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: space-between;
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+  width: 100%;
+  .edit_user{
+  position: relative;
+  align-self: center;
+  flex-grow: 1;
+  display: grid;
+  width: 100%;
+  grid-auto-columns: 33% 33% 33%;
+  grid-template: 
+    "modify-credentials modify-password delete-account" 
+    "validate-modifications validate-modifications delete-account" 
+  }
+}
+
+.modify-credentials {
+  padding-left: 5%;
+  padding-right: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  grid-area: modify-credentials;
+  border-right: solid 1px $grey;
+}
+
+.modify-password {
+  padding-left: 5%;
+  padding-right: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  grid-area: modify-password;
+}
+
+.password-modification-text {
+  text-align: center;
+}
+
+.delete-account {
+  padding-left: 5%;
+  padding-right: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  grid-area: delete-account;
+  border-left: solid 2px $dark-grey;
+}
+
+.delete-account-text {
+  text-align: center;
+  margin-right: 10px;
+  margin-left: 10px;
+  width: 100%;
+}
+
+.delete-account-btn {
+  display: flex;
+  align-items: center;
+  width: 75%;
+  min-width: 200px;
+  background-color: white;
+  color: $dark-red !important;
+  border-color: $dark-red;
+}
+
+.delete-account-btn:hover {
+  background-color: $light-red;
+  color: white !important;
+  border-color: $light-red;
+}
+
+.validate-modifications {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  grid-area: validate-modifications;
+  .button-up {
+    width: 25%;
+    min-width: 100px;
+    background-color: white;
+  }
+  .button-up:hover {
+    background-color: $shiny-blue;
+  }
+}
+
+@media (max-width: 768px){
+  .account-settings {
+    height: 100%;
+    margin-left: 1%;
+    margin-right:1%;
+    .edit_user{
+    height: 100%;
+    display: grid;
+    width: 100%;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    grid-auto-columns: 100%;
+    grid-template: 
+      "modify-credentials"
+      "modify-password" 
+      "validate-modifications"
+      "delete-account"
+    }
+  }
+
+  .modify-credentials {
+    border: none
+  }
+
+  .modify-password {
+    border: none;
+    h4 {
+      display: none;
+    }
+  }
+
+  .delete-account {
+    border-left: none;
+    margin-top: 20px;
+    padding: 20px;
+    height: 400px;
+    h4{ 
+      margin: 20px
+    }
+  }
+  
+  .delete-account::before {
+    content: "";
+    width: 75%;
+    height: 1px;
+    background: $grey;
+    position: absolute;
+    display: flex;
+    align-self: center;
+
+  }
+}

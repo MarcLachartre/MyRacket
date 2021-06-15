@@ -1,7 +1,7 @@
 import React from "react"
 import {capitalize, date_format} from "../helpers/string_methods"
 
-class Details extends React.Component {
+export class Details extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -10,7 +10,7 @@ class Details extends React.Component {
     return (
       
         <div className= "account-details-container">
-          <h2> Welcome to your account {this.props.user.username} </h2>
+          <h1> Welcome to your account {this.props.user.username} </h1>
           <div className= "user-details"> 
             <i className= "fas fa-grin-alt"></i>
             <h5>
@@ -39,5 +39,3 @@ class Details extends React.Component {
   }
 }
 
-
-export default Details

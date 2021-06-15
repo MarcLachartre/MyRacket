@@ -1,11 +1,9 @@
 import {RacketCardStyleSelector} from '../racket_cards/racket_card_style_selector';
 import {Comparator} from './comparator_file_manager';
 import {ComparedRacketCookie} from '../cookies_manager/compared_racket_cookies'
-
 const defaultImage = require("../../images/racket-sample.jpg");
 
 export class RacketComparision extends Comparator {
-
   constructor(brand, model, strength, weight, headsize, stringpattern, balance, stiffness, swingweight, length, price, id) {
     super();
     this.brand = brand;
@@ -101,9 +99,22 @@ export class RacketComparision extends Comparator {
     return card
   }
 
+  image() {
+    const cardImage = document.createElement("img");
+    const pathEnd = String(this.brand.toLowerCase().replace(/\s/g, "")) + "-" + String(this.model.toLowerCase().replace(/\s/g, "") + ".jpeg");
+  
+      import(`../../images/${pathEnd}`).then(module => {  
+        cardImage.src = module.default;
+      }).catch(() => {
+        cardImage.src = defaultImage;
+      });
+      
+    return cardImage
+  }
+
   createLargeCard() {
     const card = document.createElement("div");
-    const brandModelContainer = document.createElement("div");
+    const imageContainer = document.createElement("div");
     const removeLabel = this.createRemoveLabel();
     const largeComparatorRacketCard = document.createElement("div");
     const comparedRacketCardsData = document.createElement("div");
@@ -111,7 +122,7 @@ export class RacketComparision extends Comparator {
 
     card.classList.toggle('compared-racket-cards-container');
     largeComparatorRacketCard.classList.toggle('large-comparator-racket-card');
-    brandModelContainer.classList.toggle('model-brand-container');
+    imageContainer.classList.toggle('comparator-card-image');
     comparedRacketCardsData.classList.toggle('compared-racket-cards-data');
     link.classList.toggle('see-more-link');
     link.href = `/rackets/${this.id}`
@@ -144,7 +155,6 @@ export class RacketComparision extends Comparator {
     largeComparatorRacketCard.appendChild(imageContainer);
     imageContainer.appendChild(this.image());
     imageContainer.appendChild(link);
-
 
     largeComparatorRacketCard.appendChild(comparedRacketCardsData);
     card.appendChild(largeComparatorRacketCard);
