@@ -5,7 +5,7 @@ Racketreview.destroy_all
 # User.destroy_all
 
 BabolatSeed.new("Babolat").create
-# WilsonSeed.new("Wilson").create
+WilsonSeed.new("Wilson").create
 
 
 

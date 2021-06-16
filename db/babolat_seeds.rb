@@ -4,26 +4,6 @@ class BabolatSeed
   end
 
   def create()
-
-    cul = Racket.create!(#
-    brand: @brand, 
-    model:'Aero GAero GAero GAero GAero GAero GAero GAero GAero GAero GAero Aero G', 
-    price: 139.95,
-    headsize: 658, 
-    weight: 270,
-    swingweight: 301,
-    stiffness: 67,
-    length: 68.5, 
-    balance: 32.0, 
-    material: 'graphite', 
-    string_pattern: 1619, 
-    strength: "Power/Spin", 
-    players: "", 
-    kid: false, adult: true,
-    description:
-      "\t Loaded with spin and power, the Aero G offers impressive playability and value if you are looking for an affordable performance racquet. Tour inspired technologies add spin and power to your game, without compromising comfort."
-  )
-
     pure_strike1 = Racket.create!(#
       brand: @brand, 
       model:'Pure Strike 100', 
