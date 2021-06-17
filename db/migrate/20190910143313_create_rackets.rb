@@ -5,7 +5,6 @@ class CreateRackets < ActiveRecord::Migration[5.2]
       t.integer :length
       t.integer :weight
       t.float :balance
-      t.integer :swingweight
       t.integer :verticalstringpattern
       t.integer :horizontalstringpattern
       t.integer :power
