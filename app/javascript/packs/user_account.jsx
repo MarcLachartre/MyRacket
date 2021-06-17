@@ -1,8 +1,8 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router, Route, BrowserHistory, Switch, Link } from 'react-router-dom'
-
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import { BrowserHistory } from 'react-history'
 
 import {Details} from '../components/react_user_account/details'
 import {MyReviews} from '../components/react_user_account/my_reviews'
