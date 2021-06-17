@@ -26,6 +26,7 @@ module MyRacket
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| 
       html_tag
     }
+    config.assets.initialize_on_precompile = false
     # config.assets.enabled = true #added
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
