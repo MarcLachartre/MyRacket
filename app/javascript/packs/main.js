@@ -12,7 +12,8 @@ export class Main {
   constructor() {}
 
   init() {
-    if (window.location.href.match('/rackets') != null && document.querySelector('.racket-page-container') !== null) {
+    if (document.querySelector('.racket-page-container') !== null) {
+    // if (window.location.href.match('/rackets') != null && document.querySelector('.racket-page-container') !== null) {
       console.log("/rackets")
       this.comparatorInit();
       this.comparedRacketCookieInit();
@@ -20,12 +21,14 @@ export class Main {
       this.searchbarInit();
       this.pageVisualEffectInit().initRacketsIndexVE()
 
-    } else if (window.location.href.match('/rackets/') != null && document.querySelector('.product-page-container') !== null) {
+    } else if (document.querySelector('.product-page-container') !== null) {
+    // } else if (window.location.href.match('/rackets/') != null && document.querySelector('.product-page-container') !== null) {
       console.log("/rackets/")
       this.racketReviewsInit();
       // this.pageVisualEffectInit().initRacketShowVE();
 
-    } else if (window.location.href.match('pages/home') != null || window.location.href === (window.location.origin + "/")) {
+    // } else if (window.location.href.match('pages/home') != null || window.location.href === (window.location.origin + "/")) {
+    } else if (document.querySelector('.homepage-container') !== null) {
       this.homepageInit();  
     };
   }
