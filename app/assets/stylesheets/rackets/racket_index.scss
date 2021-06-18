@@ -54,13 +54,49 @@ html {
   margin-top: 100px;
 }
 
-// @media screen and (max-width:1080px) {
-//   .select-racket {
-//     display: grid;
-//     grid-template-columns: 33% 33% 33%;
-//     grid-auto-rows: 27rem;
-//   }
-// }
+.select-racket{
+  position: relative;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-auto-rows: 410px;
+  width: 100%;
+}
+
+// 480p  720x480 pixels	16/9	SD, définition standard, qualité DVD
+// 720p	HD Ready	1280x720 pixels	16/9	HDTV, HD 720p, 720p, HD Ready
+// 1080p	Full HD	1920x1080 pixels	16/9	HDTV 1080p, HD 1080p, 1080p, Full HD
+// 1440p 2560x1440
+// 2160p	UHDTV1	3840x2160 pixels	16/9	4K, UHD 4K, Ultra HD 4K, UHD-4K, 2160p
+// 4320p	UHDTV2	7680x4320 pixels
+
+@media screen and (min-width: 2560px) {
+  .select-racket {
+    display: grid;
+    grid-auto-rows: 650px;
+  }
+}
+
+@media screen and (min-width: 1920px) and (max-width: 2559px){
+  .select-racket {
+    display: grid;
+    grid-auto-rows: 520px;
+  }
+}
+
+@media screen and (min-width: 1080px) and (max-width: 1919px) {
+  .select-racket {
+    display: grid;
+    grid-auto-rows: 420px;
+  }
+}
+
+@media screen and (min-width: 720px) and (max-width: 1079px) {
+  .select-racket {
+    display: grid;
+    grid-auto-rows: 380px;
+  }
+}
 
 // @media screen and (max-width:800px) {
 //   .select-racket {
