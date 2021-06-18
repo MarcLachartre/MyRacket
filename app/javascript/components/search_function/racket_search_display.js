@@ -23,6 +23,8 @@ export class RacketSearchDisplay extends RacketSearch {
     const racketCardsToAdd = this.createRacketCardsToInsert(racketsToAdd); // We also know what racket to add, so lets create the cards and add them
     this.insertRacketCards(racketCardsToAdd);
 
+    this.noRacketsMessage();
+
     const gridContainer = document.querySelector('.select-racket');
     const animateThatSearch = new AnimateThatSearch(this.rackets, racketFetched, gridContainer, ".racket-card", "racket-checkbox", 4); // Now lets apply style to the cards that remained in the container and that were not removed nor added.
     animateThatSearch.applyTranslation();
@@ -31,6 +33,18 @@ export class RacketSearchDisplay extends RacketSearch {
     pagination.initPagination();
 
     return
+  }
+
+  noRacketsMessage() {
+    if (document.querySelectorAll(".racket-card").length === 0) {
+      document.querySelector(".no-rackets-message").style.visibility= "visible";
+      document.querySelector(".no-rackets-message").style.animationName= "slideIn";
+      document.querySelector(".no-rackets-message").style.animationDuration= "0.5s";
+    } else {
+      document.querySelector(".no-rackets-message").style.visibility= "hidden";
+      document.querySelector(".no-rackets-message").style.animationName= "none";
+      document.querySelector(".no-rackets-message").style.animationDuration= "0s";
+    }
   }
 
   racketsToAdd(racketFetched) { // rackets to add = fetched rackets that are not in the displayed rackets

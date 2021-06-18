@@ -1,6 +1,11 @@
 <% require 'pathname' %>
+<div class= 'no-rackets-message alert alert-primary'>
+  Ups... Our hawk eye did not find any corresponding rackets.
+  <br>Please widen your search or call the supervisor.</br>
+</div>
 
 <%= form_with url: "/rackets", method: "get", class: 'select-racket', remote: :true  do %>
+
 <%= hidden_field_tag "select_racket_input", 1 %>
 <% a = [] %>
 <% @rackets.each do |racket| %>
