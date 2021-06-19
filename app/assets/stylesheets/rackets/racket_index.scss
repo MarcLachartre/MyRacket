@@ -73,7 +73,25 @@ html {
 @media (min-width: 2560px) {
   .select-racket {
     display: grid;
-    grid-auto-rows: 650px;
+    grid-auto-rows: 700px;
+    .card-image img {
+      height: 330px;
+    }
+    .card-item-description {
+      grid-template-rows: 72% 28%;
+    }
+    h4 {
+      font-size: 45px
+    }
+
+    h5 {
+      font-size: 32px
+    }
+
+    h6 {
+      margin: 3px;
+      font-size: 30px
+    }
   }
 }
 
@@ -96,12 +114,20 @@ html {
     display: grid;
     grid-auto-rows: 400px;
   }
+  .card-image img {
+    height: 180px;
+  }
 }
 
 @media (max-width: 1079px) {
+
   .select-racket {
     display: grid;
     grid-auto-rows: 360px;
+  }
+
+  .card-image img {
+    height: 140px;
   }
 
   .card-item-description {
@@ -110,12 +136,12 @@ html {
 
   .card-brand {
     h4{
-      font-size: 20px;
+      font-size: 19px;
     }
   }
   .card-model {
     h5{
-      font-size: 17px;
+      font-size: 16px;
     }
   }
 
@@ -127,11 +153,14 @@ html {
 }
 
 @media (max-width: 719px) {
+  .card-image img {
+    height: 95px;
+  }
   .select-racket {
     display: grid;
     grid-auto-rows: 230px;
     .fas {
-      font-size: 12px
+      font-size: 13px
     }
   }
 
@@ -164,9 +193,7 @@ html {
     }
   }
   .warning-text{
-    h6 {
-      font-size: 12px;
-    }
+    display: none
   }
 }
 
