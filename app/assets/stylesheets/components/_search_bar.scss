@@ -32,12 +32,12 @@
 
 .search-category:hover{
   h4 {
-    color: $light-blue
+    color: $shiny-blue
   }
   .arrow-down{
     position: relative;
     align-self: center;
-    border: solid 2px $light-blue;
+    border: solid 2px $shiny-blue;
     border-width: 0 4px 4px 0;
     border-radius: 4px;
     display: inline-block;
@@ -48,7 +48,7 @@
   .arrow-up {
     position: relative;
     align-self: center;
-    border: solid 2px $light-blue;
+    border: solid 2px $shiny-blue;
     border-width: 0 4px 4px 0;
     border-radius: 4px;
     display: inline-block;
@@ -80,34 +80,34 @@
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-right: 5px;
+    justify-content: flex-end;
+    margin-right: 12px;
     color: $mid-blue;
     transition: all 0.25s ease-in-out;
   }
   .fa-search:hover {
     cursor: pointer;
-    color: $mid-blue
+    color: $shiny-blue
   }
 }
 
 .quick-search-container:hover {
-  border: 3px solid $light-blue;
+  border: 3px solid $shiny-blue;
   .fa-search {
-    color: $light-blue;
+    color: $shiny-blue;
   }
 }
 
 .quick-search-container-active {
-  border: 3px solid $light-blue;
+  border: 3px solid $shiny-blue;
   .fa-search {
-    color: $light-blue;
+    color: $shiny-blue;
   }
 }
 
 .type-search{
   border: none;
-  margin-left: 5px;
+  margin-left: 12px;
 }
 
 .type-search:focus{
