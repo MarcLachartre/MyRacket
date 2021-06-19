@@ -4,7 +4,7 @@ import {ComparedRacketCookie} from '../cookies_manager/compared_racket_cookies';
 const defaultImage = require("../../images/racket-sample.jpg");
 // console.log("racket")
 export class Racket extends RacketCardStyleSelector {
-  constructor(id, brand, model, strength, weight, stringPattern, balance, headsize, length, swingweight, stiffness, index){
+  constructor(id, brand, model, weight, stringPattern, balance, headsize, strength, length, swingweight, stiffness, price, index){
     super();
     this.id = id;
     this.brand = brand;
@@ -17,6 +17,8 @@ export class Racket extends RacketCardStyleSelector {
     this.length = length;
     this.swingweight = swingweight;
     this.stiffness = stiffness;
+    this.strength = strength;
+    this.price = price;
     this.index = index
   }
 
@@ -112,6 +114,7 @@ export class Racket extends RacketCardStyleSelector {
   }
 
   createCardBottom() {
+    console.log(this.stringPattern)
     const bottomCardClassNames = ["card-bottom", "card-spec", "card-weight-stringpattern", "card-balance-headsize", "card-weight", "card-string-pattern", "card-balance", "card-headsize"];
     const bottomCardElements = [];
     bottomCardClassNames.forEach(className => { //creates each div/h6 with its class name
@@ -214,6 +217,7 @@ export class Racket extends RacketCardStyleSelector {
   }
 
   setCheckboxAttributes(checkbox) {
+    console.log(this.strength)
     checkbox.name = "selected_racket_id[]";
     checkbox.type = "checkbox";
     checkbox.id = this.id;
@@ -228,5 +232,8 @@ export class Racket extends RacketCardStyleSelector {
     checkbox.dataset.stringpattern = this.stringPattern;
     checkbox.dataset.stiffness = this.stiffness;
     checkbox.dataset.strength = this.strength;
+    checkbox.dataset.price = this.price;
+    checkbox.dataset.balance = this.balance;
+
   }
 }

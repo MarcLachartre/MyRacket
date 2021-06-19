@@ -726,8 +726,6 @@ class BabolatSeed
       price: 89.95,
       headsize: 680, 
       weight: 260,
-
-
       length: 68.5, 
       balance: 34.5, 
       material: 'graphite', 
@@ -745,8 +743,6 @@ class BabolatSeed
       price: 89.95,
       headsize: 680, 
       weight: 260,
-
-
       length: 68.5, 
       balance: 34.5, 
       material: 'graphite', 

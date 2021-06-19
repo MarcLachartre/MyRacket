@@ -13,11 +13,11 @@ export class RacketSearchDisplay extends RacketSearch {
     const racketIndexFetch = await super.racketFetch(); // First, we fetch the searched rackets and the pagination in the database (json object).
     const racketFetched = racketIndexFetch.rackets;
     const pagesNumber = racketIndexFetch.pages;
-
+    // console.log(racketFetched)
     // Then we look for the rackets to remove and the ones to add to the container.
     const racketsToRemove = this.racketsToRemove(racketFetched); // rackets to remove = displayed rackets in the container that are not in the fetched rackets
     const racketsToAdd = this.racketsToAdd(racketFetched); // rackets to add = fetched rackets that are not in the displayed rackets in the container
-
+    // console.log(racketsToAdd)
     this.removeRackets(racketsToRemove); // We know what racket to remove, so let's remove them from the container before adding new ones.
 
     const racketCardsToAdd = this.createRacketCardsToInsert(racketsToAdd); // We also know what racket to add, so lets create the cards and add them
@@ -64,7 +64,8 @@ export class RacketSearchDisplay extends RacketSearch {
   createRacketCardsToInsert(racketsToAdd) { //This method creates a Racket object and therefore the cards that are the result of the search. First it creates a racket object, then we create the card with the right style (racket is in comparator or not). We also add the event listener to each card for it to be properly working (cookie event listener)
     const racketCardsToInsert = [];
     racketsToAdd.forEach((racketObj, i) => {
-      const racket = new Racket(racketObj.id, racketObj.brand, racketObj.model, racketObj.weight, racketObj.string_pattern, racketObj.balance, racketObj.headsize, racketObj.length, racketObj.swingweight, racketObj.stiffness, racketObj.power, racketObj.manoeuvrability, racketObj.comfort, racketObj.control, racketObj.index);
+      console.log(racketObj)
+      const racket = new Racket(racketObj.id, racketObj.brand, racketObj.model, racketObj.weight, racketObj.string_pattern, racketObj.balance, racketObj.headsize, racketObj.strength, racketObj.length, racketObj.swingweight, racketObj.stiffness, racketObj.price, racketObj.index);
       const card = racket.createCard(); //this creates the card and adds the listeners to the button (add comparision event listener)
       const comparator = new Comparator();
 
