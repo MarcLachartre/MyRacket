@@ -1,15 +1,11 @@
 
 <div class= 'racket-comparator-container'>
   <div class= 'short-comparator-container'>
-    <%# <% if @rackets_to_display == []  %>
-    
       <h5 class= "empty-comparator" style= "position: absolute"> 
-        <i class="fas fa-arrow-alt-circle-right" style= "margin-right: 15px"></i>
-        Compared rackets will be displayed here
-        <i class="fas fa-arrow-alt-circle-left" style= "margin-left: 15px"></i>
-
+        <div class= "empty-comparator-message">
+          Compared rackets will be displayed here
+        </div>
       </h5>
-    <%# <% end %> 
     <div class = 'short-displayed-rackets'>
       <% @rackets_to_display.each {|racket| %>
       <div class = 'short-comparator-racket-card'>

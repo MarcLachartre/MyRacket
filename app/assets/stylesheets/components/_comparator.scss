@@ -85,6 +85,20 @@
   height: 100%;
 }
 
+.empty-comparator-message {
+  position: relative;
+    display: flex;
+    justify-self: center;
+    height: 80%;
+    padding-left: 15px;
+    padding-right: 15px;
+    overflow: hidden;
+    background-color: white;
+    align-items: center;
+    border: solid 1px $orange;
+    border-radius: 50px;
+}
+
 .short-displayed-rackets {
   display: grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
