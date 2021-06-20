@@ -127,17 +127,29 @@ export class RacketComparision extends Comparator {
     link.classList.toggle('see-more-link');
     link.href = `/rackets/${this.id}`;
 
+    const appendSpecToCard = (spec) => {
+      const specContainer = document.createElement("div");
+      specContainer.classList.toggle("spec-container");
+      spec.classList.toggle("spec");
+      specContainer.appendChild(spec)
+      comparedRacketCardsData.appendChild(specContainer);
+    }
+
     for (let i = 1; i < Object.keys(this).length-1; i++) {
       if ( i === 1) {
         let spec = document.createElement("h4");
         spec.innerHTML = this[Object.keys(this)[i]];
         spec.classList.toggle("spec");
         comparedRacketCardsData.appendChild(spec);
+        appendSpecToCard(spec);
+        
       } else if (i === 2) {
         let spec = document.createElement("h5");
         spec.innerHTML = this[Object.keys(this)[i]];
         spec.classList.toggle("spec");
         comparedRacketCardsData.appendChild(spec);
+        appendSpecToCard(spec);
+
       } else if ( 3 <= i < 13) {
         let spec = document.createElement("div");
         if (this[Object.keys(this)[i]].includes("undefined") == false) {
@@ -146,12 +158,12 @@ export class RacketComparision extends Comparator {
           spec.innerHTML = "undefined";
         }
         
-        const specContainer = document.createElement("div");
-        specContainer.classList.toggle("spec-container");
-
-        spec.classList.toggle("spec");
-        specContainer.appendChild(spec)
-        comparedRacketCardsData.appendChild(specContainer);
+        appendSpecToCard(spec);
+        // const specContainer = document.createElement("div");
+        // specContainer.classList.toggle("spec-container");
+        // spec.classList.toggle("spec");
+        // specContainer.appendChild(spec)
+        // comparedRacketCardsData.appendChild(specContainer);
       };
     };
 

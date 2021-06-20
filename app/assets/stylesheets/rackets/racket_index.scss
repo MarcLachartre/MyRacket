@@ -118,7 +118,7 @@ html {
   .short-comparator-racket-card {   
     width: 90%;
     .spec-data {
-      font-size: 18px;
+      font-size: 20px;
       width: 80%;
  
     }
@@ -127,22 +127,26 @@ html {
     }
   }
 
+  .large-comparator-racket-card {    
+    h4 {
+      margin: 0;
+      font-size: 50px;
+    }
+    h5 {
+      margin: 0;
+      font-size: 30px;
+    }
+  }
+  .close-comparator-arrow {
+    top: 93%;
+  }
   
-  .large-comparator-racket-card {
-    // .compare-racket-cards-data {
-    .spec {
-      // height: 100%;
-      // vertical-align: middle;
-    }
-    // }
-    h4.spec {
-      margin: 0;
-      // font-size: 24px;
-    }
-    h5.spec {
-      margin: 0;
-      font-size: 25px;
-    }
+  .spec-list {
+    font-size: 25px;
+  }
+
+  .spec {
+    font-size: 25px;
   }
 }
 @media (max-width: 2559px){
@@ -159,17 +163,32 @@ html {
   }
 }
 
-@media (max-width: 1400px) {
-  .select-racket {
-    display: grid;
-    grid-auto-rows: 400px;
-  }
-  .card-image img {
-    height: 180px;
-  }
-}
+// @media (max-width: 1080px) {
+//   .select-racket {
+//     display: grid;
+//     grid-auto-rows: 400px;
+//   }
+//   .card-image img {
+//     min-height: 250px;
+//   }
+// }
 
-@media (max-width: 1079px) {
+@media (max-width: 1080px) {
+  .large-comparator-racket-card {
+    h4 {
+      font-size: 40px
+    }
+    h5 {
+      font-size: 30px
+    }
+  }
+  .spec{
+    font-size: 25px;
+    line-height: 30px;
+  }
+  .spec-list {
+    font-size: 25px;
+  }
 
   .select-racket {
     display: grid;
@@ -177,11 +196,11 @@ html {
   }
 
   .card-image img {
-    height: 140px;
+    height: 138px;
   }
 
   .card-item-description {
-    grid-template-rows: 62% 38%;
+    grid-template-rows: 63% 37%;
   }
 
   .card-brand {
@@ -200,9 +219,56 @@ html {
       font-size: 13px;
     }
   }
+
+  .comparator-card-image img {
+    height: 270px;
+    transform: translateY(10px);
+    border-radius: 25px;
+  }
+
+  .close-comparator-arrow {
+    top: 93%;
+  }
 }
 
+
+@media (max-width: 1080px) and (orientation: landscape) {
+  .large-comparator-racket-card {
+    h4 {
+      font-size: 15px
+    }
+    h5 {
+      font-size: 11px
+    }
+  }
+  .close-comparator-arrow {
+    top: 91%;
+    width: 60px;
+    height: 30px;
+    font-size: 11px;
+  }
+
+  .comparator-card-image img {
+    align-self: center;
+    height: 140px;
+    width: 80%;
+    border-radius: 25px;
+  }
+
+  .spec{
+    font-size: 11px;
+    line-height: 12px;
+  }
+  .spec-list {
+    font-size: 11px;
+  }
+}
+
+
 @media (max-width: 719px) {
+  .search-bar {
+    width: 120px;
+  }
   .card-image img {
     height: 95px;
   }
@@ -212,11 +278,14 @@ html {
     .fas {
       font-size: 13px
     }
+    .button-up {
+      height: 30px;
+    }
   }
 
   .racket-card:hover {
     .racket-checkbox-label {
-      width: 60px
+      width: 50px
     }
   }
   .card-brand {
@@ -231,13 +300,19 @@ html {
   }
 
   .card-item-description {
-    grid-template-rows: 75% 25%;
+    grid-template-rows: 70% 30%;
   }
-
+  .card-bottom{
+    justify-content: flex-end;
+  }
   .card-spec {
     display: none;
   }
+  .card-brand-model {
+    padding: 5px;
+  }
   .racket-checkbox-label {
+    width: 30px;
     .compare {
       font-size: 12px;
     }
@@ -245,6 +320,7 @@ html {
   .warning-text{
     display: none
   }
+
 }
 
 

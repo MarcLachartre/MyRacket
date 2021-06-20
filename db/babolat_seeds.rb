@@ -17,7 +17,7 @@ class BabolatSeed
     balance: 32.0, 
     material: 'graphite', 
     string_pattern: 1619, 
-    strength: "Power/Spin", 
+    strength: "Power - Spin", 
     players: "", 
     kid: false, adult: true,
     description:
@@ -36,7 +36,7 @@ class BabolatSeed
       string_pattern: 1619, 
       stiffness: 69, 
       swingweight:319, 
-      strength: "Control/Feel", 
+      strength: "Control - Feel", 
       players: "Ana Kontaveit", 
       kid: false, adult: true,
       description:
@@ -57,7 +57,7 @@ class BabolatSeed
       string_pattern: 1619, 
       stiffness: 65, 
       swingweight:333, 
-      strength: "Control/Feel", 
+      strength: "Control - Feel", 
       players: "", 
       kid: false, adult: true,
       description:
@@ -78,7 +78,7 @@ class BabolatSeed
       string_pattern: 1619, 
       stiffness: 66, 
       swingweight: 327, 
-      strength: "Control/Feel", 
+      strength: "Control - Feel", 
       players: "Alize Cornet", 
       kid: false, adult: true,
       description:
@@ -99,7 +99,7 @@ class BabolatSeed
       string_pattern: 1619, 
       stiffness: 69, 
       swingweight:309, 
-      strength: "Control/Feel", 
+      strength: "Control - Feel", 
       players: "", 
       kid: false, adult: true,
       description:
@@ -120,7 +120,7 @@ class BabolatSeed
       string_pattern: 1820, 
       stiffness: 66, 
       swingweight: 334, 
-      strength: "Control/Feel", 
+      strength: "Control - Feel", 
       players: "Dominic Thiem", 
       kid: false, adult: true,
       description:
@@ -141,7 +141,7 @@ class BabolatSeed
       string_pattern: 1619, 
       stiffness: 68, 
       swingweight: 312, 
-      strength: "Control/Feel", 
+      strength: "Control - Feel", 
       players: "", 
       kid: false, adult: true,
       description:
@@ -181,7 +181,7 @@ class BabolatSeed
       balance: 32, 
       material: 'graphite', 
       string_pattern: 1619, 
-      strength: "Power/Explosivity/Feel", 
+      strength: "Power - Explosivity - Feel", 
       players: "", 
       kid: false, adult: true,
       description:
@@ -202,7 +202,7 @@ class BabolatSeed
       balance: 31.5, 
       material: 'graphite', 
       string_pattern: 1619, 
-      strength: "Power/Explosivity/Feel", 
+      strength: "Power - Explosivity - Feel", 
       players: "", 
       kid: false, adult: true,
       description:
@@ -223,7 +223,7 @@ class BabolatSeed
       balance: 33, 
       material: 'graphite', 
       string_pattern: 1619, 
-      strength: "Power/Explosivity/Feel", 
+      strength: "Power - Explosivity - Feel", 
       players: "", 
       kid: false, adult: true,
       description:
@@ -244,7 +244,7 @@ class BabolatSeed
       balance: 33, 
       material: 'graphite', 
       string_pattern: 1619, 
-      strength: "Power/Explosivity/Feel", 
+      strength: "Power - Explosivity - Feel", 
       players: "", 
       kid: false, adult: true,
       description:
@@ -265,7 +265,7 @@ class BabolatSeed
       balance: 32, 
       material: 'graphite', 
       string_pattern: 1619, 
-      strength: "Power/Explosivity/Feel", 
+      strength: "Power - Explosivity - Feel", 
       players: "", 
       kid: false, adult: true,
       description:
@@ -286,7 +286,7 @@ class BabolatSeed
       balance: 32, 
       material: 'graphite', 
       string_pattern: 1619, 
-      strength: "Power/Explosivity/Feel", 
+      strength: "Power - Explosivity - Feel", 
       players: "", 
       kid: false, adult: true,
       description:
@@ -306,7 +306,7 @@ class BabolatSeed
       balance: 32, 
       material: 'graphite', 
       string_pattern: 1619, 
-      strength: "Power/Explosivity/Feel", 
+      strength: "Power - Explosivity - Feel", 
       players: "Fabio Fognini, Garbiñe Muguruza", 
       kid: false, adult: true,
       description:
@@ -327,7 +327,7 @@ class BabolatSeed
       balance: 33, 
       material: 'graphite', 
       string_pattern: 1619, 
-      strength: "Power/Explosivity/Feel", 
+      strength: "Power - Explosivity - Feel", 
       players: "", 
       kid: false, adult: true,
       description:
@@ -348,7 +348,7 @@ class BabolatSeed
       balance: 32, 
       material: 'graphite', 
       string_pattern: 1619, 
-      strength: "Spin/Power/Feel", 
+      strength: "Spin - Power - Feel", 
       players: "Rafa Nadal, Benoit Paire", 
       kid: false, adult: true,
       description:
@@ -369,7 +369,7 @@ class BabolatSeed
       balance: 32, 
       material: 'graphite', 
       string_pattern: 1619, 
-      strength: "Spin/Power/Feel", 
+      strength: "Spin - Power - Feel", 
       players: "", 
       kid: false, adult: true,
       description:
@@ -390,7 +390,7 @@ class BabolatSeed
       balance: 31.5, 
       material: 'graphite', 
       string_pattern: 1620, 
-      strength: "Spin/Power/Feel", 
+      strength: "Spin - Power - Feel", 
       players: "", 
       kid: false, adult: true,
       description:
@@ -410,7 +410,7 @@ class BabolatSeed
       balance: 31.5, 
       material: 'graphite', 
       string_pattern: 1619, 
-      strength: "Spin/Power/Feel", 
+      strength: "Spin - Power - Feel", 
       players: "", 
       kid: false, adult: true,
       description:
@@ -431,7 +431,7 @@ class BabolatSeed
       balance: 33.0, 
       material: 'graphite', 
       string_pattern: 1619, 
-      strength: "Spin/Power/Feel", 
+      strength: "Spin - Power - Feel", 
       players: "", 
       kid: false, adult: true,
       description:
@@ -452,7 +452,7 @@ class BabolatSeed
       balance: 33.0, 
       material: 'graphite', 
       string_pattern: 1619, 
-      strength: "Spin/Power/Feel", 
+      strength: "Spin - Power - Feel", 
       players: "", 
       kid: false, adult: true,
       description:
@@ -473,7 +473,7 @@ class BabolatSeed
       balance: 32, 
       material: 'graphite', 
       string_pattern: 1619, 
-      strength: "Spin/Power/Feel", 
+      strength: "Spin - Power - Feel", 
       players: "Rafa Nadal", 
       kid: false, adult: true,
       description:
@@ -495,7 +495,7 @@ class BabolatSeed
       balance: 32, 
       material: 'graphite', 
       string_pattern: 1619, 
-      strength: "Spin/Power/Feel", 
+      strength: "Spin - Power - Feel", 
       players: "Sam Querry, Jo-Wilfried Tsonga", 
       kid: false, adult: true,
       description:
@@ -517,7 +517,7 @@ class BabolatSeed
       balance: 32.0, 
       material: 'graphite', 
       string_pattern: 1619, 
-      strength: "Power/Spin", 
+      strength: "Power - Spin", 
       players: "", 
       kid: false, adult: true,
       description:
@@ -536,7 +536,7 @@ class BabolatSeed
       balance: 34.0, 
       material: 'graphite', 
       string_pattern: 1617, 
-      strength: "Easy Power/Comfort/ Forgiveness", 
+      strength: "Easy Power - Comfort - Forgiveness", 
       players: "", 
       kid: false, adult: true,
       description:
@@ -556,7 +556,7 @@ class BabolatSeed
       balance: 32.0, 
       material: 'graphite', 
       string_pattern: 1619, 
-      strength: "Power/Comfort/Control", 
+      strength: "Power - Comfort - Control", 
       players: "", 
       kid: false, adult: true,
       description:
@@ -575,7 +575,7 @@ class BabolatSeed
       balance: 32.0, 
       material: 'graphite', 
       string_pattern: 1619, 
-      strength: "Power/Comfort", 
+      strength: "Power - Comfort", 
       players: "", 
       kid: false, adult: true,
       description:
@@ -595,7 +595,7 @@ class BabolatSeed
       balance: 32.0, 
       material: 'graphite', 
       string_pattern: 1617, 
-      strength: "Easy Power/Comfort/ Forgiveness", 
+      strength: "Easy Power - Comfort - Forgiveness", 
       players: "", 
       kid: false, adult: true,
       description:
@@ -615,7 +615,7 @@ class BabolatSeed
       balance: 32.0, 
       material: 'graphite', 
       string_pattern: 1617, 
-      strength: "Easy Power/Comfort/ Forgiveness", 
+      strength: "Easy Power - Comfort - Forgiveness", 
       players: "", 
       kid: false, adult: true,
       description:
@@ -635,7 +635,7 @@ class BabolatSeed
       balance: 32.0, 
       material: 'graphite', 
       string_pattern: 1617, 
-      strength: "Easy Power/Comfort/ Forgiveness", 
+      strength: "Easy Power - Comfort - Forgiveness", 
       players: "", 
       kid: false, adult: true,
       description:
@@ -655,7 +655,7 @@ class BabolatSeed
       balance: 32.0, 
       material: 'graphite', 
       string_pattern: 1617, 
-      strength: "Easy Power/Comfort/ Forgiveness", 
+      strength: "Easy Power - Comfort - Forgiveness", 
       players: "", 
       kid: false, adult: true,
       description:
@@ -675,7 +675,7 @@ class BabolatSeed
       balance: 34.0, 
       material: 'graphite', 
       string_pattern: 1619, 
-      strength: "Lightness/Power/ Manoeuvrability", 
+      strength: "Lightness - Power - Manoeuvrability", 
       players: "", 
       kid: false, adult: true,
       description:
@@ -694,7 +694,7 @@ class BabolatSeed
       balance: 34.0, 
       material: 'graphite', 
       string_pattern: 1619, 
-      strength: "Lightness/Power/ Manoeuvrability", 
+      strength: "Lightness - Power - Manoeuvrability", 
       players: "", 
       kid: false, adult: true,
       description:
@@ -713,7 +713,7 @@ class BabolatSeed
       balance: 32.5, 
       material: 'graphite', 
       string_pattern: 1619, 
-      strength: "Power/Manoeuvrability", 
+      strength: "Power - Manoeuvrability", 
       players: "", 
       kid: false, adult: true,
       description:
@@ -730,7 +730,7 @@ class BabolatSeed
       balance: 34.5, 
       material: 'graphite', 
       string_pattern: 1619, 
-      strength: "Power/Lightness/ Manoeuvrability", 
+      strength: "Power - Lightness - Manoeuvrability", 
       players: "", 
       kid: false, adult: true,
       description:
@@ -747,7 +747,7 @@ class BabolatSeed
       balance: 34.5, 
       material: 'graphite', 
       string_pattern: 1619, 
-      strength: "Power/Lightness/ Manoeuvrability", 
+      strength: "Power - Lightness - Manoeuvrability", 
       players: "", 
       kid: false, adult: true,
       description:
@@ -766,7 +766,7 @@ class BabolatSeed
       balance: 34.5, 
       material: 'graphite', 
       string_pattern: 1619, 
-      strength: "Power/Lightness/ Manoeuvrability", 
+      strength: "Power - Lightness - Manoeuvrability", 
       players: "", 
       kid: false, adult: true,
       description:
