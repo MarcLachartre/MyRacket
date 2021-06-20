@@ -71,7 +71,26 @@ html {
 // 4320p	UHDTV2	7680x4320 pixels
 
 @media (min-width: 2560px) {
+  .search-bar {
+    width: 15%;
+  }
+  h4 {
+    font-size: 45px
+  }
+  h5 {
+    font-size: 32px
+  }
+
+  .label-design {
+    label {
+      font-size: 25px;
+    }
+  }
+  
   .select-racket {
+    .racket-card {
+      width: 80%;
+    }
     display: grid;
     grid-auto-rows: 700px;
     .card-image img {
@@ -80,17 +99,27 @@ html {
     .card-item-description {
       grid-template-rows: 72% 28%;
     }
-    h4 {
-      font-size: 45px
-    }
-
+    
     h5 {
       font-size: 32px
     }
-
     h6 {
       margin: 3px;
       font-size: 30px
+    }
+  }
+  .empty-comparator-message {
+    font-size: 25px;
+  }
+  .short-comparator-racket-card {
+    
+    width: 90%;
+    .spec-data {
+      width: 90%;
+      font-size: 18px;
+    }
+    .fa-times {
+      font-size: 20px;
     }
   }
 }
