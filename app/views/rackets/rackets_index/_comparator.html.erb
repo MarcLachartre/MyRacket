@@ -50,17 +50,39 @@
 
           </div>
           <div class= 'racket-comparator-specs'>
-            <div class = 'spec-list'>Brand</div>
-            <div class = 'spec-list'>Model</div>
-            <div class = 'spec-list'>Strength</div>
-            <div class = 'spec-list'>Weight</div>
-            <div class = 'spec-list'>Headsize</div>
-            <div class = 'spec-list'>String Pattern</div>
-            <div class = 'spec-list'>Balance</div>
-            <div class = 'spec-list'>Stiffness</div>
-            <div class = 'spec-list'>Swingweight</div>
-            <div class = 'spec-list'>Length</div>
-            <div class = 'spec-list'>Price</div>
+            <div class= 'spec-list-container'>
+              <div class = 'spec-list'>Brand</div>
+            </div>
+            <div class= 'spec-list-container'>
+              <div class = 'spec-list'>Model</div>
+            </div>
+            <div class= 'spec-list-container'>
+              <div class = 'spec-list'>Strength</div>
+            </div>
+            <div class= 'spec-list-container'>
+              <div class = 'spec-list'>Weight</div>
+            </div>
+            <div class= 'spec-list-container'>
+              <div class = 'spec-list'>Headsize</div>
+            </div>
+            <div class= 'spec-list-container'>
+              <div class = 'spec-list'>String Pattern</div>
+            </div>
+            <div class= 'spec-list-container'>
+              <div class = 'spec-list'>Balance</div>
+            </div>
+            <div class= 'spec-list-container'>
+              <div class = 'spec-list'>Stiffness</div>
+            </div>
+            <div class= 'spec-list-container'>
+              <div class = 'spec-list'>Swingweight</div>
+            </div>
+            <div class= 'spec-list-container'>
+              <div class = 'spec-list'>Length</div>
+            </div> 
+            <div class= 'spec-list-container'>
+              <div class = 'spec-list'>Price</div>
+            </div>
           </div>
         </div>
         <div class= 'racket-comparator'>
@@ -82,25 +104,60 @@
               </div>
               <div class="compared-racket-cards-data">
                 <%= link_to "See more", racket_path(racket.id), class: 'see-more-link' %>
-                <h4 class= "spec"><%= racket.brand %></h4>
-                <h5 class= "spec"><%= racket.model %></h5>
-                <div class= "spec"><%= racket.strength %></div>
-                <div class= "spec"><%= racket.weight %> g</div>
-                <div class= "spec"><%= racket.headsize %> cm²</div>
-                <div class= "spec"><%= "#{racket.string_pattern[0]}#{racket.string_pattern[1]}x#{racket.string_pattern[2]}#{racket.string_pattern[3]}"%></div>
-                <div class= "spec"><%= racket.balance %> cm</div>
-                <% if racket.stiffness != nil %>
-                  <div class= "spec"><%= racket.stiffness %> RA</div>
-                <% else %>
-                  <div class= "spec"> undefined</div> 
-                <% end %>
-                <% if racket.swingweight != nil %>
-                  <div class= "spec"><%= racket.swingweight %> kg-cm²</div>
-                <% else %>
-                  <div class= "spec"> undefined</div> 
-                <% end %>
+                
+                <div class= 'spec-container'>                
+                  <h4 class= "spec"><%= racket.brand %></h4>
+                </div>
+
+                <div class= 'spec-container'>               
+                  <h5 class= "spec"><%= racket.model %></h5>
+                </div>
+
+                <div class= 'spec-container'>               
+                  <div class= "spec"><%= racket.strength %></div>
+                </div>
+
+                <div class= 'spec-container'>               
+                  <div class= "spec"><%= racket.weight %> g</div>
+                </div>
+
+                <div class= 'spec-container'>
+                  <div class= "spec"><%= racket.headsize %> cm²</div>
+                </div>
+
+                <div class= 'spec-container'>
+                  <div class= "spec"><%= "#{racket.string_pattern[0]}#{racket.string_pattern[1]}x#{racket.string_pattern[2]}#{racket.string_pattern[3]}"%></div>
+                </div>
+
+                <div class= 'spec-container'>
+                  <div class= "spec"><%= racket.balance %> cm</div>
+                </div>
+
+                <div class= 'spec-container'>
+                  <% if racket.stiffness != nil %>
+                  
+                    <div class= "spec"><%= racket.stiffness %> RA</div>
+                  <% else %>
+                    <div class= "spec"> undefined</div> 
+                  <% end %>
+                </div>
+
+                <div class= 'spec-container'>
+                  <% if racket.swingweight != nil %>
+                  
+                    <div class= "spec"><%= racket.swingweight %> kg-cm²</div>
+                  <% else %>
+                    <div class= "spec"> undefined</div> 
+                  <% end %>
+                </div>
+
+                <div class= 'spec-container'>
                 <div class= "spec"><%= racket.length %> cm</div>
-                <div class= "spec"><%= racket.price %> Euros</div>
+                </div>
+
+                <div class= 'spec-container'>
+                  <div class= "spec"><%= racket.price %> Euros</div>
+                </div>
 
             <%= label_tag nil, class: 'compared-racket-checkbox-label' do %>
             <%= check_box_tag "selected_racket_id[]", racket.id,

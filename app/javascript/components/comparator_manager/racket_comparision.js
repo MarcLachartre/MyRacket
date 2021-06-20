@@ -125,7 +125,7 @@ export class RacketComparision extends Comparator {
     imageContainer.classList.toggle('comparator-card-image');
     comparedRacketCardsData.classList.toggle('compared-racket-cards-data');
     link.classList.toggle('see-more-link');
-    link.href = `/rackets/${this.id}`
+    link.href = `/rackets/${this.id}`;
 
     for (let i = 1; i < Object.keys(this).length-1; i++) {
       if ( i === 1) {
@@ -145,9 +145,13 @@ export class RacketComparision extends Comparator {
         } else {
           spec.innerHTML = "undefined";
         }
+        
+        const specContainer = document.createElement("div");
+        specContainer.classList.toggle("spec-container");
 
         spec.classList.toggle("spec");
-        comparedRacketCardsData.appendChild(spec);
+        specContainer.appendChild(spec)
+        comparedRacketCardsData.appendChild(specContainer);
       };
     };
 
