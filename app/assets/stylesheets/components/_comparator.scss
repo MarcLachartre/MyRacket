@@ -17,7 +17,7 @@
   }
   h5 {
 
-    font-size: 2.1vh;
+    font-size: 2.3vh;
     color: $orange;
   }
 }
@@ -81,25 +81,24 @@
 .empty-comparator {
   display: none;
   justify-content: center;
-  text-align: center;
   align-items: center;
+  text-align: center;
   width: 100%;
   height: 100%;
 }
 
 .empty-comparator-message {
   position: relative;
-    display: flex;
-    justify-self: center;
-    height: 80%;
-    padding-left: 15px;
-    padding-right: 15px;
-    overflow: hidden;
-    background-color: white;
-    align-items: center;
-    border: solid 1px $orange;
-    border-radius: 50px;
-    width: 60vw;
+  display: flex;
+  text-align: center;
+  height: 80%;
+  padding-left: 15px;
+  padding-right: 15px;
+  overflow: hidden;
+  background-color: white;
+  align-items: center;
+  border: solid 1px $orange;
+  border-radius: 50px;
 }
 
 .short-displayed-rackets {
