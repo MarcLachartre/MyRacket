@@ -11,12 +11,14 @@
   flex-direction: column;
   transition: all 0.25s ease-in-out;
   h4 {
+    margin: 3px;
     color: $orange;
-    margin: 0px;
+    font-size: 3.2vh;
   }
   h5 {
+    margin: 3px;
+    font-size: 2.1vh;
     color: $orange;
-    margin: 0px;
   }
 }
 
@@ -221,19 +223,19 @@
 
 .close-comparator-arrow {
   position: absolute;
-  top: 91%; left: 50%;
+  top: 78vh; left: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 80px;
-  height: 45px;
+  height: 5vh;
+  font-size: 2.2vh;
   z-index: 1;
   border-radius:50px;
   border: solid 1px red;
   text-align: center;
   color: red;
   cursor: pointer;
-  font-size: 17px;
   transition: all 0.25s ease-in-out;
 }
 
@@ -245,7 +247,7 @@
 
 .comparator-container {
   display: grid;
-  grid-template-columns: 10% 90%;
+  grid-template-columns: 15% 85%;
   position: absolute;
   flex-direction: column;
   margin-bottom: 10%;
@@ -303,8 +305,8 @@
   display: flex;
   flex-direction: column;
   align-self: center;
-  justify-self: center;
   text-align: center;
+  font-size: 1.9vh;
 }
 
 
@@ -365,8 +367,6 @@
   position: relative;
   display: grid;
   grid-template-rows: repeat(12, 8.33%);
-  justify-items: center;
-  align-items: center;
   background-color: white;
   justify-content: stretch;
   height: 65%;
@@ -379,25 +379,25 @@
 
 .spec-container {
   display: flex;
-  flex-grow: 1;
   justify-content: center;
-  height: 100%;
+
   width: 100%;
-  border-bottom: solid 1px $light-grey
+  border-bottom: solid 1px #f5f5f5; 
+  overflow: hidden;
+  word-break: normal;
+  overflow-wrap: break-word;
+  -webkit-line-clamp: 2;
 }
 
 .spec {
-  position: relative;
-  align-self: center;
-  justify-self: center;
   text-align: center;
+  vertical-align: center;
+  align-self: center;
+  // height: 100%;
+  font-size: 1.9vh;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-  overflow-wrap: break-word;
-  overflow: hidden;
-  width: 100%;
 }
 
 

@@ -88,6 +88,8 @@ html {
   }
   
   .select-racket {
+      display: grid;
+      grid-auto-rows: 740px;
     .racket-card {
       width: 80%;
     }
@@ -116,7 +118,7 @@ html {
   }
 
   .short-comparator-racket-card {   
-    width: 90%;
+    width: 80%;
     .spec-data {
       font-size: 20px;
       width: 80%;
@@ -127,96 +129,99 @@ html {
     }
   }
 
-  .large-comparator-racket-card {    
-    h4 {
-      margin: 0;
-      font-size: 50px;
-    }
-    h5 {
-      margin: 0;
-      font-size: 30px;
-    }
-  }
-  .close-comparator-arrow {
-    top: 93%;
-  }
-  
-  .spec-list {
-    font-size: 25px;
-  }
+  // .close-comparator-arrow {
+  //   top: 93%;
+  // }
 
   .spec {
     font-size: 25px;
   }
+
+  .search-bar{
+    label {
+      font-size: 25px;
+      line-height: 50px
+    }
+  }
+
 }
-@media (max-width: 2559px){
+
+@media (max-width: 2559px) {
   .select-racket {
     display: grid;
-    grid-auto-rows: 520px;
+    grid-auto-rows: 535px;
+    .card-image img {
+      height: 270px;
+    }
   }
 }
 
-@media (max-width: 1919px) {
+@media (max-width: 1440px) {
   .select-racket {
     display: grid;
     grid-auto-rows: 425px;
+    .card-image img {
+      height: 190px;
+    }
   }
 }
 
-// @media (max-width: 1080px) {
-//   .select-racket {
-//     display: grid;
-//     grid-auto-rows: 400px;
-//   }
-//   .card-image img {
-//     min-height: 250px;
-//   }
-// }
+@media (max-width: 1920px) and (orientation: landscape) {
 
-@media (max-width: 1080px) {
-  .large-comparator-racket-card {
-    h4 {
-      font-size: 40px
-    }
-    h5 {
-      font-size: 30px
-    }
-  }
-  .spec{
-    font-size: 25px;
-    line-height: 30px;
-  }
-  .spec-list {
-    font-size: 25px;
-  }
+  // .close-comparator-arrow {
+  //   top: 92%;
+  //   width: 70px;
+  //   height: 40px;
+  //   font-size: 15px;
+  // }
 
+  .comparator-card-image img {
+    align-self: center;
+    height: 190px;
+    width: 80%;
+    border-radius: 25px;
+  }
+}
+
+@media (max-width: 1280px) {
   .select-racket {
     display: grid;
-    grid-auto-rows: 360px;
+    grid-auto-rows: 380px;
+    .card-image img {
+      height: 160px;
+    }
   }
-
-  .card-image img {
-    height: 138px;
-  }
-
-  .card-item-description {
-    grid-template-rows: 63% 37%;
+  
+  .racket-card {
+    .card-item-description {
+      grid-template-rows: 67% 33%;
+    }
   }
 
   .card-brand {
     h4{
-      font-size: 19px;
+      font-size: 22px;
     }
   }
   .card-model {
     h5{
-      font-size: 16px;
+      font-size: 18px;
     }
   }
 
   .card-spec {
     h6{
-      font-size: 13px;
+      font-size: 15px;
+    }
+  }
+
+  .short-comparator-racket-card {   
+    width: 90%;
+    .spec-data {
+      font-size: 15px; 
+    }
+    .fa-times {
+      font-size: 15px;
     }
   }
 
@@ -226,66 +231,171 @@ html {
     border-radius: 25px;
   }
 
-  .close-comparator-arrow {
-    top: 93%;
-  }
+  // .close-comparator-arrow {
+  //   top: 93%;
+  // }
 }
 
 
-@media (max-width: 1080px) and (orientation: landscape) {
-  .large-comparator-racket-card {
+@media (max-width: 1024px) {
+  .search-bar {
+    width: 160px;
+    .type-search {
+      width: 100%;
+    }
+    input[type="text"]{
+      font-size: 14px;
+    }
     h4 {
-      font-size: 15px
+      font-size: 24px;
     }
     h5 {
-      font-size: 11px
+      font-size: 20px;
+    }
+    label {
+      line-height: 18px;
+      font-size: 16px;
+    };
+    .label-design {
+      margin-top: 5px;
+    }
+    .arrow-up {
+      border-width: 0 3px 3px 0;
+    }
+    .clear-search {
+      font-size: 12px;
+      padding-right: 5px;
+      padding-left: 5px;
     }
   }
-  .close-comparator-arrow {
-    top: 91%;
-    width: 60px;
-    height: 30px;
-    font-size: 11px;
+
+  .select-racket {
+    display: grid;
+    grid-auto-rows: 365px;
+    .card-image img {
+      height: 140px;
+    }
+    .racket-card {
+      .card-item-description {
+        grid-template-rows: 64% 36%;
+      }
+    }
+  }
+
+  .card-brand-model {
+    padding-right: 6px;
+    padding-left: 6px;
+  }
+
+  .card-spec {
+    padding-right: 6px;
+    padding-left: 6px;
+  }
+
+  .card-brand {
+    h4{
+      font-size: 21px;
+    }
+  }
+  .card-model {
+    h5{
+      font-size: 17px;
+    }
+  }
+
+  .card-spec {
+    h6{
+      font-size: 15px;
+    }
+  }
+
+  .short-comparator-racket-card {   
+    width: 90%;
+    .spec-data {
+      font-size: 15px; 
+    }
+    .fa-times {
+      font-size: 15px;
+    }
   }
 
   .comparator-card-image img {
-    align-self: center;
-    height: 140px;
-    width: 80%;
+    height: 200px;
+    transform: translateY(10px);
     border-radius: 25px;
   }
 
-  .spec{
-    font-size: 11px;
-    line-height: 12px;
-  }
-  .spec-list {
-    font-size: 11px;
+  .racket-comparator-container{
+    .spec {
+      font-size: 1.4vh;
+    }
+    h4.spec{
+      font-size: 2.8vh;
+    }
+    h5.spec{
+      font-size: 1.9vh;
+    }
+    .spec-list {
+      font-size: 1.4vh;
+    }
+
   }
 }
 
 
-@media (max-width: 719px) {
+@media (max-width: 720px) {
   .search-bar {
-    width: 120px;
+    width: 145px;
+    .type-search {
+      width: 100%;
+    }
+    input[type="text"]{
+      font-size: 12px;
+    }
+    h4 {
+      font-size: 22px;
+    }
+    h5 {
+      font-size: 18px;
+    }
+    label {
+      line-height: 18px;
+      font-size: 14px;
+    };
+    .label-design {
+      margin-top: 5px;
+    }
+    .arrow-up {
+      border-width: 0 3px 3px 0;
+    }
+    .clear-search {
+      font-size: 12px;
+      padding-right: 5px;
+      padding-left: 5px;
+    }
   }
-  .card-image img {
-    height: 95px;
-  }
+
+
   .select-racket {
     display: grid;
-    grid-auto-rows: 230px;
+    grid-auto-rows: 220px;
+    .card-image img {
+      height: 85px;
+    }
     .fas {
       font-size: 13px
     }
     .button-up {
       height: 30px;
     }
+    .racket-card {
+     padding-bottom: 5px;
+    }
   }
 
   .racket-card:hover {
     .racket-checkbox-label {
-      width: 50px
+      width: 56px
     }
   }
   .card-brand {
@@ -298,10 +408,10 @@ html {
       font-size: 13px;
     }
   }
-
-  .card-item-description {
-    grid-template-rows: 70% 30%;
-  }
+  
+  // .card-item-description {
+  //   grid-template-rows: 90% 10%;
+  // }
   .card-bottom{
     justify-content: flex-end;
   }
@@ -321,6 +431,40 @@ html {
     display: none
   }
 
+  .short-comparator-racket-card {   
+    width: 97%;
+    .spec-data {
+      font-size: 14px;
+      line-height: 22px;
+      width: 60%;
+ 
+    }
+    .fa-times {
+      font-size: 15px;
+    }
+  }
+
+  .comparator-card-image img {
+    height: 180px;
+    transform: translateY(10px);
+    border-radius: 25px;
+  }
+  
+  .racket-comparator-container{
+    .spec {
+      font-size: 1.5vh;
+    }
+    h4.spec {
+      font-size: 2.2vh;
+    }
+    h5.spec {
+      font-size: 1.7vh;
+    }
+    .spec-list {
+      font-size: 1.5vh;
+    }
+
+  }
 }
 
 
