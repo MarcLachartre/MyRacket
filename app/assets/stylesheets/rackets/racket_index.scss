@@ -370,6 +370,9 @@ html {
   and (max-device-width: 812px) 
   and (-webkit-min-device-pixel-ratio: 3)
   and (orientation: landscape) { 
+    body {
+      width: 812px;
+    }
   .racket-comparator-container{
     .spec {
       font-size: 2vh;
