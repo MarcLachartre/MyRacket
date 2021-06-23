@@ -33,3 +33,47 @@
     color: white
   }
 }
+
+@media (max-width: 1024px) {
+  .footer {
+    a {
+      font-size: 14px;
+      line-height: 20px;
+    }
+    .contact-us {
+      div {
+        font-size: 14px;
+      line-height: 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: 720px) {
+  .footer {
+    a {
+      font-size: 12px;
+      line-height: 20px;
+    }
+    .contact-us {
+      div {
+        font-size: 12px;
+      line-height: 20px;
+      }
+    }
+  }
+}
+@media (max-width: 499px) {
+  .footer {
+    a {
+      font-size: 10px;
+      line-height: 16px;
+    }
+    .contact-us {
+      div {
+        font-size: 10px;
+        line-height: 16px;
+      }
+    }
+  }
+}

@@ -55,7 +55,48 @@
 
 .navbar-right-links {
   display: flex;
-  width: 320px;
+  width: 240px;
   justify-content: space-between
 }
 
+@media (max-width: 1024px) {
+  .myracket-navbar {
+    height: 55px;
+    min-height: 55px;
+    a {
+      font-size: 16px
+    }
+  }
+
+  .navbar-right-links {
+    width: 190px;
+  } 
+}
+
+@media (max-width: 720px) {
+  .myracket-navbar {
+    height: 45px;
+    min-height: 45px;
+    a {
+      font-size: 14px
+    }
+  }
+
+  .navbar-right-links {
+    width: 180px;
+  }
+}
+@media (max-width: 499px) {
+
+  .myracket-navbar {
+    height: 30px;
+    min-height: 30px;
+    a {
+    font-size: 14px
+    }
+  }
+
+  .navbar-right-links {
+    width: 150px;
+  }
+}

@@ -409,3 +409,137 @@
   }
 }
 
+
+
+
+
+
+// @media (max-width: 499px) { //phones
+//   .search-bar {
+//     width: 95px;
+//     padding-right: 3px;
+//     padding-left: 3px;
+//     .quick-search-container {
+//       padding-right: 16px;
+//       padding-left: 2px;
+//       border: 2px solid #10367f;
+//       .fa {
+//         font-weight: 10px;
+//         font-size: 10px;
+//       }
+//     }
+//     input[type="text"]{
+//       font-size: 12px;
+//     }
+//     h4 {
+//       font-size: 18px;
+//     }
+//     h5 {
+//       font-size: 16px;
+//     }
+//     label {
+//       line-height: 16px;
+//       font-size: 12px;
+//     };
+//     .label-design {
+//       margin-top: 5px;
+//     }
+//     .arrow-up {
+//       border-width: 0 3px 3px 0;
+//     }
+//     .clear-search {
+//       font-size: 12px;
+//       padding-right: 5px;
+//       padding-left: 5px;
+//       border: 2px;
+//     }
+//   }
+
+
+//   .select-racket {
+//     display: grid;
+//     padding-left: 3px;
+//     padding-right: 3px;
+//     grid-auto-rows: 220px;
+//     .card-image img {
+//       height: 80px;
+//     }
+//     .fas {
+//       font-size: 13px
+//     }
+//     .button-up {
+//       height: 30px;
+//     }
+//     .racket-card {
+//       width: 95%;
+//     }
+//     .button-and-link {
+//       margin: 0px
+//     }
+//   }
+
+//   .racket-card:hover {
+//     .racket-checkbox-label {
+//       width: 48px
+//     }
+//   }
+
+//   .racket-checkbox-label {
+//     width: 30px;
+//     .compare {
+//       font-size: 10px;
+//     }
+//   }
+
+//   .racket-checkbox-label {
+//     width: 30px;
+//     .compare {
+//       font-size: 12px;
+//     }
+//   }
+
+
+//     .short-comparator-racket-card {   
+//       border-radius: 5px;
+//       display: flex;
+//       flex-direction: column;
+//       justify-content: space-between;
+
+
+//       .short-brand-model-container {
+//         border-right: none
+//       }
+
+//       .spec-data {
+//         font-size: 10px;
+//         line-height: 17px;
+//         width: 100%;
+//         padding: 4px;
+//         -webkit-line-clamp: 2;
+//       }
+//       .compared-racket-checkbox-label {
+//         width: 100%;
+//       }
+//     }
+
+//   .comparator-card-image img {
+//     height: 180px;
+//     transform: translateY(10px);
+//     border-radius: 25px;
+//   }
+  
+//   .racket-comparator-container{
+//     .spec {
+//       font-size: 1.5vh;
+//     }
+//     h4.spec {
+//       font-size: 2.2vh;
+//     }
+//     h5.spec {
+//       font-size: 1.7vh;
+//     }
+//     .spec-list {
+//       font-size: 1.5vh;
+//     }
+   
+

@@ -231,9 +231,7 @@ html {
     border-radius: 25px;
   }
 
-  // .close-comparator-arrow {
-  //   top: 93%;
-  // }
+ 
 }
 
 
@@ -321,11 +319,27 @@ html {
 
   .comparator-card-image img {
     height: 200px;
-    transform: translateY(10px);
+    transform: translateY(5px);
     border-radius: 25px;
   }
 
+  .short-comparator-background {
+    margin-top:55px;
+  }
+
+  .compared-racket-checkbox-label {
+    .fas {
+      font-size: 10px;
+    }
+  }
+
   .racket-comparator-container{
+    margin-top: 55px;
+    .close-comparator-arrow {
+      top: 79vh;
+      height: 4vh;
+      width: 60px;
+    }
     .spec {
       font-size: 1.4vh;
     }
@@ -341,48 +355,6 @@ html {
 
   }
 }
-@media only screen //iphone X
-  and (min-device-width: 375px) 
-  and (max-device-width: 812px) 
-  and (-webkit-min-device-pixel-ratio: 3) { 
-    .racket-comparator-container{
-      .spec {
-        font-size: 1.2vh;
-      }
-      h4.spec{
-        font-size: 1.6vh;
-      }
-      h5.spec{
-        font-size: 1.6vh;
-      }
-      .spec-list {
-        font-size: 1vh;
-      }
-  
-    }
-}
-@media only screen //Iphone X
-  and (min-device-width: 375px) 
-  and (max-device-width: 812px) 
-  and (-webkit-min-device-pixel-ratio: 3)
-  and (orientation: landscape) { 
-
-  .racket-comparator-container{
-    .spec {
-      font-size: 2vh;
-    }
-    h4.spec{
-      font-size: 3vh;
-    }
-    h5.spec{
-      font-size: 2.1vh;
-    }
-    .spec-list {
-      font-size: 2vh;
-    }
-  }
-}
-
 
 @media (max-width: 720px) {
   .search-bar {
@@ -450,9 +422,6 @@ html {
     }
   }
   
-  // .card-item-description {
-  //   grid-template-rows: 90% 10%;
-  // }
   .card-bottom{
     justify-content: flex-end;
   }
@@ -470,6 +439,10 @@ html {
   }
   .warning-text{
     display: none
+  }
+
+  .short-comparator-background {
+    margin-top: 45px;
   }
 
   .short-comparator-racket-card {   
@@ -492,6 +465,12 @@ html {
   }
   
   .racket-comparator-container{
+    margin-top: 45px;
+    .close-comparator-arrow {
+      top: 79vh;
+      height: 4vh;
+      width: 60px;
+    }
     .spec {
       font-size: 1.5vh;
     }
@@ -508,6 +487,161 @@ html {
   }
 }
 
+
+@media (max-width: 499px) { //phones
+  .search-bar {
+    width: 95px;
+    padding-right: 3px;
+    padding-left: 3px;
+    .quick-search-container {
+      padding-right: 16px;
+      padding-left: 2px;
+      border: 2px solid #10367f;
+      .fa {
+        font-weight: 10px;
+        font-size: 10px;
+      }
+    }
+    input[type="text"]{
+      font-size: 12px;
+    }
+    h4 {
+      font-size: 18px;
+    }
+    h5 {
+      font-size: 16px;
+    }
+    label {
+      line-height: 16px;
+      font-size: 12px;
+    };
+    .label-design {
+      margin-top: 5px;
+    }
+    .arrow-up {
+      border-width: 0 3px 3px 0;
+    }
+    .clear-search {
+      font-size: 12px;
+      padding-right: 5px;
+      padding-left: 5px;
+      border: 2px;
+    }
+  }
+
+
+  .select-racket {
+    display: grid;
+    padding:3px;
+    grid-auto-rows: 220px;
+    .card-image img {
+      height: 80px;
+    }
+    .fas {
+      font-size: 13px
+    }
+    .button-up {
+      height: 30px;
+    }
+    .button-and-link {
+      margin: 0px
+    }
+    .racket-card {
+      width: 95%;
+    }
+  }
+
+  .racket-card:hover {
+    .racket-checkbox-label {
+      width: 48px
+    }
+  }
+
+  .racket-checkbox-label {
+    width: 30px;
+    .compare {
+      font-size: 10px;
+    }
+  }
+
+  .racket-checkbox-label {
+    width: 30px;
+    .compare {
+      font-size: 12px;
+    }
+  }
+
+  .short-comparator-background {
+    margin-top: 30px;
+  }
+    .short-comparator-racket-card {   
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+
+      .short-brand-model-container {
+        border-right: none
+      }
+
+      .spec-data {
+        font-size: 10px;
+        line-height: 16px;
+        min-width: 15vw;
+        width: 100%;
+        padding: 4px;
+        -webkit-line-clamp: 2;
+      }
+      .compared-racket-checkbox-label {
+        width: 100%;
+      }
+
+
+    }
+    .open-comparator-arrow {
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 10vw;
+    }
+
+  .comparator-card-image img {
+    height: 120px;
+    transform: translateY(25px);
+    border-radius: 25px;
+  }
+
+
+  .racket-comparator-container{
+    margin-top: 30px;
+    .empty-comparator-message{
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-size: 1.7vh;
+    }
+    .close-comparator-arrow {
+      top: 79vh;
+    }
+    .spec {
+      line-height: 15px;
+      font-size: 1.2vh;
+    }
+    h4.spec {
+      font-size: 1.8vh;
+    }
+    h5.spec {
+      line-height: 17px;
+      font-size: 1.5vh;
+    }
+    .spec-list {
+      font-size: 1.2vh;
+    }
+  } 
+}
 
 // @media screen and (min-width: 375px) and (max-width: 719px) and (min-height: 800px)  {
 //   .select-racket {
@@ -530,4 +664,145 @@ html {
 // }
 
 
+
+// @media only screen //iphone X
+//   and (min-device-width: 375px) 
+//   and (max-device-width: 812px) 
+//   and (-webkit-min-device-pixel-ratio: 3) { 
+//     .search-bar {
+//       width: 100px !important;
+//       .type-search {
+//         width: 100% !important;
+//       }
+//       input[type="text"]{
+//         font-size: 12px !important;
+//       }
+//       h4 {
+//         font-size: 16px !important;
+//       }
+//       h5 {
+//         font-size: 12px !important;
+//       }
+//       label {
+//         line-height: 14px !important;
+//         font-size: 10px !important;
+//       };
+//       .label-design {
+//         margin-top: 5px !important;
+//       }
+//       .arrow-up {
+//         border-width: 0 3px 3px 0 !important;
+//       }
+//       .clear-search {
+//         font-size: 8px !important;
+//       }
+//     }
+
+//     .select-racket {
+//       display: grid;
+//       grid-auto-rows: 180px !important;
+//       .card-image img {
+//         height: 65px !important;
+//       }
+//       .fas {
+//         font-size: 10px !important
+//       }
+//       .button-up {
+//         height: 20px !important;
+//       }
+//       .racket-card {
+//        padding-bottom: 0px !important;
+//       }
+//     }
+  
+//     .racket-card:hover {
+//       .racket-checkbox-label {
+//         width: 34px !important
+//       }
+//     }
+//     .card-brand {
+//       h4{
+//         font-size: 12px !important;
+//       }
+//     }
+//     .card-model {
+//       h5{
+//         font-size: 10px !important;
+//       }
+//     }
+    
+//     .racket-checkbox-label {
+//       width: 20px !important;
+//       .compare {
+//         font-size: 8px !important;
+//       }
+//     }
+
+//     .short-comparator-racket-card {   
+//       border-radius: 5px !important;
+//       display: flex !important;
+//       flex-direction: column;
+//       justify-content: space-between;
+
+
+//       .short-brand-model-container {
+//         border-right: none !important
+//       }
+
+//       .spec-data {
+//         font-size: 10px !important;
+//         line-height: 17px !important;
+//         width: 100% !important;
+//         padding: 4px !important;
+//         -webkit-line-clamp: 2 !important;
+//       }
+//       .compared-racket-checkbox-label {
+//         width: 100% !important;
+//       }
+      
+//     }
+    
+//     .open-comparator-arrow {
+//       width: 40px !important;
+//       min-width: 40px !important;
+//       height: 50% !important;
+//       font-size: 12px;
+//     }
+
+//     .racket-comparator-container{
+//       .spec {
+//         font-size: 1.2vh;
+//       }
+//       h4.spec{
+//         font-size: 1.6vh;
+//       }
+//       h5.spec{
+//         font-size: 1.6vh;
+//       }
+//       .spec-list {
+//         font-size: 1vh;
+//       }
+//     }
+// }
+// @media only screen //Iphone X
+//   and (min-device-width: 375px) 
+//   and (max-device-width: 812px) 
+//   and (-webkit-min-device-pixel-ratio: 3)
+//   and (orientation: landscape) { 
+
+//   .racket-comparator-container{
+//     .spec {
+//       font-size: 2vh;
+//     }
+//     h4.spec{
+//       font-size: 3vh;
+//     }
+//     h5.spec{
+//       font-size: 2.1vh;
+//     }
+//     .spec-list {
+//       font-size: 2vh;
+//     }
+//   }
+// }
 
