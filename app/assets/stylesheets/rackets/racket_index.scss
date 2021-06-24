@@ -335,6 +335,10 @@ html {
 
   .racket-comparator-container{
     margin-top: 55px;
+    .empty-comparator-message{
+      font-size: 17px;
+      margin-left: 4px;
+    }
     .close-comparator-arrow {
       top: 79vh;
       height: 4vh;
@@ -466,6 +470,7 @@ html {
   
   .racket-comparator-container{
     margin-top: 45px;
+
     h5 {
       font-size: 16px;
     }
@@ -574,6 +579,8 @@ html {
     }
   }
 
+
+
   .short-comparator-background {
     margin-top: 30px;
   }
@@ -605,6 +612,8 @@ html {
     .open-comparator-arrow {
       border-radius: 5px;
       display: flex;
+      font-size: 12px;
+
       flex-direction: column;
       justify-content: center;
       width: 10vw;
@@ -616,15 +625,21 @@ html {
     border-radius: 25px;
   }
 
+  .short-comparator-container {
+    .empty-comparator {
+      justify-content: flex-start;
+    }
+  }
 
   .racket-comparator-container{
     margin-top: 30px;
+
     .empty-comparator-message{
       border-radius: 5px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      font-size: 1.7vh;
+      font-size: 12px;
+      margin-left: 4px;
+      padding-right: 6px;
+      padding-left: 6px;
     }
     .close-comparator-arrow {
       top: 79vh;
@@ -645,167 +660,3 @@ html {
     }
   } 
 }
-
-// @media screen and (min-width: 375px) and (max-width: 719px) and (min-height: 800px)  {
-//   .select-racket {
-//     display: grid;
-//     grid-auto-rows: 400px;
-//   }
-
-//   .card-item-description {
-//     // grid-template-rows: 50% 50%;
-//   }
-// }
-
-
-// @media screen and (max-width:800px) {
-//   .select-racket {
-//     display: grid;
-//     grid-template-columns: 50% 50%;
-//     grid-auto-rows: 25rem;
-//   }
-// }
-
-
-
-// @media only screen //iphone X
-//   and (min-device-width: 375px) 
-//   and (max-device-width: 812px) 
-//   and (-webkit-min-device-pixel-ratio: 3) { 
-//     .search-bar {
-//       width: 100px !important;
-//       .type-search {
-//         width: 100% !important;
-//       }
-//       input[type="text"]{
-//         font-size: 12px !important;
-//       }
-//       h4 {
-//         font-size: 16px !important;
-//       }
-//       h5 {
-//         font-size: 12px !important;
-//       }
-//       label {
-//         line-height: 14px !important;
-//         font-size: 10px !important;
-//       };
-//       .label-design {
-//         margin-top: 5px !important;
-//       }
-//       .arrow-up {
-//         border-width: 0 3px 3px 0 !important;
-//       }
-//       .clear-search {
-//         font-size: 8px !important;
-//       }
-//     }
-
-//     .select-racket {
-//       display: grid;
-//       grid-auto-rows: 180px !important;
-//       .card-image img {
-//         height: 65px !important;
-//       }
-//       .fas {
-//         font-size: 10px !important
-//       }
-//       .button-up {
-//         height: 20px !important;
-//       }
-//       .racket-card {
-//        padding-bottom: 0px !important;
-//       }
-//     }
-  
-//     .racket-card:hover {
-//       .racket-checkbox-label {
-//         width: 34px !important
-//       }
-//     }
-//     .card-brand {
-//       h4{
-//         font-size: 12px !important;
-//       }
-//     }
-//     .card-model {
-//       h5{
-//         font-size: 10px !important;
-//       }
-//     }
-    
-//     .racket-checkbox-label {
-//       width: 20px !important;
-//       .compare {
-//         font-size: 8px !important;
-//       }
-//     }
-
-//     .short-comparator-racket-card {   
-//       border-radius: 5px !important;
-//       display: flex !important;
-//       flex-direction: column;
-//       justify-content: space-between;
-
-
-//       .short-brand-model-container {
-//         border-right: none !important
-//       }
-
-//       .spec-data {
-//         font-size: 10px !important;
-//         line-height: 17px !important;
-//         width: 100% !important;
-//         padding: 4px !important;
-//         -webkit-line-clamp: 2 !important;
-//       }
-//       .compared-racket-checkbox-label {
-//         width: 100% !important;
-//       }
-      
-//     }
-    
-//     .open-comparator-arrow {
-//       width: 40px !important;
-//       min-width: 40px !important;
-//       height: 50% !important;
-//       font-size: 12px;
-//     }
-
-//     .racket-comparator-container{
-//       .spec {
-//         font-size: 1.2vh;
-//       }
-//       h4.spec{
-//         font-size: 1.6vh;
-//       }
-//       h5.spec{
-//         font-size: 1.6vh;
-//       }
-//       .spec-list {
-//         font-size: 1vh;
-//       }
-//     }
-// }
-// @media only screen //Iphone X
-//   and (min-device-width: 375px) 
-//   and (max-device-width: 812px) 
-//   and (-webkit-min-device-pixel-ratio: 3)
-//   and (orientation: landscape) { 
-
-//   .racket-comparator-container{
-//     .spec {
-//       font-size: 2vh;
-//     }
-//     h4.spec{
-//       font-size: 3vh;
-//     }
-//     h5.spec{
-//       font-size: 2.1vh;
-//     }
-//     .spec-list {
-//       font-size: 2vh;
-//     }
-//   }
-// }
-

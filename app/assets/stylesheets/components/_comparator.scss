@@ -81,7 +81,6 @@
 .empty-comparator {
   display: none;
   justify-content: center;
-  align-items: center;
   text-align: center;
   width: 100%;
   height: 100%;
@@ -97,6 +96,7 @@
   overflow: hidden;
   background-color: white;
   align-items: center;
+  align-self: center;
   border: solid 1px $orange;
   border-radius: 50px;
 }

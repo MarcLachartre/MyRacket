@@ -15,7 +15,6 @@ export class ComparatorDisplay extends Comparator { //this class in only respons
     const upArrow = document.querySelector(".close-comparator-arrow");
     this.setEmptyComparatorMessage()
     upArrow.addEventListener('click', () => {
-      console.log("cul")
       this.closeLargeComparator();
       this.setInitialCardState(document.querySelectorAll(".short-comparator-racket-card"));
       // scrollUp(comparator, 1, 8, 85, "vh") //effects.js
