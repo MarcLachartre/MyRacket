@@ -27,3 +27,43 @@
   }
 }
 
+@media (max-width: 499px) {
+  .devise-page {
+    height: 100vh;
+  }
+  
+  .devise-page.sign-up {
+    .devise-card {
+      min-height: 590px;
+      height: 590px;
+      width: 300px;
+      margin-top: 2%;
+      margin-bottom: 20%;
+    }
+    a {
+      text-align: center;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .devise-page {
+    height: 100vh;
+    h1 {
+      font-size: 30px;
+    }
+  }
+  
+  .devise-page.sign-up {
+    .devise-card {
+      min-height: 500px;
+      height: 500px;
+      width: 250px;
+      margin-top: 2%;
+      margin-bottom: 20%;
+    }
+    a {
+      text-align: center;
+    }
+  }
+}

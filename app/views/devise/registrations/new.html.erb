@@ -12,12 +12,12 @@
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "user-sign-up"}) do |f| %>
         <div class="field-row">
           <div class="field">
-            <%= f.label :name %>
+            <%= f.label(:name, "First name") %>
             <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
           </div>
         
           <div class="field">
-            <%= f.label :lastname %>
+            <%= f.label(:lastname, "Last name") %>
             <%= f.text_field :lastname, autofocus: true, autocomplete: "last_name" %>
           </div>
         </div>

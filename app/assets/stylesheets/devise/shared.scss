@@ -34,6 +34,14 @@
     background-color: $orange;
     border: solid 1px $orange
   }
+  a {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    align-items: center
+    // text-align: center;
+    // width: 100%;
+  }
 }
 
 .devise-card{
@@ -118,22 +126,71 @@
   align-items: center
 }
 
+// 480p  720x480 pixels	16/9	SD, définition standard, qualité DVD
+// 720p	HD Ready	1280x720 pixels	16/9	HDTV, HD 720p, 720p, HD Ready
+// 1080p	Full HD	1920x1080 pixels	16/9	HDTV 1080p, HD 1080p, 1080p, Full HD
+// 1440p 2560x1440
+// 2160p	UHDTV1	3840x2160 pixels	16/9	4K, UHD 4K, Ultra HD 4K, UHD-4K, 2160p
+// 4320p	UHDTV2	7680x4320 pixels
 
-// @media screen and (max-height: 600px) {
-//   .devise-page.log-in {
-//     h1 {
-//       transform: translateY(0px)
-//     }
-//   }
-  
-//   .devise-card{
-//     margin-top: 100px;
-//     height: 20rem;
-//     grid-template-rows: 0% 100%;
-//   }
-//   .devise-image img{
-//     height: 0%;
-//     width: 0%
-//     // justify-content: center;
-//   }
-// }
+@media (min-width: 2560px) {
+
+}
+
+@media (max-width: 2559px) {
+
+}
+
+@media (max-width: 1440px) {
+
+}
+
+@media (max-width: 1920px) and (orientation: landscape) {
+
+}
+
+@media (max-width: 1280px) {
+ 
+}
+
+
+@media (max-width: 1024px) {
+
+}
+
+@media (max-width: 720px) {
+
+}
+
+
+@media (max-width: 499px) {
+  .devise-page {
+    height: 100vh;
+    
+    h1 {
+    }
+    label {
+
+    }
+  }
+
+}
+
+
+@media (max-width: 320px) {
+  .devise-page {
+    h1 {
+      font-size: 30px;
+    }
+    label {
+      font-size: 12px;
+    }
+    .field input{
+      height: 22px;
+      font-size: 12px;
+    }
+    a{
+      font-size: 12px;
+    }
+  }
+}
