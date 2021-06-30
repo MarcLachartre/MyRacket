@@ -19,11 +19,74 @@
 .user-sign-up {
   position: relative;
   display: flex;
+  justify-content: space-evenly;
   flex-direction: column;
   width: 100%;
   height: 70%;
   input {
     width: 80%
+  }
+}
+
+@media (min-width: 1921px) {
+  .devise-page.sign-up {
+    .devise-card {
+      height: 700px;
+      width: 500px;
+      margin-top: 2%;
+      margin-bottom: 20%;
+      grid-template-rows: 30% 70%;
+    }
+    .devise-image img {
+      height: 130%;
+      width: 190%
+    }
+    a {
+      text-align: center;
+    }
+  }
+  .user-sign-up {
+    height: 75%;
+  }
+}
+
+@media (max-width: 1920px) {
+  .devise-page.sign-up {
+    .devise-card {
+      height: 530px;
+      width: 400px;
+      margin-top: 2%;
+      margin-bottom: 10%;
+    }
+    .devise-image img {
+      height: 130%;
+      width: 210%
+    }
+    a {
+      text-align: center;
+    }
+  }
+  .user-sign-up {
+    height: 75%;
+  }
+}
+
+@media (max-width: 1024px) {
+
+  .devise-page.sign-up {
+    .devise-card {
+      height: 700px;
+      width: 400px;
+      margin-top: 2%;
+      margin-bottom: 30%;
+    }
+    .devise-image img {
+      height: 130%;
+      width: 210%
+    }
+  }
+  .user-sign-up {
+    
   }
 }
 
@@ -34,21 +97,21 @@
   
   .devise-page.sign-up {
     .devise-card {
-      min-height: 590px;
-      height: 590px;
+      height: 620px;
       width: 300px;
       margin-top: 2%;
       margin-bottom: 20%;
     }
-    a {
-      text-align: center;
+    .devise-image img {
+      height: 130%;
+      width: 210%
     }
   }
 }
 
 @media (max-width: 320px) {
   .devise-page {
-    height: 100vh;
+
     h1 {
       font-size: 30px;
     }
@@ -56,14 +119,11 @@
   
   .devise-page.sign-up {
     .devise-card {
-      min-height: 500px;
-      height: 500px;
+      grid-template-rows: 18% 82%;
+      height: 440px;
+      min-height: 440px;
       width: 250px;
-      margin-top: 2%;
-      margin-bottom: 20%;
-    }
-    a {
-      text-align: center;
+      margin-bottom: 1%;
     }
   }
 }
