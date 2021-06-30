@@ -4,7 +4,6 @@
   .devise-card {
     position: relative;
     grid-template-rows: 25% 75%;
-    height: 100%;
     margin-top: 4%;
     margin-bottom: 10%;
     z-index: 5
@@ -39,7 +38,7 @@
     .devise-card {
       grid-template-rows: 30% 70%;
       width: 380px;
-      height: 550px;
+      height: 570px;
       margin-bottom: 15%;
     }
   }
@@ -52,6 +51,7 @@
       grid-template-rows: 30% 70%;
       width: 400px;
       height: 550px;
+      min-height: 550px;
       margin-bottom: 15%;
     }
   }
@@ -64,6 +64,7 @@
       grid-template-rows: 30% 70%;
       width: 400px;
       height: 550px;
+      min-height: 550px;
       margin-bottom: 30%;
     }
   }
@@ -75,6 +76,7 @@
       grid-template-rows: 25% 75%;
       width: 300px;
       height: 500px;
+      min-height: 500px;
       margin-bottom: 40%;
     }
   }
@@ -85,6 +87,9 @@
     .devise-card {
       grid-template-rows: 25% 75%;
       width: 200px;
+      height: 400px;
+      min-height: 400px;
+      margin-top: 15%
     }
   }
 }
