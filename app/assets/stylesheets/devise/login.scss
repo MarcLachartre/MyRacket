@@ -7,7 +7,6 @@
     height: 100%;
     margin-top: 4%;
     margin-bottom: 10%;
-    min-height: 450px;
     z-index: 5
   }
 }
@@ -15,9 +14,77 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   width: 100%;
   height: 70%;
   input {
     width: 80%
+  }
+}
+
+
+@media (min-width: 1921px) {
+  .devise-page.log-in {
+    .devise-card {
+      grid-template-rows: 30% 70%;
+      width: 400px;
+      height: 630px;
+      margin-bottom: 15%;
+    }
+  }
+}
+
+@media (max-width: 1920px) {
+  .devise-page.log-in {
+    .devise-card {
+      grid-template-rows: 30% 70%;
+      width: 380px;
+      height: 550px;
+      margin-bottom: 15%;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+
+  .devise-page.log-in {
+    .devise-card {
+      grid-template-rows: 30% 70%;
+      width: 400px;
+      height: 550px;
+      margin-bottom: 15%;
+    }
+  }
+}
+
+@media (max-width: 1024px) and (orientation: portrait) {
+
+  .devise-page.log-in {
+    .devise-card {
+      grid-template-rows: 30% 70%;
+      width: 400px;
+      height: 550px;
+      margin-bottom: 30%;
+    }
+  }
+}
+
+@media (max-width: 499px) {
+  .devise-page.log-in {
+    .devise-card {
+      grid-template-rows: 25% 75%;
+      width: 300px;
+      height: 500px;
+      margin-bottom: 40%;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .devise-page.log-in {
+    .devise-card {
+      grid-template-rows: 25% 75%;
+      width: 200px;
+    }
   }
 }
